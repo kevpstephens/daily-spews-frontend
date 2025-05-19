@@ -1,12 +1,14 @@
 import { dummyUser } from "./data/dummyUser";
 import "./styles/App.css";
+import PageHeader from "./components/PageHeader";
 
 function App() {
   return (
     <>
-      <div className="app-container">
-        <h1>NC News Frontend</h1>
-      </div>
+      <h3>Home Page</h3>
+      <header>
+        <PageHeader />
+      </header>
     </>
   );
 }

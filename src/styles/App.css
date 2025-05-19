@@ -10,7 +10,7 @@
 body {
   font-family: sans-serif;
   background-color: #f9f9f9;
-  color: #333;
+  color: #000000;
   line-height: 1.6;
   padding: 2rem;
 }
@@ -44,6 +44,7 @@ h1,
 h2,
 h3 {
   margin-bottom: 0rem;
+  color: black;
 }
 
 /* ============================================================
@@ -57,6 +58,7 @@ form {
   padding: 1rem;
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: black;
 }
 
 /* ============================================================
@@ -80,7 +82,7 @@ form input {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #8113d5;
   color: white;
   border: none;
   cursor: pointer;
@@ -89,10 +91,144 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #673e84;
 }
 
 #search-and-submit {
   margin-top: 0rem;
   padding: 0rem;
+}
+
+/* ============================================================
+   AllArticlesPage
+============================================================ */
+.articles-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* flexible */
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 auto;
+  justify-items: center;
+  max-width: 1200px;
+}
+
+/* .articles-wrapper {
+  max-width: auto;
+  margin: 0 auto;
+} */
+
+/* ============================================================
+   Article Card 
+============================================================ */
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 500px;
+  min-height: 500px;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.091);
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   Article Card Button
+============================================================ */
+
+.article-card-button {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.article-card-button:hover {
+  background-color: #673e84;
+}
+
+.article-card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   Navigation Bar Buttons
+============================================================ */
+
+.navigation-bar-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   Topic Filter Bar
+============================================================ */
+
+#topic-dropdown {
+  display: flex;
+  width: auto;
+  background-color: #8113d5;
+  border: none;
+  margin: 1rem;
+  padding: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   Sort Bar
+============================================================ */
+
+.sort-bar {
+  display: flex;
+  width: auto;
+  background-color: #8113d5;
+  border: none;
+  margin: 1rem;
+  padding: 0.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   Sort and Topic Bar Container
+============================================================ */
+
+.sort-and-topic-bar-container {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: none;
+}
+
+/* ============================================================
+   Likes and Comments
+============================================================ */
+.likes-and-comments {
+  margin: 1rem;
+  margin-bottom: 0rem;
+}
+
+/* ============================================================
+   Article Card Heading
+============================================================ */
+.article-card-heading {
+  margin-bottom: 1rem;
 }
