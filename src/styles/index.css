@@ -1,0 +1,24 @@
+/* ":root" -> this is a CSS pseudo-class that targets the highest-level element in the DOM, which is always the <html> tag.
+
+•	Use it to define global styles like fonts, themes, or CSS variables.
+•	It affects everything on the page unless overridden by more specific selectors. */
+
+/* "#root" -> This is a CSS ID selector, targeting the element with the ID root — which, in a React app, is the <div id="root"></div> in your index.html.
+
+•	This specifically styles the React mounting point, i.e., the wrapper for everything your React app renders.
+•	You often use this to set max-width, centering, or layout rules for your entire app. */
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
