@@ -1,3 +1,4 @@
+import { dummyUser } from "./data/dummyUser";
 import "./styles/App.css";
 
 function App() {
