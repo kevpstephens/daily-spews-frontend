@@ -1,4 +1,4 @@
-function SortBar() {
+export default function SortBar() {
   return (
     <select className="sort-bar">
       Sort by
@@ -10,5 +10,3 @@ function SortBar() {
     </select>
   );
 }
-
-export default SortBar;

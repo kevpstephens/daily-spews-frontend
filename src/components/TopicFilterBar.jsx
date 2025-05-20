@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../api/api";
 
-function TopicFilterBar() {
+export default function TopicFilterBar() {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function TopicFilterBar() {
         const capitalisedFirstLetter = topic.slug.slice(0, 1).toUpperCase();
         const remaniningLetters = topic.slug.slice(1);
         return (
-          <option value={topic.slug}>
+          <option key={topic.slug} value={topic.slug}>
             {capitalisedFirstLetter + remaniningLetters}
           </option>
         );
@@ -26,5 +26,3 @@ function TopicFilterBar() {
     </select>
   );
 }
-
-export default TopicFilterBar;

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api/api";
 import PageHeader from "../components/PageHeader";
-import CommentCard from "../components/CommentCard";
 import { formatDate } from "../utils/formatDate";
+import CommentList from "../components/CommentList";
 
-function ArticlePage() {
+export default function SingleArticlePage() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
 
@@ -17,6 +17,7 @@ function ArticlePage() {
 
   return (
     <>
+      <h3>*Single Article Page*</h3>
       <PageHeader />
       <article className="article-page">
         <h2>{article.title}</h2>
@@ -31,9 +32,7 @@ function ArticlePage() {
           💬 {article.comment_count} | 💜 {article.votes}
         </p>
       </article>
-      <CommentCard />
+      <CommentList article_id={article.article_id} />
     </>
   );
 }
-
-export default ArticlePage;

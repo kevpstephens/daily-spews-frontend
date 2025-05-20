@@ -3,7 +3,7 @@ import AllArticlesPage from "./pages/AllArticlesPage";
 import App from "./App";
 import TopicsPage from "./pages/TopicsPage";
 import UsersPage from "./pages/UsersPage";
-import ArticlePage from "./pages/ArticlePage";
+import SingleArticlePage from "./pages/SingleArticlePage";
 
 function AppRouter() {
   return (
@@ -11,7 +11,7 @@ function AppRouter() {
       <Route path="/" element={<App />} />
       {/* <Route path="/" element={<Navigate to="/articles"/>} /> */}
       <Route path="/articles" element={<AllArticlesPage />} />
-      <Route path="/articles/:article_id" element={<ArticlePage />}></Route>
+      <Route path="/articles/:article_id" element={<SingleArticlePage />} />
       <Route path="/topics" element={<TopicsPage />} />
       <Route path="/users" element={<UsersPage />} />
     </Routes>
