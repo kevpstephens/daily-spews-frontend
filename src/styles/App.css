@@ -1,4 +1,12 @@
 /* ============================================================
+   Font Imports
+============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Honk&family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Gaegu&family=Honk&family=Monoton&display=swap");
+
+/* ============================================================
    RESET + BASE STYLES
 ============================================================ */
 * {
@@ -8,9 +16,9 @@
 }
 
 body {
-  font-family: sans-serif;
-  background-color: #f9f9f9;
-  color: #000000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #0d0024;
+  color: #0d0024;
   line-height: 1.6;
   padding: 2rem;
 }
@@ -71,7 +79,7 @@ button {
   font: inherit;
   padding: 0.5rem;
   margin-top: 0rem;
-  border: 1px solid #ccc;
+  border: 2px solid #000000;
   border-radius: 10px;
   width: 100%;
 }
@@ -84,10 +92,10 @@ form input {
 button {
   background-color: #8113d5;
   color: white;
-  border: none;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
   width: 5rem;
+  border: 2.5px solid #0d0024;
 }
 
 button:hover {
@@ -97,6 +105,15 @@ button:hover {
 #search-and-submit {
   margin-top: 0rem;
   padding: 0rem;
+}
+
+/* ============================================================
+   H1 - Daily Spews Heading 
+============================================================ */
+h1 {
+  font-family: "Gaegu", sans-serif;
+  font-size: 60px;
+  /* margin-top: 0rem; */
 }
 
 /* ============================================================
@@ -133,6 +150,11 @@ button:hover {
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.091);
   box-sizing: border-box;
+}
+
+.article-card-image {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* ============================================================
@@ -183,11 +205,12 @@ button:hover {
   display: flex;
   width: auto;
   background-color: #8113d5;
-  border: none;
   margin: 1rem;
   padding: 0.25rem;
   align-items: center;
   justify-content: center;
+  border-color: 0d0024;
+  border-width: 0.125rem;
 }
 
 /* ============================================================
@@ -198,12 +221,13 @@ button:hover {
   display: flex;
   width: auto;
   background-color: #8113d5;
-  border: none;
   margin: 1rem;
   padding: 0.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-color: 0d0024;
+  border-width: 0.125rem;
 }
 
 /* ============================================================
@@ -230,5 +254,49 @@ button:hover {
    Article Card Heading
 ============================================================ */
 .article-card-heading {
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   Daily Spews Logo
+============================================================ */
+
+.page-header {
+  background-color: #9785d3;
+  padding: 1rem;
+  border-radius: 30px;
+  border: 5px solid #0d0024;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 1rem;
+}
+
+.daily-spews-logo {
+  /* display: flex; */
+  /* display: inline; */
+  width: 100px;
+  height: auto;
+  /* border-radius: 50%; */
+  top: 10rem;
+  left: 7.5rem;
+  margin-bottom: -1.25rem;
+  border-width: 0.125rem;
+  border: 10px dotted #0d0024;
+  border-radius: 3rem;
+}
+
+/* ============================================================
+    Article Page
+============================================================ */
+.article-page {
+  margin-top: 2.5rem;
+}
+
+.article-page img {
+  margin: 1.5rem;
+}
+
+.article-body {
+  text-align: left;
   margin-bottom: 1rem;
 }

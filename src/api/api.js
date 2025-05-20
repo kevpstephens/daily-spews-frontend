@@ -13,3 +13,8 @@ export const getTopics = async () => {
   const res = await api.get("/topics");
   return res.data;
 };
+
+export const getArticleById = async (article_id) => {
+  const res = await api.get(`/articles/${article_id}`);
+  return res.data;
+};
