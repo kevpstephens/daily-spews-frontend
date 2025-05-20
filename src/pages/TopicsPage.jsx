@@ -1,12 +1,10 @@
 import PageHeader from "../components/PageHeader";
 
-function TopicsPage() {
+export default function TopicsPage() {
   return (
     <>
-      <h3>Topics Page</h3>
+      <h3>*Topics Page*</h3>
       <PageHeader />
     </>
   );
 }
-
-export default TopicsPage;

@@ -1,4 +1,11 @@
 /* ============================================================
+   Colour Theme
+============================================================ */
+/* orange - b95d28 */
+/* dark purple - 8113d5 */
+/* light purple - 9785d3 */
+
+/* ============================================================
    Font Imports
 ============================================================ */
 
@@ -99,7 +106,7 @@ button {
 }
 
 button:hover {
-  background-color: #673e84;
+  background-color: #b95d28;
 }
 
 #search-and-submit {
@@ -129,39 +136,56 @@ h1 {
   max-width: 1200px;
 }
 
-/* .articles-wrapper {
-  max-width: auto;
-  margin: 0 auto;
-} */
-
 /* ============================================================
-   Article Card 
+   Article Card Container
 ============================================================ */
 
-.article-card {
+.article-card-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   width: 100%;
   max-width: 500px;
   min-height: 500px;
   padding: 1rem;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.091);
+  background-color: #9785d3;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0.15rem;
   box-sizing: border-box;
+  transition: background-color 0.75s ease;
 }
 
-.article-card-image {
+.article-card-container:hover {
+  background-color: #b95d28d2;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+   Article Card - Link/Button
+============================================================ */
+
+.article-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 0.1rem;
+}
+
+.article-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-/* ============================================================
-   Article Card Button
-============================================================ */
-
-.article-card-button {
+.article-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
   width: 100%;
   max-width: 500px;
   height: auto;
@@ -169,20 +193,15 @@ h1 {
   color: white;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
-  padding: 1rem;
+  padding: 0.25rem;
   border-radius: 12px;
   text-align: center;
 }
 
-.article-card-button:hover {
-  background-color: #673e84;
-}
-
-.article-card-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+.article-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 1 50px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0d0024;
 }
 
 /* ============================================================
@@ -246,8 +265,16 @@ h1 {
    Likes and Comments
 ============================================================ */
 .likes-and-comments {
-  margin: 1rem;
+  margin: 0.75rem;
   margin-bottom: 0rem;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.likes-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
 }
 
 /* ============================================================
@@ -289,7 +316,10 @@ h1 {
     Article Page
 ============================================================ */
 .article-page {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-style: solid;
+  border-width: 0.15rem;
 }
 
 .article-page img {
@@ -299,4 +329,56 @@ h1 {
 .article-body {
   text-align: left;
   margin-bottom: 1rem;
+}
+
+/* ============================================================
+    Comment Section
+============================================================ */
+.comment-section {
+  text-align: left;
+  margin-top: 5rem;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0.15rem;
+}
+.comment-section h2 {
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+/* ============================================================
+    Comment List
+============================================================ */
+.comment-list {
+  margin: 2rem;
+}
+
+/* ============================================================
+    Comment Card
+============================================================ */
+.comment-card {
+  margin: 1rem;
+  background: #9785d34f;
+  margin-bottom: 1.5rem;
+}
+
+.comment-votes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 40px;
+  font-size: 1rem;
+  background-color: #9785d3;
+  border-radius: 20px;
+  margin-top: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #8a78c5;
+}
+
+.comment-card-author {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0d0024;
 }

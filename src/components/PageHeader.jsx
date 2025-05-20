@@ -1,7 +1,7 @@
 import Header from "./Header";
 import NavigationBar from "./NavigationBar";
 
-function PageHeader() {
+export default function PageHeader() {
   return (
     <header className="page-header">
       <img
@@ -14,5 +14,3 @@ function PageHeader() {
     </header>
   );
 }
-
-export default PageHeader;
