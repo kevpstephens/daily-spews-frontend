@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formatDate } from "../utils/formatDate";
 
 function ArticleCard({ article }) {
   return (
@@ -15,9 +16,9 @@ function ArticleCard({ article }) {
               src={article.article_img_url}
               alt={`${article.title} image`}
             />
-            <p>Posted: {article.created_at}</p>
+            <p>Posted: {formatDate(article.created_at)}</p>
             <p className="likes-and-comments">
-              💬{article.comment_count} | 💜{article.votes}
+              💬 {article.comment_count} | 💜 {article.votes}
             </p>
           </article>
         </button>

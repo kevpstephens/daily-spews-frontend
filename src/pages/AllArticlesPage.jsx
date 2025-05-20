@@ -16,18 +16,18 @@ function AllArticlesPage() {
 
   return (
     <>
-      <h3>Articles Page</h3>
+      <h3>All Articles Page</h3>
       <PageHeader />
       <div className="sort-and-topic-bar-container">
         <SortBar />
         <TopicFilterBar />
       </div>
       {/* <div className="articles-wrapper"> */}
-        <main className="articles-page">
-          {articles.map((article) => (
-            <ArticleCard key={article.article_id} article={article} />
-          ))}
-        </main>
+      <main className="articles-page">
+        {articles.map((article) => (
+          <ArticleCard key={article.article_id} article={article} />
+        ))}
+      </main>
       {/* </div> */}
     </>
   );
