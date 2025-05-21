@@ -1,32 +1,39 @@
-import { useEffect, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import { getArticles } from "../api/api";
 import ArticleCard from "../components/ArticleCard";
 import SortBar from "../components/SortBar";
 import TopicFilterBar from "../components/TopicFilterBar";
+import useFetch from "../hooks/useFetch";
+import ErrorMessageCard from "../components/ErrorMessageCard";
+import LoadingScreen from "../components/LoadingScreen";
 
 export default function AllArticlesPage() {
-  const [articles, setArticles] = useState([]);
+  const { data, isLoading, error } = useFetch(getArticles);
+  let articles = [];
 
-  useEffect(() => {
-    getArticles().then((data) => {
-      setArticles(data.articles);
-    });
-  }, []);
+  if (data && data.articles) {
+    articles = data.articles;
+  }
 
   return (
     <>
-      <h3>*All Articles Page*</h3>
+      <h3>*Articles Page*</h3>
       <PageHeader />
       <div className="sort-and-topic-bar-container">
         <SortBar />
         <TopicFilterBar />
       </div>
-      <main className="articles-page">
-        {articles.map((article) => (
-          <ArticleCard key={article.article_id} article={article} />
-        ))}
-      </main>
+
+      {isLoading && <LoadingScreen />}
+      {error && <ErrorMessageCard error={error} />}
+
+      {!isLoading && !error && (
+        <main className="articles-page">
+          {articles.map((article) => (
+            <ArticleCard key={article.article_id} article={article} />
+          ))}
+        </main>
+      )}
     </>
   );
 }
