@@ -17,8 +17,11 @@ export default function ArticleCard({ article }) {
           <p>Posted: {formatDate(article.created_at)}</p>
         </article>
       </Link>
-      <p className="likes-and-comments">
-        <Link to={`/articles/${article.article_id}#comments`} className="likes-link">
+      <p className="article-card-likes-and-comments">
+        <Link
+          to={`/articles/${article.article_id}#comments`}
+          className="likes-link"
+        >
           💬 {article.comment_count}
         </Link>{" "}
         | 💜 {article.votes}
