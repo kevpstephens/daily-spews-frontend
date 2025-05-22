@@ -14,16 +14,18 @@ export default function PostCommentForm({ article_id }) {
   }
 
   return (
-    <form className="post-comment-form" onSubmit={handleSubmit}>
-      <textarea
-        id="comment"
-        value={comment}
-        onChange={(event) => setComment(event.target.value)}
-        placeholder="Join the conversation..."
-        rows="3"
-        required
-      />
-      <button type="submit">Post</button>
-    </form>
+    <>
+      <form className="post-comment-form" onSubmit={handleSubmit}>
+        <textarea
+          id="comment"
+          value={comment}
+          onChange={(event) => setComment(event.target.value)}
+          placeholder="Join the conversation..."
+          rows="3"
+          required
+        />
+        <button type="submit">Post</button>
+      </form>
+    </>
   );
 }

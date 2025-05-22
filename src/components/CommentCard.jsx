@@ -13,28 +13,30 @@ export default function CommentCard({ comment }) {
   }
 
   return (
-    <article className="comment-card">
-      <p>
-        <Link to={`/users/${comment.author}`}>
-          <span className="comment-card-author">{comment.author}</span>
-        </Link>{" "}
-        | {formatDate(comment.created_at)}
-      </p>
-      <p>{comment.body}</p>
-      <div className="comment-actions-container">
-        <VoteButton
-          item_id={comment.comment_id}
-          initialVotes={comment.votes}
-          voteFunction={patchCommentVotes}
-          className="comment-vote"
-        />
+    <>
+      <article className="comment-card">
+        <p>
+          <Link to={`/users/${comment.author}`}>
+            <span className="comment-card-author">{comment.author}</span>
+          </Link>{" "}
+          | {formatDate(comment.created_at)}
+        </p>
+        <p>{comment.body}</p>
+        <div className="comment-actions-container">
+          <VoteButton
+            item_id={comment.comment_id}
+            initialVotes={comment.votes}
+            voteFunction={patchCommentVotes}
+            className="comment-vote"
+          />
 
-        {isLoggedInUsersComment && (
-          <button onClick={handleDelete} className="delete-comment-button">
-            Delete
-          </button>
-        )}
-      </div>
-    </article>
+          {isLoggedInUsersComment && (
+            <button onClick={handleDelete} className="delete-comment-button">
+              Delete
+            </button>
+          )}
+        </div>
+      </article>
+    </>
   );
 }

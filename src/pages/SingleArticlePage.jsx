@@ -41,7 +41,14 @@ export default function SingleArticlePage() {
             <img src={article.article_img_url} alt={`article image`} />
             <p className="article-body">{article.body}</p>
             <section className="likes-and-comments">
-              <button className="comment-button">
+              <button
+                className="comment-button"
+                onClick={() =>
+                  document
+                    .getElementById("post-comment-form")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
                 💬 {article.comment_count}
               </button>
               <VoteButton
@@ -52,7 +59,9 @@ export default function SingleArticlePage() {
               />
             </section>
           </article>
-          <PostCommentForm article_id={article_id} />
+          <div id="post-comment-form">
+            <PostCommentForm article_id={article_id} />
+          </div>
           <CommentList article_id={article.article_id} />
         </>
       )}

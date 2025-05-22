@@ -11,18 +11,20 @@ export default function TopicFilterBar() {
   }, []);
 
   return (
-    <select name="Topic" id="topic-dropdown">
-      <option value="">--Select Topic--</option>(
-      {topics.map((topic) => {
-        const capitalisedFirstLetter = topic.slug.slice(0, 1).toUpperCase();
-        const remaniningLetters = topic.slug.slice(1);
-        return (
-          <option key={topic.slug} value={topic.slug}>
-            {capitalisedFirstLetter + remaniningLetters}
-          </option>
-        );
-      })}
-      )
-    </select>
+    <>
+      <select name="Topic" id="topic-dropdown">
+        <option value="">--Select Topic--</option>(
+        {topics.map((topic) => {
+          const capitalisedFirstLetter = topic.slug.slice(0, 1).toUpperCase();
+          const remaniningLetters = topic.slug.slice(1);
+          return (
+            <option key={topic.slug} value={topic.slug}>
+              {capitalisedFirstLetter + remaniningLetters}
+            </option>
+          );
+        })}
+        )
+      </select>
+    </>
   );
 }
