@@ -20,11 +20,28 @@ export const getArticleById = async (article_id) => {
 };
 
 export const getCommentByArticleId = async (article_id) => {
-  const res = await api.get(`/articles/${article_id}/comments`);
-  return res.data;
+  try {
+    const res = await api.get(`/articles/${article_id}/comments`);
+    return res.data;
+  } catch (err) {
+    if (err.response && err.response.status === 404) {
+      return { comments: [] };
+    }
+    throw err;
+  }
 };
 
 export const patchArticleVotes = async (article_id, inc_votes) => {
   const res = await api.patch(`/articles/${article_id}`, { inc_votes });
   return res.data;
+};
+
+export const postComment = async (article_id, commentObj) => {
+  const res = await api.post(`/articles/${article_id}/comments`, commentObj);
+  return res.data;
+};
+
+export const deleteCommentById = async (comment_id) => {
+  const res = await api.delete(`/comments/${comment_id}`);
+  return res.data
 };
