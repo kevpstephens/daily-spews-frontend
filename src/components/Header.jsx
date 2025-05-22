@@ -1,3 +1,7 @@
 export default function Header() {
-  return <h1>Daily Spews</h1>;
+  return (
+    <>
+      <h1>Daily Spews</h1>
+    </>
+  );
 }

@@ -1,4 +1,4 @@
-export default function LoadingScreen() {
+export default function LoadingScreen({item}) {
   return (
     <>
       <img
@@ -7,7 +7,7 @@ export default function LoadingScreen() {
         alt="Daily Spews Mascot Spewing"
       />
       <p className="loading-message">
-        Please wait while we spew out some articles for you...
+        {`Please wait while we spew out some ${item} for you...`}
       </p>
     </>
   );

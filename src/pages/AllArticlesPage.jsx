@@ -24,15 +24,18 @@ export default function AllArticlesPage() {
         <TopicFilterBar />
       </div>
 
-      {isLoading && <LoadingScreen />}
+      {isLoading && <LoadingScreen item={"articles"} />}
       {error && <ErrorMessageCard error={error} />}
 
       {!isLoading && !error && (
-        <main className="articles-page">
-          {articles.map((article) => (
-            <ArticleCard key={article.article_id} article={article} />
-          ))}
-        </main>
+        <>
+          <h1 className="all-articles-page-heading">all articles:</h1>
+          <section className="articles-page">
+            {articles.map((article) => (
+              <ArticleCard key={article.article_id} article={article} />
+            ))}
+          </section>
+        </>
       )}
     </>
   );

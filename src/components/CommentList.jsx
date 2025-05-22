@@ -13,16 +13,18 @@ export default function CommentList({ article_id }) {
   }, [article_id]);
 
   return (
-    <section id="comments" className="comment-section">
-      <h2>Comments:</h2>
+    <>
+      <section id="comments" className="comment-section">
+        <h2>Comments:</h2>
 
-      {comments.length === 0 && <NoCommetsScreen />}
+        {comments.length === 0 && <NoCommetsScreen />}
 
-      <ul className="comment-list">
-        {comments.map((comment) => (
-          <CommentCard key={comment.comment_id} comment={comment} />
-        ))}
-      </ul>
-    </section>
+        <ul className="comment-list">
+          {comments.map((comment) => (
+            <CommentCard key={comment.comment_id} comment={comment} />
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }
