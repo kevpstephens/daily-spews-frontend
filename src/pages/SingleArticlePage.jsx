@@ -31,7 +31,6 @@ export default function SingleArticlePage() {
 
       {!isLoading && !error && (
         <>
-          <VoteButton article_id={article_id} initialVotes={article.votes} />
           <article className="article-page">
             <h2>{article.title}</h2>
             <p>
@@ -39,7 +38,7 @@ export default function SingleArticlePage() {
               Posted: {formatDate(article.created_at)}
             </p>
 
-            <img src={article.article_img_url} alt={`${article.title} image`} />
+            <img src={article.article_img_url} alt={`article image`} />
             <p className="article-body">{article.body}</p>
             <section className="likes-and-comments">
               <button className="comment-button">
@@ -51,7 +50,7 @@ export default function SingleArticlePage() {
               />
             </section>
           </article>
-          <PostCommentForm />
+          <PostCommentForm article_id={article_id}/>
           <CommentList article_id={article.article_id} />
         </>
       )}
