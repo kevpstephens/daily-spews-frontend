@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { postComment } from "../api/api";
+import { dummyUser } from "../data/dummyUser";
 
 export default function PostCommentForm({ article_id }) {
   const [comment, setComment] = useState("");

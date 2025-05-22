@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { getArticleById } from "../api/api";
+import { getArticleById, patchArticleVotes } from "../api/api";
 import PageHeader from "../components/PageHeader";
 import { formatDate } from "../utils/formatDate";
 import CommentList from "../components/CommentList";
@@ -45,12 +45,14 @@ export default function SingleArticlePage() {
                 💬 {article.comment_count}
               </button>
               <VoteButton
-                article_id={article_id}
+                className="article-vote"
+                item_id={article_id}
                 initialVotes={article.votes}
+                voteFunction={patchArticleVotes}
               />
             </section>
           </article>
-          <PostCommentForm article_id={article_id}/>
+          <PostCommentForm article_id={article_id} />
           <CommentList article_id={article.article_id} />
         </>
       )}

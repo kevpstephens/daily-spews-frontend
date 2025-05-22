@@ -36,6 +36,11 @@ export const patchArticleVotes = async (article_id, inc_votes) => {
   return res.data;
 };
 
+export const patchCommentVotes = async (comment_id, inc_votes) => {
+  const res = await api.patch(`/comments/${comment_id}`, { inc_votes });
+  return res.data;
+};
+
 export const postComment = async (article_id, commentObj) => {
   const res = await api.post(`/articles/${article_id}/comments`, commentObj);
   return res.data;
@@ -43,5 +48,5 @@ export const postComment = async (article_id, commentObj) => {
 
 export const deleteCommentById = async (comment_id) => {
   const res = await api.delete(`/comments/${comment_id}`);
-  return res.data
+  return res.data;
 };

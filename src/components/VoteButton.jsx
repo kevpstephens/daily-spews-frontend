@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { patchArticleVotes } from "../api/api";
 
-export default function VoteButton({ article_id, initialVotes }) {
+export default function VoteButton({ item_id, initialVotes, voteFunction, className }) {
   const [voteChange, setVoteChange] = useState(0);
 
   function handleVote(inc_votes) {
     setVoteChange((voteChange) => voteChange + inc_votes);
-    patchArticleVotes(article_id, inc_votes)
+    voteFunction(item_id, inc_votes);
   }
 
   return (
-    <div className="vote-button-container">
+    <div className={`vote-button-container ${className}`}>
       <button
         onClick={() => handleVote(1)}
         disabled={voteChange > 0}
