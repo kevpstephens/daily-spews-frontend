@@ -14,7 +14,12 @@ export default function ArticleCard({ article }) {
             <p>
               Written by: {article.author} | Topic: {`#${article.topic}`}
             </p>
-            <img src={article.article_img_url} alt={`${article.title} image`} />
+            <img
+              src={
+                article.article_img_url || "src/assets/default-user-image.jpg"
+              }
+              alt={`${article.title} image`}
+            />
             <p>Posted: {formatDate(article.created_at)}</p>
           </article>
         </Link>

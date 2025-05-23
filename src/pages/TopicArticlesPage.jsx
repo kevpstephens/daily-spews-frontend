@@ -5,6 +5,7 @@ import PageHeader from "../components/PageHeader";
 import useFetch from "../hooks/useFetch";
 import LoadingScreen from "../components/LoadingScreen";
 import ErrorMessageCard from "../components/ErrorMessageCard";
+import TopicFilterBar from "../components/TopicFilterBar";
 
 export default function TopicArticlesPage() {
   const { topic_slug } = useParams();
@@ -27,6 +28,7 @@ export default function TopicArticlesPage() {
       {!isLoading && !error && (
         <>
           <h1 className="topics-articles-page-heading">topic: #{topic_slug}</h1>
+          {/* <p>{topic.description}</p> */}
           <section className="articles-page">
             {articles.map((article) => (
               <ArticleCard key={article.article_id} article={article} />

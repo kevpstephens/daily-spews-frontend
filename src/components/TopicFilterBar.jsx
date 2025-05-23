@@ -1,19 +1,34 @@
-import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getTopics } from "../api/api";
+import useFetch from "../hooks/useFetch";
 
 export default function TopicFilterBar() {
-  const [topics, setTopics] = useState([]);
+  const { data, isLoading, error } = useFetch(getTopics);
+  const [searchParams, setSearchParams] = useSearchParams();
+  let topics = [];
 
-  useEffect(() => {
-    getTopics().then((data) => {
-      setTopics(data.topics);
-    });
-  }, []);
+  if (data && data.topics) {
+    topics = data.topics;
+  }
+
+  function handleTopicChange(event) {
+    const value = event.target.value;
+    if (value) {
+      searchParams.set("topic", value);
+    } else {
+      searchParams.delete("topic");
+    }
+    setSearchParams(searchParams);
+  }
 
   return (
     <>
-      <select name="Topic" id="topic-dropdown">
-        <option value="">--Select Topic--</option>(
+      <select
+        className="sort-bar"
+        id="topic-dropdown"
+        onChange={handleTopicChange}
+      >
+        <option value="">--Select Topic--</option>
         {topics.map((topic) => {
           const capitalisedFirstLetter = topic.slug.slice(0, 1).toUpperCase();
           const remaniningLetters = topic.slug.slice(1);
@@ -23,7 +38,6 @@ export default function TopicFilterBar() {
             </option>
           );
         })}
-        )
       </select>
     </>
   );

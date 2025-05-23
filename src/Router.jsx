@@ -2,9 +2,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import AllArticlesPage from "./pages/AllArticlesPage";
 import HomePage from "./HomePage";
 import TopicsPage from "./pages/TopicsPage";
-import UsersPage from "./pages/UsersPage";
 import SingleArticlePage from "./pages/SingleArticlePage";
 import TopicArticlesPage from "./pages/TopicArticlesPage";
+import LoggedInUsersPage from "./pages/LoggedInUsersPage";
+import OtherUserPage from "./pages/OtherUserPage";
 
 function AppRouter() {
   return (
@@ -15,7 +16,8 @@ function AppRouter() {
       <Route path="/articles/:article_id" element={<SingleArticlePage />} />
       <Route path="/topics" element={<TopicsPage />} />
       <Route path="/topics/:topic_slug" element={<TopicArticlesPage />} />
-      <Route path="/users" element={<UsersPage />} />
+      <Route path="/userProfilePage" element={<LoggedInUsersPage />} />
+      <Route path="/users/:username" element={<OtherUserPage />} />
     </Routes>
   );
 }

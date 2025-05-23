@@ -4,8 +4,17 @@ const api = axios.create({
   baseURL: "https://nc-news-api-gtk7.onrender.com/api",
 });
 
-export const getArticles = async () => {
-  const res = await api.get("/articles");
+export const getArticles = async (
+  sort_by = "created_at",
+  order = "desc",
+  topic
+) => {
+  const params = { sort_by, order };
+  if (topic) {
+    params.topic = topic;
+  }
+
+  const res = await api.get("/articles", { params });
   return res.data;
 };
 
@@ -53,5 +62,10 @@ export const deleteCommentById = async (comment_id) => {
 
 export const getArticlesByTopic = async (topic_slug) => {
   const res = await api.get(`/articles?topic=${topic_slug}`);
+  return res.data;
+};
+
+export const getUsers = async () => {
+  const res = await api.get(`/users`);
   return res.data;
 };

@@ -26,7 +26,7 @@ export default function TopicsPage() {
           <h1 className="topics-articles-page-heading">all topics:</h1>
           <section className="topics-page-container">
             {topics.map((topic) => (
-              <TopicCard key={topic.slug} topic={topic} type={"normal-"}/>
+              <TopicCard key={topic.slug} topic={topic} type={"normal-"} />
             ))}
           </section>
         </>
