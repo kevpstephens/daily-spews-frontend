@@ -4,8 +4,8 @@ export default function NavigationBar() {
   return (
     <>
       <nav className="navigation-bar-container">
-        <Link className="nav-button" to="/">
-          Home
+        <Link id="home-button" className="nav-button" to="/">
+          🏠
         </Link>
         <Link className="nav-button" to="/articles">
           Articles
@@ -13,8 +13,8 @@ export default function NavigationBar() {
         <Link className="nav-button" to="/topics">
           Topics
         </Link>
-        <Link className="nav-button" to="/users">
-          Users
+        <Link id="user-profile-button" className="nav-button" to="/userProfilePage">
+          👤
         </Link>
       </nav>
     </>
