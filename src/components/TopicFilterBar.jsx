@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 
 export default function TopicFilterBar() {
   const { data, isLoading, error } = useFetch(getTopics);
+  console.log(error, isLoading);
   const [searchParams, setSearchParams] = useSearchParams();
   let topics = [];
 

@@ -31,8 +31,8 @@ export default function CommentCard({ comment }) {
           closeButton: false,
         });
         // window.alert("Comment deleted Succesfully.");
-      } catch (err) {
-        // console.error("Failed to delete comment:", err);
+      } catch (error) {
+        console.error("Failed to delete comment:", error);
         toast.error("Failed to delete comment.");
       } finally {
         setIsDeleting(false);
