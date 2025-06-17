@@ -16,7 +16,8 @@ export default function ArticleCard({ article }) {
             </p>
             <img
               src={
-                article.article_img_url || "src/assets/default-user-image.jpg"
+                article.article_img_url ||
+                "src/assets/users/default-user-image.jpg"
               }
               alt={`${article.title} image`}
             />

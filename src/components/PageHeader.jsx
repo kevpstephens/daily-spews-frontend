@@ -7,7 +7,7 @@ export default function PageHeader() {
       <header className="page-header">
         <Header />
         <img
-          src="../src/assets/final-daily-spews-logo.png"
+          src="../src/assets/logo/daily-spews-logo-cropped.png"
           alt="daily-spews-logo-image"
           className="daily-spews-logo"
         />
