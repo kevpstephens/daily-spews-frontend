@@ -13,7 +13,11 @@ export default function NavigationBar() {
         <Link className="nav-button" to="/topics">
           Topics
         </Link>
-        <Link id="user-profile-button" className="nav-button" to="/userProfilePage">
+        <Link
+          id="user-profile-button"
+          className="nav-button"
+          to="/userProfilePage"
+        >
           👤
         </Link>
       </nav>

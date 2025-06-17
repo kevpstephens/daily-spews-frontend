@@ -1,3 +1,5 @@
+/* Got up to No Comments Screeen */
+
 /* ============================================================
    Colour Theme + Font
 ============================================================ */
@@ -24,16 +26,16 @@
   padding: 0;
 }
 
-body {
+.app-content body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #0d0024;
   color: #0d0024;
   line-height: 1.6;
   padding: 2rem;
 }
 
 :root {
-  /* CSS variables can go here if needed */
+  background-color: #999fc9;
+  color: #0d0024;
 }
 
 /* ============================================================
@@ -42,49 +44,45 @@ body {
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
   text-align: center;
-}
-
-.app-container {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 /* ============================================================
    TYPOGRAPHY
 ============================================================ */
-h1,
-h2,
-h3 {
-  margin-bottom: 0rem;
+.app-content h1,
+.app-content h2,
+.app-content h3 {
+  /* margin-bottom: 0rem; */
   color: black;
+}
+
+.app-content h1 {
+  font-family: "Gaegu", sans-serif;
 }
 
 /* ============================================================
    STRUCTURAL ELEMENTS
 ============================================================ */
-section,
-div,
-article,
-form {
-  background-color: rgb(153, 159, 201);
+.app-content section,
+.app-content div,
+.app-content article,
+.app-content form {
+  /* background-color: #999fc9; */
   padding: 1rem;
-  border-radius: 25px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
   color: black;
 }
 
 /* ============================================================
    FORMS + INPUTS
 ============================================================ */
-input,
-textarea,
-select,
-button {
+.app-content input,
+.app-content textarea,
+.app-content select,
+.app-content button {
   font: inherit;
   padding: 0.5rem;
   margin-top: 0rem;
@@ -100,12 +98,7 @@ button {
   justify-content: center;
 }
 
-form input {
-  width: 40%;
-  font-size: 1rem;
-}
-
-button {
+.app-content button {
   background-color: #8113d5;
   color: white;
   cursor: pointer;
@@ -114,36 +107,36 @@ button {
   border: 2.5px solid #0d0024;
 }
 
-button:hover {
+.app-content button:hover {
   background-color: #b95d28;
 }
 
-#search-and-submit {
-  margin-top: 0rem;
-  padding: 0rem;
+.app-content form input {
+  width: 40%;
+  font-size: 1rem;
 }
 
 /* ============================================================
    H1 - Daily Spews Heading 
 ============================================================ */
-h1 {
+.daily-spews-page-header-title {
   font-family: "Gaegu", sans-serif;
-  font-size: 60px;
-  /* margin-top: 0rem; */
+  font-size: 4rem;
+  margin-top: -1.5rem;
+  margin-bottom: -1rem;
 }
 
 /* ============================================================
-   Header + Daily Spews Logo
+   PageHeader + Daily Spews Logo
 ============================================================ */
 
 .page-header {
   background-color: #8c75d8;
   padding: 1rem;
   border-radius: 30px;
-  border: 5px solid #0d0024;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border: 8px solid #0d0024;
+  box-shadow: none;
   text-align: center;
-  margin: 1rem;
 }
 
 .daily-spews-logo {
@@ -154,7 +147,8 @@ h1 {
   /* border-radius: 50%; */
   top: 10rem;
   left: 7.5rem;
-  margin-bottom: -1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   border-width: 0.125rem;
   border: 10px dotted #0d0024;
   border-radius: 3rem;
@@ -168,7 +162,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
@@ -204,31 +198,6 @@ h1 {
   width: 3rem;
   border-radius: 50%;
   padding: 0;
-}
-
-/* ============================================================
-   Sort Bar
-============================================================ */
-
-.sort-bar-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
-  box-shadow: none;
-}
-
-.sort-bar {
-  display: flex;
-  width: auto;
-  background-color: #8113d5;
-  /* margin: 1rem; */
-  padding: 0.2rem;
-  align-items: center;
-  justify-content: center;
-  border-color: 0d0024;
-  border-width: 0.125rem;
-  text-align: center;
 }
 
 /* ============================================================
@@ -272,28 +241,49 @@ h1 {
 }
 
 /* ============================================================
-   Topic Filter Bar
+   Sort Bar
 ============================================================ */
 
-/* #topic-dropdown {
+.sort-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: none;
+}
+
+.sort-bar {
   display: flex;
   width: auto;
   background-color: #8113d5;
-  margin: 1rem;
-  padding: 0.25rem;
+  padding: 0.2rem;
   align-items: center;
   justify-content: center;
   border-color: 0d0024;
   border-width: 0.125rem;
   text-align: center;
-} */
+}
+
+/* ============================================================
+   Topic Filter Bar
+============================================================ */
+
+#topic-dropdown {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  border-color: 0d0024;
+  border-width: 0.125rem;
+  text-align: center;
+}
 
 /* ============================================================
    AllArticlesPage
 ============================================================ */
 .articles-page {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* flexible */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   margin: 0 auto;
   justify-items: center;
@@ -308,6 +298,13 @@ h1 {
 }
 
 /* ============================================================
+   Article Card Heading
+============================================================ */
+.article-card-heading {
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================================
    Article Card Container
 ============================================================ */
 
@@ -319,8 +316,7 @@ h1 {
   max-width: 500px;
   min-height: 500px;
   padding: 1rem;
-  border-radius: 12px;
-  background-color: #8c75d8;
+  /* background-color: #8c75d8; */
   border-style: solid;
   border-color: #000000;
   border-width: 0.15rem;
@@ -334,15 +330,27 @@ h1 {
 }
 
 /* ============================================================
-   Article Card - Link/Button
+Article Card - Link/Button
 ============================================================ */
 
 .article-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
+    background-color 0.75s ease;
   border: 2px solid transparent;
-  padding: 1rem;
-  border-radius: 12px;
   margin: 0.1rem;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #9382ca;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.article-card:hover {
+  background-color: #8c75d8;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .article-card img {
@@ -363,7 +371,6 @@ h1 {
   background: none;
   color: white;
   border: none;
-  padding: 0.25rem;
   border-radius: 12px;
   text-align: center;
 }
@@ -372,13 +379,6 @@ h1 {
   transform: scale(1.05);
   box-shadow: 0 1 50px rgba(0, 0, 0, 0.1);
   border: 2px solid #0d0024;
-}
-
-/* ============================================================
-   Article Card Heading
-============================================================ */
-.article-card-heading {
-  margin-bottom: 1rem;
 }
 
 /* ============================================================
@@ -391,6 +391,12 @@ h1 {
 
 .likes-link {
   text-decoration: none;
+  color: #000;
+}
+
+.likes-link:hover {
+  text-decoration: underline;
+  color: #000;
 }
 
 /* ============================================================
@@ -487,7 +493,7 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  margin: 0rem auto;
+  margin: 1rem auto;
   max-width: 90%;
   background-color: #8a72d77e;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -517,29 +523,31 @@ h1 {
     Comment Section
 ============================================================ */
 .comment-section {
+  width: 100%;
   text-align: left;
-  margin-top: 2rem;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 0.15rem;
+  margin: 0.25rem;
+  margin-top: 1rem;
+  border: 8px solid #0d0024;
 }
+
 .comment-section h2 {
   margin-top: 1rem;
   margin-left: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* ============================================================
-    Comment List
+    CommentList
 ============================================================ */
 .comment-list {
   width: 100%;
 }
 
 /* ============================================================
-    Comment Card + Delete Comment Button + Comment Vote Button
+    CommentCard + Delete Comment Button + Comment VoteButton
 ============================================================ */
 .comment-card {
-  margin: 1rem;
+  /* margin: 1rem; */
   background: #9785d34f;
   margin-bottom: 1.5rem;
   display: flex;
@@ -549,10 +557,19 @@ h1 {
   padding-bottom: 0rem;
   border-radius: 12px;
   align-items: flex-start;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
+  gap: 0.5rem;
+}
+
+.comment-card.deleting {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(100%);
 }
 
 .comment-card-author {
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: bold;
   color: #0d0024;
 }
@@ -574,7 +591,7 @@ h1 {
   align-items: center;
   margin-left: -1.5rem;
   margin-top: 0.5rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: -0.5rem;
   background: none;
   box-shadow: none;
   width: 100%;
@@ -587,7 +604,7 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* gap: 0.25rem; */
+  gap: 0.25rem;
   box-shadow: none;
   background: none;
 }
@@ -639,7 +656,7 @@ h1 {
 }
 
 /* ============================================================
-    Loading Screen - Spewing Mascot
+    LoadingScreen - Daily Spews Mascot Spewing
 ============================================================ */
 
 .spewing-mascot {
@@ -647,12 +664,14 @@ h1 {
   animation: shake 0.5s infinite ease-in-out;
   position: relative;
   filter: drop-shadow(-10px 0 15px orange);
-  margin: 1.5rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }
 
 .loading-message {
   font-family: "Gaegu", sans-serif;
   font-size: 25px;
+  margin-bottom: 2rem;
 }
 
 @keyframes shake {
@@ -686,50 +705,49 @@ h1 {
 }
 
 /* ============================================================
-    Post Comment Form
+    PostCommentForm
 ============================================================ */
-.post-comment-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem auto;
-  margin-bottom: 0rem;
-  max-width: 100%;
-  box-shadow: none;
+.post-comment-form-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
 
-  /* background-color: #8a72d77e; */
-  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
-  /* border-style: solid; */
-  /* border-width: 0.15rem; */
-  /* border-color: #220052; */
+  /* background-color: #9785d34f; */
+  /* box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448); */
 }
 
-#post-comment-form {
-  box-shadow: none;
+#comment {
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+  padding-right: 4.5rem;
+  border-radius: 12px;
+  background-color: #0d0024;
+  color: white;
+  font-size: 1rem;
+  border: 2px solid #000;
+  resize: vertical;
+
+  box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
 }
 
-.post-comment-form button {
-  margin: 1rem;
-  width: 6rem;
-  padding: 0.5rem;
-  font-weight: bold;
+.comment-submit-button {
+  position: absolute;
+  bottom: -2rem;
+  right: 1rem;
   background-color: #8113d5;
   color: white;
   border: 2px solid #0d0024;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  font-weight: bold;
+  padding: 0.4rem 0.75rem;
+  height: 2.5rem;
 }
 
-.post-comment-form button:hover {
+.comment-submit-button:hover {
   background-color: #b95d28;
-}
-
-#comment {
-  border-radius: 30px;
-  padding: 1rem;
-  background-color: #0d0024;
 }
 
 .post-comment-form textarea {
@@ -911,6 +929,7 @@ h1 {
   height: 225px;
   object-fit: cover;
   border-radius: 30px;
+  /* padding: 0.25rem; */
   margin: 0.25rem;
   transition: transform 0.3s ease-in-out;
 }
@@ -938,12 +957,13 @@ h1 {
 
 .user-avatar-image {
   width: 100%;
-  height: 110px;
-  width: 110px;
-  object-fit: cover;
+  height: 120px;
+  width: 120px;
+  object-fit: contain;
   border-radius: 100%;
   align-self: center;
   margin-top: -1.5rem;
+  border: solid;
 }
 
 #log-out-button {
@@ -992,6 +1012,31 @@ h1 {
 
 .pagination-info {
   box-shadow: none;
+}
+
+/* ============================================================
+    Toastify
+============================================================ */
+
+.toast-wrapper {
+  box-shadow: none;
+  background-color: none;
+  padding: none;
+  border-radius: none;
+  box-shadow: none;
+  color: none;
+}
+
+.Toastify {
+  box-shadow: none;
+}
+
+.toast-message {
+  background: darkblue;
+  color: #fff;
+  font-size: 20px;
+  width: 34vw;
+  padding: 30px 20px;
 }
 
 /* ============================================================

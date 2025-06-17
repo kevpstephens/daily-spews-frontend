@@ -15,7 +15,7 @@ export default function PostCommentForm({ article_id }) {
 
   return (
     <>
-      <form className="post-comment-form" onSubmit={handleSubmit}>
+      <form className="post-comment-form-wrapper" onSubmit={handleSubmit}>
         <textarea
           id="comment"
           value={comment}
@@ -24,7 +24,7 @@ export default function PostCommentForm({ article_id }) {
           rows="3"
           required
         />
-        <button type="submit">Post</button>
+        <button type="submit" className="comment-submit-button">Post</button>
       </form>
     </>
   );
