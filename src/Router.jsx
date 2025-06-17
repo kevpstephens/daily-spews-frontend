@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TestPage from "./pages/TestPage";
 import Layout from "./Layout";
+import AboutPage from "./pages/AboutPage";
 
 function AppRouter() {
   return (
@@ -48,6 +49,7 @@ function AppRouter() {
             <Route path="/user-profile-page" element={<LoggedInUsersPage />} />
             <Route path="/users/:username" element={<OtherUserPage />} />
             <Route path="/test" element={<TestPage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Route>
         </Routes>
       </div>

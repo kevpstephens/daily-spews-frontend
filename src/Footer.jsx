@@ -1,7 +1,23 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white p-4 text-center">
-      <p>&copy; 2025 Daily Spews</p>
+    <footer className="footer-container">
+      <p>
+        <strong>&copy; {new Date().getFullYear()} Daily Spews</strong>
+      </p>
+      <Link className="footer-link" to="/about">
+        About
+      </Link>{" "}
+      |{" "}
+      <a
+        className="footer-link"
+        href="https://github.com/kevpstephens"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        The Dev
+      </a>
     </footer>
   );
 }

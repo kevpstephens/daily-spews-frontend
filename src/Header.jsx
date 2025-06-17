@@ -3,8 +3,8 @@ import NavigationBar from "./components/NavigationBar";
 export default function PageHeader() {
   return (
     <>
-      <header className="page-header">
-        <h1 className="daily-spews-page-header-title">Daily Spews</h1>
+      <header className="header-container">
+        <h1 className="daily-spews-header-title">Daily Spews</h1>
         <img
           src="../src/assets/logo/daily-spews-logo-cropped.png"
           alt="daily-spews-logo-image"
