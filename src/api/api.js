@@ -1,8 +1,10 @@
 import axios from "axios";
 
-// Create an Axios instance with the base URL set to the production API
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+// Create an Axios instance with the base URL set to the environment variable
 const api = axios.create({
-  baseURL: "https://daily-spews-api.onrender.com/api",
+  baseURL: BASE_URL,
 });
 
 // Fetches all articles with optional sorting and topic filtering
