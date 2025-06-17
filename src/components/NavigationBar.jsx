@@ -16,7 +16,7 @@ export default function NavigationBar() {
         <Link
           id="user-profile-button"
           className="nav-button"
-          to="/userProfilePage"
+          to="/user-profile-page"
         >
           👤
         </Link>
