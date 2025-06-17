@@ -1,5 +1,6 @@
+// URL: daily-spews.com/
+
 import "./styles/App.css";
-import PageHeader from "./components/PageHeader";
 import HorizontalTopics from "./components/HorizontalTopics";
 import { getArticles } from "./api/api";
 import useFetch from "./hooks/useFetch";
@@ -16,9 +17,7 @@ export default function HomePage() {
   return (
     <>
       <h3>*Home Page*</h3>
-      <header>
-        <PageHeader />
-      </header>
+
       <main>
         <HorizontalTopics />
         {isLoading && <LoadingScreen item={"articles"} />}

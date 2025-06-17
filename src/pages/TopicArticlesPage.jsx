@@ -1,7 +1,8 @@
+//? URL: daily-spews.com/topics/:topic_slug
+
 import { useParams } from "react-router-dom";
 import { getArticlesByTopic } from "../api/api";
 import ArticleCard from "../components/ArticleCard";
-import PageHeader from "../components/PageHeader";
 import useFetch from "../hooks/useFetch";
 import LoadingScreen from "../components/LoadingScreen";
 import ErrorMessageCard from "../components/ErrorMessageCard";
@@ -20,7 +21,6 @@ export default function TopicArticlesPage() {
 
   return (
     <>
-      <PageHeader />
       {isLoading && (
         <LoadingScreen topicItem={topic_slug} topicArticleLoad={true} />
       )}

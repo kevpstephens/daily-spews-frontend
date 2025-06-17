@@ -1,6 +1,7 @@
+//? URL: daily-spews.com/articles/:article_id
+
 import { useParams } from "react-router-dom";
 import { getArticleById, patchArticleVotes } from "../api/api";
-import PageHeader from "../components/PageHeader";
 import { formatDate } from "../utils/formatDate";
 import CommentList from "../components/CommentList";
 import useFetch from "../hooks/useFetch";
@@ -26,7 +27,6 @@ export default function SingleArticlePage() {
     <>
       <ToastTester />
       <h3>*Single Article Page*</h3>
-      <PageHeader />
 
       {isLoading && <LoadingScreen singleArticleLoad={true} />}
       {error && <ErrorMessageCard articleError={error} />}

@@ -1,8 +1,9 @@
+//? URL: daily-spews.com/user-profile-page
+
 import { useState } from "react";
-import { getUsers } from "../api/api";
-import PageHeader from "../components/PageHeader";
 import { dummyUser } from "../data/dummyUser";
-import useFetch from "../hooks/useFetch";
+// import { getUsers } from "../api/api";
+// import useFetch from "../hooks/useFetch";
 
 export default function LoggedInUsersPage() {
   // const { data, isLoading, error } = useFetch(getUsers);
@@ -21,7 +22,6 @@ export default function LoggedInUsersPage() {
   return (
     <>
       <h3>*Logged In Users Page*</h3>
-      <PageHeader />
       {userLoggedIn === false ? (
         <div className="new-user-message">
           <p>

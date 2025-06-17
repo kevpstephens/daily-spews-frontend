@@ -1,10 +1,11 @@
+//? URL: daily-spews.com/users/:username
+
 import { useParams } from "react-router-dom";
 import { getUsers } from "../api/api";
 import useFetch from "../hooks/useFetch";
-import PageHeader from "../components/PageHeader";
 
 export default function OtherUserPage() {
-  const { data, isLoading, error } = useFetch(getUsers);
+  const { data } = useFetch(getUsers);
   const { username } = useParams();
 
   let users = [];
@@ -14,7 +15,6 @@ export default function OtherUserPage() {
 
   return (
     <>
-      <PageHeader />
       {users.map((user) => {
         if (username === user.username) {
           return (
