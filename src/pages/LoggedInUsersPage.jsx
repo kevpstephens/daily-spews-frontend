@@ -20,7 +20,7 @@ export default function LoggedInUsersPage() {
 
   return (
     <>
-      <h3>*Users Page*</h3>
+      <h3>*Logged In Users Page*</h3>
       <PageHeader />
       {userLoggedIn === false ? (
         <div className="new-user-message">
@@ -40,20 +40,20 @@ export default function LoggedInUsersPage() {
       ) : (
         <div className="user-profile-container">
           <p>
-            <strong>Username: </strong>
-            {dummyUser.username}
-          </p>
-          <p>
-            <strong>Name:</strong> {dummyUser.name}
-          </p>
-          <p>
-            <strong>Avatar:</strong>
+            <strong>Profile Pic:</strong>
           </p>
           <img
             className="user-avatar-image"
             src={dummyUser.avatar_url}
             alt="user-avatar-image"
           />
+          <p>
+            <strong>Username: </strong>
+            {dummyUser.username}
+          </p>
+          <p>
+            <strong>Name:</strong> {dummyUser.name}
+          </p>
           <button onClick={handleLogOut} id="log-out-button">
             Log Out
           </button>

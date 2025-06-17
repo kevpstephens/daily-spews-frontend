@@ -1,9 +1,11 @@
 import axios from "axios";
 
+// Create an Axios instance with the base URL set to the production API
 const api = axios.create({
-  baseURL: "https://nc-news-api-gtk7.onrender.com/api",
+  baseURL: "https://daily-spews-api.onrender.com/api",
 });
 
+// Fetches all articles with optional sorting and topic filtering
 export const getArticles = async (
   sort_by = "created_at",
   order = "desc",
@@ -11,60 +13,71 @@ export const getArticles = async (
 ) => {
   const params = { sort_by, order };
   if (topic) {
-    params.topic = topic;
+    params.topic = topic; // Only add topic param if it's defined
   }
 
   const res = await api.get("/articles", { params });
   return res.data;
 };
 
+// Fetches all available topics from the backend
 export const getTopics = async () => {
   const res = await api.get("/topics");
   return res.data;
 };
 
+// Fetch a single article by its unique ID
 export const getArticleById = async (article_id) => {
   const res = await api.get(`/articles/${article_id}`);
   return res.data;
 };
 
+// Fetch all comments related to a specific article
+// Returns an empty array if article not found (404)
 export const getCommentByArticleId = async (article_id) => {
   try {
     const res = await api.get(`/articles/${article_id}/comments`);
     return res.data;
   } catch (err) {
     if (err.response && err.response.status === 404) {
-      return { comments: [] };
+      return { comments: [] }; // Gracefully handle 404s
     }
     throw err;
   }
 };
 
+// Increment or decrement the vote count of an article
 export const patchArticleVotes = async (article_id, inc_votes) => {
   const res = await api.patch(`/articles/${article_id}`, { inc_votes });
   return res.data;
 };
 
+// Increment or decrement the vote count of a comment
 export const patchCommentVotes = async (comment_id, inc_votes) => {
   const res = await api.patch(`/comments/${comment_id}`, { inc_votes });
   return res.data;
 };
 
+// Post a new comment under a specific article
+// Expects commentObj to contain { username, body }
 export const postComment = async (article_id, commentObj) => {
   const res = await api.post(`/articles/${article_id}/comments`, commentObj);
   return res.data;
 };
 
+// Delete a comment by its unique ID
 export const deleteCommentById = async (comment_id) => {
   const res = await api.delete(`/comments/${comment_id}`);
   return res.data;
 };
 
+// Shortcut function to fetch articles filtered by a specific topic
 export const getArticlesByTopic = async (topic_slug) => {
   const res = await api.get(`/articles?topic=${topic_slug}`);
   return res.data;
 };
 
+// Fetch all users from the backend (e.g., for login or user listing)
 export const getUsers = async () => {
   const res = await api.get(`/users`);
   return res.data;

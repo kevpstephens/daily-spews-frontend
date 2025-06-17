@@ -5,7 +5,6 @@ import PageHeader from "../components/PageHeader";
 import useFetch from "../hooks/useFetch";
 import LoadingScreen from "../components/LoadingScreen";
 import ErrorMessageCard from "../components/ErrorMessageCard";
-import TopicFilterBar from "../components/TopicFilterBar";
 
 export default function TopicArticlesPage() {
   const { topic_slug } = useParams();
@@ -22,8 +21,10 @@ export default function TopicArticlesPage() {
   return (
     <>
       <PageHeader />
-      {isLoading && <LoadingScreen item={`${topic_slug} articles`} />}
-      {error && <ErrorMessageCard error={error} />}
+      {isLoading && (
+        <LoadingScreen topicItem={topic_slug} topicArticleLoad={true} />
+      )}
+      {error && <ErrorMessageCard topicError={error} />}
 
       {!isLoading && !error && (
         <>

@@ -8,6 +8,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import ErrorMessageCard from "../components/ErrorMessageCard";
 import PostCommentForm from "../components/PostCommentForm";
 import VoteButton from "../components/VoteButton";
+import ToastTester from "../components/ToastTester";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();
@@ -23,11 +24,12 @@ export default function SingleArticlePage() {
 
   return (
     <>
+      <ToastTester />
       <h3>*Single Article Page*</h3>
       <PageHeader />
 
-      {isLoading && <LoadingScreen />}
-      {error && <ErrorMessageCard error={error} />}
+      {isLoading && <LoadingScreen singleArticleLoad={true} />}
+      {error && <ErrorMessageCard articleError={error} />}
 
       {!isLoading && !error && (
         <>

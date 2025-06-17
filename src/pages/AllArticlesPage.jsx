@@ -27,7 +27,7 @@ export default function AllArticlesPage() {
 
   return (
     <>
-      <h3>*Articles Page*</h3>
+      <h3>*All Articles Page*</h3>
       <PageHeader />
 
       <div className="sort-and-topic-bar-container">

@@ -20,20 +20,20 @@ export default function OtherUserPage() {
           return (
             <div className="user-profile-container" key={user.username}>
               <p>
-                <strong>Username: </strong>
-                {user.username}
-              </p>
-              <p>
-                <strong>Name:</strong> {user.name}
-              </p>
-              <p>
-                <strong>Avatar:</strong>
+                <strong>Profile Pic:</strong>
               </p>
               <img
                 className="user-avatar-image"
                 src={user.avatar_url}
                 alt="user-avatar-image"
               />
+              <p>
+                <strong>Username: </strong>
+                {user.username}
+              </p>
+              <p>
+                <strong>Name:</strong> {user.name}
+              </p>
             </div>
           );
         } else {
