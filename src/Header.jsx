@@ -1,11 +1,10 @@
-import Header from "./Header";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 
 export default function PageHeader() {
   return (
     <>
       <header className="page-header">
-        <Header />
+        <h1 className="daily-spews-page-header-title">Daily Spews</h1>
         <img
           src="../src/assets/logo/daily-spews-logo-cropped.png"
           alt="daily-spews-logo-image"

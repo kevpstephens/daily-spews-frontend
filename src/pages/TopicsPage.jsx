@@ -1,5 +1,6 @@
+//? URL: daily-spews.com/topics
+
 import { getTopics } from "../api/api";
-import PageHeader from "../components/PageHeader";
 import TopicCard from "../components/TopicCard";
 import useFetch from "../hooks/useFetch";
 import LoadingScreen from "../components/LoadingScreen";
@@ -16,7 +17,6 @@ export default function TopicsPage() {
   return (
     <>
       <h3>*Topics Page*</h3>
-      <PageHeader />
 
       {isLoading && <LoadingScreen item={"topics"} />}
       {error && <ErrorMessageCard error={error} />}

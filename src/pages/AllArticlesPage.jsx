@@ -1,4 +1,5 @@
-import PageHeader from "../components/PageHeader";
+//? URL: daily-spews.com/articles
+
 import { getArticles } from "../api/api";
 import ArticleCard from "../components/ArticleCard";
 import SortBar from "../components/SortBar";
@@ -28,7 +29,6 @@ export default function AllArticlesPage() {
   return (
     <>
       <h3>*All Articles Page*</h3>
-      <PageHeader />
 
       <div className="sort-and-topic-bar-container">
         <SortBar sort_by={sort_by} order={order} />

@@ -1,9 +1,8 @@
-import PageHeader from "../components/PageHeader";
+//? URL: daily-spews.com/*error*
 
 export default function ErrorPageNotFoundPage() {
   return (
     <>
-      <PageHeader />
       <div className="error-message-card">
         <h2 className="generic-error-message">
           ❌ Yikes! Something has gone a little wrong... ❌

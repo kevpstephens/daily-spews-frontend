@@ -9,6 +9,8 @@ import OtherUserPage from "./pages/OtherUserPage";
 import ErrorPageNotFound from "./pages/ErrorPageNotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TestPage from "./pages/TestPage";
+import Layout from "./Layout";
 
 function AppRouter() {
   return (
@@ -32,15 +34,21 @@ function AppRouter() {
       </div>
       <div className="app-content">
         <Routes>
-          <Route path="*" element={<ErrorPageNotFound />} />
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="/" element={<Navigate to="/articles"/>} /> */}
-          <Route path="/articles" element={<AllArticlesPage />} />
-          <Route path="/articles/:article_id" element={<SingleArticlePage />} />
-          <Route path="/topics" element={<TopicsPage />} />
-          <Route path="/topics/:topic_slug" element={<TopicArticlesPage />} />
-          <Route path="/userProfilePage" element={<LoggedInUsersPage />} />
-          <Route path="/users/:username" element={<OtherUserPage />} />
+          <Route path="/" element={<Layout />}>
+            <Route path="*" element={<ErrorPageNotFound />} />
+            <Route path="/" element={<HomePage />} />
+            {/* <Route path="/" element={<Navigate to="/articles"/>} /> */}
+            <Route path="/articles" element={<AllArticlesPage />} />
+            <Route
+              path="/articles/:article_id"
+              element={<SingleArticlePage />}
+            />
+            <Route path="/topics" element={<TopicsPage />} />
+            <Route path="/topics/:topic_slug" element={<TopicArticlesPage />} />
+            <Route path="/user-profile-page" element={<LoggedInUsersPage />} />
+            <Route path="/users/:username" element={<OtherUserPage />} />
+            <Route path="/test" element={<TestPage />} />
+          </Route>
         </Routes>
       </div>
     </>
