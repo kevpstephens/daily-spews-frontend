@@ -37,14 +37,17 @@ export const getArticleById = async (article_id) => {
 };
 
 // Fetch all comments related to a specific article
-// Returns an empty array if article not found (404)
-export const getCommentByArticleId = async (article_id) => {
+export const getCommentByArticleId = async (article_id, limit, p) => {
   try {
-    const res = await api.get(`/articles/${article_id}/comments`);
+    const params = {};
+    if (limit) params.limit = limit;
+    if (p) params.p = p;
+
+    const res = await api.get(`/articles/${article_id}/comments`, { params });
     return res.data;
   } catch (err) {
     if (err.response && err.response.status === 404) {
-      return { comments: [] }; // Gracefully handle 404s
+      return { comments: [], total_count: 0 };
     }
     throw err;
   }

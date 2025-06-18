@@ -1,6 +1,6 @@
 //? URL: daily-spews.com/articles/:article_id
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getArticleById, patchArticleVotes } from "../api/api";
 import { formatDate } from "../utils/formatDate";
 import CommentList from "../components/CommentList";
@@ -36,8 +36,10 @@ export default function SingleArticlePage() {
           <article className="article-page">
             <h2>{article.title}</h2>
             <p>
-              Written by: {article.author} | Topic: #{article.topic} <br />{" "}
-              Posted: {formatDate(article.created_at)}
+              Written by:{" "}
+              <Link to={`/users/${article.author}`}>{article.author}</Link> |
+              Topic: #{article.topic} <br /> Posted:{" "}
+              {formatDate(article.created_at)}
             </p>
 
             <img src={article.article_img_url} alt={`article image`} />
