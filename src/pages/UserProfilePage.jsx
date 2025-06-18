@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getUsers } from "../api/api";
 import useFetch from "../hooks/useFetch";
 
-export default function OtherUserPage() {
+export default function UserProfilePage() {
   const { data } = useFetch(getUsers);
   const { username } = useParams();
 

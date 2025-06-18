@@ -1,6 +1,9 @@
 import NavigationBar from "./components/NavigationBar";
+import { useUser } from "./context";
 
-export default function PageHeader() {
+export default function Header() {
+  const { user, isUserLoading } = useUser();
+
   return (
     <>
       <header className="header-container">
@@ -11,6 +14,18 @@ export default function PageHeader() {
           className="daily-spews-logo"
         />
         <NavigationBar />
+
+        {!isUserLoading && user && (
+          <div className="user-info">
+            <img
+              src={user.avatar_url}
+              alt={user.username}
+              className="user-avatar"
+            />
+            <span className="user-name">{user.name}</span>
+            <button>log out</button>
+          </div>
+        )}
       </header>
     </>
   );

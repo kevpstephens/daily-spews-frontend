@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useUser } from "../context";
 
 export default function NavigationBar() {
+  const { user } = useUser();
+
   return (
     <>
       <nav className="navigation-bar-container">
@@ -16,7 +19,11 @@ export default function NavigationBar() {
         <Link
           id="user-profile-button"
           className="nav-button"
-          to="/user-profile-page"
+          to={
+            user && user.username !== "guest_user"
+              ? `/users/${user.username}`
+              : "/login"
+          }
         >
           👤
         </Link>
