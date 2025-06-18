@@ -62,6 +62,18 @@
   font-family: "Gaegu", sans-serif;
 }
 
+a {
+  color: #8113d5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #ab3900;
+  font-weight: bold;
+}
+
 /* ============================================================
    STRUCTURAL ELEMENTS
 ============================================================ */
@@ -168,16 +180,6 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
-}
-
-.footer-link {
-  text-decoration: underline;
-  color: #0d0024;
-}
-
-.footer-link:hover {
-  color: #8113d5;
-  font-weight: bold;
 }
 
 /* ============================================================
@@ -367,7 +369,6 @@ Article Card - Link/Button
   margin-bottom: 0.4rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background-color: #9382ca;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1050,6 +1051,41 @@ Article Card - Link/Button
 
 .pagination-info {
   box-shadow: none;
+}
+
+/* ============================================================
+   Loading Comments Container
+============================================================ */
+.loading-comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.loading-comments-spinner {
+  width: 80px;
+  height: auto;
+  animation: shake 0.5s infinite ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.loading-comments-text {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
+  color: #0d0024;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ============================================================
