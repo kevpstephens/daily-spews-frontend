@@ -12,7 +12,10 @@ export default function ArticleCard({ article }) {
           <article className="article-card">
             <h2 className="article-card-heading">{article.title}</h2>
             <p>
-              Written by: {article.author} | Topic: {`#${article.topic}`}
+              Written by:{" "}
+              <Link to={`/users/${article.author}`}>{article.author}</Link> |
+              Topic:{" "}
+              <Link to={`/topics/${article.topic}`}>{`#${article.topic}`}</Link>
             </p>
             <img
               src={
