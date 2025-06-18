@@ -1,0 +1,39 @@
+/* ============================================================
+   Sort and Topic Bar Container
+============================================================ */
+
+.sort-and-topic-bar-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: none;
+  /* gap: 0.25rem; */
+}
+
+#reset-button {
+  text-decoration: underline;
+  display: flex;
+  width: auto;
+  height: auto;
+  /* background-color: #b95d28; */
+  margin-left: 1rem;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  border-color: 0d0024;
+  border-width: 0.125rem;
+  text-align: center;
+  /* font-weight: bold; */
+  font-size: 0.75rem;
+  color: black;
+  border-radius: 10px;
+  transition: ease-in 0.3s;
+}
+
+#reset-button:hover {
+  transform: scale(1.25);
+  background-color: #b95d28;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}

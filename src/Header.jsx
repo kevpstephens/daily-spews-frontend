@@ -1,6 +1,6 @@
-import NavigationBar from "./components/NavigationBar";
 import { useUser } from "./context";
-import LogoutButton from "./components/LogoutButton";
+import LogoutButton from "./components/LogoutButton/LogoutButton.jsx";
+import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
 
 export default function Header() {
   const { user, isUserLoading } = useUser();

@@ -1,0 +1,74 @@
+/* ============================================================
+    Horizontal Topics  Scroll
+============================================================ */
+.horizontal-topics-wrapper {
+  width: 100vw;            /* Use full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center it inside any parent container */
+}
+
+.horizontal-topics-title {
+  font-family: "Gaegu", sans-serif;
+  margin-top: 2rem;
+  font-size: 35px;
+  /* text-decoration: underline; */
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0rem 1rem 0rem;
+  box-shadow: none;
+  /* scroll-snap-type: x mandatory; */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-topic-card {
+  scroll-snap-align: start;
+  min-width: 250px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 30px;
+  box-shadow: none;
+  position: relative;
+  z-index: 99;
+  transition: transform 0.3s ease-in-out, z-index 0.3s;
+}
+
+.horizontal-topic-card:hover {
+  transform: scale(1.2);
+  z-index: 99;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.horizontal-topic-card img {
+  width: 100%;
+  width: 300px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 30px;
+  /* padding: 0.25rem; */
+  margin: 0.25rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.horizontal-topic-card:first-child {
+  margin: 0rem;
+  margin-right: 0rem;
+  margin-left: 1rem;
+}
+
+.horizontal-topic-card-link {
+  text-decoration: none;
+}
+
+.horizontal-topic-card-link:hover {
+  text-decoration: underline;
+  color: #5800e6;
+  transition: color 0.3s ease-in-out;
+}

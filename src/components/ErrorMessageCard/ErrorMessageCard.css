@@ -1,0 +1,20 @@
+/* ============================================================
+    Error Message
+============================================================ */
+.error-message-card {
+  color: rgb(180, 0, 0);
+  font-weight: bold;
+  background-color: #d054158e;
+  text-align: center;
+  padding: 5rem;
+  margin-top: 0rem;
+  border: solid;
+  border-color: red;
+  border-width: 0.5rem;
+}
+
+.generic-error-message {
+  font-family: "Gaegu", sans-serif;
+  font-size: 27.5px;
+  margin-bottom: 1rem;
+}

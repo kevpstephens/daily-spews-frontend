@@ -1,0 +1,18 @@
+/* ============================================================
+    LoadingScreen - Daily Spews Mascot Spewing
+============================================================ */
+
+.spewing-mascot {
+  width: 100px;
+  animation: shake 0.5s infinite ease-in-out;
+  position: relative;
+  filter: drop-shadow(-10px 0 15px orange);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.loading-message {
+  font-family: "Gaegu", sans-serif;
+  font-size: 25px;
+  margin-bottom: 2rem;
+}

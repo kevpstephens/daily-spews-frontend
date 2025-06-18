@@ -1,0 +1,27 @@
+/* ============================================================
+    ToastTester
+============================================================ */
+
+.toast-tester {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.toast-tester button {
+  width: 100%;
+  height: 100%;
+  background-color: #8113d5;
+  color: white;
+  /* font-weight: bold; */
+}
+
+.toast-message {
+  background: #8113d5;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 30vw;
+  padding: 1rem;
+}

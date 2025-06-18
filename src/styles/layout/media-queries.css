@@ -1,0 +1,68 @@
+/* ============================================================
+    Mobile-Friendly Settings
+============================================================ */
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  #root {
+    padding: 1rem;
+  }
+
+  .articles-page {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .sort-and-topic-bar-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navigation-bar-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .daily-spews-logo {
+    width: 80px;
+    margin-bottom: 1rem;
+  }
+
+  .article-page {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .article-body {
+    text-align: left;
+    margin: 1rem 0;
+  }
+
+  .comment-section {
+    margin-top: 3rem;
+  }
+
+  .comment-card {
+    padding: 1rem;
+  }
+
+  .comment-votes {
+    width: 50px;
+    height: 35px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .loading-message {
+    font-size: 1.25rem;
+  }
+}
+
+* {
+  transition: all 0.25s ease-in-out;
+}

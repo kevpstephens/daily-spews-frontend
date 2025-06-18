@@ -1,0 +1,61 @@
+/* ============================================================
+   H1 - Daily Spews Heading 
+============================================================ */
+.daily-spews-header-title {
+  font-family: "Gaegu", sans-serif;
+  font-size: 4rem;
+  margin-top: -1.5rem;
+  margin-bottom: -1rem;
+}
+
+/* ============================================================
+   Header Container + Daily Spews Logo
+============================================================ */
+
+.header-container {
+  background-color: #8c75d8;
+  padding: 1rem;
+  border-radius: 30px;
+  border: 8px solid #0d0024;
+  box-shadow: none;
+  text-align: center;
+}
+
+.daily-spews-logo {
+  /* display: flex; */
+  /* display: inline; */
+  width: 100px;
+  height: auto;
+  /* border-radius: 50%; */
+  top: 10rem;
+  left: 7.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-width: 0.125rem;
+  border: 10px dotted #0d0024;
+  border-radius: 3rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+  font-weight: bold;
+  font-family: "Gaegu", sans-serif;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0d0024;
+}
+
+.user-name {
+  font-size: 1.25rem;
+  color: #0d0024;
+}

@@ -1,0 +1,18 @@
+/* ============================================================
+    TopicsPage
+============================================================ */
+.topics-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+  box-shadow: none;
+}
+
+.topics-articles-page-heading {
+  font-size: 3rem;
+  text-decoration: underline;
+  margin: 1.5rem;
+}

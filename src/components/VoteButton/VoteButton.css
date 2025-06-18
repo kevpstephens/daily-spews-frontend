@@ -1,0 +1,61 @@
+/* ============================================================
+    VoteButton - Article
+============================================================ */
+.vote-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: none;
+  background: none;
+}
+
+.vote-button-container.article-vote button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  border: 2px solid #0d0024;
+  background-color: #8113d5;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.vote-button-container.article-vote button:hover {
+  background-color: #b95d28;
+}
+
+.vote-button-container.article-vote .vote-button {
+  background-color: #8113d5;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 6rem;
+  height: 3rem;
+}
+
+.vote-button-container.article-vote .vote-info {
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  gap: 0.1rem;
+  line-height: 1.5rem;
+  margin: -0.75rem;
+  background: none;
+}
+
+.vote-button-container.article-vote .vote-info p:first-child {
+  font-size: 1.5rem;
+}

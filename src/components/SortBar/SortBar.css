@@ -1,0 +1,23 @@
+/* ============================================================
+   Sort Bar
+============================================================ */
+
+.sort-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: none;
+}
+
+.sort-bar {
+  display: flex;
+  width: auto;
+  background-color: #8113d5;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  border-color: 0d0024;
+  border-width: 0.125rem;
+  text-align: center;
+}
