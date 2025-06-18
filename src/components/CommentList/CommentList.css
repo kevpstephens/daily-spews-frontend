@@ -1,0 +1,47 @@
+/* ============================================================
+    Comment Section
+============================================================ */
+.comment-list-container {
+  width: 100%;
+  text-align: left;
+  margin: 0.25rem;
+  margin-top: 1rem;
+  border: 8px solid #0d0024;
+}
+
+.comment-list-container h2 {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+      CommentList
+  ============================================================ */
+.comment-list {
+  width: 100%;
+}
+
+/* ============================================================
+     Loading Comments Container
+  ============================================================ */
+.loading-comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.loading-comments-spinner {
+  width: 80px;
+  height: auto;
+  animation: shake 0.5s infinite ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.loading-comments-text {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
+  color: #0d0024;
+}

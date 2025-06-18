@@ -1,0 +1,19 @@
+/* ============================================================
+    CommentButton
+============================================================ */
+
+#comment-button {
+  background-color: #8113d5;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 6rem;
+  height: 3rem;
+}
+
+#comment-button:hover {
+  background-color: #b95d28;
+}

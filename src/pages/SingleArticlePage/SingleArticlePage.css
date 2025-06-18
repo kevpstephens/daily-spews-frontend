@@ -1,0 +1,58 @@
+/* ============================================================
+    Article Page
+============================================================ */
+.article-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 90%;
+  background-color: #8a72d77e;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+  /* border-style: solid; */
+  border-width: 0.15rem;
+  border-color: #220052;
+}
+
+.article-page img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 90%;
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.article-body {
+  text-align: left;
+  text-indent: 1.5rem;
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Likes and Comments - SingleArticlePage
+============================================================ */
+.article-page .likes-and-comments {
+  text-align: left;
+  gap: 1rem;
+}
+
+.likes-and-comments {
+  margin: -1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* justify-content: flex-start; */
+  gap: 0.5rem;
+  padding: 1rem;
+  font-weight: bold;
+  background: none;
+  box-shadow: none;
+  /* width: fit-content; */
+  /* margin-left: 0; */
+  /* margin-right: auto; */
+}

@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
-import DevUserConsole from "./components/DevUserConsole";
+import DevUserConsole from "./components/DevUserConsole/DevUserConsole.jsx";
 
 const Layout = () => {
   return (

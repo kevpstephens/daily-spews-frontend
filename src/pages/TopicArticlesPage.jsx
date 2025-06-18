@@ -2,10 +2,10 @@
 
 import { useParams } from "react-router-dom";
 import { getArticlesByTopic } from "../api/api";
-import ArticleCard from "../components/ArticleCard";
+import ArticleCard from "../components/ArticleCard/ArticleCard.jsx";
 import useFetch from "../hooks/useFetch";
-import LoadingScreen from "../components/LoadingScreen";
-import ErrorMessageCard from "../components/ErrorMessageCard";
+import LoadingScreen from "../components/LoadingScreen/LoadingScreen.jsx";
+import ErrorMessageCard from "../components/ErrorMessageCard/ErrorMessageCard.jsx";
 
 export default function TopicArticlesPage() {
   const { topic_slug } = useParams();

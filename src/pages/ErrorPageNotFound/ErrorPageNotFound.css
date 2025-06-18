@@ -1,0 +1,19 @@
+/* ============================================================
+    ErrorPageNotFound
+============================================================ */
+.error-page-not-found-message-card {
+  font-weight: bold;
+  background-color: #d054158e;
+  text-align: center;
+  margin: 3rem auto;
+  border: solid;
+  border-color: red;
+  border-width: 0.5rem;
+}
+
+.error-page-not-found-error-message {
+  font-family: "Gaegu", sans-serif;
+  font-size: 27.5px;
+  margin-bottom: 1rem;
+  color: rgb(130, 0, 0);
+}

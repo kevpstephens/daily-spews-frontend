@@ -1,0 +1,26 @@
+/* ============================================================
+   TYPOGRAPHY
+   These styles are used to style the typography of the project.
+============================================================ */
+
+h1,
+h2,
+h3 {
+  color: var(--color-text-heading, black);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-family: var(--font-heading);
+}
+
+a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}

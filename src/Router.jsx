@@ -1,17 +1,18 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import AllArticlesPage from "./pages/AllArticlesPage";
-import HomePage from "./HomePage";
-import TopicsPage from "./pages/TopicsPage";
-import SingleArticlePage from "./pages/SingleArticlePage";
-import TopicArticlesPage from "./pages/TopicArticlesPage";
-import UserProfilePage from "./pages/UserProfilePage";
-import ErrorPageNotFound from "./pages/ErrorPageNotFound";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import TestPage from "./pages/TestPage";
+
+import AboutPage from "./pages/AboutPage/AboutPage.jsx";
+import AllArticlesPage from "./pages/AllArticlesPage/AllArticlesPage.jsx";
+import ErrorPageNotFound from "./pages/ErrorPageNotFound/ErrorPageNotFound.jsx";
+import HomePage from "./HomePage";
 import Layout from "./Layout";
-import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import SingleArticlePage from "./pages/SingleArticlePage/SingleArticlePage.jsx";
+import TestPage from "./pages/TestPage";
+import TopicsPage from "./pages/TopicsPage/TopicsPage.jsx";
+import TopicArticlesPage from "./pages/TopicArticlesPage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage.jsx";
 
 function AppRouter() {
   return (

@@ -1,0 +1,17 @@
+/* ============================================================
+   RESET + BASE STYLES
+   
+   These styles are used to ensure a consistent baseline across browsers
+   by removing default spacing and normalizing box model behavior.
+============================================================ */
+
+/* 
+  Selects all elements and pseudo-elements.
+  Sets a universal box-sizing rule and removes default margin and padding.
+*/
+
+* {
+  box-sizing: border-box; /* Makes padding + border included in an element's total width/height */
+  margin: 0; /* Removes default outer spacing applied by browsers */
+  padding: 0; /* Removes default inner spacing applied by browsers */
+}

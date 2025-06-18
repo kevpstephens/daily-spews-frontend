@@ -1,0 +1,52 @@
+/* ============================================================
+    PostCommentForm
+============================================================ */
+.post-comment-form-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  /* background-color: #9785d34f; */
+  /* box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448); */
+}
+
+#comment {
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+  padding-right: 4.5rem;
+  border-radius: 12px;
+  background-color: #0d0024;
+  color: white;
+  font-size: 1rem;
+  border: 2px solid #000;
+  resize: vertical;
+  box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
+}
+
+.comment-submit-button {
+  position: absolute;
+  bottom: -2rem;
+  right: 1rem;
+  background-color: #8113d5;
+  color: white;
+  border: 2px solid #0d0024;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.4rem 0.75rem;
+  height: 2.5rem;
+}
+
+.comment-submit-button:hover {
+  background-color: #b95d28;
+}
+
+.post-comment-form textarea {
+  resize: vertical;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #000000;
+  font-family: inherit;
+  text-align: left;
+}

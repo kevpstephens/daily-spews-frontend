@@ -1,0 +1,13 @@
+/* ============================================================
+   Topic Filter Bar
+============================================================ */
+
+#topic-dropdown {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  border-color: 0d0024;
+  border-width: 0.125rem;
+  text-align: center;
+}

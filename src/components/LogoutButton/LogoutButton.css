@@ -1,0 +1,20 @@
+/* ============================================================
+   Logout Button
+============================================================ */
+.logout-button {
+  background-color: #b95d28;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid #0d0024;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 8rem;
+  align-self: center;
+}
+
+.logout-button:hover {
+  background-color: #8113d5;
+}

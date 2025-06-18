@@ -1,0 +1,90 @@
+/* ============================================================
+    CommentCard + Delete Comment Button + Comment VoteButton
+============================================================ */
+.comment-card {
+  /* margin: 1rem; */
+  background: #9785d34f;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 1rem;
+  padding-bottom: 0rem;
+  border-radius: 12px;
+  align-items: flex-start;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
+  gap: 0.5rem;
+}
+
+.comment-card.deleting {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.comment-card-author {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #0d0024;
+}
+
+.delete-comment-button {
+  padding: 0.4rem 0.75rem;
+  height: 2.5rem;
+  background-color: #8113d5;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: -2rem;
+}
+
+.comment-actions-container {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: -1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem;
+  background: none;
+  box-shadow: none;
+  width: 100%;
+  height: 4rem;
+  font-size: 1rem;
+  border-radius: 20px;
+}
+
+.vote-button-container.comment-vote {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: none;
+  background: none;
+}
+
+.vote-button-container.comment-vote button:hover {
+  background-color: #b95d28;
+}
+
+.vote-button-container.comment-vote .vote-button {
+  width: 3rem;
+  height: 2.5rem;
+  font-size: 0.75rem;
+  box-shadow: none;
+}
+
+.vote-button-container.comment-vote .vote-info {
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  gap: 0.1rem;
+  line-height: 1.5rem;
+  margin: 0rem;
+  background: none;
+}

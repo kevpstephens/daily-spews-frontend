@@ -1,0 +1,19 @@
+/* ============================================================
+    Pagination
+============================================================ */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: none;
+  align-self: center;
+}
+
+.pagination-page-display {
+  box-shadow: none;
+}
+
+.pagination-info {
+  box-shadow: none;
+}
