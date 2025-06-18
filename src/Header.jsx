@@ -1,5 +1,6 @@
 import NavigationBar from "./components/NavigationBar";
 import { useUser } from "./context";
+import LogoutButton from "./components/LogoutButton";
 
 export default function Header() {
   const { user, isUserLoading } = useUser();
@@ -23,7 +24,7 @@ export default function Header() {
               className="user-avatar"
             />
             <span className="user-name">{user.name}</span>
-            <button>log out</button>
+            <LogoutButton redirectTo="/" />
           </div>
         )}
       </header>

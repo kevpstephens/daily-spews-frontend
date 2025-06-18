@@ -111,6 +111,13 @@ export const loginUser = async ({ email, password }) => {
   return res.data;
 };
 
+//! POST /api/auth/logout
+// Logs out the user by clearing their auth cookie on the server
+export const logoutUser = async () => {
+  const res = await api.post("/auth/logout", {}, { withCredentials: true });
+  return res.data;
+};
+
 //! DELETE /api/comments/:comment_id
 // Delete a comment by its unique ID
 export const deleteCommentById = async (comment_id) => {
