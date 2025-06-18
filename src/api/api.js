@@ -11,15 +11,17 @@ const api = axios.create({
 export const getArticles = async (
   sort_by = "created_at",
   order = "desc",
-  topic
+  topic,
+  limit,
+  p
 ) => {
   const params = { sort_by, order };
-  if (topic) {
-    params.topic = topic; // Only add topic param if it's defined
-  }
+  if (topic) params.topic = topic;
+  if (limit) params.limit = limit;
+  if (p) params.p = p;
 
   const res = await api.get("/articles", { params });
-  return res.data;
+  return res.data; // should include { articles, total_count }
 };
 
 // Fetches all available topics from the backend

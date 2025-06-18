@@ -1,23 +1,18 @@
-// URL: daily-spews.com/
+//? URL: daily-spews.com/
 
 import "./styles/App.css";
 import HorizontalTopics from "./components/HorizontalTopics";
 import { getArticles } from "./api/api";
 import useFetch from "./hooks/useFetch";
 import LoadingScreen from "./components/LoadingScreen";
-import ArticleCard from "./components/ArticleCard";
+import AllArticlesPage from "./pages/AllArticlesPage";
+import ErrorMessageCard from "./components/ErrorMessageCard";
 
 export default function HomePage() {
-  const { data, isLoading, error } = useFetch(getArticles);
-  let articles = [];
+  const { isLoading, error } = useFetch(getArticles);
 
-  if (data && data.articles) {
-    articles = data.articles;
-  }
   return (
     <>
-      <h3>*Home Page*</h3>
-
       <main>
         <HorizontalTopics />
         {isLoading && <LoadingScreen item={"articles"} />}
@@ -25,12 +20,7 @@ export default function HomePage() {
 
         {!isLoading && !error && (
           <>
-            <h1 className="all-articles-page-heading">all articles:</h1>
-            <section className="articles-page">
-              {articles.map((article) => (
-                <ArticleCard key={article.article_id} article={article} />
-              ))}
-            </section>
+            <AllArticlesPage />
           </>
         )}
       </main>

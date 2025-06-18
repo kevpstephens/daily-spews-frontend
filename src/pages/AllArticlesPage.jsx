@@ -1,5 +1,6 @@
 //? URL: daily-spews.com/articles
 
+import { useState } from "react";
 import { getArticles } from "../api/api";
 import ArticleCard from "../components/ArticleCard";
 import SortBar from "../components/SortBar";
@@ -16,20 +17,19 @@ export default function AllArticlesPage() {
   let order = searchParams.get("order") || "desc";
   const topic = searchParams.get("topic");
 
-  const { data, isLoading, error } = useFetch(
-    () => getArticles(sort_by, order, topic),
-    [sort_by, order, topic]
-  );
-  let articles = [];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit] = useState(10);
 
-  if (data && data.articles) {
-    articles = data.articles;
-  }
+  const { data, isLoading, error } = useFetch(
+    () => getArticles(sort_by, order, topic, limit, currentPage),
+    [sort_by, order, topic, limit, currentPage]
+  );
+
+  const articles = data?.articles || [];
+  const totalCount = data?.total_count || 0;
 
   return (
     <>
-      <h3>*All Articles Page*</h3>
-
       <div className="sort-and-topic-bar-container">
         <SortBar sort_by={sort_by} order={order} />
         <TopicFilterBar />
@@ -53,7 +53,12 @@ export default function AllArticlesPage() {
           </section>
         </>
       )}
-      <Pagination articles={articles} />
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalCount={totalCount}
+        limit={limit}
+      />
     </>
   );
 }
