@@ -124,7 +124,6 @@ a:hover {
 }
 
 .app-content form input {
-  width: 40%;
   font-size: 1rem;
 }
 
@@ -164,6 +163,30 @@ a:hover {
   border-width: 0.125rem;
   border: 10px dotted #0d0024;
   border-radius: 3rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+  font-weight: bold;
+  font-family: "Gaegu", sans-serif;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0d0024;
+}
+
+.user-name {
+  font-size: 1.25rem;
+  color: #0d0024;
 }
 
 /* ============================================================
@@ -1001,21 +1024,6 @@ Article Card - Link/Button
   justify-content: center;
 }
 
-.new-user-message {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem;
-  box-shadow: none;
-}
-
-.new-user-message p {
-  margin: 1rem;
-  margin-bottom: 1.25rem;
-}
-
 .sign-up-button {
   width: 7rem;
   cursor: pointer;
@@ -1180,4 +1188,146 @@ Article Card - Link/Button
 
 * {
   transition: all 0.25s ease-in-out;
+}
+
+/* ============================================================
+    Dev User Console
+============================================================ */
+
+.dev-user-console {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #ff880083;
+  border: 1px solid #000000;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  z-index: 999;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+    Login Page
+============================================================ */
+
+.login-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border: 1px solid #0d0024;
+  border-radius: 12px;
+  background-color: #8a72d77e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  text-align: center;
+  width: 90%;
+  /* reinforce centering */
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page-container h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.login-form label,
+.login-form button,
+.login-form p {
+  text-align: center;
+  align-self: center;
+}
+
+.login-form input {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 109%;
+}
+
+#password-input {
+  padding-right: 2.25rem;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  width: 100%;
+}
+
+#show-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #000;
+  padding: 0;
+  width: 3rem;
+}
+
+#show-password-toggle:hover {
+  color: #8113d5;
+}
+
+.dev-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dev-login-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.dev-login-form select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.dev-login-form button {
+  align-self: center;
+  padding: 0.75rem;
+  background-color: #0d0024;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dev-login-form button:hover {
+  background-color: #2e0f61;
+}
+
+.dev-login-form button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
 }

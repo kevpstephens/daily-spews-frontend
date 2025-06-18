@@ -7,6 +7,7 @@ const api = axios.create({
   baseURL: BASE_URL,
 });
 
+//! GET /api/articles
 // Fetches all articles with optional sorting and topic filtering
 export const getArticles = async (
   sort_by = "created_at",
@@ -24,18 +25,21 @@ export const getArticles = async (
   return res.data; // should include { articles, total_count }
 };
 
+//! GET /api/topics
 // Fetches all available topics from the backend
 export const getTopics = async () => {
   const res = await api.get("/topics");
   return res.data;
 };
 
+//! GET /api/articles/:article_id
 // Fetch a single article by its unique ID
 export const getArticleById = async (article_id) => {
   const res = await api.get(`/articles/${article_id}`);
   return res.data;
 };
 
+//! GET /api/articles/:article_id/comments
 // Fetch all comments related to a specific article
 export const getCommentByArticleId = async (article_id, limit, p) => {
   try {
@@ -53,18 +57,42 @@ export const getCommentByArticleId = async (article_id, limit, p) => {
   }
 };
 
+//! GET /api/articles?topic=:topic_slug
+// Shortcut function to fetch articles filtered by a specific topic
+export const getArticlesByTopic = async (topic_slug) => {
+  const res = await api.get(`/articles?topic=${topic_slug}`);
+  return res.data;
+};
+
+//! GET /api/users
+// Fetch all users from the backend (e.g., for login or user listing)
+export const getUsers = async () => {
+  const res = await api.get(`/users`);
+  return res.data;
+};
+
+//! GET /api/users/:username
+// Fetch a single user by their unique username
+export const getUserByUsername = async (username) => {
+  const res = await api.get(`/users/${username}`);
+  return res.data;
+};
+
+//! PATCH /api/articles/:article_id
 // Increment or decrement the vote count of an article
 export const patchArticleVotes = async (article_id, inc_votes) => {
   const res = await api.patch(`/articles/${article_id}`, { inc_votes });
   return res.data;
 };
 
+//! PATCH /api/comments/:comment_id
 // Increment or decrement the vote count of a comment
 export const patchCommentVotes = async (comment_id, inc_votes) => {
   const res = await api.patch(`/comments/${comment_id}`, { inc_votes });
   return res.data;
 };
 
+//! POST /api/articles/:article_id/comments
 // Post a new comment under a specific article
 // Expects commentObj to contain { username, body }
 export const postComment = async (article_id, commentObj) => {
@@ -72,20 +100,20 @@ export const postComment = async (article_id, commentObj) => {
   return res.data;
 };
 
+//! POST /api/login
+// Authenticates user and sets a secure cookie (e.g., JWT)
+export const loginUser = async ({ email, password }) => {
+  const res = await api.post(
+    "/auth/login",
+    { email, password },
+    { withCredentials: true }
+  );
+  return res.data;
+};
+
+//! DELETE /api/comments/:comment_id
 // Delete a comment by its unique ID
 export const deleteCommentById = async (comment_id) => {
   const res = await api.delete(`/comments/${comment_id}`);
-  return res.data;
-};
-
-// Shortcut function to fetch articles filtered by a specific topic
-export const getArticlesByTopic = async (topic_slug) => {
-  const res = await api.get(`/articles?topic=${topic_slug}`);
-  return res.data;
-};
-
-// Fetch all users from the backend (e.g., for login or user listing)
-export const getUsers = async () => {
-  const res = await api.get(`/users`);
   return res.data;
 };

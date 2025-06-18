@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import DevUserConsole from "./components/DevUserConsole";
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
         <Outlet /> {/* This renders the current route page */}
       </main>
       <Footer />
+      {import.meta.env.DEV && <DevUserConsole />}
     </div>
   );
 };

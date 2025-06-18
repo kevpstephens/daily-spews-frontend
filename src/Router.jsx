@@ -4,14 +4,14 @@ import HomePage from "./HomePage";
 import TopicsPage from "./pages/TopicsPage";
 import SingleArticlePage from "./pages/SingleArticlePage";
 import TopicArticlesPage from "./pages/TopicArticlesPage";
-import LoggedInUsersPage from "./pages/LoggedInUsersPage";
-import OtherUserPage from "./pages/OtherUserPage";
+import UserProfilePage from "./pages/UserProfilePage";
 import ErrorPageNotFound from "./pages/ErrorPageNotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TestPage from "./pages/TestPage";
 import Layout from "./Layout";
 import AboutPage from "./pages/AboutPage";
+import LoginPage from "./pages/LoginPage";
 
 function AppRouter() {
   return (
@@ -46,10 +46,10 @@ function AppRouter() {
             />
             <Route path="/topics" element={<TopicsPage />} />
             <Route path="/topics/:topic_slug" element={<TopicArticlesPage />} />
-            <Route path="/user-profile-page" element={<LoggedInUsersPage />} />
-            <Route path="/users/:username" element={<OtherUserPage />} />
+            <Route path="/users/:username" element={<UserProfilePage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Route>
         </Routes>
       </div>

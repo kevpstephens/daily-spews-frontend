@@ -1,3 +1,5 @@
+//? URL: daily-spews.com/about
+
 export default function AboutPage() {
   return (
     <>
