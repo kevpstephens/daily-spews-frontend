@@ -1,0 +1,70 @@
+/* ":root" -> this is a CSS pseudo-class that targets the highest-level element in the DOM, which is always the <html> tag.
+
+•	Use it to define global styles like fonts, themes, or CSS variables.
+•	It affects everything on the page unless overridden by more specific selectors. */
+
+/* "#root" -> This is a CSS ID selector, targeting the element with the ID root — which, in a React app, is the <div id="root"></div> in your index.html.
+
+•	This specifically styles the React mounting point, i.e., the wrapper for everything your React app renders.
+•	You often use this to set max-width, centering, or layout rules for your entire app. */
+
+/* ============================================================
+   Global CSS Variables and Defaults
+   - Define global fonts, theme colors, and base styling.
+============================================================ */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+
+  color: #0d0024;
+  background-color: #999fc9;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-primary: #8113d5;
+  --color-accent: #b95d28;
+
+  --font-heading: "Gaegu", sans-serif;
+  --font-body: "Verdana", sans-serif;
+}
+
+/* ============================================================
+   Box Sizing Reset
+   - Ensure consistent box sizing across all elements.
+============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   Body Base Styling
+   - Apply the main body font and default text color.
+============================================================ */
+body {
+  font-family: var(--font-body, Verdana, Geneva, Tahoma, sans-serif);
+  color: #0d0024;
+}
+
+/* ============================================================
+   Layout Wrapper
+   - Provides full-height flex container for header, main, footer.
+============================================================ */
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   Layout Main Content
+   - Allows main content area to expand and push footer to bottom.
+============================================================ */
+.layout-main {
+  flex-grow: 1;
+}

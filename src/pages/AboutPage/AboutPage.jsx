@@ -21,14 +21,13 @@ export default function AboutPage() {
         <p>
           Built with lots of love by{" "}
           <a
-            className="footer-link"
+            className="kevin-stephenson-link"
             href="https://github.com/kevpstephens"
             target="_blank"
             rel="noopener noreferrer"
           >
             Kevin Stephenson
           </a>
-          .
         </p>
       </div>
     </>

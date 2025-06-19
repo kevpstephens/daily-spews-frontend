@@ -17,8 +17,6 @@ export default function TopicsPage() {
 
   return (
     <>
-      <h3>*Topics Page*</h3>
-
       {isLoading && <LoadingScreen item={"topics"} />}
       {error && <ErrorMessageCard error={error} />}
 

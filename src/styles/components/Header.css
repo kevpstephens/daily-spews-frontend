@@ -19,6 +19,8 @@
   border: 8px solid #0d0024;
   box-shadow: none;
   text-align: center;
+  margin: -0.75rem;
+  position: relative; /* Added */
 }
 
 .daily-spews-logo {
@@ -36,15 +38,23 @@
   border-radius: 3rem;
 }
 
-.user-info {
+/* ============================================================
+   User Info + Avatar Top Right
+
+   This has since been replaced with the Navigation Bar Avatar feature.
+============================================================ */
+
+.user-info.top-right {
+  font-family: "Gaegu", sans-serif;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.5rem;
-  justify-content: center;
-  font-weight: bold;
-  font-family: "Gaegu", sans-serif;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .user-avatar {
@@ -55,7 +65,44 @@
   border: 2px solid #0d0024;
 }
 
+.user-avatar:hover {
+  transform: scale(1.15);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid #0d0024;
+}
+
 .user-name {
   font-size: 1.25rem;
   color: #0d0024;
+}
+
+.user-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.user-avatar-tooltip {
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  visibility: visible;
+  background-color: #8f42c9;
+  color: #fff;
+  display: flex;
+  z-index: 1000;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem !important;
+  height: 2rem;
+}
+
+.user-avatar-wrapper:hover .user-avatar-tooltip {
+  visibility: visible;
+  opacity: 1;
 }
