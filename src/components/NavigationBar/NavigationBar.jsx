@@ -1,6 +1,7 @@
 import "./NavigationBar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context";
+import LogoutButton from "../LogoutButton/LogoutButton";
 
 export default function NavigationBar() {
   const { user } = useUser();
@@ -19,14 +20,31 @@ export default function NavigationBar() {
         </Link>
         <Link
           id="user-profile-button"
-          className="nav-button"
+          className="nav-button user-profile-nav"
           to={
             user && user.username !== "guest_user"
               ? `/users/${user.username}`
               : "/login"
           }
         >
-          👤
+          {user && user.avatar_url ? (
+            <div className="nav-avatar-wrapper">
+              <img
+                className="nav-avatar-icon"
+                src={user.avatar_url}
+                alt="user-avatar"
+              />
+              <div className="nav-avatar-dropdown">
+                <p className="nav-avatar-username">
+                  <strong>@{user.username}</strong>
+                </p>
+                <LogoutButton id="nav-logout-button" redirectTo="/" />
+              </div>
+              <div className="nav-avatar-overlay"></div>
+            </div>
+          ) : (
+            "👤"
+          )}
         </Link>
       </nav>
     </>

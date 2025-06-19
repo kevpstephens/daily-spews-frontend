@@ -1,0 +1,30 @@
+/* ============================================================
+    DevConsole
+============================================================ */
+
+.dev-console {
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: #ff880083;
+  border: 1px solid #000000;
+  padding: 0.5rem 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.8rem;
+  z-index: 999;
+  min-width: 175px;
+  min-height: 175px;
+  border-radius: 10px;
+  transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  resize: both;
+  overflow: auto;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.dev-console:active {
+  cursor: grabbing;
+}

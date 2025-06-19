@@ -24,6 +24,11 @@
 }
 
 .app-content button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   background-color: #8113d5;
   color: white;
   cursor: pointer;

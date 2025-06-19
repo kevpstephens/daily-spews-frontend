@@ -9,7 +9,30 @@
   border: 2px solid #0d0024;
   box-shadow: none;
   text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 2rem 0rem -0.75rem 0rem;
   width: 100%;
+}
+
+.footer-link {
+  text-decoration: none;
+  font-weight: 400;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-variation-settings: "wght" 400;
+}
+
+.footer-link:hover {
+  font-variation-settings: "wght" 800;
+  color: #ab3f00;
+  text-decoration: underline;
+  text-shadow: 0.75px 0 0 #ab3f00;
+  transition: font-variation-settings 0.1s ease-in-out;
+  /* color: white; */
+  /* background-color: #b95d28; */
+  /* border-radius: 100px; */
+}
+
+.footer-separator {
+  padding: 0 0.5rem;
 }

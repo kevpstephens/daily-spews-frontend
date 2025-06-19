@@ -28,7 +28,6 @@ export default function SingleArticlePage() {
   return (
     <>
       <ToastTester />
-      <h3>*Single Article Page*</h3>
 
       {isLoading && <LoadingScreen singleArticleLoad={true} />}
       {error && <ErrorMessageCard articleError={error} />}

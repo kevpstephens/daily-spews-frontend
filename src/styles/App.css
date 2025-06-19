@@ -3,6 +3,8 @@
 ============================================================ */
 /* orange - b95d28 */
 /* dark purple - 8113d5 */
+
+/* dark orange for links: #ab3f00; */
 /* light purple - 9785d3 */
 
 /* font-family: "Gaegu", sans-serif; */
@@ -10,6 +12,7 @@
 /* ============================================================
    BASE STYLES
 ============================================================ */
+@import "./base/containers.css";
 @import "./base/fonts.css";
 @import "./base/forms.css";
 @import "./base/reset.css";
@@ -18,7 +21,6 @@
 /* ============================================================
    LAYOUT STYLES
 ============================================================ */
-@import "./layout/containers.css";
 @import "./layout/media-queries.css";
 
 /* ============================================================

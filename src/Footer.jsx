@@ -8,8 +8,8 @@ export default function Footer() {
       </p>
       <Link className="footer-link" to="/about">
         About
-      </Link>{" "}
-      |{" "}
+      </Link>
+      <span className="footer-separator">|</span>
       <a
         className="footer-link"
         href="https://github.com/kevpstephens"

@@ -9,3 +9,17 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.about-page-container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.about-page-container img {
+  width: 100px;
+}
+
+.kevin-stephenson-link:hover {
+  text-decoration: underline;
+}
