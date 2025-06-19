@@ -14,7 +14,7 @@ export default function CommentButton({
 
   return (
     <button id="comment-button" onClick={handleClick}>
-      <MessageSquareMore size={25} color="white" />
+      <MessageSquareMore className="comment-button-icon" size={25} />
       <span>{commentCount}</span>
     </button>
   );

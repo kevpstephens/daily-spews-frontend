@@ -2,7 +2,7 @@
     Horizontal Topics  Scroll
 ============================================================ */
 .horizontal-topics-wrapper {
-  width: 100vw;            /* Use full viewport width */
+  width: 100vw; /* Use full viewport width */
   margin-left: calc(-50vw + 50%); /* Center it inside any parent container */
 }
 
@@ -54,7 +54,12 @@
   border-radius: 30px;
   /* padding: 0.25rem; */
   margin: 0.25rem;
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.horizontal-topic-card:hover img {
+  box-shadow: 0 0 20px rgba(126, 2, 234, 0.6);
 }
 
 .horizontal-topic-card:first-child {

@@ -2,6 +2,7 @@ import "./NavigationBar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context";
 import LogoutButton from "../LogoutButton/LogoutButton";
+import { Home, User } from "lucide-react";
 
 export default function NavigationBar() {
   const { user } = useUser();
@@ -10,7 +11,7 @@ export default function NavigationBar() {
     <>
       <nav className="navigation-bar-container">
         <Link id="home-button" className="nav-button" to="/">
-          🏠
+          <Home size={28} color="white" />
         </Link>
         <Link className="nav-button" to="/articles">
           Articles
@@ -43,7 +44,7 @@ export default function NavigationBar() {
               <div className="nav-avatar-overlay"></div>
             </div>
           ) : (
-            "👤"
+            <User size={28} color="white" />
           )}
         </Link>
       </nav>

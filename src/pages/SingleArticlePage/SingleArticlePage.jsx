@@ -9,7 +9,6 @@ import useFetch from "../../hooks/useFetch";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
 import PostCommentForm from "../../components/PostCommentForm/PostCommentForm.jsx";
 import VoteButton from "../../components/VoteButton/VoteButton.jsx";
-import ToastTester from "../../components/ToastTester/ToastTester.jsx";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
 import CommentButton from "../../components/CommentButton/CommentButton.jsx";
 
