@@ -52,10 +52,10 @@ export default function CommentCard({ comment }) {
         <p>{comment.body}</p>
         <div className="comment-actions-container">
           <VoteButton
+            className="comment-vote"
             item_id={comment.comment_id}
             initialVotes={comment.votes}
             voteFunction={patchCommentVotes}
-            className="comment-vote"
           />
 
           {isDeleting && <p>Deleting comment...</p>}

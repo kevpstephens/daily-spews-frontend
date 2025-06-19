@@ -1,4 +1,5 @@
 import "./CommentButton.css";
+import { MessageSquareMore } from "lucide-react";
 
 export default function CommentButton({
   commentCount,
@@ -13,7 +14,8 @@ export default function CommentButton({
 
   return (
     <button id="comment-button" onClick={handleClick}>
-      💬 {commentCount}
+      <MessageSquareMore size={25} color="white" />
+      <span>{commentCount}</span>
     </button>
   );
 }
