@@ -11,7 +11,7 @@ import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SingleArticlePage from "./pages/SingleArticlePage/SingleArticlePage.jsx";
 import TestPage from "./pages/TestPage";
 import TopicsPage from "./pages/TopicsPage/TopicsPage.jsx";
-import TopicArticlesPage from "./pages/TopicArticlesPage";
+import TopicArticlesPage from "./pages/TopicArticlesPage/TopicArticlesPage.jsx";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage.jsx";
 
 function AppRouter() {

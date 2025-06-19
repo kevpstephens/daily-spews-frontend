@@ -4,12 +4,13 @@ import { useUser } from "../../context";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-export default function LogoutButton({ redirectTo = "/" }) {
+export default function LogoutButton({ redirectTo = "/", id }) {
   const { setUser } = useUser();
   const navigate = useNavigate();
 
   return (
     <button
+      id={id}
       className="logout-button"
       onClick={async () => {
         try {

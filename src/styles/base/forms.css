@@ -3,8 +3,7 @@
 ============================================================ */
 .app-content input,
 .app-content textarea,
-.app-content select,
-.app-content button {
+.app-content select {
   font: inherit;
   padding: 0.5rem;
   margin-top: 0rem;
@@ -20,20 +19,21 @@
   justify-content: center;
 }
 
+.app-content form input {
+  font-size: 1rem;
+}
+
 .app-content button {
   background-color: #8113d5;
   color: white;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-  width: 5rem;
-  border: 2.5px solid #0d0024;
+  padding: 0.75rem;
+  border: 2px solid #000000;
+  border-radius: 10px;
 }
 
 .app-content button:hover {
   background-color: #b95d28;
   cursor: pointer;
-}
-
-.app-content form input {
-  font-size: 1rem;
 }
