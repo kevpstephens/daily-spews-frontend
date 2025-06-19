@@ -1,5 +1,8 @@
 import "./VoteButton.css";
+import { ThumbsUp, ThumbsDown, Heart } from "lucide-react";
 import { useState } from "react";
+import { useUser } from "../../context";
+import { toast } from "react-toastify";
 
 export default function VoteButton({
   item_id,
@@ -7,34 +10,60 @@ export default function VoteButton({
   voteFunction,
   className,
 }) {
+  const { user } = useUser();
   const [voteChange, setVoteChange] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  function handleVote(inc_votes) {
-    setVoteChange((voteChange) => voteChange + inc_votes);
-    voteFunction(item_id, inc_votes);
+  async function handleVote(inc_votes) {
+    if (!user) {
+      toast.error("You must be logged in to vote!");
+      return;
+    }
+
+    // prevent voting the same direction twice — except for admin
+    if (
+      user?.username !== "admin" &&
+      ((inc_votes === 1 && voteChange > 0) ||
+        (inc_votes === -1 && voteChange < 0))
+    ) {
+      return;
+    }
+
+    const newVoteChange = voteChange + inc_votes;
+    setVoteChange(newVoteChange);
+    setIsLoading(true);
+
+    try {
+      await voteFunction(item_id, inc_votes);
+    } catch (error) {
+      console.error("Vote error:", error);
+      setVoteChange(voteChange); // rollback
+      toast.error("Vote failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
     <>
       <div className={`vote-button-container ${className}`}>
         <button
+          className={`upvote-button ${className}`}
           onClick={() => handleVote(1)}
-          disabled={voteChange > 0}
-          className="vote-button"
+          disabled={(user?.username !== "admin" && voteChange > 0) || isLoading}
         >
-          ⬆️
+          <ThumbsUp size={25} color="white" />
         </button>
         <div className="vote-info">
-          <p>💜</p>
+          <Heart className={`heart ${className}`} />
           <p>{initialVotes + voteChange}</p>
         </div>
-
         <button
+          className={`downvote-button ${className}`}
           onClick={() => handleVote(-1)}
-          disabled={voteChange < 0}
-          className="vote-button"
+          disabled={(user?.username !== "admin" && voteChange > 0) || isLoading}
         >
-          ⬇️
+          <ThumbsDown size={25} color="white" />
         </button>
       </div>
     </>

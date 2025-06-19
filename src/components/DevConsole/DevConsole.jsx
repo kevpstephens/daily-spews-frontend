@@ -2,7 +2,7 @@ import "./DevConsole.css";
 import { useEffect, useState, useRef } from "react";
 import { useUser } from "../../context";
 import { getUserByUsername } from "../../api/api";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function DevConsole() {
   const { user, setUser } = useUser();
@@ -99,6 +99,7 @@ export default function DevConsole() {
       <button onClick={handleSwitch} disabled={isLoading}>
         {isLoading ? "Switching..." : "Switch User"}
       </button>
+      <Link to="/test">Link to: Test Page</Link>
     </aside>
   );
 }

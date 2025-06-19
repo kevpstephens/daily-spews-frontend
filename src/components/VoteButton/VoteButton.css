@@ -1,7 +1,7 @@
 /* ============================================================
-    VoteButton - Article
+    Article-Vote - VoteButton
 ============================================================ */
-.vote-button-container {
+.vote-button-container.article-vote {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,39 +10,7 @@
   background: none;
 }
 
-.vote-button-container.article-vote button {
-  padding: 0.5rem 1rem;
-  margin: 0 0.25rem;
-  border: 2px solid #0d0024;
-  background-color: #8113d5;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  align-items: center;
-}
-
-.vote-button-container.article-vote button:hover {
-  background-color: #b95d28;
-}
-
-.vote-button-container.article-vote .vote-button {
-  background-color: #8113d5;
-  color: white;
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  /* font-size: 1.2rem; */
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  width: 6rem;
-  height: 3rem;
-}
-
-.vote-button-container.article-vote .vote-info {
+.vote-info {
   box-shadow: none;
   display: flex;
   flex-direction: column;
@@ -56,6 +24,52 @@
   background: none;
 }
 
-.vote-button-container.article-vote .vote-info p:first-child {
-  font-size: 1.5rem;
+/* ============================================================
+   Article-Vote - Vote Button - upvote/downvote - hover states
+============================================================ */
+
+.vote-button-container.article-vote button {
+  padding: 0.5rem 1.5rem;
+  margin: 0 0.25rem;
+  background-color: #8113d5;
+}
+
+.upvote-button.article-vote:hover {
+  background-color: #469849 !important;
+}
+
+.downvote-button.article-vote:hover {
+  background-color: #ca1d11 !important;
+}
+
+.heart.article-vote {
+  fill: #8113d5;
+}
+
+/* ============================================================
+   Comment-Vote - Vote Button - upvote/downvote - hover states
+============================================================ */
+
+.upvote-button.comment-vote {
+  background-color: #8113d52b;
+  border: none;
+}
+
+.downvote-button.comment-vote {
+  background-color: #8113d52b;
+  border: none;
+}
+
+.upvote-button.comment-vote:hover {
+  background-color: #469849 !important;
+}
+
+.downvote-button.comment-vote:hover {
+  background-color: #ca1d11 !important;
+}
+
+.heart.comment-vote {
+  fill: #8113d52b;
+  width: 2rem;
+  height: 2rem;
 }
