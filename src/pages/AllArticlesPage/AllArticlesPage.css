@@ -1,6 +1,14 @@
 /* ============================================================
    AllArticlesPage
 ============================================================ */
+
+.all-articles-page-heading {
+  font-size: 3rem;
+  text-decoration: underline;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+}
+
 .articles-page {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -9,10 +17,4 @@
   justify-items: center;
   max-width: 1200px;
   box-shadow: none;
-}
-
-.all-articles-page-heading {
-  font-size: 3rem;
-  text-decoration: underline;
-  margin: 0.25rem;
 }

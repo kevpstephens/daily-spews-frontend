@@ -1,0 +1,53 @@
+/* ============================================================
+   TopicArticlesPage
+============================================================ */
+
+.topic-articles-page-heading {
+  font-size: 3rem;
+  text-decoration: underline;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.topic-description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.topic-articles-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin: 0 auto;
+  justify-items: center;
+  max-width: 1200px;
+  box-shadow: none;
+}
+
+.loading-topics-articles-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.loading-topics-articles-spinner {
+  width: 80px;
+  height: auto;
+  animation: shake 0.5s infinite ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.loading-topics-articles-text {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
+  color: #0d0024;
+}
+
+.loading-topics-articles-text {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
+  color: #0d0024;
+}

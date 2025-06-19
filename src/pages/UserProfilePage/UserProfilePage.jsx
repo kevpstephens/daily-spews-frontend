@@ -23,9 +23,9 @@ export default function UserProfilePage() {
       {users.map((user) => {
         if (username === user.username) {
           return (
-            <>
+            <div key={user.username}>
               <h1 className="user-username">@{user.username}</h1>
-              <div className="user-profile-container" key={user.username}>
+              <div className="user-profile-container">
                 <img
                   className="user-avatar-image"
                   src={user.avatar_url}
@@ -48,11 +48,11 @@ export default function UserProfilePage() {
                   </li>
                 </ul>
                 <LogoutButton
-                  className="user-profile-logout-button"
+                  id="user-profile-logout-button"
                   redirectTo="/login"
                 />
               </div>
-            </>
+            </div>
           );
         } else {
           return null;

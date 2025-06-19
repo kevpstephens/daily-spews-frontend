@@ -59,9 +59,13 @@ export const getCommentByArticleId = async (article_id, limit, p) => {
 
 //! GET /api/articles?topic=:topic_slug
 // Shortcut function to fetch articles filtered by a specific topic
-export const getArticlesByTopic = async (topic_slug) => {
-  const res = await api.get(`/articles?topic=${topic_slug}`);
-  return res.data;
+export const getArticlesByTopic = async (topic_slug, limit, p) => {
+  const params = { topic: topic_slug };
+  if (limit) params.limit = limit;
+  if (p) params.p = p;
+
+  const res = await api.get("/articles", { params });
+  return res.data; // includes articles + total_count
 };
 
 //! GET /api/users
