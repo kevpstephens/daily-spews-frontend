@@ -1,6 +1,7 @@
 import "./ArticleCard.css";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/formatDate";
+import { MessageSquareMore, Heart } from "lucide-react";
 
 export default function ArticleCard({ article }) {
   return (
@@ -28,15 +29,20 @@ export default function ArticleCard({ article }) {
             <p>Posted: {formatDate(article.created_at)}</p>
           </article>
         </Link>
-        <p className="article-card-likes-and-comments">
+        <div className="article-card-likes-and-comments-container">
           <Link
+            className="article-card-likes-link"
             to={`/articles/${article.article_id}#comments`}
-            className="likes-link"
           >
-            💬 {article.comment_count}
-          </Link>{" "}
-          | 💜 {article.votes}
-        </p>
+            <div className="article-card-likes-and-comments-container-item">
+              <MessageSquareMore className="article-card-message-square-icon" />
+              {article.comment_count}
+            </div>
+          </Link>
+          <div className="article-card-likes-and-comments-container-item">
+            <Heart className="article-card-heart-icon" /> {article.votes}
+          </div>
+        </div>
       </div>
     </>
   );
