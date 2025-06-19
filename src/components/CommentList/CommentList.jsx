@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import CommentCard from "../CommentCard/CommentCard";
 import { getCommentByArticleId } from "../../api/api";
 import NoCommetsScreen from "../NoCommentsScreen/NoCommentsScreen";
+import { useLocation } from "react-router-dom";
 
 export default function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -59,6 +60,17 @@ export default function CommentList({ article_id }) {
       if (currentLoader) observer.unobserve(currentLoader);
     };
   }, [comments, totalCount]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#comments") {
+      const el = document.getElementById("comments");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <>
