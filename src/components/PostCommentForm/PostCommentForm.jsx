@@ -4,7 +4,7 @@ import { postComment } from "../../api/api";
 import { useUser } from "../../context";
 import { Link } from "react-router-dom";
 
-export default function PostCommentForm({ article_id, onNewComment }) {
+export default function PostCommentForm({ article_id, setComments }) {
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useUser();
@@ -19,11 +19,17 @@ export default function PostCommentForm({ article_id, onNewComment }) {
         username: user.username,
         body: comment,
       });
-      if (onNewComment) {
-        onNewComment((prevComments = []) => {
-          return [newComment, ...prevComments];
-        });
-      }
+
+      const now = new Date().toISOString();
+      const completeComment = {
+        comment_id: newComment.comment_id || Math.random(),
+        body: comment,
+        created_at: newComment.created_at || now,
+        votes: 0,
+        author: user.username,
+      };
+
+      setComments((prevComments) => [completeComment, ...prevComments]);
       setComment("");
     } catch (err) {
       console.error("Failed to post comment", err);

@@ -53,11 +53,13 @@
 .upvote-button.comment-vote {
   background-color: #8113d52b;
   border: none;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .downvote-button.comment-vote {
   background-color: #8113d52b;
   border: none;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .upvote-button.comment-vote:hover {
