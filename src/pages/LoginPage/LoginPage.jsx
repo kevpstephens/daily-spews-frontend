@@ -35,7 +35,7 @@ export default function LoginPage() {
             to the right place! Please create an account to access the full
             suite of features.
           </p>
-          <button className="sign-up-button">Sign-up</button>
+          <button className="sign-up-button">Sign-Up</button>
           <p>
             Wait...you already have an account?! What are you waiting for?!!?!?
           </p>
