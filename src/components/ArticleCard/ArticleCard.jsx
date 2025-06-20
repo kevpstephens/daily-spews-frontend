@@ -15,7 +15,7 @@ export default function ArticleCard({ article }) {
               className="article-card-author-and-topic-link"
               to={`/users/${article.author}`}
             >
-              {article.author}
+              @{article.author}
             </Link>{" "}
             | Topic:{" "}
             <Link

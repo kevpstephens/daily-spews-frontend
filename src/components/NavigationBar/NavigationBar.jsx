@@ -22,11 +22,7 @@ export default function NavigationBar() {
         <Link
           id="user-profile-button"
           className="nav-button user-profile-nav"
-          to={
-            user && user.username !== "guest_user"
-              ? `/users/${user.username}`
-              : "/login"
-          }
+          to={user && user.username ? `/users/${user.username}` : "/login"}
         >
           {user && user.avatar_url ? (
             <div className="nav-avatar-wrapper">

@@ -122,6 +122,25 @@ export const logoutUser = async () => {
   return res.data;
 };
 
+//! POST /api/auth/register
+// Registers a new user with username, name, email, password, and optional avatar_url
+export const registerUser = async ({
+  username,
+  name,
+  email,
+  password,
+  avatar_url,
+}) => {
+  const res = await api.post("/auth/register", {
+    username,
+    name,
+    email,
+    password,
+    avatar_url,
+  });
+  return res.data;
+};
+
 //! DELETE /api/comments/:comment_id
 // Delete a comment by its unique ID
 export const deleteCommentById = async (comment_id) => {

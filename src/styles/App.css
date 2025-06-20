@@ -1,16 +1,32 @@
 /* ============================================================
-   Colour Theme + Font
+   !COLOUR THEME
 ============================================================ */
+/*? Primary Colours */
 /* orange - b95d28 */
 /* dark purple - 8113d5 */
 
+/*? Links */
 /* dark orange for links: #ab3f00; */
-/* light purple - 9785d3 */
+
+/*? Buttons */
+/* dark purple [buttons] - #8113d5 */
+
+/*? Inputs */
+/* dark purple [sign-up, login, comment] - #1f0054 */
+
+/*? Other Colours */
+/* light purple [article-page, login-page, signup-page] - #8a72d77e */
+/* light purple [article-card - inside article-card-container] - #9382ca */
+/* very light purple [comment-card] - #9785d3 */
+
+/* ============================================================
+   !Font
+============================================================ */
 
 /* font-family: "Gaegu", sans-serif; */
 
 /* ============================================================
-   BASE STYLES
+   !BASE STYLES
 ============================================================ */
 @import "./base/containers.css";
 @import "./base/fonts.css";
@@ -19,12 +35,12 @@
 @import "./base/typography.css";
 
 /* ============================================================
-   LAYOUT STYLES
+   !LAYOUT STYLES
 ============================================================ */
 @import "./layout/media-queries.css";
 
 /* ============================================================
-COMPONENT STYLES
+   !COMPONENT STYLES
 ============================================================ */
 @import "./components/SortAndTopicBarContainer.css";
 @import "./components/header.css";
@@ -32,6 +48,6 @@ COMPONENT STYLES
 @import "./components/footer.css";
 
 /* ============================================================
-   UTILITIES
+   !UTILITIES
 ============================================================ */
 @import "./utils/animations.css";
