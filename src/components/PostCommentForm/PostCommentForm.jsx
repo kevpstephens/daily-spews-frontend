@@ -19,14 +19,11 @@ export default function PostCommentForm({ article_id, onNewComment }) {
         username: user.username,
         body: comment,
       });
-
       if (onNewComment) {
-        // Ensure callback always returns a new array
         onNewComment((prevComments = []) => {
           return [newComment, ...prevComments];
         });
       }
-
       setComment("");
     } catch (err) {
       console.error("Failed to post comment", err);

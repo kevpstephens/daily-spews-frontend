@@ -6,7 +6,7 @@ export default function NoCommetsScreen() {
       <section className="no-comments-container">
         <img
           id="mascot-shrugging-image"
-          src="../src/assets/mascot-shrugging.png"
+          src="../src/assets/mascot/mascot-shrugging.png"
           alt="mascot-shrugging-image"
         />
         <article className="no-comments-message">
