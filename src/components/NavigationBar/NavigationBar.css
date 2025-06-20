@@ -1,6 +1,6 @@
-/* ============================================================
-   Navigation Bar Buttons
-============================================================ */
+/* !============================================================
+!     Navigation Bar Buttons
+!============================================================ */
 
 .navigation-bar-container {
   display: flex;
@@ -49,9 +49,9 @@ a.nav-button:hover {
   color: white;
 }
 
-/* ============================================================
-   Navigation Bar Avatar
-============================================================ */
+/* !============================================================
+!     Navigation Bar Avatar
+!============================================================ */
 
 .nav-avatar-wrapper {
   position: relative;
@@ -111,4 +111,7 @@ a.nav-button:hover {
   width: 5rem !important;
   height: 1rem !important;
   color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: "Gaegu", sans-serif;
 }

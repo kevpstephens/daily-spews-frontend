@@ -44,7 +44,7 @@
 }
 
 .article-card:hover {
-  background-color: #8c75d8;
+
   transform: scale(1.05);
   border: 2px solid #0d0024;
 }

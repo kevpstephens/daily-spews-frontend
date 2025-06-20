@@ -2,14 +2,14 @@ import "./LoginPage.css";
 import { useState } from "react";
 import { loginUser } from "../../api/api";
 import { useUser } from "../../context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const navigate = useNavigate();
 
   const handleProdLogin = async (event) => {
@@ -26,7 +26,7 @@ export default function LoginPage() {
 
   return (
     <>
-      {import.meta.env.DEV && <DevLoginForm />}
+      {user && user.username === "admin" && <DevLoginForm />}
       <div className="login-page-container">
         <h2>Login to Daily Spews</h2>
         <form onSubmit={handleProdLogin} className="login-form">
@@ -35,7 +35,9 @@ export default function LoginPage() {
             to the right place! Please create an account to access the full
             suite of features.
           </p>
-          <button className="sign-up-button">Sign-Up</button>
+          <Link to="/signup" className="sign-up-button">
+            Sign-Up
+          </Link>
           <p>
             Wait...you already have an account?! What are you waiting for?!!?!?
           </p>
@@ -53,25 +55,27 @@ export default function LoginPage() {
           <label htmlFor="password">
             <strong>Password:</strong>
           </label>
-          <div className="password-input-wrapper">
+          <div className="login-page-password-input-wrapper">
             <input
-              id="password-input"
-              type={showPassword ? "text" : "password"}
+              id="login-page-password-input"
               name="password"
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
             />
             <button
-              id="show-password-toggle"
+              id="login-page-show-password-toggle"
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              aria-label="Toggle password visibility"
+              aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? "🙈" : "👁️"}
             </button>
           </div>
-          <button type="submit">Login</button>
+          <button className="login-form-button" type="submit">
+            Login
+          </button>
         </form>
       </div>
     </>

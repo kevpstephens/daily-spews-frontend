@@ -1,5 +1,3 @@
-//? URL: daily-spews.com/users/:username
-
 import "./UserProfilePage.css";
 import { useParams } from "react-router-dom";
 import { getUsers } from "../../api/api";
@@ -7,11 +5,13 @@ import useFetch from "../../hooks/useFetch";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
+import { useUser } from "../../context"; // Import context to get current user
 dayjs.extend(advancedFormat);
 
 export default function UserProfilePage() {
   const { data } = useFetch(getUsers);
   const { username } = useParams();
+  const { user } = useUser(); // Get current signed-in user
 
   let users = [];
   if (data && data.users) {
@@ -20,37 +20,40 @@ export default function UserProfilePage() {
 
   return (
     <>
-      {users.map((user) => {
-        if (username === user.username) {
+      {users.map((profileUser) => {
+        if (username === profileUser.username) {
           return (
-            <div key={user.username}>
-              <h1 className="user-username">@{user.username}</h1>
+            <div key={profileUser.username}>
+              <h1 className="user-username">@{profileUser.username}</h1>
               <div className="user-profile-container">
                 <img
                   className="user-avatar-image"
-                  src={user.avatar_url}
+                  src={profileUser.avatar_url}
                   alt="user-avatar-image"
                 />
 
                 <ul className="user-info-list">
                   <li>
-                    <strong>Name:</strong> {user.name}
+                    <strong>Name:</strong> {profileUser.name}
                   </li>
                   <li>
-                    <strong>Username:</strong> {user.username}
+                    <strong>Username:</strong> {profileUser.username}
                   </li>
                   <li>
-                    <strong>Email:</strong> {user.email}
+                    <strong>Email:</strong> {profileUser.email}
                   </li>
                   <li>
                     <strong>Joined:</strong>{" "}
-                    {dayjs(user.created_at).format("MMMM Do, YYYY")}
+                    {dayjs(profileUser.created_at).format("MMMM Do, YYYY")}
                   </li>
                 </ul>
-                <LogoutButton
-                  id="user-profile-logout-button"
-                  redirectTo="/login"
-                />
+                {/* Show LogoutButton only if signed-in user is viewing own profile */}
+                {user?.username === profileUser.username && (
+                  <LogoutButton
+                    id="user-profile-logout-button"
+                    redirectTo="/login"
+                  />
+                )}
               </div>
             </div>
           );

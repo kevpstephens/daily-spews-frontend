@@ -1,0 +1,151 @@
+/* !============================================================
+!     SignupPage
+!============================================================ */
+
+.signup-page-container {
+  max-width: 25rem;
+  margin: 3rem auto;
+  background-color: #8a72d77e;
+  border: 2px solid #0d0024;
+  box-shadow: 0 6px 15px rgba(86, 61, 154, 0.2);
+}
+
+.signup-page-container h2 {
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signup-form label {
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0rem !important;
+  margin-top: 0.75rem;
+}
+
+.signup-form input {
+  background-color: #1f0054;
+  font-size: 1rem !important;
+  transition: border-color 0.3s ease;
+}
+
+.signup-form input:focus {
+  border-color: #e196ff;
+  outline: none;
+}
+
+.signup-form button[type="submit"] {
+  align-self: center;
+  margin: 2rem 0rem 1rem 0rem;
+  color: white;
+  padding: 0.75rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 7rem;
+}
+
+.signup-form button[type="submit"]:hover:not(:disabled) {
+  background-color: #b95d28;
+}
+
+.signup-form button[type="submit"]:disabled {
+  background-color: #c1a7d1;
+  color: rgb(211, 211, 211);
+  cursor: not-allowed;
+}
+
+.signup-page-container p {
+  text-align: center;
+  color: #8113d5;
+}
+
+.signup-page-container p a {
+  color: #1f0054;
+  font-weight: bold;
+}
+
+.signup-page-container p a:hover {
+  text-decoration: underline;
+  color: #ab3f00;
+}
+
+/* !============================================================
+!     Signup Page Form Error
+!============================================================ */
+
+.signup-page-form-error {
+  margin: 0rem !important;
+  color: #b50000 !important;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* !============================================================
+!     Password Input + Show Password Toggle
+!============================================================ */
+
+.signup-page-password-input-wrapper {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  padding: 0 !important;
+}
+
+#signup-page-password-input {
+  padding-right: 2.25rem;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  width: 100%;
+}
+
+#signup-page-show-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #000;
+  padding: 0;
+  width: 3rem;
+}
+
+#signup-page-show-password-toggle:hover {
+  color: #8113d5;
+}
+
+#signup-page-confirm-password-input {
+  padding-right: 2.25rem;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  width: 100%;
+}
+
+#signup-page-show-confirm-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #000;
+  padding: 0;
+  width: 3rem;
+}
+
+#signup-page-show-confirm-password-toggle:hover {
+  color: #8113d5;
+}

@@ -8,6 +8,7 @@ import ErrorPageNotFound from "./pages/ErrorPageNotFound/ErrorPageNotFound.jsx";
 import HomePage from "./HomePage";
 import Layout from "./Layout";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import SingleArticlePage from "./pages/SingleArticlePage/SingleArticlePage.jsx";
 import TestPage from "./pages/TestPage";
 import TopicsPage from "./pages/TopicsPage/TopicsPage.jsx";
@@ -51,6 +52,7 @@ function AppRouter() {
             <Route path="/test" element={<TestPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Route>
         </Routes>
       </div>
