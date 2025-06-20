@@ -1,13 +1,57 @@
 /* ============================================================
+    PostCommentForm Overlay
+============================================================ */
+.comment-form-overlay {
+  /* opacity: 1 !important; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(54, 0, 148, 0.783);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.post-comment-form-wrapper:hover .comment-form-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.comment-form-overlay-login-button,
+.comment-form-overlay-signup-button {
+  background-color: #8113d5;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid #0d0024;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.comment-form-overlay-login-button:hover,
+.comment-form-overlay-signup-button:hover {
+  background-color: #b95d28;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ============================================================
     PostCommentForm
 ============================================================ */
 .post-comment-form-wrapper {
   position: relative;
   width: 100%;
   margin-bottom: 1.5rem;
-
-  /* background-color: #9785d34f; */
-  /* box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448); */
 }
 
 #comment {
@@ -22,6 +66,7 @@
   border: 2px solid #000;
   resize: vertical;
   box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
+  min-height: 6rem;
 }
 
 .comment-submit-button {
@@ -42,11 +87,16 @@
   background-color: #b95d28;
 }
 
-.post-comment-form textarea {
-  resize: vertical;
-  padding: 0.75rem;
-  font-size: 1rem;
+@media (max-width: 480px) {
+  .comment-form-overlay {
+    flex-direction: column;
+  }
+}
+
+.comment-submit-button:disabled,
+.comment-submit-button:disabled:hover {
+  background-color: #878787;
+  color: black;
+  cursor: not-allowed;
   border: 2px solid #000000;
-  font-family: inherit;
-  text-align: left;
 }
