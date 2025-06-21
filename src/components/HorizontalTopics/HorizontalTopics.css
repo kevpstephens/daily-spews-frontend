@@ -1,27 +1,27 @@
-/* ============================================================
-    Horizontal Topics  Scroll
-============================================================ */
+/* !============================================================
+!     Horizontal Topics  Scroll
+!============================================================ */
 .horizontal-topics-wrapper {
-  width: 100vw; /* Use full viewport width */
-  margin-left: calc(-50vw + 50%); /* Center it inside any parent container */
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%);
+  padding-left: 0 !important;
+  overflow-x: hidden;
 }
 
-.horizontal-topics-title {
+.horizontal-topics-wrapper h2 {
   font-family: "Gaegu", sans-serif;
-  margin-top: 2rem;
-  font-size: 35px;
-  /* text-decoration: underline; */
+  margin-top: 2.25rem;
+  margin-bottom: 0rem;
+  font-size: 2.1875rem;
+  font-weight: 400;
 }
 
 .horizontal-scroll-container {
   display: flex;
   flex-direction: row;
-  gap: 0rem;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 1rem 0rem 1rem 0rem;
-  box-shadow: none;
-  /* scroll-snap-type: x mandatory; */
+  scroll-padding-left: 0rem !important;
 }
 
 .horizontal-scroll-container::-webkit-scrollbar {
@@ -30,29 +30,28 @@
 
 .horizontal-topic-card {
   scroll-snap-align: start;
-  min-width: 250px;
+  min-width: 15.625rem;
   flex-shrink: 0;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border-radius: 30px;
+  border-radius: 1.875rem;
   box-shadow: none;
   position: relative;
   z-index: 99;
   transition: transform 0.3s ease-in-out, z-index 0.3s;
+  padding-top: 0rem !important;
 }
 
 .horizontal-topic-card:hover {
   transform: scale(1.2);
   z-index: 99;
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
 }
 
 .horizontal-topic-card img {
   width: 100%;
-  width: 300px;
-  height: 225px;
+  min-width: 12rem;
+  height: 10rem;
   object-fit: cover;
-  border-radius: 30px;
-  /* padding: 0.25rem; */
+  border-radius: 1.875rem;
   margin: 0.25rem;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -60,12 +59,6 @@
 
 .horizontal-topic-card:hover img {
   box-shadow: 0 0 20px rgba(126, 2, 234, 0.6);
-}
-
-.horizontal-topic-card:first-child {
-  margin: 0rem;
-  margin-right: 0rem;
-  margin-left: 1rem;
 }
 
 .horizontal-topic-card-link {
@@ -76,4 +69,29 @@
   text-decoration: underline;
   color: #5800e6;
   transition: color 0.3s ease-in-out;
+}
+
+/* !============================================================
+!     MEDIA QUERIES: MOBILE OPTIMIZATION
+!============================================================ */
+@media (max-width: 600px) {
+  .horizontal-topics-wrapper h2 {
+    font-size: 1.75rem;
+  }
+
+  .horizontal-scroll-container {
+    padding: 0 0 0.5rem 0;
+    gap: 0;
+  }
+
+  .horizontal-topic-card {
+    min-width: 12.5rem;
+  }
+}
+
+@media (hover: none) {
+  .horizontal-topic-card:active img {
+    box-shadow: 0 0 10px rgba(126, 2, 234, 0.3);
+    transform: none;
+  }
 }

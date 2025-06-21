@@ -20,9 +20,9 @@ export default function UserProfilePage() {
 
   return (
     <>
-      {users.map((profileUser) => {
-        if (username === profileUser.username) {
-          return (
+      <div className="container">
+        {users.map((profileUser) => {
+          return username === profileUser.username ? (
             <div key={profileUser.username}>
               <h1 className="user-username">@{profileUser.username}</h1>
               <div className="user-profile-container">
@@ -56,11 +56,9 @@ export default function UserProfilePage() {
                 )}
               </div>
             </div>
-          );
-        } else {
-          return null;
-        }
-      })}
+          ) : null;
+        })}
+      </div>
     </>
   );
 }

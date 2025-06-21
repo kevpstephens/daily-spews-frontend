@@ -70,22 +70,27 @@ a.nav-button:hover {
 
 .nav-avatar-dropdown {
   /* opacity: 1 !important; */
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #9d4cdbe1;
-  padding: 0.75rem !important;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  position: absolute;
+  top: 107.5%;
+  transform: none;
+  background-color: #9d4cdbe1;
+  padding: 0.5rem 0.75rem;
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.15s ease-in-out;
   color: white !important;
   font-family: "Gaegu", sans-serif;
   pointer-events: none;
+  width: max-content;
+  max-width: 90vw;
+  box-sizing: border-box;
+  white-space: nowrap;
+  border-radius: 30px;
+  word-break: break-word;
 }
 
 .nav-avatar-wrapper:hover .nav-avatar-dropdown {
@@ -108,10 +113,102 @@ a.nav-button:hover {
 }
 
 #nav-logout-button {
-  width: 5rem !important;
-  height: 1rem !important;
+  width: 5rem;
+  height: 1rem;
   color: white;
-  font-weight: bold;
   font-size: 1rem;
   font-family: "Gaegu", sans-serif;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media screen and (max-width: 600px) {
+  .daily-spews-logo.navigation-bar-container {
+    width: 3rem;
+    height: 3rem;
+    border: solid 1px #0d0024;
+    padding: 0rem !important;
+    margin: 0rem !important;
+    border-radius: 100%;
+  }
+
+  .navigation-bar-container {
+    padding: 0rem;
+    margin: 0rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0.25rem !important;
+    margin-right: 0.25rem !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .nav-button {
+    color: white;
+    transition: background-color 0.2s ease;
+    height: 2.5rem;
+  }
+
+  .nav-button:hover {
+    background-color: #b95d28;
+  }
+
+  #user-profile-button {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  #home-button {
+    display: none;
+  }
+
+  a.nav-button:hover {
+    background-color: #b95d28;
+    color: white;
+  }
+
+  .nav-avatar-wrapper {
+    padding: 0rem !important;
+    margin: 0rem !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-avatar-icon {
+    width: 3rem;
+    height: 3rem;
+    border: solid 1px #0d0024;
+    padding: 0rem !important;
+    margin: 0rem !important;
+    border-radius: 100%;
+  }
+
+  .nav-avatar-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 107.5%;
+    right: 0;
+    transform: none;
+    background-color: #9d4cdbe1;
+    padding: 0.5rem 0.75rem;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+    color: white !important;
+    font-family: "Gaegu", sans-serif;
+    pointer-events: none;
+    width: max-content;
+    max-width: 90vw;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-radius: 30px;
+    word-break: break-word;
+  }
 }
