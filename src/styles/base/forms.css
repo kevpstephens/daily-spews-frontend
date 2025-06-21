@@ -1,52 +1,71 @@
-/* ============================================================
-   FORMS + INPUTS
-============================================================ */
+/* !============================================================
+!     FORMS + INPUTS
+!============================================================ */
 .app-content input,
 .app-content textarea,
 .app-content select {
   font: inherit;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
   padding: 0.5rem;
-  margin-top: 0rem;
-  border: 2px solid #000000;
+  margin-top: 0;
+  border: 2px solid black;
   border-radius: 10px;
   width: 100%;
-  background-color: #8113d5;
+  background-color: var(--color-primary);
   color: white;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .app-content form input {
-  font-size: 1rem;
-  background-color: #1f0054;
+  background-color: var(--color-form-input);
 }
 
-.app-content form input:focus {
-  border-color: #e196ff;
-  outline: none;
+.app-content form input:focus,
+.app-content textarea:focus,
+.app-content select:focus {
+  border-color: var(--color-form-input-focus);
+  outline: 3px solid var(--color-form-input-focus);
+  outline-offset: 2px;
 }
 
+/* !============================================================
+!     BUTTONS
+!============================================================ */
 .app-content button {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  background-color: #8113d5;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  background-color: var(--color-primary);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   color: white;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
   padding: 0.75rem;
-  border: 2px solid #000000;
+  border: 2px solid black;
   border-radius: 10px;
-  font-size: 1rem;
-  font-weight: bold;
 }
 
-.app-content button:hover {
-  background-color: #b95d28;
-  cursor: pointer;
+.app-content button:hover,
+.app-content button:focus {
+  background-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(185, 93, 40, 0.5);
+}
+
+/* !============================================================
+!     MEDIA QUERIES
+!============================================================ */
+@media (max-width: 600px) {
+  .app-content input,
+  .app-content textarea,
+  .app-content select,
+  .app-content button {
+    font-size: calc(var(--font-size-base) * 0.9);
+    padding: 0.5rem;
+  }
 }

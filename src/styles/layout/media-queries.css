@@ -1,6 +1,6 @@
-/* ============================================================
-    Mobile-Friendly Settings
-============================================================ */
+/* !============================================================
+!     Mobile-Friendly Settings
+!============================================================ */
 
 @media screen and (max-width: 600px) {
   .header-container {
@@ -85,12 +85,8 @@
     margin: 1rem 0;
   }
 
-  .comment-section {
-    margin-top: 3rem;
-  }
-
-  .comment-card {
-    padding: 1rem;
+  #comment {
+    width: 100% !important;
   }
 
   .comment-votes {
@@ -105,14 +101,4 @@
   .loading-message {
     font-size: 1.25rem;
   }
-
-  body,
-  #root {
-    padding: 0rem;
-    margin: 0;
-  }
-}
-
-* {
-  transition: all 0.25s ease-in-out;
 }

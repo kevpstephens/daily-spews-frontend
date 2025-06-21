@@ -4,6 +4,7 @@ import { loginUser } from "../../api/api";
 import { useUser } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
 import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
+import { Eye, EyeClosed } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -70,7 +71,11 @@ export default function LoginPage() {
               onClick={() => setShowPassword((prev) => !prev)}
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              {showPassword ? "🙈" : "👁️"}
+              {showPassword ? (
+                <Eye className="login-page-eye-icon" />
+              ) : (
+                <EyeClosed className="login-page-eye-icon" />
+              )}
             </button>
           </div>
           <button className="login-form-button" type="submit">

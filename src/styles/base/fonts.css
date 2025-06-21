@@ -1,18 +1,17 @@
-/* ============================================================
-   FONT IMPORTS
-
-   The fonts are imported in the index.css file.
-   They are used in the project for typography.
-============================================================ */
+/* !============================================================
+!     FONT IMPORTS
+!     - The fonts are imported in the App.css file.
+!     - They are used in the project for typography.
+!============================================================ */
 
 /* Bungee Outline: A decorative outline font — good for headings */
-@import url("https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap"); */
 
 /* Monoton: Futuristic display font — limited readability, use sparingly */
-@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap"); */
 
 /* Honk: Whimsical comic-style font — very stylized, best for accents */
-@import url("https://fonts.googleapis.com/css2?family=Honk&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Honk&display=swap"); */
 
 /* Gaegu: A handwritten-style font — good for casual body text or subheadings */
-@import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:ital,wght@0,400;0,700;1,400&display=swap");
