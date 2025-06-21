@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { registerUser } from "../../api/api";
 import { useUser } from "../../context";
 import { useNavigate, Link } from "react-router-dom";
+import { Eye, EyeClosed } from "lucide-react";
 
 export default function SignupPage() {
   const [username, setUsername] = useState("");
@@ -179,7 +180,11 @@ export default function SignupPage() {
             onClick={() => setShowPassword((prev) => !prev)}
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
-            {showPassword ? "🙈" : "👁️"}
+            {showPassword ? (
+              <Eye className="signup-page-eye-icon" />
+            ) : (
+              <EyeClosed className="signup-page-eye-icon" />
+            )}
           </button>
         </div>
 
@@ -209,7 +214,11 @@ export default function SignupPage() {
                 : "Show confirm password"
             }
           >
-            {showConfirmPassword ? "🙈" : "👁️"}
+            {showConfirmPassword ? (
+              <Eye className="signup-page-eye-icon" />
+            ) : (
+              <EyeClosed className="signup-page-eye-icon" />
+            )}
           </button>
         </div>
 

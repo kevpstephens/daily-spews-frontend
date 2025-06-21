@@ -1,16 +1,30 @@
+import "normalize.css";
 import "./styles/global.css";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { StrictMode } from "react";
 import AppRouter from "./Router.jsx";
+import { BrowserRouter } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
 import { UserProvider } from "./context";
+
+const isDev = import.meta.env.DEV;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <StrictMode>
+    {isDev ? (
+      <StrictMode>
+        <UserProvider>
+          <ErrorBoundary>
+            <AppRouter />
+          </ErrorBoundary>
+        </UserProvider>
+      </StrictMode>
+    ) : (
       <UserProvider>
-        <AppRouter />
+        <ErrorBoundary>
+          <AppRouter />
+        </ErrorBoundary>
       </UserProvider>
-    </StrictMode>
+    )}
   </BrowserRouter>
 );

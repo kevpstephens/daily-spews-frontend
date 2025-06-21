@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import DevConsole from "./components/DevConsole/DevConsole.jsx";
 
+const isDev = import.meta.env.DEV;
+
 const Layout = () => {
   return (
     <div className="layout-wrapper">
@@ -11,7 +13,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
-      {import.meta.env.DEV && <DevConsole />}
+      {isDev && <DevConsole />}
     </div>
   );
 };

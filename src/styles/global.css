@@ -8,63 +8,143 @@
 •	This specifically styles the React mounting point, i.e., the wrapper for everything your React app renders.
 •	You often use this to set max-width, centering, or layout rules for your entire app. */
 
-/* ============================================================
-   Global CSS Variables and Defaults
-   - Define global fonts, theme colors, and base styling.
-============================================================ */
+/* !============================================================
+!     Global CSS Variables and Defaults
+!     - Define global fonts, theme colors, base styling, and responsive font sizes.
+!============================================================ */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  line-height: 1.7;
+  /* Responsive base font size using clamp for fluid scaling */
+  --font-size-base: clamp(1rem, 1vw + 0.5rem, 1.125rem);
 
-  color: #0d0024;
-  background-color: #999fc9;
+  /* Colors */
+  --color-text-heading: #0d0024;
+  --color-text-body: #0d0024;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
+  --color-background: #999fc9;
   --color-primary: #8113d5;
   --color-accent: #b95d28;
 
+  --color-form-input: #1f0054;
+  --color-form-input-focus: #e196ff;
+
+  /* Font families */
   --font-heading: "Gaegu", sans-serif;
-  --font-body: "Verdana", sans-serif;
+  --font-body: "Verdana", Geneva, Tahoma, sans-serif;
 }
 
-/* ============================================================
-   Box Sizing Reset
-   - Ensure consistent box sizing across all elements.
-============================================================ */
+/* !============================================================
+!     Font smoothing and rendering for better legibility
+!     - Apply to html element for consistent global effect
+!============================================================ */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+/* !============================================================
+!     Box Sizing Reset
+!     - Ensure consistent box sizing across all elements.
+!============================================================ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* ============================================================
-   Body Base Styling
-   - Apply the main body font and default text color.
-============================================================ */
+/* !============================================================
+!     Body Base Styling
+!     - Apply main body font, default text color, and responsive font size.
+!============================================================ */
 body {
-  font-family: var(--font-body, Verdana, Geneva, Tahoma, sans-serif);
-  color: #0d0024;
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-body);
+  font-size: var(--font-size-base);
+  background-color: var(--color-background);
 }
 
-/* ============================================================
-   Layout Wrapper
-   - Provides full-height flex container for header, main, footer.
-============================================================ */
+/* !============================================================
+!     Image and Media Elements
+!     - Make images and media responsive and prevent overflow.
+!============================================================ */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* !============================================================
+!     Layout Wrapper
+!     - Provides full-height flex container for header, main, footer.
+!============================================================ */
 .layout-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ============================================================
-   Layout Main Content
-   - Allows main content area to expand and push footer to bottom.
-============================================================ */
+/* !============================================================
+!     Layout Main Content
+!     - Allows main content area to expand and push footer to bottom.
+!============================================================ */
 .layout-main {
   flex-grow: 1;
 }
+
+/* !============================================================
+!     Accessibility Helpers
+!     - Screen reader only text, focus outlines, etc.
+!============================================================ */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* !============================================================
+!     Utility Classes (optional)
+!============================================================ */
+.hidden {
+  display: none !important;
+}
+
+/* !============================================================
+!     Responsive Typography Example
+!     - Use media queries for fine control on smaller screens.
+!============================================================ */
+@media (max-width: 600px) {
+  :root {
+    --font-size-base: clamp(0.875rem, 2vw + 0.2rem, 1rem);
+  }
+  body,
+  #root {
+    padding: 0;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* !============================================================
+!     Transition for smooth animations
+!============================================================ */
+/* * {
+  transition: all 0.25s ease-in-out;
+} */

@@ -1,0 +1,32 @@
+/* !============================================================
+!     Error Boundary
+!============================================================ */
+
+.error-boundary-container {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff0f0;
+  border: 2px solid #cc0000;
+  margin: 2rem;
+}
+
+.error-boundary-title {
+  color: #cc0000;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-boundary-message {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.error-boundary-details {
+  color: #cc0000;
+  background-color: #ffe6e6;
+  padding: 1rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 1rem;
+}
