@@ -1,7 +1,6 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useUser } from "./context";
 import { lazy, Suspense } from "react";
 
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
@@ -25,15 +24,15 @@ const TopicArticlesPage = lazy(() =>
   import("./pages/TopicArticlesPage/TopicArticlesPage.jsx")
 );
 
-function ProtectedRoute({ children }) {
-  const { user } = useUser();
+// function ProtectedRoute({ children }) {
+//   const { user } = useUser();
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+//   if (!user) {
+//     return <Navigate to="/login" replace />;
+//   }
 
-  return children;
-}
+//   return children;
+// }
 
 export default function AppRouter() {
   return (

@@ -6,7 +6,7 @@ export default function TopicCard({ topic, type }) {
     <>
       <Link to={`/topics/${topic.slug}`} className={`${type}topic-card-link`}>
         <article className={`${type}topic-card`}>
-          <h2 className="topic-card-heading">{`#${topic.slug}`}</h2>
+          <h2>{`#${topic.slug}`}</h2>
           <img
             src={topic.img_url || `src/assets/users/default-user-image.jpg`}
             alt="topic-image"

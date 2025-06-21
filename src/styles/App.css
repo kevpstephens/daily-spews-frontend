@@ -44,7 +44,7 @@
 /* !============================================================
 !     COMPONENT STYLES
 !============================================================ */
-@import "./components/SortAndTopicBarContainer.css";
+@import "../components/SortAndTopicBarContainer.css";
 @import "./components/header.css";
 @import "./components/toast.css";
 @import "./components/footer.css";

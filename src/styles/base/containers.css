@@ -14,8 +14,8 @@
 !     APP STRUCTURE WRAPPERS
 !     - These styles are used to style the structural elements of the project.
 !============================================================ */
+.app-content .content-block,
 .app-content section,
-.app-content div,
 .app-content article,
 .app-content form {
   max-width: 100%;
@@ -28,7 +28,7 @@
 
 @media (max-width: 600px) {
   .app-content section,
-  .app-content div,
+  .app-content .content-block,
   .app-content article,
   .app-content form {
     padding: 0.5rem;

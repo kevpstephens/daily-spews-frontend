@@ -15,8 +15,13 @@ export default function HorizontalTopics() {
 
   return (
     <>
-      <h2 className="horizontal-topics-title"> {`<- explore topics ->`} </h2>
       <section className="horizontal-topics-wrapper">
+        <h2>
+          {" "}
+          {`<- `}
+          <strong>explore topics</strong>
+          {` ->`}
+        </h2>
         {isLoading && <LoadingScreen item="topics" />}
         {error && <ErrorMessageCard error={error} />}
 

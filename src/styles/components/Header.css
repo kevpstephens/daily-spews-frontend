@@ -1,108 +1,69 @@
-/* ============================================================
-   H1 - Daily Spews Heading 
-============================================================ */
-.daily-spews-header-title {
+/* !============================================================
+!     H1 - Daily Spews Heading 
+!============================================================ */
+.header-container h1 {
   font-family: "Gaegu", sans-serif;
-  font-size: 4rem;
-  margin-top: -1.5rem;
-  margin-bottom: -1rem;
+  font-size: 3.5rem;
 }
 
-/* ============================================================
-   Header Container + Daily Spews Logo
-============================================================ */
+/* !============================================================
+!     Header Container + Daily Spews Logo
+!============================================================ */
 
 .header-container {
   background-color: #8c75d8;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 30px;
   border: 8px solid #0d0024;
   box-shadow: none;
   text-align: center;
-  margin: -0.75rem;
-  position: relative; /* Added */
+  margin: 0.25rem;
+  position: relative;
 }
 
 .daily-spews-logo {
-  /* display: flex; */
-  /* display: inline; */
-  width: 100px;
-  height: auto;
-  /* border-radius: 50%; */
-  top: 10rem;
-  left: 7.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-width: 0.125rem;
-  border: 10px dotted #0d0024;
-  border-radius: 3rem;
-}
-
-/* ============================================================
-   User Info + Avatar Top Right
-
-   This has since been replaced with the Navigation Bar Avatar feature.
-============================================================ */
-
-.user-info.top-right {
-  font-family: "Gaegu", sans-serif;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  top: 2rem;
-  right: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.user-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #0d0024;
-}
-
-.user-avatar:hover {
-  transform: scale(1.15);
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-  border: 2px solid #0d0024;
-}
-
-.user-name {
-  font-size: 1.25rem;
-  color: #0d0024;
-}
-
-.user-avatar-wrapper {
-  position: relative;
   display: inline-block;
-}
-
-.user-avatar-tooltip {
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  visibility: visible;
-  background-color: #8f42c9;
-  color: #fff;
-  display: flex;
-  z-index: 1000;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.15s ease-in-out;
+  height: 6.5rem;
+  width: 6.5rem;
+  border: 0.4rem dotted #0d0024;
+  border-radius: 2.8rem;
   margin-bottom: 0.5rem;
-  padding: 0.25rem !important;
-  height: 2rem;
 }
 
-.user-avatar-wrapper:hover .user-avatar-tooltip {
-  visibility: visible;
-  opacity: 1;
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media screen and (max-width: 600px) {
+  .header-container {
+    position: sticky;
+    top: 0rem;
+    z-index: 100;
+    background-color: #8c75d8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    border-radius: 0;
+    border-width: 3px;
+    align-self: center;
+    width: 100%;
+    margin: 0rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .header-container h1 {
+    display: none;
+  }
+
+  img.daily-spews-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 0rem;
+    margin: 0rem;
+  }
 }
