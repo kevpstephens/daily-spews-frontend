@@ -17,6 +17,22 @@
   margin-top: 1.5rem;
 }
 
+.topics-page-container h3 {
+  font-family: "Gaegu", sans-serif;
+  font-size: 2rem;
+  color: #0d0024;
+  transition: all 0.3s ease-in-out;
+}
+
+.topics-page-container h3:hover {
+  color: white;
+}
+
+.topics-page-container h3:hover {
+  text-decoration: underline;
+  text-decoration-color: #f77703 !important;
+}
+
 /* !============================================================
 !     Media Queries
 !============================================================ */

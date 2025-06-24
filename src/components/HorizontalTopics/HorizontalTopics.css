@@ -4,13 +4,21 @@
 .horizontal-topics-wrapper {
   width: 100vw !important;
   margin-left: calc(-50vw + 50%);
-  padding-left: 0 !important;
   overflow-x: hidden;
+  padding: 0rem !important;
 }
 
 .horizontal-topics-wrapper h2 {
   font-family: "Gaegu", sans-serif;
-  margin-top: 2.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 2.1875rem;
+  font-weight: 400;
+}
+
+.horizontal-topics-wrapper h3 {
+  font-family: "Gaegu", sans-serif;
+  margin-top: 1.25rem;
   margin-bottom: 0rem;
   font-size: 2.1875rem;
   font-weight: 400;
@@ -39,11 +47,12 @@
   z-index: 99;
   transition: transform 0.3s ease-in-out, z-index 0.3s;
   padding-top: 0rem !important;
+  padding-bottom: 2rem !important;
 }
 
 .horizontal-topic-card:hover {
   transform: scale(1.2);
-  z-index: 99;
+  z-index: 1000;
 }
 
 .horizontal-topic-card img {
@@ -53,30 +62,45 @@
   object-fit: cover;
   border-radius: 1.875rem;
   margin: 0.25rem;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0.2rem 0.2rem 0.2rem var(--color-form-input);
+  transition: all 0.3s ease-in-out;
 }
 
 .horizontal-topic-card:hover img {
-  box-shadow: 0 0 20px rgba(126, 2, 234, 0.6);
+  box-shadow: 0 0 10px var(--color-accent);
 }
 
 .horizontal-topic-card-link {
+  display: inline-block;
+  width: fit-content;
+  max-width: 18.75rem;
   text-decoration: none;
+  color: var(--color-accent);
 }
 
 .horizontal-topic-card-link:hover {
-  text-decoration: underline;
-  color: #5800e6;
-  transition: color 0.3s ease-in-out;
+  color: var(--color-accent);
+}
+
+.horizontal-topics-scroll-button {
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 2rem;
+  color: black !important;
+  transition: all 0.3s ease-in-out !important;
+  font-size: 1.3rem !important;
+}
+
+.horizontal-topics-scroll-button:hover {
+  transform: scale(1.5);
 }
 
 /* !============================================================
 !     MEDIA QUERIES: MOBILE OPTIMIZATION
 !============================================================ */
 @media (max-width: 600px) {
-  .horizontal-topics-wrapper h2 {
-    font-size: 1.75rem;
+  .horizontal-topics-wrapper {
+    padding: 0rem !important;
   }
 
   .horizontal-scroll-container {
@@ -86,12 +110,5 @@
 
   .horizontal-topic-card {
     min-width: 12.5rem;
-  }
-}
-
-@media (hover: none) {
-  .horizontal-topic-card:active img {
-    box-shadow: 0 0 10px rgba(126, 2, 234, 0.3);
-    transform: none;
   }
 }
