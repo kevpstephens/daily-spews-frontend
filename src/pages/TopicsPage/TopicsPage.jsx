@@ -9,11 +9,7 @@ import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard
 
 export default function TopicsPage() {
   const { data, isLoading, error } = useFetch(getTopics);
-  let topics = [];
-
-  if (data && data.topics) {
-    topics = data.topics;
-  }
+  const topics = data?.topics || [];
 
   return (
     <>
@@ -21,14 +17,14 @@ export default function TopicsPage() {
       {error && <ErrorMessageCard error={error} />}
 
       {!isLoading && !error && (
-        <>
+        <main>
           <h1 className="topics-articles-page-heading">all topics:</h1>
           <section className="topics-page-container">
             {topics.map((topic) => (
               <TopicCard key={topic.slug} topic={topic} type={"normal-"} />
             ))}
           </section>
-        </>
+        </main>
       )}
     </>
   );

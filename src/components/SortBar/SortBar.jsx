@@ -1,43 +1,55 @@
 import "./SortBar.css";
 import { useSearchParams } from "react-router-dom";
 
+const SORT_OPTIONS = [
+  { label: "Newest", value: "newest" },
+  { label: "Oldest", value: "oldest" },
+  { label: "Most liked", value: "votes" },
+  { label: "Most comments", value: "comment_count" },
+];
+
+const ORDER_OPTIONS = [
+  { label: "Descending", value: "desc" },
+  { label: "Ascending", value: "asc" },
+];
+
 export default function SortBar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
 
-  function handleSortChange(event) {
-    const sortByValue = event.target.value;
+  const handleSortChange = (e) => {
+    const newParams = new URLSearchParams(searchParams);
+    const value = e.target.value;
 
-    if (sortByValue === "newest") {
-      searchParams.set("sort_by", "created_at");
-      searchParams.set("order", "desc");
-    } else if (sortByValue === "oldest") {
-      searchParams.set("sort_by", "created_at");
-      searchParams.set("order", "asc");
-    } else if (sortByValue === "votes") {
-      searchParams.set("sort_by", "votes");
-      searchParams.set("order", "desc");
-    } else if (sortByValue === "comment_count") {
-      searchParams.set("sort_by", "comment_count");
-      searchParams.set("order", "desc");
+    if (value === "newest") {
+      newParams.set("sort_by", "created_at");
+      newParams.set("order", "desc");
+    } else if (value === "oldest") {
+      newParams.set("sort_by", "created_at");
+      newParams.set("order", "asc");
+    } else if (value === "votes" || value === "comment_count") {
+      newParams.set("sort_by", value);
+      newParams.set("order", "desc");
     } else {
-      searchParams.set("sort_by", "");
-      searchParams.set("order", "");
+      newParams.delete("sort_by");
+      newParams.delete("order");
     }
-    setSearchParams(searchParams);
-  }
 
-  function handleOrderChange(event) {
-    searchParams.set("order", event.target.value);
-    setSearchParams(searchParams);
-  }
+    setSearchParams(newParams);
+  };
 
-  function sortByValue() {
+  const handleOrderChange = (e) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("order", e.target.value);
+    setSearchParams(newParams);
+  };
+
+  const getSelectedSortValue = () => {
     if (sort_by === "created_at" && order === "desc") return "newest";
     if (sort_by === "created_at" && order === "asc") return "oldest";
     return sort_by || "";
-  }
+  };
 
   return (
     <>
@@ -46,13 +58,14 @@ export default function SortBar() {
           className="sort-bar"
           id="sort-bar-sort-by-bar"
           onChange={handleSortChange}
-          value={sortByValue()}
+          value={getSelectedSortValue()}
         >
           <option value="">--Sort by--</option>
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="votes">Most liked</option>
-          <option value="comment_count">Most comments</option>
+          {SORT_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
 
         <select
@@ -62,8 +75,11 @@ export default function SortBar() {
           value={order || ""}
         >
           <option value="">--Order--</option>
-          <option value="desc">Descending</option>
-          <option value="asc">Ascending</option>
+          {ORDER_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       </div>
     </>

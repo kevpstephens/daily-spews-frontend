@@ -7,21 +7,19 @@ export default function LoadingScreen({
   topicArticleLoad,
   topicItem,
 }) {
-  topicItem = pluralToSingular(topicItem);
+  const singularTopic = pluralToSingular(topicItem);
   let message = `${item} being spewed expeditiously`;
 
   if (singleArticleLoad) {
     message = "Please wait while we spew out this article for you...";
-  }
-  if (topicArticleLoad) {
-    if (topicItem === "puppy") {
+  } else if (topicArticleLoad) {
+    if (singularTopic === "puppy") {
       message = "PUPPIES OMGFAASAFAA";
     } else {
-      message = `Please wait while we spew out some ${topicItem} articles for you...`;
+      message = `Please wait while we spew out some ${singularTopic} articles for you...`;
     }
-  }
-  if (item === "articles") {
-    message = `Hold up while I spew all these articles`;
+  } else if (item === "articles") {
+    message = "Hold up while I spew all these articles";
   }
 
   return (

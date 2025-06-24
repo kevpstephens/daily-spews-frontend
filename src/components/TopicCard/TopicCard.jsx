@@ -9,7 +9,7 @@ export default function TopicCard({ topic, type }) {
           <h2>{`#${topic.slug}`}</h2>
           <img
             src={topic.img_url || `src/assets/users/default-user-image.jpg`}
-            alt="topic-image"
+            alt={`Image for topic ${topic.slug}`}
           />
         </article>
       </Link>

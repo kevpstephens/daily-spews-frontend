@@ -1,18 +1,44 @@
-/* ============================================================
-    LoadingScreen - Daily Spews Mascot Spewing
-============================================================ */
+/* !============================================================
+!     LoadingScreen - Daily Spews Mascot Spewing
+!============================================================ */
 
 .spewing-mascot {
   width: 100px;
-  animation: shake 0.5s infinite ease-in-out;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 3rem auto 1rem auto;
+  animation: shake 0.45s ease-in-out infinite;
   position: relative;
   filter: drop-shadow(-10px 0 15px orange);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spewing-mascot {
+    animation: none;
+  }
 }
 
 .loading-message {
   font-family: "Gaegu", sans-serif;
-  font-size: 25px;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .spewing-mascot {
+    width: 70px;
+    margin: 1.5rem auto 1rem auto;
+  }
+
+  .loading-message {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
 }

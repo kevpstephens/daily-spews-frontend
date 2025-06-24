@@ -50,11 +50,14 @@
   border-radius: 10px;
 }
 
-.app-content button:hover,
-.app-content button:focus {
+.app-content button:hover {
   background-color: var(--color-accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(185, 93, 40, 0.5);
+}
+
+.app-content button:focus {
+  outline: 4px solid #ab3f00;
+  outline-offset: 4px;
 }
 
 /* !============================================================
