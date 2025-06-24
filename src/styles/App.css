@@ -2,14 +2,19 @@
 !     COLOUR THEME
 !============================================================ */
 /*? Primary Colours */
-/* orange - b95d28 */
 /* dark purple - 8113d5 */
+/* orange - b95d28 */
+
+/*? Logo Colours */
+/* light purple - 8113d5 */
+/* light orange - f77703 */
 
 /*? Links */
 /* dark orange for links: #ab3f00; */
 
 /*? Buttons */
 /* dark purple [buttons] - #8113d5 */
+/* light orange [buttons] - #b95d28 */
 
 /*? Inputs */
 /* dark purple [sign-up, login, comment] - #1f0054 */
@@ -44,7 +49,6 @@
 /* !============================================================
 !     COMPONENT STYLES
 !============================================================ */
-@import "../components/SortAndTopicBarContainer.css";
 @import "./components/header.css";
 @import "./components/toast.css";
 @import "./components/footer.css";

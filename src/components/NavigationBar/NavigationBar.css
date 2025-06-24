@@ -29,7 +29,7 @@
 }
 
 .nav-button:hover {
-  background-color: #b95d28;
+  background-color: #f77703;
 }
 
 #user-profile-button {
@@ -62,10 +62,12 @@ a.nav-button:hover {
 }
 
 .nav-avatar-icon {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 100%;
   object-fit: cover;
+  z-index: 1001;
+  border: 2.5px solid #0d0024;
 }
 
 .nav-avatar-dropdown {
@@ -75,14 +77,14 @@ a.nav-button:hover {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 107.5%;
+  top: -62.5%;
+  gap: 3.25rem;
   transform: none;
-  background-color: #9d4cdbe1;
-  padding: 0.5rem 0.75rem;
+  background-color: #9d4cdba8;
+  padding: 0.25rem 0.75rem 0.5rem 0.75rem;
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.15s ease-in-out;
-  color: white !important;
   font-family: "Gaegu", sans-serif;
   pointer-events: none;
   width: max-content;
@@ -91,6 +93,13 @@ a.nav-button:hover {
   white-space: nowrap;
   border-radius: 30px;
   word-break: break-word;
+}
+
+.nav-avatar-dropdown h2 {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
+  font-weight: bolder !important;
+  margin-bottom: 0.25rem;
 }
 
 .nav-avatar-wrapper:hover .nav-avatar-dropdown {
@@ -114,10 +123,11 @@ a.nav-button:hover {
 
 #nav-logout-button {
   width: 5rem;
-  height: 1rem;
+  height: 2rem !important;
   color: white;
   font-size: 1rem;
   font-family: "Gaegu", sans-serif;
+  margin: 0rem 0.25rem;
 }
 
 /* !============================================================
@@ -210,5 +220,6 @@ a.nav-button:hover {
     white-space: nowrap;
     border-radius: 30px;
     word-break: break-word;
+    gap: 0.25rem;
   }
 }

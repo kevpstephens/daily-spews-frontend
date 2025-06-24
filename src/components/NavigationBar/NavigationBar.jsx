@@ -31,10 +31,9 @@ export default function NavigationBar() {
                 src={user.avatar_url}
                 alt="user-avatar"
               />
+
               <div className="nav-avatar-dropdown">
-                <p className="nav-avatar-username">
-                  <strong>@{user.username}</strong>
-                </p>
+                <h2 className="nav-avatar-username">@{user.username}</h2>
                 <LogoutButton id="nav-logout-button" redirectTo="/" />
               </div>
               <div className="nav-avatar-overlay"></div>

@@ -1,20 +1,103 @@
-/* ============================================================
-   AllArticlesPage
-============================================================ */
+/* !============================================================
+!     AllArticlesPage
+!============================================================ */
 
 .all-articles-page-heading {
   font-size: 3rem;
   text-decoration: underline;
-  margin-top: 0rem;
-  margin-bottom: 2rem;
+  margin: 2.5rem;
+  text-align: center;
 }
 
-.articles-page {
+.all-articles-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
   gap: 2rem;
   margin: 0 auto;
   justify-items: center;
-  max-width: 1200px;
+  max-width: 75rem;
   box-shadow: none;
+}
+
+/* !============================================================
+!     Sort and Topic Bar Container
+!============================================================ */
+
+.sort-and-topic-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem;
+}
+
+#reset-button {
+  text-decoration: underline;
+  display: flex;
+  width: auto;
+  height: auto;
+  margin-left: 1rem;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  border-width: 0.125rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: black;
+  border-radius: 10px;
+  transition: ease-in 0.3s;
+  background-color: transparent;
+  border: none;
+}
+
+#reset-button:hover {
+  transform: scale(1.2);
+  background-color: #f77703;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+@media (max-width: 600px) {
+  .all-articles-page-heading {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .articles-page {
+    gap: 3rem;
+    padding: 0 1rem;
+  }
+
+  .sort-and-topic-bar-container {
+    margin: 0rem 0.2rem 1rem 0.2rem !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .sort-and-topic-bar-container select {
+    margin: 0rem 0rem 0rem 0rem !important;
+    width: 100%;
+    max-width: 10rem;
+    height: 100%;
+    min-height: 2rem;
+    font-size: 0.6rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .sort-and-topic-bar-container select:focus {
+    position: relative;
+    z-index: 20;
+  }
+
+  #reset-button {
+    font-size: 0.55rem;
+    margin-left: -0.5rem;
+  }
 }

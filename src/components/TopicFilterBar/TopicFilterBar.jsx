@@ -3,6 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import { getTopics } from "../../api/api";
 import useFetch from "../../hooks/useFetch";
 
+function formatTopicName(slug) {
+  return slug.charAt(0).toUpperCase() + slug.slice(1);
+}
+
 export default function TopicFilterBar() {
   const { data, isLoading, error } = useFetch(getTopics);
   console.log(error, isLoading);
@@ -32,11 +36,10 @@ export default function TopicFilterBar() {
       >
         <option value="">--Select Topic--</option>
         {topics.map((topic) => {
-          const capitalisedFirstLetter = topic.slug.slice(0, 1).toUpperCase();
-          const remaniningLetters = topic.slug.slice(1);
+          const formattedName = formatTopicName(topic.slug);
           return (
             <option key={topic.slug} value={topic.slug}>
-              {capitalisedFirstLetter + remaniningLetters}
+              {formattedName}
             </option>
           );
         })}

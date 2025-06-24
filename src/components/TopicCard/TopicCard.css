@@ -1,53 +1,78 @@
-/* ============================================================
-    TopicCard
-============================================================ */
+/* !============================================================
+!     TopicCard
+!============================================================ */
 
 .normal-topic-card {
   width: 100%;
-  min-width: 300px;
-  min-width: 200px;
+  min-width: 18.75rem;
+  max-width: 20rem;
   height: auto;
-  border: 2px solid #0d0024;
-  padding: 1rem;
+  border: 0.125rem solid #0d0024;
+  padding: 1rem 0.75rem;
   background: #8a72d77e;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
 }
 
-.normal-topic-card-link {
-  color: #ff8c00fe;
-}
-.normal-topic-card-link:visited {
-  color: rgb(123, 0, 255);
-}
-.normal-topic-card-link:hover {
-  color: rgb(0, 81, 255);
-}
-.normal-topic-card-link:active {
-  color: rgb(255, 0, 0);
-}
-
-.normal-topic-card-link p {
-  text-decoration: none;
+.normal-topic-card-link h2 {
   font-family: "Gaegu", sans-serif;
-  text-decoration: none !important;
-  margin-top: 0.25rem;
+  font-size: 2rem;
+  color: #0d0024;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-topic-card-link:hover h2 {
+  color: white;
+}
+
+.normal-topic-card-link:hover {
+  text-decoration: underline;
+  text-decoration-color: #f77703 !important;
 }
 
 .normal-topic-card img {
-  width: 100%;
-  height: 200px;
-  width: 300px;
+  max-width: 100%;
+  width: 18.75rem;
+  height: 12.5rem;
   object-fit: cover;
-  border-radius: 30px;
+  border-radius: 1.875rem;
   margin: 0.25rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.normal-topic-card img:hover {
-  transform: scale(1.075);
-  box-shadow: 0 1 50px rgba(0, 0, 0, 0.1);
-  border: 2px solid #0d0024;
+.normal-topic-card:hover {
+  background-color: #8113d5;
+}
+
+.normal-topic-card:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  border: 0.3rem dotted #000000;
+  border-radius: 100rem;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .normal-topic-card {
+    min-width: 16rem;
+    max-width: 18rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .normal-topic-card-link h2 {
+    font-size: 1.75rem;
+  }
+
+  .normal-topic-card img {
+    width: 16rem;
+    height: 10rem;
+  }
 }
