@@ -2,7 +2,7 @@ import "./ArticleCard.css";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/formatDate";
 import { MessageSquareMore, Heart } from "lucide-react";
-import defaultImage from "../../assets/users/default-user-image.jpg";
+import defaultImage from "/assets/users/default-user-image.jpg";
 
 export default function ArticleCard({ article }) {
   return (
