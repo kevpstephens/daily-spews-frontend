@@ -50,8 +50,8 @@
 !     COMPONENT STYLES
 !============================================================ */
 @import "./components/Header.css";
-@import "./components/Toast.css";
 @import "./components/Footer.css";
+@import "./components/Toastify.css";
 
 /* !============================================================
 !     UTILITIES

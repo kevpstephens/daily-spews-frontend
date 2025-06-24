@@ -1,0 +1,17 @@
+/* !============================================================
+!     Toastify - Custom Overrides
+!============================================================ */
+
+/* Wrapper around individual toasts */
+.toast-wrapper {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* General Toastify container */
+.Toastify {
+  box-shadow: none;
+}
