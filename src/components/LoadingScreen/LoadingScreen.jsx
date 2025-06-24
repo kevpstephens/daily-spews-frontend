@@ -26,7 +26,7 @@ export default function LoadingScreen({
     <>
       <img
         className="spewing-mascot"
-        src="../src/assets/logo/daily-spews-alt-logo-cropped.png"
+        src="/assets/mascot/mascot-spewing-loading.png"
         alt="Daily Spews Mascot Spewing"
       />
       <p className="loading-message">{message}</p>
