@@ -49,9 +49,9 @@
 /* !============================================================
 !     COMPONENT STYLES
 !============================================================ */
-@import "./components/header.css";
-@import "./components/toast.css";
-@import "./components/footer.css";
+@import "./components/Header.css";
+@import "./components/Toast.css";
+@import "./components/Footer.css";
 
 /* !============================================================
 !     UTILITIES
