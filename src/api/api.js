@@ -147,3 +147,10 @@ export const deleteCommentById = async (comment_id) => {
   const res = await api.delete(`/comments/${comment_id}`);
   return res.data;
 };
+
+//! GET /api/users/me
+// Fetch the currently authenticated user's info
+export const getCurrentUser = async () => {
+  const res = await api.get("/users/me", { withCredentials: true });
+  return res.data;
+};
