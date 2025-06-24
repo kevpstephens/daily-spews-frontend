@@ -26,8 +26,8 @@
 .app-content textarea:focus,
 .app-content select:focus {
   border-color: var(--color-form-input-focus);
-  outline: 3px solid var(--color-form-input-focus);
-  outline-offset: 2px;
+  outline: 0.15rem solid var(--color-form-input-focus);
+  outline-offset: 0.15rem;
 }
 
 /* !============================================================
@@ -56,8 +56,8 @@
 }
 
 .app-content button:focus {
-  outline: 4px solid #ab3f00;
-  outline-offset: 4px;
+  outline: 0.15rem solid #ab3f00;
+  outline-offset: 0.15rem;
 }
 
 /* !============================================================

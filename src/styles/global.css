@@ -18,7 +18,7 @@
   --font-body: "Verdana", Geneva, Tahoma, sans-serif;
 
   /*? Responsive base font size using clamp for fluid scaling */
-  --font-size-base: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+  --font-size-base: clamp(0.875rem, 1vw + 0.25rem, 1.125rem);
 
   /*? Colors */
   --color-text-heading: #0d0024;
@@ -129,7 +129,7 @@ svg {
 !============================================================ */
 @media (max-width: 600px) {
   :root {
-    --font-size-base: clamp(0.875rem, 2vw + 0.2rem, 1rem);
+    --font-size-base: clamp(0.75rem, 3vw + 0.1rem, 0.95rem);
   }
   body,
   #root {
@@ -139,6 +139,16 @@ svg {
 
   h1 {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --font-size-base: clamp(0.7rem, 3.5vw + 0.1rem, 0.9rem);
+  }
+
+  h1 {
+    font-size: 1.2rem;
   }
 }
 

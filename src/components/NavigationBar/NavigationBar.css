@@ -80,7 +80,7 @@ a.nav-button:hover {
   top: -62.5%;
   gap: 3.25rem;
   transform: none;
-  background-color: #9d4cdba8;
+  background-color: #f7790382;
   padding: 0.25rem 0.75rem 0.5rem 0.75rem;
   z-index: 1000;
   opacity: 0;
@@ -93,6 +93,7 @@ a.nav-button:hover {
   white-space: nowrap;
   border-radius: 30px;
   word-break: break-word;
+  border: 0.2rem dotted #0d0024;
 }
 
 .nav-avatar-dropdown h2 {
@@ -110,7 +111,7 @@ a.nav-button:hover {
 .nav-avatar-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.346);
   z-index: 500;
   opacity: 0;
   pointer-events: none;
@@ -136,29 +137,17 @@ a.nav-button:hover {
 
 @media screen and (max-width: 600px) {
   .daily-spews-logo.navigation-bar-container {
-    width: 3rem;
-    height: 3rem;
-    border: solid 1px #0d0024;
-    padding: 0rem !important;
-    margin: 0rem !important;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: solid 2.5px #0d0024;
     border-radius: 100%;
   }
 
-  .navigation-bar-container {
-    padding: 0rem;
-    margin: 0rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 0.25rem !important;
-    margin-right: 0.25rem !important;
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
+  .navigation-bar-container.daily-spews-logo {
+    margin-left: 0.1rem;
   }
 
   .nav-button {
-    color: white;
-    transition: background-color 0.2s ease;
     height: 2.5rem;
   }
 
@@ -167,8 +156,9 @@ a.nav-button:hover {
   }
 
   #user-profile-button {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-right: 0.1rem !important;
   }
 
   #home-button {
@@ -180,21 +170,9 @@ a.nav-button:hover {
     color: white;
   }
 
-  .nav-avatar-wrapper {
-    padding: 0rem !important;
-    margin: 0rem !important;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .nav-avatar-icon {
-    width: 3rem;
-    height: 3rem;
-    border: solid 1px #0d0024;
-    padding: 0rem !important;
-    margin: 0rem !important;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 100%;
   }
 
@@ -206,13 +184,10 @@ a.nav-button:hover {
     top: 107.5%;
     right: 0;
     transform: none;
-    background-color: #9d4cdbe1;
     padding: 0.5rem 0.75rem;
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
-    color: white !important;
-    font-family: "Gaegu", sans-serif;
     pointer-events: none;
     width: max-content;
     max-width: 90vw;

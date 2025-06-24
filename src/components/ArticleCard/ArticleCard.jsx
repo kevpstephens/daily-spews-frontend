@@ -9,36 +9,41 @@ export default function ArticleCard({ article }) {
     <>
       <div className="article-card-container">
         <article className="article-card">
-          <h2 className="article-card-heading">{article.title}</h2>
-          <p>
-            Written by:{" "}
-            <Link
-              className="article-card-author-and-topic-link"
-              to={`/users/${article.author}`}
-            >
-              @{article.author}
-            </Link>{" "}
-            | Topic:{" "}
-            <Link
-              className="article-card-author-and-topic-link"
-              to={`/topics/${article.topic}`}
-            >
-              {`#${article.topic}`}
+          <div className="article-card-heading-container">
+            <h2 className="article-card-heading">{article.title}</h2>
+            <h3>
+              Written by:{" "}
+              <Link
+                className="article-card-author-and-topic-link"
+                to={`/users/${article.author}`}
+              >
+                @{article.author}
+              </Link>{" "}
+              | Topic:{" "}
+              <Link
+                className="article-card-author-and-topic-link"
+                to={`/topics/${article.topic}`}
+              >
+                {`#${article.topic}`}
+              </Link>
+            </h3>
+          </div>
+          <div className="article-card-image-posted-date-container">
+            <Link to={`/articles/${article.article_id}`}>
+              <img
+                src={article.article_img_url || defaultImage}
+                alt={`${article.title} image`}
+              />
             </Link>
-          </p>
-          <Link to={`/articles/${article.article_id}`}>
-            <img
-              src={article.article_img_url || defaultImage}
-              alt={`${article.title} image`}
-            />
-          </Link>
-          <p className="article-card-posted-date">
-            Posted:{" "}
-            <time dateTime={article.created_at}>
-              {formatDate(article.created_at)}
-            </time>
-          </p>
+            <p className="article-card-posted-date">
+              <strong>Posted:</strong>{" "}
+              <time dateTime={article.created_at}>
+                {formatDate(article.created_at)}
+              </time>
+            </p>
+          </div>
         </article>
+
         <div className="article-card-likes-and-comments-container">
           <Link
             className="article-card-likes-icon-link"

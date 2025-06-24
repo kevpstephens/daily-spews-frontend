@@ -5,10 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   width: 100%;
-  max-width: 500px;
-  min-height: 500px;
+  max-width: 100%;
   background-color: #8c75d8;
   border: 0.15rem solid #000000;
   box-sizing: border-box;
@@ -39,15 +37,21 @@
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   background-color: #9382ca;
   gap: 0.5rem;
-  height: 100%;
-  will-change: transform, box-shadow;
   text-align: center;
   position: relative;
+  padding-bottom: 2.5rem !important;
 }
 
 .article-card:hover {
   transform: scale(1.05);
   border: 2px solid #0d0024;
+}
+
+.article-card-heading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .article-card-heading {
@@ -60,15 +64,18 @@
   font-weight: bold;
   line-height: 1.3;
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
-.article-card p {
+.article-card h3 {
   font-family: "Gaegu", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: bold;
   text-align: center;
   line-height: 1.25rem;
-  padding: 0rem 1rem 0rem 1rem;
+  border-radius: 1rem;
+  padding: 0rem 0.5rem;
+  background-color: #8a72d77e;
 }
 
 .article-card img {
@@ -91,15 +98,19 @@
   text-decoration: underline;
 }
 
+.article-card-image-posted-date-container {
+  position: relative;
+  width: 100%;
+}
+
 .article-card-posted-date {
+  font-family: "Gaegu", sans-serif;
   font-size: 1rem;
-  font-weight: bold;
-  text-align: left;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0rem;
-  align-self: flex-start;
+  position: absolute;
+  background-color: #8a72d77e;
+  padding: 0rem 0.5rem;
+  border-radius: 1rem;
+  margin-top: 0.25rem;
 }
 
 /* !============================================================
@@ -138,7 +149,6 @@
 }
 
 .article-card-message-icon {
-  margin-right: 0.5rem;
   color: black;
   fill: #ffffff;
 }
@@ -150,7 +160,6 @@
 @media (max-width: 600px) {
   .article-card-container {
     max-width: 100vw;
-    min-height: auto;
   }
 
   .all-articles-list {
@@ -168,6 +177,6 @@
   }
 
   .article-card img {
-    height: 15rem;
+    height: auto;
   }
 }
