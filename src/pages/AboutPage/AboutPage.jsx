@@ -8,7 +8,7 @@ export default function AboutPage() {
         <h1>A little bit about Daily Spews...</h1>
         <img
           className="spewing-mascot"
-          src="src/assets/logo/daily-spews-alt-logo-cropped.png"
+          src="/assets/mascot/mascot-spewing-loading.png"
           alt="Daily Spews Mascot"
         />
         <p>
