@@ -19,6 +19,10 @@
   box-shadow: none;
 }
 
+.all-articles-list > * {
+  animation: fadeSlideInUp 0.4s ease-in-out;
+}
+
 /* !============================================================
 !     Media Queries
 !============================================================ */

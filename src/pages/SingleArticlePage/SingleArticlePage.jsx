@@ -1,7 +1,7 @@
 //? URL: daily-spews.com/articles/:article_id
 
 import "./SingleArticlePage.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import {
   getArticleById,
   patchArticleVotes,
@@ -19,6 +19,7 @@ import CommentButton from "../../components/CommentButton/CommentButton.jsx";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();
+  const location = useLocation();
   const { data, isLoading, error } = useFetch(
     () => getArticleById(article_id),
     [article_id]
@@ -82,6 +83,17 @@ export default function SingleArticlePage() {
     article = data.article;
   }
 
+  useEffect(() => {
+    if (!isLoading && location.hash === "#article-likes") {
+      const el = document.getElementById("article-likes");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 50);
+      }
+    }
+  }, [location, isLoading]);
+
   return (
     <>
       {isLoading && <LoadingScreen singleArticleLoad={true} />}
@@ -105,7 +117,7 @@ export default function SingleArticlePage() {
 
             <p className="article-body">{article.body}</p>
 
-            <section className="likes-and-comments">
+            <section id="article-likes" className="likes-and-comments">
               <CommentButton
                 commentCount={article.comment_count}
                 scrollTargetId="post-comment-form"

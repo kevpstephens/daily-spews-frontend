@@ -54,9 +54,14 @@ export default function ArticleCard({ article }) {
               {article.comment_count}
             </div>
           </Link>
-          <div className="article-card-likes-and-comments-item">
-            <Heart className="article-card-heart-icon" /> {article.votes}
-          </div>
+          <Link
+            className="article-card-likes-icon-link"
+            to={`/articles/${article.article_id}#article-likes`}
+          >
+            <div className="article-card-likes-and-comments-item">
+              <Heart className="article-card-heart-icon" /> {article.votes}
+            </div>
+          </Link>
         </div>
       </div>
     </>

@@ -1,12 +1,41 @@
 /* !============================================================
 !     Fade In Animation
 !============================================================ */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
+    opacity: 1;
+  }
+}
+
+/* !============================================================
+!     Fade Scale In Animation
+!============================================================ */
+
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* !============================================================
+!     Fade Slide In Up Animation
+!============================================================ */
+
+@keyframes fadeSlideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
