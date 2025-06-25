@@ -25,7 +25,7 @@ export default function AllArticlesPage() {
     if (window.innerWidth <= 600 && !hasMountedOnce.current) {
       hasMountedOnce.current = true;
       if (headingRef.current) {
-        const yOffset = -475; // adjust to height of your sticky header
+        const yOffset = -470; // adjust to height of your sticky header
         const y =
           headingRef.current.getBoundingClientRect().top +
           window.scrollY +
@@ -58,7 +58,7 @@ export default function AllArticlesPage() {
   return (
     <main className="all-articles-page-main">
       <h1 ref={headingRef} className="all-articles-page-heading">
-        {!topic ? "All Articles:" : `#${topic}`}
+        {!topic ? "All Articles" : `#${topic}`}
       </h1>
 
       <SortAndTopicBar handleReset={handleReset} />
