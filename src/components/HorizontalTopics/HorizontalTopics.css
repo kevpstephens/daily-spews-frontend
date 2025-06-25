@@ -18,6 +18,7 @@
 }
 
 .horizontal-topics-heading {
+  margin: 0rem 0.25rem;
   font-size: 3rem;
   font-weight: bold;
   font-family: var(--font-heading);
@@ -128,6 +129,10 @@
 @media (max-width: 600px) {
   .horizontal-topics-wrapper {
     margin: 0rem auto;
+  }
+
+  .horizontal-topics-heading-container {
+    margin-top: 1.5rem;
   }
 
   .horizontal-scroll-container {

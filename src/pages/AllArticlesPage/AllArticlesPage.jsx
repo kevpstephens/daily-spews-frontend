@@ -2,13 +2,12 @@ import "./AllArticlesPage.css";
 import { useRef, useState, useEffect } from "react";
 import { getArticles } from "../../api/api.js";
 import ArticleCard from "../../components/ArticleCard/ArticleCard.jsx";
-import SortBar from "../../components/SortBar/SortBar.jsx";
-import TopicFilterBar from "../../components/TopicFilterBar/TopicFilterBar.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
 import { useSearchParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
+import SortAndTopicBar from "../../components/SortAndTopicBar.jsx";
 
 export default function AllArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,7 +25,7 @@ export default function AllArticlesPage() {
     if (window.innerWidth <= 600 && !hasMountedOnce.current) {
       hasMountedOnce.current = true;
       if (headingRef.current) {
-        const yOffset = -460; // adjust to height of your sticky header
+        const yOffset = -475; // adjust to height of your sticky header
         const y =
           headingRef.current.getBoundingClientRect().top +
           window.scrollY +
@@ -62,13 +61,7 @@ export default function AllArticlesPage() {
         {!topic ? "All Articles:" : `#${topic}`}
       </h1>
 
-      <div className="sort-and-topic-bar-container">
-        <SortBar sort_by={sort_by} order={order} />
-        <TopicFilterBar />
-        <button id="reset-button" onClick={handleReset}>
-          Reset
-        </button>
-      </div>
+      <SortAndTopicBar handleReset={handleReset} />
 
       {isLoading && <LoadingScreen item="articles" />}
       {error && <ErrorMessageCard error={error} />}

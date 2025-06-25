@@ -1,5 +1,6 @@
 import "./SortBar.css";
 import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const SORT_OPTIONS = [
   { label: "Newest", value: "newest" },
@@ -17,6 +18,14 @@ export default function SortBar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSortChange = (e) => {
     const newParams = new URLSearchParams(searchParams);
@@ -56,11 +65,10 @@ export default function SortBar() {
       <div className="sort-bar-container">
         <select
           className="sort-bar"
-          id="sort-bar-sort-by-bar"
           onChange={handleSortChange}
           value={getSelectedSortValue()}
         >
-          <option value="">--Sort by--</option>
+          <option value="">{isMobile ? "Sort by" : "--Sort by--"}</option>
           {SORT_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -70,11 +78,10 @@ export default function SortBar() {
 
         <select
           className="sort-bar"
-          id="sort-bar-topic-bar"
           onChange={handleOrderChange}
           value={order || ""}
         >
-          <option value="">--Order--</option>
+          <option value="">{isMobile ? "Order" : "--Order--"}</option>
           {ORDER_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

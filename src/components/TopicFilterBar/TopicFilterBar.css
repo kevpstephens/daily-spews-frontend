@@ -3,11 +3,15 @@
 !============================================================ */
 
 #topic-dropdown {
-  display: flex;
-  width: auto;
-  align-items: center;
-  justify-content: center;
-  border-color: 0d0024;
-  border-width: 0.125rem;
-  text-align: center;
+  opacity: 1;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  #topic-dropdown {
+    height: 2.75rem;
+  }
 }

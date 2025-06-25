@@ -158,3 +158,12 @@ svg {
 /* * {
   transition: all 0.25s ease-in-out;
 } */
+
+/* !============================================================
+!     Text Selection Styling
+!     - Customize highlight color for all devices (including iPhone)
+!============================================================ */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}

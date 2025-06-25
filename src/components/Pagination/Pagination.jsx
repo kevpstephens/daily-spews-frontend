@@ -1,3 +1,4 @@
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import "./Pagination.css";
 
 export default function Pagination({
@@ -17,15 +18,16 @@ export default function Pagination({
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
         disabled={currentPage === 1}
       >
-        Prev
+        <ChevronLeftIcon className="pagination-icon" />
       </button>
 
       <div className="pagination-page-display">
         <span id="page-number">
-          Page {currentPage} of {totalPages}
+          Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
         </span>
         <p className="pagination-info">
-          Showing articles {start}–{end} of {totalCount}
+          Showing articles <strong>{start}</strong>–<strong>{end}</strong> of{" "}
+          <strong>{totalCount}</strong>
         </p>
       </div>
 
@@ -34,7 +36,7 @@ export default function Pagination({
         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
         disabled={currentPage === totalPages}
       >
-        Next
+        <ChevronRightIcon className="pagination-icon" />
       </button>
     </div>
   );

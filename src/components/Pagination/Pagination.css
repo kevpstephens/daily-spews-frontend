@@ -1,19 +1,56 @@
-/* ============================================================
-    Pagination
-============================================================ */
+/* !============================================================
+!     Pagination
+!============================================================ */
+
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  box-shadow: none;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2.5rem 0rem -0.5rem 0rem;
   align-self: center;
+  text-align: center;
 }
 
 .pagination-page-display {
-  box-shadow: none;
+  position: relative;
+  gap: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pagination-info {
-  box-shadow: none;
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Icon appearance when button is disabled */
+#previous-page-button:disabled,
+#next-page-button:disabled {
+  cursor: not-allowed;
+  border: none;
+  background-color: #9382ca;
+}
+
+/* Optional: style icons directly if needed */
+#previous-page-button:disabled .pagination-icon,
+#next-page-button:disabled .pagination-icon {
+  stroke: #797979;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .pagination-page-display {
+    font-size: 0.65rem;
+  }
+
+  .pagination-info {
+    font-size: 0.5rem;
+  }
 }
