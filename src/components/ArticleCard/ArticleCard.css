@@ -68,7 +68,7 @@
 }
 
 .article-card h3 {
-  font-family: "Gaegu", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: bold;
   text-align: center;
@@ -104,13 +104,13 @@
 }
 
 .article-card-posted-date {
-  font-family: "Gaegu", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1rem;
   position: absolute;
   background-color: #8a72d77e;
   padding: 0rem 0.5rem;
   border-radius: 1rem;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 /* !============================================================

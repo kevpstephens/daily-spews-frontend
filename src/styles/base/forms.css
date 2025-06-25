@@ -4,7 +4,6 @@
 .app-content input,
 .app-content textarea,
 .app-content select {
-  font: inherit;
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   padding: 0.5rem;

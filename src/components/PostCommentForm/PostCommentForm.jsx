@@ -1,5 +1,5 @@
 import "./PostCommentForm.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { postComment } from "../../api/api";
 import { useUser } from "../../context";
 import { Link } from "react-router-dom";
@@ -8,6 +8,16 @@ export default function PostCommentForm({ article_id, setComments }) {
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useUser();
+
+  const textareaRef = useRef(null);
+
+  const handleInput = () => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  };
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -44,6 +54,8 @@ export default function PostCommentForm({ article_id, setComments }) {
       <div className="comment-box-wrapper">
         <textarea
           id="comment"
+          ref={textareaRef}
+          onInput={handleInput}
           value={comment}
           onChange={(event) => setComment(event.target.value)}
           placeholder={
@@ -51,9 +63,10 @@ export default function PostCommentForm({ article_id, setComments }) {
               ? "Join the conversation..."
               : "Please log in to leave a comment..."
           }
-          rows="3"
+          rows={1}
           required
           disabled={!user || isSubmitting}
+          style={{ overflowY: "hidden" }}
         />
         {!user && (
           <div className="comment-form-overlay">
@@ -71,7 +84,7 @@ export default function PostCommentForm({ article_id, setComments }) {
         className="comment-submit-button"
         disabled={!user || isSubmitting}
       >
-        {isSubmitting ? "Posting..." : "Post"}
+        {isSubmitting ? "Posting..." : "Post Comment"}
       </button>
     </form>
   );
