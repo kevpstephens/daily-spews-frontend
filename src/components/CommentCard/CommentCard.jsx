@@ -49,12 +49,14 @@ export default function CommentCard({ comment }) {
             onClick={() => setShowConfirm(false)} // Close confirm if user clicks outside dialog
           />
         )}
-        <p>
+
+        <h2 className="comment-card-header">
           <Link to={`/users/${comment.author}`}>
             <span className="comment-card-author">@{comment.author}</span>
           </Link>{" "}
           | {formatDate(comment.created_at)}
-        </p>
+        </h2>
+
         <p>{comment.body}</p>
         <div className="comment-actions-container">
           <VoteButton

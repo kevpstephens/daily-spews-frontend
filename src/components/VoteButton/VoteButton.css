@@ -1,61 +1,71 @@
-/* ============================================================
-    Article-Vote - VoteButton
-============================================================ */
+/* !============================================================
+!     Article-Vote - VoteButton
+!============================================================ */
 .vote-button-container.article-vote {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.25rem;
-  box-shadow: none;
-  background: none;
+  gap: 1rem;
 }
 
 .vote-info {
-  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 1rem;
-  gap: 0.1rem;
-  line-height: 1.5rem;
-  margin: -0.75rem;
-  background: none;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  gap: 0.25rem;
 }
 
-/* ============================================================
-   Article-Vote - Vote Button - upvote/downvote - hover states
-============================================================ */
+.vote-button-container.article-vote button,
+.vote-button-container.comment-vote button {
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.vote-button-container button:active {
+  transform: scale(0.95);
+}
+
+.vote-button-container button:focus-visible {
+  outline: 2px solid #8113d5;
+  outline-offset: 2px;
+}
+
+.vote-button-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* !============================================================
+!     Article-Vote - Vote Button - upvote/downvote - hover states
+!============================================================ */
 
 .vote-button-container.article-vote button {
   padding: 0.5rem 1.5rem;
-  margin: 0 0.25rem;
-  background-color: #8113d5;
 }
 
 .upvote-button.article-vote:hover {
-  background-color: #469849 !important;
+  background-color: #469849;
 }
 
 .downvote-button.article-vote:hover {
-  background-color: #ca1d11 !important;
+  background-color: #ca1d11;
 }
 
 .heart.article-vote {
   fill: #8113d5;
 }
 
-/* ============================================================
-   Comment-Vote - Vote Button - upvote/downvote - hover states
-============================================================ */
+/* !============================================================
+!     Comment-Vote - Vote Button - upvote/downvote - hover states
+!============================================================ */
 
-.upvote-button.comment-vote {
-  background-color: #8113d52b;
-  border: none;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
-}
-
+.upvote-button.comment-vote,
 .downvote-button.comment-vote {
   background-color: #8113d52b;
   border: none;
@@ -74,4 +84,37 @@
   fill: #8113d52b;
   width: 2rem;
   height: 2rem;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .vote-button-container.article-vote button {
+    padding: 0.3rem 1rem;
+  }
+
+  .vote-info {
+    font-size: 1rem;
+  }
+
+  .upvote-button.comment-vote,
+  .downvote-button.comment-vote {
+    background-color: #8113d52b;
+    border: none;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .heart.comment-vote {
+    fill: #8113d52b;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .vote-button-container.comment-vote p {
+    font-size: 0.8rem;
+  }
 }

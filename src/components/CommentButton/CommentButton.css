@@ -1,13 +1,11 @@
-/* ============================================================
-    CommentButton
-============================================================ */
+/* !============================================================
+!     CommentButton
+!============================================================ */
 
 #comment-button {
-  font-weight: bold;
-  flex-direction: row;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 0.9rem;
   gap: 0.5rem;
-  fill: white;
+  margin-right: 1.75rem;
 }
 
 .comment-button-icon {
@@ -22,4 +20,16 @@
 
 #comment-button:hover {
   background-color: #b95d28;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  #comment-button {
+    margin-right: 1.25rem;
+    height: 2.5rem;
+    width: 100%;
+  }
 }

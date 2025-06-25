@@ -36,8 +36,7 @@
   display: flex;
   width: auto;
   height: auto;
-  margin-left: 1rem;
-  padding: 0.2rem;
+  padding: 0.3rem;
   align-items: center;
   justify-content: center;
   border-width: 0.125rem;
@@ -53,7 +52,7 @@
 
 #reset-button:hover {
   transform: scale(1.2);
-  background-color: #f77703;
+  background-color: #b95d28;
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -64,8 +63,7 @@
 !============================================================ */
 @media (max-width: 600px) {
   .all-articles-page-heading {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1.5rem auto;
   }
 
   .articles-page {
