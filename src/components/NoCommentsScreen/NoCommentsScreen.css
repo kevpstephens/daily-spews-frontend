@@ -24,7 +24,7 @@
 }
 
 .no-comments-message {
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   box-shadow: none;
   font-size: 25px;
   text-align: center;

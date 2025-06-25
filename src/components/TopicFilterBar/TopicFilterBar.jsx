@@ -32,7 +32,6 @@ export default function TopicFilterBar() {
       <select
         className="sort-bar"
         id="topic-dropdown"
-        value={searchParams.get("topic") || ""}
         onChange={handleTopicChange}
       >
         <option value="">--Select Topic--</option>

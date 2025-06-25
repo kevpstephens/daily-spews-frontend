@@ -6,20 +6,18 @@ export default function Footer() {
       <p>
         <strong>&copy; {new Date().getFullYear()} Daily Spews</strong>
       </p>
-      <div className="footer-links-container">
-        <Link className="footer-link" to="/about">
-          About
-        </Link>
-        |
-        <a
-          className="footer-link"
-          href="https://github.com/kevpstephens"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          The Dev
-        </a>
-      </div>
+      <Link className="footer-link" to="/about">
+        About
+      </Link>
+      <span className="footer-separator">|</span>
+      <a
+        className="footer-link"
+        href="https://github.com/kevpstephens"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        The Dev
+      </a>
     </footer>
   );
 }

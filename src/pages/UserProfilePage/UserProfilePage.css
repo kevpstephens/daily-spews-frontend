@@ -3,12 +3,12 @@
 !============================================================ */
 
 .user-username {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-family: "Gaegu", sans-serif;
+  font-size: 3.5rem;
   text-align: center;
   text-decoration: underline;
   display: inline-block;
-  margin: 2.5rem auto 2.5rem auto;
+  margin: 2rem auto 2rem auto;
   max-width: 90vw;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -27,7 +27,7 @@
   gap: 2rem;
   margin: 0 auto;
   margin-top: 0rem;
-  padding: 0 0rem 2rem 0rem;
+  padding: 0 1rem 2rem 1rem;
 }
 
 .user-info-list {
@@ -60,14 +60,12 @@
 !============================================================ */
 @media (max-width: 600px) {
   .user-username {
+    font-size: 2rem;
+    padding: 0 0.5rem;
     line-height: 1.3;
   }
   .user-avatar-image {
-    height: 12.5rem;
-    width: 12.5rem;
-  }
-  #user-profile-logout-button {
-    width: 6.5rem;
-    height: 3rem;
+    height: 10rem;
+    width: 10rem;
   }
 }

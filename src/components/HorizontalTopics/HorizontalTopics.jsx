@@ -5,7 +5,6 @@ import useFetch from "../../hooks/useFetch";
 import TopicCard from "../TopicCard/TopicCard.jsx";
 import LoadingScreen from "../LoadingScreen/LoadingScreen.jsx";
 import ErrorMessageCard from "../ErrorMessageCard/ErrorMessageCard.jsx";
-import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 
 export default function HorizontalTopics() {
   const { data, isLoading, error } = useFetch(getTopics);
@@ -31,16 +30,17 @@ export default function HorizontalTopics() {
   return (
     <>
       <section className="horizontal-topics-wrapper">
-        <div className="horizontal-topics-heading-container">
-          <button onClick={scrollLeft}>
-            <CircleArrowLeft id="circle-arrow-left" />
-          </button>
-          <h1 className="horizontal-topics-heading">Explore Topics</h1>
-          <button onClick={scrollRight}>
-            <CircleArrowRight id="circle-arrow-right" />
-          </button>
-        </div>
-
+        <h2>
+          <button
+            className="horizontal-topics-scroll-button"
+            onClick={scrollLeft}
+          >{`<-`}</button>
+          <strong>explore topics</strong>
+          <button
+            className="horizontal-topics-scroll-button"
+            onClick={scrollRight}
+          >{`->`}</button>
+        </h2>
         {isLoading && <LoadingScreen item="topics" />}
         {error && <ErrorMessageCard error={error} />}
 

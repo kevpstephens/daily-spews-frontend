@@ -20,7 +20,7 @@
 }
 
 .normal-topic-card-link h3 {
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   font-size: 2rem;
   color: #0d0024;
   transition: all 0.3s ease-in-out;

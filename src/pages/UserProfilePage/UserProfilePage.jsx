@@ -5,13 +5,13 @@ import useFetch from "../../hooks/useFetch";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
-import { useUser } from "../../context";
+import { useUser } from "../../context"; // Import context to get current user
 dayjs.extend(advancedFormat);
 
 export default function UserProfilePage() {
   const { data } = useFetch(getUsers);
   const { username } = useParams();
-  const { user } = useUser();
+  const { user } = useUser(); // Get current signed-in user
 
   let users = [];
   if (data && data.users) {

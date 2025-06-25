@@ -85,7 +85,7 @@ a.nav-button:hover {
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.15s ease-in-out;
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   pointer-events: none;
   width: max-content;
   max-width: 90vw;
@@ -97,7 +97,7 @@ a.nav-button:hover {
 }
 
 .nav-avatar-dropdown h2 {
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   font-size: 1.25rem;
   font-weight: bolder !important;
   margin-bottom: 0.25rem;
@@ -127,7 +127,7 @@ a.nav-button:hover {
   height: 2rem !important;
   color: white;
   font-size: 1rem;
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   margin: 0rem 0.25rem;
 }
 

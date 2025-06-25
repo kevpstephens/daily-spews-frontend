@@ -14,7 +14,7 @@
 }
 
 .generic-error-message {
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   font-size: 27.5px;
   margin-bottom: 1rem;
 }

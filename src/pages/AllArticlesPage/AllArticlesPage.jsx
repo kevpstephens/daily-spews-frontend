@@ -1,5 +1,5 @@
 import "./AllArticlesPage.css";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getArticles } from "../../api/api.js";
 import ArticleCard from "../../components/ArticleCard/ArticleCard.jsx";
 import SortBar from "../../components/SortBar/SortBar.jsx";
@@ -19,23 +19,6 @@ export default function AllArticlesPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [limit] = useState(10);
 
-  const headingRef = useRef(null);
-  const hasMountedOnce = useRef(false);
-
-  useEffect(() => {
-    if (window.innerWidth <= 600 && !hasMountedOnce.current) {
-      hasMountedOnce.current = true;
-      if (headingRef.current) {
-        const yOffset = -460; // adjust to height of your sticky header
-        const y =
-          headingRef.current.getBoundingClientRect().top +
-          window.scrollY +
-          yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, []);
-
   const { data, isLoading, error } = useFetch(
     () => getArticles(sort_by, order, topic, limit, currentPage),
     [sort_by, order, topic, limit, currentPage]
@@ -43,23 +26,20 @@ export default function AllArticlesPage() {
 
   const { articles = [], total_count: totalCount = 0 } = data || {};
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    headingRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   const handleReset = () => {
     setCurrentPage(1);
     setSearchParams({});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <main className="all-articles-page-main">
-      <h1 ref={headingRef} className="all-articles-page-heading">
-        {!topic ? "All Articles:" : `#${topic}`}
+      <h1 className="all-articles-page-heading">
+        {!topic ? "all articles:" : `#${topic}`}
       </h1>
 
       <div className="sort-and-topic-bar-container">
@@ -83,7 +63,7 @@ export default function AllArticlesPage() {
 
       <Pagination
         currentPage={currentPage}
-        setCurrentPage={handlePageChange}
+        setCurrentPage={setCurrentPage}
         totalCount={totalCount}
         limit={limit}
       />

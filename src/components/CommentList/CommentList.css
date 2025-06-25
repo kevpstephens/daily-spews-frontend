@@ -41,7 +41,7 @@
 }
 
 .loading-comments-text {
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   font-size: 1.25rem;
   color: #0d0024;
 }

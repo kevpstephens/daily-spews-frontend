@@ -1,30 +1,27 @@
-/* !============================================================
-!     TopicArticlesPage
-!============================================================ */
+/* ============================================================
+   TopicArticlesPage
+============================================================ */
 
 .topic-articles-page-heading {
-  font-size: clamp(3rem, 5vw, 3rem);
+  font-size: 3rem;
   text-decoration: underline;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
 .topic-description {
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-  margin-bottom: 2.5rem;
-  text-align: center;
-  padding: 0 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .topic-articles-page {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   margin: 0 auto;
   justify-items: center;
   max-width: 1200px;
   box-shadow: none;
-  padding: 0 1rem;
 }
 
 .loading-topics-articles-container {
@@ -37,37 +34,20 @@
 }
 
 .loading-topics-articles-spinner {
-  width: clamp(60px, 15vw, 80px);
+  width: 80px;
   height: auto;
   animation: shake 0.5s infinite ease-in-out;
   margin-bottom: 1rem;
 }
 
 .loading-topics-articles-text {
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
   color: #0d0024;
-  text-align: center;
-  padding: 0 1rem;
 }
 
-/* !============================================================
-!     Media Queries
-!============================================================ */
-
-@media (max-width: 600px) {
-  .topic-articles-page {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .topic-articles-page-heading {
-    text-align: center;
-  }
-
-  .topic-description {
-    font-size: 0.9rem;
-    padding: 0 1rem;
-    text-align: center;
-  }
+.loading-topics-articles-text {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.25rem;
+  color: #0d0024;
 }

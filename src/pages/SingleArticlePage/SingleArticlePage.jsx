@@ -91,20 +91,15 @@ export default function SingleArticlePage() {
         <>
           <article className="article-page">
             <h2>{article.title}</h2>
-            <div className="article-header-container">
-              <p>
-                <strong>Written by:</strong>{" "}
-                <Link to={`/users/${article.author}`}>@{article.author}</Link> |
-                <strong> Topic:</strong>{" "}
-                <Link to={`/topics/${article.topic}`}>#{article.topic}</Link> |{" "}
-                <strong>Posted:</strong> {formatDate(article.created_at)}
-              </p>
-            </div>
+            <p>
+              Written by:{" "}
+              <Link to={`/users/${article.author}`}>{article.author}</Link> |
+              Topic: #{article.topic} <br /> Posted:{" "}
+              {formatDate(article.created_at)}
+            </p>
 
             <img src={article.article_img_url} alt={`article image`} />
-
             <p className="article-body">{article.body}</p>
-
             <section className="likes-and-comments">
               <CommentButton
                 commentCount={article.comment_count}
@@ -118,7 +113,6 @@ export default function SingleArticlePage() {
               />
             </section>
           </article>
-
           <div id="post-comment-form">
             <PostCommentForm
               article_id={article_id}

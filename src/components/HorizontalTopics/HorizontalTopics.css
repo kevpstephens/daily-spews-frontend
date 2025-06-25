@@ -8,56 +8,16 @@
   padding: 0rem !important;
 }
 
-.horizontal-topics-heading-container {
-  text-decoration: underline;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2.5rem 0rem 1rem 0rem;
-}
-
-.horizontal-topics-heading {
-  font-size: 3rem;
-  font-weight: bold;
-  font-family: var(--font-heading);
-  z-index: 100;
-  text-align: center;
-}
-
-#circle-arrow-left,
-#circle-arrow-right {
-  width: 2rem;
-  height: 2rem;
-  color: var(--color-text-body);
-}
-
-#circle-arrow-left:hover,
-#circle-arrow-right:hover {
-  fill: var(--color-primary);
-  z-index: 0 !important;
-}
-
-.horizontal-topics-wrapper button {
-  background-color: #fcfcfc00;
-  border-radius: 100% !important;
-  border: none !important;
-  padding: 0rem;
-  margin: 0rem 0.5rem;
-  color: var(--color-text-body) !important;
-  transition: transform 0.3s ease-in-out;
-  z-index: 1;
-}
-
-.horizontal-topics-wrapper button:hover {
-  background-color: #fcfcfc00;
-  color: black;
-  transform: scale(1.2);
-  z-index: 0 !important;
+.horizontal-topics-wrapper h2 {
+  font-family: "Gaegu", sans-serif;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 2.1875rem;
+  font-weight: 400;
 }
 
 .horizontal-topics-wrapper h3 {
-  font-family: var(--font-heading);
+  font-family: "Gaegu", sans-serif;
   margin-top: 1.25rem;
   margin-bottom: 0rem;
   font-size: 2.1875rem;
@@ -122,12 +82,25 @@
   color: var(--color-accent);
 }
 
+.horizontal-topics-scroll-button {
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 2rem;
+  color: black !important;
+  transition: all 0.3s ease-in-out !important;
+  font-size: 1.3rem !important;
+}
+
+.horizontal-topics-scroll-button:hover {
+  transform: scale(1.5);
+}
+
 /* !============================================================
 !     MEDIA QUERIES: MOBILE OPTIMIZATION
 !============================================================ */
 @media (max-width: 600px) {
   .horizontal-topics-wrapper {
-    margin: 0rem auto;
+    padding: 0rem !important;
   }
 
   .horizontal-scroll-container {

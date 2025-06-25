@@ -2,6 +2,7 @@
 !     H1 - Daily Spews Heading 
 !============================================================ */
 .header-container h1 {
+  font-family: "Gaegu", sans-serif;
   font-size: 3.5rem;
 }
 
@@ -13,9 +14,10 @@
   background-color: #8c75d8;
   padding: 0.5rem;
   border-radius: 30px;
-  border: 0.35rem solid #0d0024;
+  border: 8px solid #0d0024;
   box-shadow: none;
   text-align: center;
+  margin: 0.25rem;
   position: relative;
 }
 
@@ -56,46 +58,5 @@
 
   .header-container h1 {
     display: none;
-  }
-
-  .mobile-daily-spews-greeting-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-  }
-
-  .mobile-daily-spews-heading {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
-    text-align: center;
-    color: var(--color-heading);
-    display: block;
-    margin: 0rem;
-    background-color: #8c75d8;
-    border-radius: 1rem;
-    padding: 0.5rem;
-    border: 0.25rem solid black !important;
-  }
-
-  .mobile-daily-spews-greeting-container p {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    text-align: center;
-    margin: 0rem;
-    color: #0d0024;
-    display: block;
-    padding: 0rem;
-  }
-
-  .mobile-daily-spews-logo {
-    display: inline-block;
-    height: 5rem;
-    width: 5rem;
-    border: 0.25rem dotted #0d0024;
-    border-radius: 2rem;
-    margin: 0.5rem;
-    align-self: center;
   }
 }
