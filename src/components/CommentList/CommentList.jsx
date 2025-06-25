@@ -11,7 +11,9 @@ export default function CommentList({ comments, isFetching }) {
     if (location.hash === "#comments") {
       const el = document.getElementById("comments");
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 50);
       }
     }
   }, [location]);

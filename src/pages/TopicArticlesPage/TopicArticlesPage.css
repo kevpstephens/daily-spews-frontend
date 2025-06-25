@@ -2,18 +2,32 @@
 !     TopicArticlesPage
 !============================================================ */
 
+.topic-articles-page-heading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 8rem;
+  max-height: 100%;
+  max-width: 800px;
+  width: 100%;
+  background-color: #8c75d8;
+  border-radius: 1rem;
+  margin: 2.5rem auto;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  animation: fadeScaleIn 0.5s ease-in-out;
+}
+
 .topic-articles-page-heading {
   font-size: clamp(3rem, 5vw, 3rem);
   text-decoration: underline;
-  margin-top: 2.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .topic-description {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
-  margin-bottom: 2.5rem;
+
   text-align: center;
-  padding: 0 1rem;
 }
 
 .topic-articles-page {
@@ -25,6 +39,14 @@
   max-width: 1200px;
   box-shadow: none;
   padding: 0 1rem;
+}
+
+.topic-articles-page .article-card {
+  animation: fadeSlideInUp 0.5s ease-in-out both;
+}
+
+.article-card {
+  animation: fadeSlideInUp 0.5s ease-in-out both;
 }
 
 .loading-topics-articles-container {
@@ -69,5 +91,9 @@
     font-size: 0.9rem;
     padding: 0 1rem;
     text-align: center;
+  }
+
+  .topic-articles-page-heading-container {
+    padding: 1rem;
   }
 }

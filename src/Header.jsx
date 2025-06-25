@@ -1,7 +1,7 @@
 import "./styles/components/Header.css";
 import { Link } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import MobileHeader from "./components/MobileHeader";
+import MobileHeader from "./components/MobileHeader/MobileHeader";
 
 export default function Header() {
   const isMobile = window.innerWidth <= 600;

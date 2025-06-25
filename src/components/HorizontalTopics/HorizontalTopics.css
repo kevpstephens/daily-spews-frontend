@@ -91,6 +91,7 @@
   z-index: 99;
   padding-top: 0rem !important;
   padding-bottom: 2rem !important;
+  animation: fadeIn 0.5s ease-in-out both;
 }
 
 .horizontal-topic-card:hover {
@@ -131,14 +132,17 @@
 !     Topics dimmed effect for hover interaction
 !============================================================ */
 
-.topics-dimmed .horizontal-topic-card {
-  filter: brightness(0.5);
-  transition: all 0.4s ease-in-out;
-}
+/* Does not work on mobile - intentionally restricted to only work on larger screens */
+@media (min-width: 601px) {
+  .topics-dimmed .horizontal-topic-card {
+    filter: brightness(0.5);
+    transition: all 0.4s ease-in-out;
+  }
 
-.topics-dimmed .horizontal-topic-card:hover {
-  filter: brightness(1);
-  transition: all 0.4s ease-in-out;
+  .topics-dimmed .horizontal-topic-card:hover {
+    filter: brightness(1);
+    transition: all 0.4s ease-in-out;
+  }
 }
 
 /* !============================================================

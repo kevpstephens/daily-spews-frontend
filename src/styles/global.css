@@ -29,7 +29,7 @@
   --color-accent: #b95d28;
 
   --color-form-input: #1f0054;
-  --color-form-input-focus: #e196ff;
+--color-form-input-focus: #e196ff;
 }
 
 /* !============================================================
@@ -164,6 +164,16 @@ svg {
 !     - Customize highlight color for all devices (including iPhone)
 !============================================================ */
 ::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+::-webkit-selection {
   background-color: var(--color-accent);
   color: white;
 }

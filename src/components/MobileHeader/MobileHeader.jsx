@@ -1,7 +1,6 @@
 import "./MobileHeader.css";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import NavigationBar from "./NavigationBar/NavigationBar.jsx";
+import NavigationBar from "../NavigationBar/NavigationBar.jsx";
 
 export default function MobileHeader() {
   const location = useLocation();
