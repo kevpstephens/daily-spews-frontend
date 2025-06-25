@@ -5,19 +5,23 @@
 .sort-bar-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   gap: 1rem;
-  box-shadow: none;
 }
 
-.sort-bar {
-  display: flex;
-  width: auto;
-  background-color: #8113d5;
-  padding: 0.2rem;
-  align-items: center;
-  justify-content: center;
-  border-color: 0d0024;
-  border-width: 0.125rem;
-  text-align: center;
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .sort-bar-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sort-bar {
+    width: 100%;
+    height: 2.75rem;
+  }
 }

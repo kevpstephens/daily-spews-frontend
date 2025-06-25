@@ -2,8 +2,7 @@
 !     FORMS + INPUTS
 !============================================================ */
 .app-content input,
-.app-content textarea,
-.app-content select {
+.app-content textarea {
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   padding: 0.5rem;
@@ -11,6 +10,19 @@
   border: 2px solid black;
   border-radius: 10px;
   width: 100%;
+  background-color: var(--color-primary);
+  color: white;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  text-align: center;
+}
+
+.app-content select {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  padding: 0.5rem;
+  margin-top: 0;
+  border: 2px solid black;
+  border-radius: 10px;
   background-color: var(--color-primary);
   color: white;
   transition: background-color 0.2s ease, border-color 0.2s ease;
