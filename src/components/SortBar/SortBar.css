@@ -23,5 +23,6 @@
   .sort-bar {
     width: 100%;
     height: 2.75rem;
+    text-align: center;
   }
 }

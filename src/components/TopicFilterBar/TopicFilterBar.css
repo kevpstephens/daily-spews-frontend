@@ -13,5 +13,7 @@
 @media (max-width: 600px) {
   #topic-dropdown {
     height: 2.75rem;
+    max-width: 100%;
+    text-align: center;
   }
 }
