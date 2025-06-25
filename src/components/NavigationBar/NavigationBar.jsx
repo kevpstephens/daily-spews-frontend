@@ -6,10 +6,21 @@ import { Home, User } from "lucide-react";
 
 export default function NavigationBar() {
   const { user } = useUser();
+  const isMobile = window.innerWidth <= 600;
 
   return (
     <>
       <nav className="navigation-bar-container">
+        {isMobile && (
+          <Link to="/" title="Daily Spews Home">
+            <img
+              className="mobile-header-daily-spews-logo"
+              src="/assets/logo/daily-spews-logo.png"
+              alt="daily-spews-logo-image"
+            />
+          </Link>
+        )}
+
         <Link id="home-button" className="nav-button" to="/">
           <Home size={28} color="white" />
         </Link>

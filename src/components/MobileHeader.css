@@ -1,0 +1,168 @@
+/* !============================================================
+  !     Media Queries
+  !============================================================ */
+
+@media screen and (max-width: 600px) {
+  .mobile-header-container {
+    position: sticky;
+    top: 0rem;
+    z-index: 1001;
+    background-color: #8c75d8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 0.15rem solid #0d0024;
+    align-self: center;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 0.25rem;
+  }
+
+  .mobile-header-daily-spews-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0.15rem solid #0d0024;
+    border-radius: 100%;
+    margin: 0rem;
+  }
+
+  .mobile-header-navigation-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    flex: 1;
+  }
+
+  .mobile-header-navigation-container > a {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-header-container h1 {
+    display: none;
+  }
+
+  .mobile-daily-spews-greeting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+  }
+
+  .mobile-daily-spews-heading {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    text-align: center;
+    color: var(--color-heading);
+    display: block;
+    margin: 0rem;
+    background-color: #8c75d8;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: 0.25rem solid black !important;
+  }
+
+  .mobile-daily-spews-greeting-container p {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0rem;
+    color: #0d0024;
+    display: block;
+    padding: 0rem;
+  }
+
+  .mobile-daily-spews-logo {
+    display: inline-block;
+    height: 5rem;
+    width: 5rem;
+    border: 0.25rem dotted #0d0024;
+    border-radius: 2rem;
+    margin: 0.5rem;
+    align-self: center;
+  }
+}
+
+/* !============================================================
+!     Media Queries - Navigation Bar
+!============================================================ */
+
+@media screen and (max-width: 600px) {
+  .navigation-bar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  #mobile-header-daily-spews-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  #user-profile-button {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .nav-button {
+    height: 2.5rem;
+  }
+
+  #home-button {
+    display: none;
+  }
+
+  .nav-avatar-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+  }
+
+  .nav-avatar-dropdown {
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    transform: none;
+    z-index: 1000;
+    transition: opacity 0.15s ease-in-out;
+    pointer-events: none;
+    width: max-content;
+    min-width: 10rem;
+    max-width: 90vw;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-radius: 30px;
+    word-break: break-word;
+    gap: 0.75rem;
+    background-color: #f77903ee !important;
+    text-align: center;
+  }
+
+  .nav-avatar-dropdown h2 {
+    font-size: 1.35rem;
+    margin-top: 0.9rem;
+    margin-right: 3.5rem;
+    margin-bottom: 0rem;
+    position: relative;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #nav-logout-button {
+    height: 2.25rem !important;
+    position: relative;
+    top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+}

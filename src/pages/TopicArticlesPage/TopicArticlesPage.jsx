@@ -61,7 +61,7 @@ export default function TopicArticlesPage() {
 
       {!isLoading && !error && (
         <>
-          <h1 className="topic-articles-page-heading">topic: #{topic_slug}</h1>
+          <h1 className="topic-articles-page-heading">#{topic_slug}</h1>
           <p className="topic-description">{topicDescription}</p>
 
           <section className="topic-articles-page">
