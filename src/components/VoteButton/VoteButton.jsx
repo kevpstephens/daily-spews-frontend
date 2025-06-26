@@ -3,6 +3,7 @@ import { ThumbsUp, ThumbsDown, Heart } from "lucide-react";
 import { useState } from "react";
 import { useUser } from "../../context";
 import { toast } from "react-toastify";
+import { XCircle } from "lucide-react";
 
 export default function VoteButton({
   item_id,
@@ -16,7 +17,9 @@ export default function VoteButton({
 
   async function handleVote(inc_votes) {
     if (!user) {
-      toast.error("You must be logged in to vote!");
+      toast.error("You must be logged in to vote!", {
+        icon: <XCircle size={25} color="white" />,
+      });
       return;
     }
 
@@ -38,7 +41,9 @@ export default function VoteButton({
     } catch (error) {
       console.error("Vote error:", error);
       setVoteChange(voteChange); // rollback
-      toast.error("Vote failed. Please try again.");
+      toast.error("Vote failed. Please try again.", {
+        icon: <XCircle size={25} color="white" />,
+      });
     } finally {
       setIsLoading(false);
     }

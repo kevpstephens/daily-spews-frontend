@@ -1,17 +1,95 @@
 /* !============================================================
 !     Toastify - Custom Overrides
 !============================================================ */
-
-/* Wrapper around individual toasts */
-.toast-wrapper {
-  background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  color: inherit;
-  padding: 0;
+/* Toast container z-index */
+.Toastify__toast-container {
+  z-index: 9999 !important;
 }
 
-/* General Toastify container */
-.Toastify {
-  box-shadow: none;
+/* Shared toast styles */
+.Toastify__toast--success,
+.Toastify__toast--error {
+  color: white;
+  font-weight: bold;
+  padding-left: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
 }
+
+/* Success toasts */
+.Toastify__toast--success {
+  background-color: var(--color-primary);
+}
+
+/* Error toasts */
+.Toastify__toast--error {
+  background-color: var(--color-accent);
+}
+
+/* Toast body text */
+.Toastify__toast-body {
+  font-family: "Gaegu", sans-serif;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Progress bar colors */
+.Toastify__toast--success .Toastify__progress-bar {
+  background-color: var(--color-accent);
+}
+
+.Toastify__toast--error .Toastify__progress-bar {
+  background-color: var(--color-primary);
+}
+
+/* Toast appearance animation */
+/* .Toastify__toast {
+  animation: fadeIn 0.4s ease-in-out;
+} */
+
+/* Fade-in animation keyframes */
+/* @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .Toastify__toast-container {
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+  }
+
+  .Toastify__toast {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0.25rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .Toastify__toast-body {
+    font-size: 0.95rem;
+  }
+}
+
+/* !============================================================
+!     Toast Icons
+!============================================================ */
+
+/* .Toastify__toast--success::before,
+.Toastify__toast--error::before {
+  content: none;
+} */
