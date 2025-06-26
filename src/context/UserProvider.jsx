@@ -1,39 +1,54 @@
 import { useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
-import { getUserByUsername } from "../api/api";
+import { getUserByUsername, getCurrentUser, logoutUser } from "../api/api";
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Stores the currently logged-in user
-  const [isUserLoading, setIsUserLoading] = useState(true); // Controls loading state while user is being fetched
+  const [user, setUser] = useState(null);
+  const [isUserLoading, setIsUserLoading] = useState(true);
 
   useEffect(() => {
-    // In development, try to retrieve the last used username from localStorage
-    const savedUsername = import.meta.env.DEV
-      ? localStorage.getItem("ds-username")
-      : null;
-
     const fetchUser = async () => {
       try {
-        let userData;
+        // First, always try to get user from backend session (both dev and prod)
+        console.log("Trying to restore user from session...");
+        const data = await getCurrentUser();
+        setUser(data.user);
+        console.log("✅ User restored from session:", data.user?.username);
 
-        if (savedUsername) {
-          // In dev mode, fetch mock/test user by username
-          const { user } = await getUserByUsername(savedUsername);
-          userData = user;
-        } else {
-          // In production, attempt to retrieve authenticated user from secure cookie
-          const res = await fetch("/api/users/me", { credentials: "include" });
-          if (!res.ok) throw new Error("Not authenticated");
-          const data = await res.json();
-          userData = data.user;
+        // If successful, also save to localStorage for persistence
+        if (data.user?.username) {
+          localStorage.setItem("ds-username", data.user.username);
         }
-
-        setUser(userData); // Set the retrieved user into global context
       } catch (err) {
-        console.error("Failed to restore user:", err);
-        setUser(null); // If anything goes wrong, assume no user is logged in
+        console.log("Session restore failed:", err.response?.status);
+
+        // Fallback: try localStorage (for both dev and prod)
+        const savedUsername = localStorage.getItem("ds-username");
+        if (savedUsername) {
+          try {
+            console.log("Trying localStorage fallback for:", savedUsername);
+            const { user: fallbackUser } = await getUserByUsername(
+              savedUsername
+            );
+            setUser(fallbackUser);
+            console.log(
+              "✅ User restored from localStorage:",
+              fallbackUser.username
+            );
+          } catch (fallbackErr) {
+            console.error("❌ localStorage fallback failed:", fallbackErr);
+            // If user doesn't exist anymore, clear localStorage
+            if (fallbackErr.response?.status === 404) {
+              localStorage.removeItem("ds-username");
+            }
+            setUser(null);
+          }
+        } else {
+          console.log("No saved username found");
+          setUser(null);
+        }
       } finally {
-        setIsUserLoading(false); // Loading complete regardless of outcome
+        setIsUserLoading(false);
       }
     };
 
@@ -41,19 +56,28 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // In development, persist the username to localStorage for reload persistence
-    if (import.meta.env.DEV) {
-      if (user?.username) {
-        localStorage.setItem("ds-username", user.username);
-      } else {
-        localStorage.removeItem("ds-username");
-      }
+    // Always persist username to localStorage (both dev and prod)
+    if (user?.username) {
+      localStorage.setItem("ds-username", user.username);
+    } else {
+      localStorage.removeItem("ds-username");
     }
   }, [user]);
 
-  // Provide user state and updater through context to the rest of the app
+  // Logout function to clear everything properly
+  const logout = async () => {
+    try {
+      await logoutUser();
+    } catch (err) {
+      console.error("Server logout failed:", err);
+    } finally {
+      setUser(null);
+      localStorage.removeItem("ds-username");
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser, isUserLoading }}>
+    <UserContext.Provider value={{ user, setUser, isUserLoading, logout }}>
       {children}
     </UserContext.Provider>
   );

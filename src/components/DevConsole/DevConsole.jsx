@@ -1,23 +1,49 @@
 import "./DevConsole.css";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useUser } from "../../context";
-import { getUserByUsername } from "../../api/api";
 import { Link, useLocation } from "react-router-dom";
 
 export default function DevConsole() {
-  const { user, setUser } = useUser();
-  const [isLoading, setIsLoading] = useState(false);
+  const { user } = useUser();
   const location = useLocation();
 
   const consoleRef = useRef(null);
   const [position, setPosition] = useState(() => {
     const saved = localStorage.getItem("devConsolePosition");
-    return saved ? JSON.parse(saved) : { x: 100, y: 100 };
+    return saved ? JSON.parse(saved) : { x: 20, y: 20 };
   });
+
+  const [size, setSize] = useState(() => {
+    const saved = localStorage.getItem("devConsoleSize");
+    return saved ? JSON.parse(saved) : { width: 200, height: 140 };
+  });
+
   const dragOffset = useRef({ x: 0, y: 0 });
   const isDragging = useRef(false);
+  const isResizing = useRef(false);
+  const resizeStart = useRef({ x: 0, y: 0, width: 0, height: 0 });
+
+  // Save position and size to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("devConsolePosition", JSON.stringify(position));
+  }, [position]);
+
+  useEffect(() => {
+    localStorage.setItem("devConsoleSize", JSON.stringify(size));
+  }, [size]);
 
   const handleMouseDown = (e) => {
+    // Don't start dragging if clicking on resize handle or links
+    if (
+      e.target.classList.contains("resize-handle") ||
+      e.target.tagName === "A" ||
+      e.target.closest(".resize-handle") ||
+      e.target.closest("a")
+    ) {
+      return;
+    }
+
+    e.preventDefault();
     isDragging.current = true;
     dragOffset.current = {
       x: e.clientX - position.x,
@@ -27,81 +53,114 @@ export default function DevConsole() {
     document.addEventListener("mouseup", handleMouseUp);
   };
 
+  const handleResizeStart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    isResizing.current = true;
+    resizeStart.current = {
+      x: e.clientX,
+      y: e.clientY,
+      width: size.width,
+      height: size.height,
+    };
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
+
+  // In your handleMouseMove function, change this section:
+
   const handleMouseMove = (e) => {
+    e.preventDefault();
+
     if (isDragging.current) {
-      setPosition({
-        x: e.clientX - dragOffset.current.x,
-        y: e.clientY - dragOffset.current.y,
+      // Constrain to viewport bounds
+      const newX = Math.max(
+        0,
+        Math.min(
+          window.innerWidth - size.width,
+          e.clientX - dragOffset.current.x
+        )
+      );
+      const newY = Math.max(
+        0,
+        Math.min(
+          window.innerHeight - size.height,
+          e.clientY - dragOffset.current.y
+        )
+      );
+
+      setPosition({ x: newX, y: newY });
+    } else if (isResizing.current) {
+      const deltaX = e.clientX - resizeStart.current.x;
+      const deltaY = e.clientY - resizeStart.current.y;
+
+      // Allow much smaller minimum size - change from 175 to something like 50 or 80
+      const newWidth = Math.max(50, resizeStart.current.width + deltaX);
+      const newHeight = Math.max(50, resizeStart.current.height + deltaY);
+
+      // Constrain to viewport
+      const maxWidth = window.innerWidth - position.x;
+      const maxHeight = window.innerHeight - position.y;
+
+      setSize({
+        width: Math.min(newWidth, maxWidth),
+        height: Math.min(newHeight, maxHeight),
       });
     }
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e) => {
+    e.preventDefault();
+
     isDragging.current = false;
-    localStorage.setItem("devConsolePosition", JSON.stringify(position));
+    isResizing.current = false;
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
-  // Predefined list of test users (null represents not logged in)
-  const TEST_USERS = [null, "kevpstephenson", "admin"];
-  const [userIndex, setUserIndex] = useState(() => {
-    const savedIndex = localStorage.getItem("devUserIndex");
-    return savedIndex !== null ? parseInt(savedIndex, 10) : 0;
-  });
-
-  // On mount, load user from localStorage and fetch user data if needed
+  // Cleanup event listeners on unmount
   useEffect(() => {
-    const savedIndex = localStorage.getItem("devUserIndex");
-    if (savedIndex !== null) {
-      const nextUser = TEST_USERS[parseInt(savedIndex, 10)];
-      if (nextUser === null) {
-        setUser(null);
-        localStorage.removeItem("ds-username");
-      } else {
-        getUserByUsername(nextUser).then((data) => setUser(data.user));
-      }
-    }
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
   }, []);
-
-  // Switch to the next test user and persist index in localStorage
-  const handleSwitch = async () => {
-    setIsLoading(true);
-    const nextIndex = (userIndex + 1) % TEST_USERS.length;
-    const nextUser = TEST_USERS[nextIndex];
-
-    try {
-      if (nextUser === null) {
-        setUser(null);
-        localStorage.removeItem("ds-username");
-      } else {
-        const data = await getUserByUsername(nextUser);
-        setUser(data.user);
-      }
-      setUserIndex(nextIndex);
-      localStorage.setItem("devUserIndex", nextIndex);
-    } catch (err) {
-      console.error("Failed to switch user:", err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <aside
       ref={consoleRef}
       className="dev-console"
       onMouseDown={handleMouseDown}
-      style={{ left: position.x, top: position.y, position: "fixed" }}
+      style={{
+        left: position.x,
+        top: position.y,
+        width: size.width,
+        height: size.height,
+      }}
     >
-      <h5>Current User:</h5>
-      <p>{user ? user.username : "null"}</p>
-      <h5>Current Page:</h5>
-      <p>{location.pathname}</p>
-      <button onClick={handleSwitch} disabled={isLoading}>
-        {isLoading ? "Switching..." : "Switch User"}
-      </button>
-      <Link to="/test">Link to: Test Page</Link>
+      <div className="dev-console-field">
+        <strong className="dev-console-label">User:</strong>
+        <span className="dev-console-value">
+          {user ? user.username : "null"}
+        </span>
+      </div>
+
+      <div className="dev-console-field">
+        <strong className="dev-console-label">Page:</strong>
+        <span className="dev-console-value">{location.pathname}</span>
+      </div>
+
+      <div className="dev-console-mode">Display Only Mode</div>
+
+      <Link to="/test" className="dev-console-link">
+        → Test Page
+      </Link>
+
+      <Link to="/login" className="dev-console-link">
+        → Login Page
+      </Link>
+
+      <div className="resize-handle" onMouseDown={handleResizeStart} />
     </aside>
   );
 }

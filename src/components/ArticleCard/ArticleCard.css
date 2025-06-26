@@ -29,20 +29,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
-    border 0.3s ease-in-out, background-color 0.75s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border: 2px solid transparent;
-  margin: 1.5rem 0.5rem 0.5rem 0.5rem;
+  margin: 1.5rem 0.5rem 0rem 0.5rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   background-color: #9382ca;
   gap: 0.5rem;
   text-align: center;
   position: relative;
-  padding-bottom: 2.5rem !important;
 }
 
 .article-card:hover {
-  transform: scale(1.05);
   border: 2px solid #0d0024;
 }
 
@@ -55,6 +52,7 @@
 
 .article-card-heading {
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -81,35 +79,32 @@
   width: 100%;
   height: 17.1875rem;
   object-fit: cover;
-
   border-radius: 1rem;
-  transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   position: relative;
 }
 
 .article-card img:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   border: 5px dotted #000000;
-  transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.article-card-author-and-topic-link:hover {
-  text-decoration: underline;
-}
-
-.article-card-image-posted-date-container {
+/* .article-card-image-posted-date-container {
   position: relative;
   width: 100%;
-}
+} */
 
 .article-card-posted-date {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  position: absolute;
-  background-color: #8a72d77e;
+  display: inline-block;
+  width: auto;
+  margin-top: 0.75rem;
   padding: 0rem 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  background-color: #8a72d77e;
   border-radius: 1rem;
-  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 /* !============================================================
@@ -159,10 +154,6 @@
 @media (max-width: 600px) {
   .article-card-container {
     max-width: 100vw;
-  }
-
-  .all-articles-list {
-    margin: 0rem 0rem 0rem 0rem !important;
   }
 
   .article-card-heading {

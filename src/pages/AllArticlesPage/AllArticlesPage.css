@@ -2,7 +2,7 @@
 !     AllArticlesPage
 !============================================================ */
 
-.all-articles-page-heading {
+.all-articles-page-main h1 {
   font-size: 3rem;
   text-decoration: underline;
   margin: 2.5rem;
@@ -27,12 +27,11 @@
 !     Media Queries
 !============================================================ */
 @media (max-width: 600px) {
-  .all-articles-page-heading {
+  .all-articles-page-main h1 {
     margin: 1.5rem auto;
   }
 
-  .articles-page {
-    gap: 3rem;
-    padding: 0 1rem;
+  .all-articles-list {
+    gap: 2.5rem;
   }
 }

@@ -47,7 +47,7 @@ export default function VoteButton({
     } catch (error) {
       console.error("Vote error:", error);
       setVoteChange(voteChange); // rollback
-      toast.error("Vote failed! Please try again.", {
+      toast.error("Vote failed! Please refresh the page and try again.", {
         className: "toast-message",
       });
     } finally {

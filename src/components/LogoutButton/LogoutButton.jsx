@@ -22,7 +22,7 @@ export default function LogoutButton({ redirectTo = "/", id }) {
           });
           navigate(redirectTo);
         } catch (err) {
-          toast.error("Logout failed!", {
+          toast.error("Logout failed! Please refresh the page and try again.", {
             className: "toast-message",
           });
           console.error(err);
