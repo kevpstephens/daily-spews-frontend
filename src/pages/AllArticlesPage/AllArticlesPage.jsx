@@ -56,30 +56,30 @@ export default function AllArticlesPage() {
   };
 
   return (
-    <main className="all-articles-page-main">
-      <h1 ref={headingRef} className="all-articles-page-heading">
-        {!topic ? "All Articles" : `#${topic}`}
-      </h1>
+    <>
+      <main className="all-articles-page-main">
+        <h1 ref={headingRef}>{!topic ? "All Articles" : `#${topic}`}</h1>
 
-      <SortAndTopicBar handleReset={handleReset} />
+        <SortAndTopicBar handleReset={handleReset} />
 
-      {isLoading && <LoadingScreen item="articles" />}
-      {error && <ErrorMessageCard error={error} />}
+        {isLoading && <LoadingScreen item="articles" />}
+        {error && <ErrorMessageCard error={error} />}
 
-      {!isLoading && !error && (
-        <section className="all-articles-list">
-          {articles.map((article) => (
-            <ArticleCard key={article.article_id} article={article} />
-          ))}
-        </section>
-      )}
+        {!isLoading && !error && (
+          <section className="all-articles-list">
+            {articles.map((article) => (
+              <ArticleCard key={article.article_id} article={article} />
+            ))}
+          </section>
+        )}
 
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={handlePageChange}
-        totalCount={totalCount}
-        limit={limit}
-      />
-    </main>
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={handlePageChange}
+          totalCount={totalCount}
+          limit={limit}
+        />
+      </main>
+    </>
   );
 }

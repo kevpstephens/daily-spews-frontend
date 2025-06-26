@@ -1,4 +1,5 @@
 import "./SignupPage.css";
+import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
 import { registerUser } from "../../api/api";
 import { useUser } from "../../context";
@@ -76,7 +77,11 @@ export default function SignupPage() {
       navigate(`/users/${data.user.username}`);
     } catch (err) {
       console.error("Signup failed:", err);
-      alert("Signup failed. Please try again.");
+      import("react-toastify").then(({ toast }) =>
+        toast.error("Signup failed. Please try again.", {
+          className: "toast-message",
+        })
+      );
     } finally {
       setIsSubmitting(false);
     }

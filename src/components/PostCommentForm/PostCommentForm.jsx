@@ -48,9 +48,12 @@ export default function PostCommentForm({ article_id, setComments }) {
       });
     } catch (err) {
       console.error("Failed to post comment", err);
-      toast.error("Failed to post comment! Please try again.", {
-        className: "toast-message",
-      });
+      toast.error(
+        "Failed to post comment! Please refresh the page and try again.",
+        {
+          className: "toast-message",
+        }
+      );
     } finally {
       setIsSubmitting(false);
     }

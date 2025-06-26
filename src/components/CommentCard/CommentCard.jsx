@@ -39,9 +39,12 @@ export default function CommentCard({ comment }) {
       });
     } catch (error) {
       console.error("Failed to delete comment:", error);
-      toast.error("Failed to delete comment!", {
-        className: "toast-message",
-      });
+      toast.error(
+        "Failed to delete comment! Please refresh the page and try again.",
+        {
+          className: "toast-message",
+        }
+      );
       setIsDeleting(false);
       setShowConfirm(false);
     }
