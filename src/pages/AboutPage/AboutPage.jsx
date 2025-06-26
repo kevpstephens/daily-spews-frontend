@@ -13,20 +13,21 @@ export default function AboutPage() {
         />
         <p>
           Daily Spews is a satirical news site built as part of the Northcoders
-          Software Engineering Bootcamp. Powered by React, PostgreSQL, and
-          Express — with a (un)healthy dose of caffeine — it explores modern
-          headlines with a touch of humour, a dash of interactivity, topped off
-          with the most delicate caressing of chaos.
+          Software Development Bootcamp. Powered by React, PostgreSQL, and
+          Express - with a (un)healthy dose of caffeine - it explores modern
+          headlines with a touch of humour, a dash of interactivity, topped with
+          the most delicate caressing of chaos.
         </p>
         <p>
-          Built with lots of love by{" "}
+          Built with lots of love,{" "}
           <a
             className="kevin-stephenson-link"
             href="https://github.com/kevpstephens"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Kevin Stephenson
+            <br />
+            <span className="kevin-stephenson-name">Kevin Stephenson</span>
           </a>
         </p>
       </div>
