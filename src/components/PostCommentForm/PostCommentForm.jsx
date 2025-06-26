@@ -1,13 +1,14 @@
+import { toast } from "react-toastify";
 import "./PostCommentForm.css";
 import { useState, useRef } from "react";
 import { postComment } from "../../api/api";
-import { useUser } from "../../context";
 import { Link } from "react-router-dom";
+import { useUser } from "../../context";
 
 export default function PostCommentForm({ article_id, setComments }) {
+  const { user } = useUser();
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { user } = useUser();
 
   const textareaRef = useRef(null);
 
@@ -37,13 +38,19 @@ export default function PostCommentForm({ article_id, setComments }) {
         created_at: newComment.created_at || now,
         votes: 0,
         author: user.username,
+        justPosted: true, // Used for triggering animation
       };
 
       setComments((prevComments) => [completeComment, ...prevComments]);
       setComment("");
+      toast.success("Comment posted successfully!", {
+        className: "toast-message",
+      });
     } catch (err) {
       console.error("Failed to post comment", err);
-      alert("Something went wrong. Please try again.");
+      toast.error("Failed to post comment! Please try again.", {
+        className: "toast-message",
+      });
     } finally {
       setIsSubmitting(false);
     }

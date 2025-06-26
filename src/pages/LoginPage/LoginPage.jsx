@@ -17,7 +17,10 @@ export default function LoginPage() {
     event.preventDefault();
     try {
       const data = await loginUser({ email, password });
+      // Save authenticated user to context after login
       setUser(data.user);
+      // Optionally: Re-fetch user from cookie session if needed
+      // setUser will already populate the user context if response is valid
       navigate(`/users/${data.user.username}`);
     } catch (err) {
       console.error("Login failed:", err);
