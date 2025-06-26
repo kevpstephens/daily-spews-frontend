@@ -29,9 +29,7 @@ export default function CommentCard({ comment }) {
       setTimeout(() => {
         setIsDeleted(true);
       }, 500); // should match CSS transition duration
-      toast.success("Comment deleted successfully.", {
-        closeButton: false,
-      });
+      toast.success("Comment deleted successfully.");
     } catch (error) {
       console.error("Failed to delete comment:", error);
       toast.error("Failed to delete comment.");

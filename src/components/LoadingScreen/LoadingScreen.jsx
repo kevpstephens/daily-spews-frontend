@@ -8,7 +8,9 @@ export default function LoadingScreen({
   topicItem,
 }) {
   const singularTopic = pluralToSingular(topicItem);
-  let message = `${item} being spewed expeditiously`;
+  let message = item
+    ? `${item} being spewed expeditiously`
+    : "Loading spews...";
 
   if (singleArticleLoad) {
     message = "Please wait while we spew out this article for you...";

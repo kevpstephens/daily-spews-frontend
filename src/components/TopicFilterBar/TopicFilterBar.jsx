@@ -9,7 +9,7 @@ function formatTopicName(slug) {
 }
 
 export default function TopicFilterBar() {
-  const { data, isLoading, error } = useFetch(getTopics);
+  const { data } = useFetch(getTopics);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
@@ -36,9 +36,6 @@ export default function TopicFilterBar() {
 
   return (
     <>
-      {isLoading && <p className="topic-filter-loading">Loading topics...</p>}
-      {error && <p className="topic-filter-error">Failed to load topics.</p>}
-
       <select
         className="topic-filter-bar"
         id="topic-dropdown"

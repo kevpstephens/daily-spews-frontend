@@ -9,11 +9,11 @@ export default function TestPage() {
   return (
     <>
       <div className="test-page">
-        <SortAndTopicBar />
-        {/* <h1>Welcome to the Test Page!!!!! :DDDDD</h1>
+        {/* <SortAndTopicBar /> */}
+        {/* <h1>Welcome to the Test Page!!!!! :DDDDD</h1> */}
         <ToastTester />
         <LoadingScreen />
-        <ErrorBoundary /> */}
+        {/* <ErrorBoundary /> */}
       </div>
     </>
   );
