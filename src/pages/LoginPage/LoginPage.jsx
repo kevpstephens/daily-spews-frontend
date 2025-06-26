@@ -5,6 +5,7 @@ import { useUser } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
 import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
 import { Eye, EyeClosed } from "lucide-react";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ export default function LoginPage() {
       const data = await loginUser({ email, password });
       // Save authenticated user to context after login
       setUser(data.user);
+      toast.success("Login successful!", { className: "toast-message" });
       // Optionally: Re-fetch user from cookie session if needed
       // setUser will already populate the user context if response is valid
       navigate(`/users/${data.user.username}`);

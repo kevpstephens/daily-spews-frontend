@@ -2,58 +2,58 @@
 !     TopicCard
 !============================================================ */
 
-.normal-topic-card {
+.topic-card {
   width: 100%;
-  min-width: 18.75rem;
-  max-width: 20rem;
+  max-width: 18.75rem;
   height: auto;
-  border: 0.125rem solid #0d0024;
-  padding: 1rem 0.75rem;
+
   background: #8a72d77e;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
   text-align: center;
+  animation: fadeIn 0.5s ease-in-out both;
+  box-shadow: 0.1rem 0.1rem 0.1rem #0000007f;
+  border-radius: 1.875rem;
 }
 
-.normal-topic-card-link h3 {
-  font-family: var(--font-heading);
+.topic-card:hover {
+  background-color: #8113d5;
+  box-shadow: none;
+  transform: scale(1.02);
+  border: none;
+}
+
+.topic-card h3 {
+  font-family: "Gaegu", sans-serif;
   font-size: 2rem;
-  color: #0d0024;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  margin: 0.3rem 0rem 0.15rem 0rem;
 }
 
-.normal-topic-card-link:hover h3 {
+.topic-card:hover h3 {
   color: white;
-}
-
-.normal-topic-card-link:hover {
   text-decoration: underline;
   text-decoration-color: #f77703 !important;
 }
 
-.normal-topic-card img {
-  max-width: 100%;
+.topic-card img {
+  height: 12.75rem;
   width: 18.75rem;
-  height: 12.5rem;
   object-fit: cover;
   border-radius: 1.875rem;
-  margin: 0.25rem;
-  transition: all 0.3s ease-in-out;
+  margin: 0.5rem;
+  transition: all 0.4s ease-in-out;
 }
 
-.normal-topic-card:hover {
-  background-color: #8113d5;
-}
-
-.normal-topic-card:hover img {
+.topic-card:hover img {
   transform: scale(1.1);
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
   border: 0.3rem dotted #000000;
-  border-radius: 100rem;
+  border-radius: 100%;
 }
 
 /* !============================================================
@@ -61,18 +61,14 @@
 !============================================================ */
 
 @media (max-width: 600px) {
-  .normal-topic-card {
-    min-width: 16rem;
-    max-width: 18rem;
-    padding: 0.75rem 0.5rem;
+  .topic-card h3 {
+    font-size: 1.85rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
   }
 
-  .normal-topic-card-link h2 {
-    font-size: 1.75rem;
-  }
-
-  .normal-topic-card img {
-    width: 16rem;
-    height: 10rem;
+  .topic-card img {
+    width: 18rem;
+    height: 12rem;
   }
 }

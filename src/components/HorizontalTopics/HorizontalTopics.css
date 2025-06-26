@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2.5rem 0rem 1rem 0rem;
+  margin: 2.5rem 0rem 0.5rem 0rem;
 }
 
 /* !============================================================
@@ -22,7 +22,7 @@
 !============================================================ */
 
 .horizontal-topics-heading {
-  margin: 0rem 0.25rem;
+  margin: 0rem 0.25rem 0.5rem 0.25rem;
   font-size: 3rem;
   font-weight: bold;
   font-family: var(--font-heading);
@@ -30,7 +30,7 @@
   text-align: center;
 }
 
-.horizontal-topics-wrapper button {
+.horizontal-topics-heading-container button {
   width: 1.75rem;
   height: 1.75rem;
   background-color: var(--color-primary);
@@ -41,14 +41,14 @@
   z-index: 1;
 }
 
-.horizontal-topics-wrapper button:hover {
+.horizontal-topics-heading-container button:hover {
   background-color: var(--color-primary);
   color: white;
   transform: scale(1.2);
   z-index: 0 !important;
 }
 
-.horizontal-topics-wrapper button:disabled {
+.horizontal-topics-heading-container button:disabled {
   background-color: #9382ca;
   border: none;
   color: #797979;
@@ -57,112 +57,35 @@
 }
 
 /* !============================================================
-!     Horizontal Topic Cards
+!     Horizontal Topics Scroll Container
 !============================================================ */
-
-.horizontal-topics-wrapper h3 {
-  font-family: var(--font-heading);
-  margin-top: 1.25rem;
-  margin-bottom: 0rem;
-  font-size: 1.65rem;
-  font-weight: 400;
-}
 
 .horizontal-scroll-container {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-padding-left: 0rem !important;
+  padding: 1.5rem 0rem 1.5rem 0.5rem;
+  gap: 0.25rem;
+  z-index: 10001;
 }
 
 .horizontal-scroll-container::-webkit-scrollbar {
   display: none;
 }
 
-.horizontal-topic-card {
-  scroll-snap-align: start;
-  min-width: 15.625rem;
-  flex-shrink: 0;
-  transition: all 0.4s ease-in-out;
-  border-radius: 1.875rem;
-  box-shadow: none;
-  position: relative;
-  z-index: 99;
-  padding-top: 0rem !important;
-  padding-bottom: 2rem !important;
-  animation: fadeIn 0.5s ease-in-out both;
-}
-
-.horizontal-topic-card:hover {
-  transform: scale(1.2);
-  z-index: 1000;
-  transition: all 0.4s ease-in-out;
-}
-
-.horizontal-topic-card img {
-  width: 100%;
-  min-width: 12rem;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 1.875rem;
-  margin: 0.25rem;
-  box-shadow: 0.2rem 0.2rem 0.2rem var(--color-form-input);
-  transition: all 0.4s ease-in-out;
-}
-
-.horizontal-topic-card:hover img {
-  box-shadow: 0 0 10px var(--color-accent);
-  transition: all 0.4s ease-in-out;
-}
-
-.horizontal-topic-card-link {
-  display: inline-block;
-  width: fit-content;
-  max-width: 18.75rem;
-  text-decoration: none;
-  color: var(--color-accent);
-}
-
-.horizontal-topic-card-link:hover {
-  color: var(--color-accent);
-}
-
-/* !============================================================
-!     Topics dimmed effect for hover interaction
-!============================================================ */
-
-/* Does not work on mobile - intentionally restricted to only work on larger screens */
-@media (min-width: 601px) {
-  .topics-dimmed .horizontal-topic-card {
-    filter: brightness(0.5);
-    transition: all 0.4s ease-in-out;
-  }
-
-  .topics-dimmed .horizontal-topic-card:hover {
-    filter: brightness(1);
-    transition: all 0.4s ease-in-out;
-  }
-}
-
 /* !============================================================
 !     MEDIA QUERIES: MOBILE OPTIMIZATION
 !============================================================ */
 @media (max-width: 600px) {
-  .horizontal-topics-wrapper {
-    margin: 0rem auto;
-  }
-
   .horizontal-topics-heading-container {
     margin-top: 1.5rem;
   }
 
   .horizontal-scroll-container {
-    padding: 0 0 0.5rem 0;
-    gap: 0;
-  }
-
-  .horizontal-topic-card {
-    min-width: 12.5rem;
+    padding-left: 0rem;
+    padding-top: 1.25rem;
+    gap: 0.75rem;
+    margin-bottom: 0rem;
   }
 }

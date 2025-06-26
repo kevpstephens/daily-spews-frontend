@@ -2,7 +2,7 @@ import "./HorizontalTopics.css";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { getTopics } from "../../api/api";
 import useFetch from "../../hooks/useFetch";
-import TopicCard from "../TopicCard/TopicCard.jsx";
+import HorizontalTopicsCard from "../HorizontalTopicsCard/HorizontalTopicsCard.jsx";
 import LoadingScreen from "../LoadingScreen/LoadingScreen.jsx";
 import ErrorMessageCard from "../ErrorMessageCard/ErrorMessageCard.jsx";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -62,6 +62,9 @@ export default function HorizontalTopics() {
 
   return (
     <>
+      {isLoading && <LoadingScreen item="topics" />}
+      {error && <ErrorMessageCard error={error} />}
+
       <section className="horizontal-topics-wrapper">
         <div className="horizontal-topics-heading-container">
           <button onClick={scrollLeft} disabled={atStart}>
@@ -75,17 +78,16 @@ export default function HorizontalTopics() {
           </button>
         </div>
 
-        {isLoading && <LoadingScreen item="topics" />}
-        {error && <ErrorMessageCard error={error} />}
-
         <div
-          className={`horizontal-scroll-container${dimOthers ? " topics-dimmed" : ""}`}
+          className={`horizontal-scroll-container${
+            dimOthers ? " topics-dimmed" : ""
+          }`}
           ref={scrollRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           {topics.map((topic) => (
-            <TopicCard key={topic.slug} topic={topic} type={"horizontal-"} />
+            <HorizontalTopicsCard key={topic.slug} topic={topic} />
           ))}
         </div>
       </section>
