@@ -1,0 +1,77 @@
+/* !============================================================
+!     Horizontal Topic Cards
+!============================================================ */
+
+.horizontal-topic-card h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 0rem;
+  font-size: 1.65rem;
+  font-weight: 400;
+}
+
+.horizontal-topic-card {
+  scroll-snap-align: start;
+  min-width: 15.625rem;
+  flex-shrink: 0;
+  padding-bottom: 1.5rem !important;
+  position: relative;
+  z-index: 10001;
+  transition: all 0.4s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out both;
+}
+
+.horizontal-topic-card:hover {
+  transform: scale(1.2);
+  z-index: 10001;
+  transition: all 0.4s ease-in-out;
+}
+
+.horizontal-topic-card img {
+  width: 100%;
+  min-width: 13rem;
+  max-width: 14rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 15%;
+  box-shadow: 0.15rem 0.15rem 0.15rem var(--color-form-input);
+  transition: all 0.4s ease-in-out;
+}
+
+.horizontal-topic-card img:hover {
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+.horizontal-topic-card-link {
+  color: transparent;
+}
+
+.horizontal-topic-card-link:hover {
+  color: var(--color-accent) !important;
+  transition: all 0.4s ease-in-out;
+}
+
+/* !============================================================
+!     Topics dimmed effect for hover interaction
+!============================================================ */
+
+/* Does not work on mobile - intentionally restricted to only work on larger screens */
+@media (min-width: 601px) {
+  .topics-dimmed .horizontal-topic-card {
+    filter: brightness(0.5);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .topics-dimmed .horizontal-topic-card:hover {
+    filter: brightness(1);
+    transition: all 0.4s ease-in-out;
+  }
+}
+
+/* !============================================================
+!     MEDIA QUERIES: MOBILE OPTIMIZATION
+!============================================================ */
+@media (max-width: 600px) {
+  .topics-page-container {
+    gap: 2rem;
+  }
+}
