@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
-
 // Create an Axios instance with the base URL set to the environment variable
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
 });
 
 //! GET /api/articles
@@ -104,7 +103,7 @@ export const postComment = async (article_id, commentObj) => {
   return res.data;
 };
 
-//! POST /api/login
+//! POST /api/auth/login
 // Authenticates user and sets a secure cookie (e.g., JWT)
 export const loginUser = async ({ email, password }) => {
   const res = await api.post(

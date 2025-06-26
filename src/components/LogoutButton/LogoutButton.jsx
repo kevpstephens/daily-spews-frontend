@@ -16,10 +16,15 @@ export default function LogoutButton({ redirectTo = "/", id }) {
         try {
           await logoutUser();
           setUser(null);
-          toast.success("Logged out!");
+          localStorage.removeItem("ds-username");
+          toast.success("Logged out successfully!", {
+            className: "toast-message",
+          });
           navigate(redirectTo);
         } catch (err) {
-          toast.error("Logout failed!");
+          toast.error("Logout failed!", {
+            className: "toast-message",
+          });
           console.error(err);
         }
       }}

@@ -1,54 +1,66 @@
 /* !============================================================
 !     Toastify - Custom Overrides
 !============================================================ */
-/* Toast container z-index */
+
+/*! Toast container z-index */
 .Toastify__toast-container {
   z-index: 9999 !important;
 }
 
-/* Shared toast styles */
-.Toastify__toast--success,
-.Toastify__toast--error {
-  color: white;
+/*! Shared toast styles */
+.toast-message {
+  background: #8113d5;
+  color: #fff;
+  font-size: 1rem;
+  width: 30vw;
+  padding: 0.5rem;
   font-weight: bold;
-  padding-left: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
 }
 
-/* Success toasts */
+/*! Success toasts */
 .Toastify__toast--success {
   background-color: var(--color-primary);
 }
 
-/* Error toasts */
+/*! Error toasts */
 .Toastify__toast--error {
-  background-color: var(--color-accent);
+  background-color: #ff8800;
+  color: rgb(201, 0, 0);
 }
 
-/* Toast body text */
-.Toastify__toast-body {
-  font-family: "Gaegu", sans-serif;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+/*! Info toasts */
+.Toastify__toast--info {
+  background-color: #2a81c8;
 }
 
-/* Progress bar colors */
-.Toastify__toast--success .Toastify__progress-bar {
-  background-color: var(--color-accent);
+/*! Warning toasts */
+.Toastify__toast--warning {
+  background-color: #e29e00;
+  color: black;
 }
 
-.Toastify__toast--error .Toastify__progress-bar {
-  background-color: var(--color-primary);
+/*! Default toasts (when no type is specified) */
+.Toastify__toast--default {
+  background-color: #eee;
+  color: black;
+  font-weight: normal;
 }
 
-/* Toast appearance animation */
+/*! Progress bar colors */
+.Toastify__toast--success .Toastify__progress-bar,
+.Toastify__toast--error .Toastify__progress-bar,
+.Toastify__toast--info .Toastify__progress-bar,
+.Toastify__toast--warning .Toastify__progress-bar {
+  background-color: white;
+}
+
+/*! Toast appearance animation */
 /* .Toastify__toast {
   animation: fadeIn 0.4s ease-in-out;
 } */
 
-/* Fade-in animation keyframes */
+/*! Fade-in animation keyframes */
 /* @keyframes fadeIn {
   from {
     opacity: 0;
@@ -89,6 +101,7 @@
 !     Toast Icons
 !============================================================ */
 
+/*! Toast icons */
 /* .Toastify__toast--success::before,
 .Toastify__toast--error::before {
   content: none;

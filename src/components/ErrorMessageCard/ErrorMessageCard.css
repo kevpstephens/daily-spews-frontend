@@ -1,20 +1,42 @@
-/* ============================================================
-    Error Message
-============================================================ */
+/* !============================================================
+!     Error Message
+!============================================================ */
 .error-message-card {
-  color: rgb(180, 0, 0);
+  background-color: #d67777;
   font-weight: bold;
-  background-color: #d054158e;
   text-align: center;
-  padding: 5rem;
-  margin-top: 0rem;
-  border: solid;
-  border-color: red;
-  border-width: 0.5rem;
+  padding: 2.5rem;
+  margin: 2.5rem 2.5rem 0 2.5rem;
+  border: 0.4rem dashed red;
 }
 
 .generic-error-message {
   font-family: var(--font-heading);
-  font-size: 27.5px;
+  font-size: 1.75rem;
   margin-bottom: 1rem;
+}
+
+.error-message-card h1,
+.error-message-card h2 {
+  margin-bottom: 1.5rem;
+}
+
+.error-message-card p {
+  margin-bottom: 0.5rem;
+}
+
+/* !============================================================
+!     Mobile Responsiveness
+!============================================================ */
+@media (max-width: 600px) {
+  .error-message-card {
+    padding: 1.5rem 1rem;
+    margin: 1.5rem 1rem 0 1rem;
+    font-size: 0.95rem;
+    border-width: 2px;
+  }
+
+  .generic-error-message {
+    font-size: 1.4rem;
+  }
 }

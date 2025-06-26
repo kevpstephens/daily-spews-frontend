@@ -1,25 +1,29 @@
 import "./CommentCard.css";
+import { useUser } from "../../context";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/formatDate";
 import { deleteCommentById, patchCommentVotes } from "../../api/api";
 import VoteButton from "../VoteButton/VoteButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
-import { useUser } from "../../context"; // Assuming you have a useUser context that provides current user info
 
 export default function CommentCard({ comment }) {
+  const { user } = useUser();
   const [isDeleting, setIsDeleting] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const { user } = useUser();
+  const [canDelete, setCanDelete] = useState(false);
+
+  useEffect(() => {
+    setCanDelete(
+      user?.username === comment?.author || user?.username === "admin"
+    );
+  }, [user?.username, comment?.author]);
 
   if (isDeleted) {
     return null;
   }
-
-  const canDelete =
-    user && (user.username === comment.author || user.username === "admin");
 
   async function handleDelete() {
     setIsDeleting(true);
@@ -28,11 +32,16 @@ export default function CommentCard({ comment }) {
       // Delay unmount to allow animation
       setTimeout(() => {
         setIsDeleted(true);
+        setShowConfirm(false);
       }, 500); // should match CSS transition duration
-      toast.success("Comment deleted successfully.");
+      toast.success("Comment deleted successfully!", {
+        className: "toast-message",
+      });
     } catch (error) {
       console.error("Failed to delete comment:", error);
-      toast.error("Failed to delete comment.");
+      toast.error("Failed to delete comment!", {
+        className: "toast-message",
+      });
       setIsDeleting(false);
       setShowConfirm(false);
     }
@@ -40,7 +49,11 @@ export default function CommentCard({ comment }) {
 
   return (
     <>
-      <article className={`comment-card ${isDeleting ? "deleting" : ""}`}>
+      <article
+        className={`comment-card ${isDeleting ? "deleting" : ""} ${
+          comment.justPosted ? "animated-comment" : ""
+        }`}
+      >
         {showConfirm && (
           <div
             className="overlay-backdrop"
@@ -67,10 +80,7 @@ export default function CommentCard({ comment }) {
           {isDeleting && <p>Deleting comment...</p>}
 
           {canDelete && (
-            <div
-              className="delete-button-wrapper"
-              style={{ position: "relative" }}
-            >
+            <div className="delete-button-wrapper">
               <button
                 onClick={() => setShowConfirm(true)}
                 className="delete-comment-button"

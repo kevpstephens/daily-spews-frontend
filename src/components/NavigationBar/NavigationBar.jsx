@@ -5,7 +5,8 @@ import LogoutButton from "../LogoutButton/LogoutButton";
 import { Home, User } from "lucide-react";
 
 export default function NavigationBar() {
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
+  if (isUserLoading) return null;
   const isMobile = window.innerWidth <= 600;
 
   return (

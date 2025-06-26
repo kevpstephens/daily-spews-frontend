@@ -28,7 +28,7 @@
 }
 
 .vote-button-container button:active {
-  transform: scale(0.95);
+  transform: scale(0.5);
 }
 
 .vote-button-container button:focus-visible {
@@ -84,6 +84,48 @@
   fill: #8113d52b;
   width: 2rem;
   height: 2rem;
+}
+
+/* !============================================================
+!     Pressed (Last Clicked) Button Styles
+!============================================================ */
+
+/* Article votes */
+.upvote-button.article-vote.pressed {
+  background-color: #357836; /* Darker green */
+}
+
+.downvote-button.article-vote.pressed {
+  background-color: #a9180f; /* Darker red */
+}
+
+/* Comment votes */
+.upvote-button.comment-vote.pressed {
+  background-color: #357836 !important;
+}
+
+.downvote-button.comment-vote.pressed {
+  background-color: #a9180f !important;
+}
+
+/* !============================================================
+!     Heart Animation
+!============================================================ */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart.animate-pulse {
+  animation: pulse 0.4s ease-in-out;
 }
 
 /* !============================================================

@@ -57,6 +57,7 @@ export default function DevConsole() {
       const nextUser = TEST_USERS[parseInt(savedIndex, 10)];
       if (nextUser === null) {
         setUser(null);
+        localStorage.removeItem("ds-username");
       } else {
         getUserByUsername(nextUser).then((data) => setUser(data.user));
       }
@@ -72,6 +73,7 @@ export default function DevConsole() {
     try {
       if (nextUser === null) {
         setUser(null);
+        localStorage.removeItem("ds-username");
       } else {
         const data = await getUserByUsername(nextUser);
         setUser(data.user);

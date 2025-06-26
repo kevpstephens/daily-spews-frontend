@@ -1,28 +1,42 @@
 import "./LoadingScreen.css";
 import pluralToSingular from "../../utils/pluralToSingular";
 
-export default function LoadingScreen({
+function getLoadingMessage({
   item,
+  topicItem,
   singleArticleLoad,
   topicArticleLoad,
-  topicItem,
+  userProfileLoad,
 }) {
-  const singularTopic = pluralToSingular(topicItem);
-  let message = item
-    ? `${item} being spewed expeditiously`
-    : "Loading spews...";
+  const singularTopicItem = pluralToSingular(topicItem);
 
   if (singleArticleLoad) {
-    message = "Please wait while we spew out this article for you...";
-  } else if (topicArticleLoad) {
-    if (singularTopic === "puppy") {
-      message = "PUPPIES OMGFAASAFAA";
-    } else {
-      message = `Please wait while we spew out some ${singularTopic} articles for you...`;
-    }
-  } else if (item === "articles") {
-    message = "Hold up while I spew all these articles";
+    return "Please wait while we spew out this article for you...";
   }
+
+  if (topicArticleLoad) {
+    return singularTopicItem === "puppy"
+      ? "PUPPIES OMGFAASAFAA"
+      : `Please wait while we spew out some ${singularTopicItem} articles for you...`;
+  }
+
+  if (userProfileLoad) {
+    return "Please wait while we spew out your profile for you...";
+  }
+
+  if (item === "articles") {
+    return "Hold up while I spew all these articles...";
+  }
+
+  if (item) {
+    return `${item} being spewed expeditiously...`;
+  }
+
+  return "Loading spews...";
+}
+
+export default function LoadingScreen(props) {
+  const message = getLoadingMessage(props);
 
   return (
     <>
