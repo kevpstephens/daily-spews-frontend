@@ -15,7 +15,7 @@
   align-items: center;
   transition: all 0.4s ease-in-out;
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out both;
+  animation: fadeScaleIn 0.5s ease-in-out both;
   box-shadow: 0.1rem 0.1rem 0.1rem #0000007f;
   border-radius: 1.875rem;
 }

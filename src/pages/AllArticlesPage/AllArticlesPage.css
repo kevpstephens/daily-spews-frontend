@@ -1,12 +1,19 @@
 /* !============================================================
 !     AllArticlesPage
 !============================================================ */
+.all-articles-page-main {
+  max-width: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
 
 .all-articles-page-main h1 {
   font-size: 3rem;
   text-decoration: underline;
   margin: 2.5rem;
   text-align: center;
+  line-height: 1.2;
 }
 
 .all-articles-list {
@@ -17,10 +24,16 @@
   justify-items: center;
   max-width: 75rem;
   box-shadow: none;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  min-height: min-content;
 }
 
 .all-articles-list > * {
-  animation: fadeSlideInUp 0.4s ease-in-out;
+  width: 100%;
+  max-width: 22rem;
+  box-sizing: border-box;
 }
 
 /* !============================================================
@@ -33,5 +46,11 @@
 
   .all-articles-list {
     gap: 2.5rem;
+    grid-template-columns: 1fr;
+    padding: 0rem;
+  }
+
+  .all-articles-list > * {
+    max-width: 100%;
   }
 }

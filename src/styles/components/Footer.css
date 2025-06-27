@@ -56,6 +56,15 @@
   .footer-container {
     border-radius: 0;
     border-width: 2.5px;
-    padding-top: 0.5rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+  }
+
+  .footer-container p {
+    font-size: 0.9rem;
+    margin: 0rem;
+  }
+
+  .footer-container a {
+    font-size: 0.9rem;
   }
 }

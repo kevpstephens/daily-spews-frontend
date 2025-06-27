@@ -153,3 +153,18 @@ export const getCurrentUser = async () => {
   const res = await api.get("/users/me", { withCredentials: true });
   return res.data;
 };
+
+//! POST /api/users/:username/avatar
+// Upload a new avatar image for a user
+export const uploadUserAvatar = async (username, file) => {
+  const formData = new FormData();
+  formData.append("avatar", file);
+
+  const res = await api.post(`/users/${username}/avatar`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+  return res.data; // { avatar_url: "..." }
+};

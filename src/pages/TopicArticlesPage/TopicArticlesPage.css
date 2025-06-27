@@ -45,10 +45,6 @@
   animation: fadeSlideInUp 0.5s ease-in-out both;
 }
 
-.article-card {
-  animation: fadeSlideInUp 0.5s ease-in-out both;
-}
-
 .loading-topics-articles-container {
   display: flex;
   width: 100%;

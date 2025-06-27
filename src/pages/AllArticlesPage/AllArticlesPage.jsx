@@ -25,7 +25,7 @@ export default function AllArticlesPage() {
     if (window.innerWidth <= 600 && !hasMountedOnce.current) {
       hasMountedOnce.current = true;
       if (headingRef.current) {
-        const yOffset = -470; // adjust to height of your sticky header
+        const yOffset = -457.5; // adjust to height of your sticky header
         const y =
           headingRef.current.getBoundingClientRect().top +
           window.scrollY +

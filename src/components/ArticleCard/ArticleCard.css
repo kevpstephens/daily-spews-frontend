@@ -17,7 +17,7 @@
 
 .article-card-container:hover {
   background-color: #b95d28d2;
-  box-shadow: 0 0 30px rgba(234, 110, 2, 0.5);
+  box-shadow: 0 0 30px #ea6e0280;
 }
 
 /* !============================================================
@@ -37,6 +37,8 @@
   gap: 0.5rem;
   text-align: center;
   position: relative;
+
+  animation: fadeSlideInUp 0.5s ease-in-out both;
 }
 
 .article-card:hover {

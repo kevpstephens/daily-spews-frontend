@@ -36,6 +36,8 @@
     gap: 0.5rem;
     width: 100%;
     flex: 1;
+    margin: 0rem;
+    padding: 0rem !important;
   }
 
   .mobile-header-navigation-container > a {
@@ -101,6 +103,7 @@
     justify-content: space-evenly;
     gap: 1rem;
     flex: 1;
+    margin: 0.1rem;
   }
 
   #mobile-header-daily-spews-logo {

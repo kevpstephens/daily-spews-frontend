@@ -59,6 +59,8 @@ a.nav-button:hover {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+
+  font-size: 0.5rem;
 }
 
 .nav-avatar-icon {
