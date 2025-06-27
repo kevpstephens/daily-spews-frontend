@@ -10,12 +10,12 @@ export const UserProvider = ({ children }) => {
   // Check if localStorage is available
   const isLocalStorageAvailable = () => {
     try {
-      const test = "__localStorage_test__";
+      const test = '__localStorage_test__';
       localStorage.setItem(test, test);
       localStorage.removeItem(test);
       return true;
     } catch (e) {
-      console.error("❌ localStorage not available:", e);
+      console.error('❌ localStorage not available:', e);
       return false;
     }
   };
@@ -24,36 +24,32 @@ export const UserProvider = ({ children }) => {
   const fetchUserWithRetry = async (retries = 2) => {
     for (let i = 0; i <= retries; i++) {
       try {
-        console.log(
-          `📡 Attempt ${i + 1}: Trying to restore user from session...`
-        );
+        console.log(`📡 Attempt ${i + 1}: Trying to restore user from session...`);
         const data = await getCurrentUser();
         return data;
       } catch (err) {
         console.log(`❌ Attempt ${i + 1} failed:`, err.response?.status);
         if (i === retries) throw err;
         console.log(`🔄 Retrying in ${(i + 1) * 500}ms...`);
-        await new Promise((resolve) => setTimeout(resolve, (i + 1) * 500));
+        await new Promise(resolve => setTimeout(resolve, (i + 1) * 500));
       }
     }
   };
 
   useEffect(() => {
     const fetchUser = async () => {
-      console.log("🔍 UserProvider: Starting user fetch...");
-      console.log("📱 User Agent:", navigator.userAgent);
-      console.log("💾 localStorage available:", isLocalStorageAvailable());
-
+      console.log('🔍 UserProvider: Starting user fetch...');
+      console.log('📱 User Agent:', navigator.userAgent);
+      console.log('💾 localStorage available:', isLocalStorageAvailable());
+      
       // Small delay on mobile to ensure everything is ready
       if (/Mobi|Android/i.test(navigator.userAgent)) {
-        console.log("📱 Mobile detected, adding small delay...");
-        await new Promise((resolve) => setTimeout(resolve, 200));
+        console.log('📱 Mobile detected, adding small delay...');
+        await new Promise(resolve => setTimeout(resolve, 200));
       }
 
-      const savedUsername = isLocalStorageAvailable()
-        ? localStorage.getItem("ds-username")
-        : null;
-      console.log("💾 Current localStorage username:", savedUsername);
+      const savedUsername = isLocalStorageAvailable() ? localStorage.getItem("ds-username") : null;
+      console.log('💾 Current localStorage username:', savedUsername);
 
       try {
         // First, always try to get user from backend session with retry
@@ -70,33 +66,25 @@ export const UserProvider = ({ children }) => {
         console.log("❌ Session restore failed after retries:", {
           status: err.response?.status,
           message: err.message,
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toISOString()
         });
 
         // Fallback: try localStorage (for both dev and prod)
         if (savedUsername && isLocalStorageAvailable()) {
           try {
             console.log("🔄 Trying localStorage fallback for:", savedUsername);
-            const { user: fallbackUser } = await getUserByUsername(
-              savedUsername
-            );
+            const { user: fallbackUser } = await getUserByUsername(savedUsername);
             setUser(fallbackUser);
-            console.log(
-              "✅ User restored from localStorage:",
-              fallbackUser.username
-            );
+            console.log("✅ User restored from localStorage:", fallbackUser.username);
           } catch (fallbackErr) {
             console.error("❌ localStorage fallback failed:", {
               status: fallbackErr.response?.status,
               message: fallbackErr.message,
-              username: savedUsername,
+              username: savedUsername
             });
-
+            
             // If user doesn't exist anymore, clear localStorage
-            if (
-              fallbackErr.response?.status === 404 &&
-              isLocalStorageAvailable()
-            ) {
+            if (fallbackErr.response?.status === 404 && isLocalStorageAvailable()) {
               localStorage.removeItem("ds-username");
               console.log("🗑️ Cleared invalid username from localStorage");
             }
@@ -109,10 +97,7 @@ export const UserProvider = ({ children }) => {
       } finally {
         setIsUserLoading(false);
         setHasInitialized(true); // Mark as initialized
-        console.log(
-          "✅ User loading complete. Final user state:",
-          user?.username || "null"
-        );
+        console.log("✅ User loading complete. Final user state:", user?.username || 'null');
       }
     };
 
@@ -122,14 +107,11 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     // Only manage localStorage after initial load is complete
     if (!hasInitialized) return;
-
+    
     if (isLocalStorageAvailable()) {
       if (user?.username) {
         localStorage.setItem("ds-username", user.username);
-        console.log(
-          "💾 User state changed - saved to localStorage:",
-          user.username
-        );
+        console.log("💾 User state changed - saved to localStorage:", user.username);
       } else {
         localStorage.removeItem("ds-username");
         console.log("🗑️ User state cleared - removed from localStorage");
