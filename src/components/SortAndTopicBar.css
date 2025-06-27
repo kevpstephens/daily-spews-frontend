@@ -58,15 +58,17 @@
 
 @media (max-width: 600px) {
   .sort-and-topic-bar-container {
-    display: flex;
-    justify-content: center;
     max-width: 100%;
     margin: 1.5rem 0.5rem 1.5rem 0.5rem;
-    flex-direction: row;
     gap: 0.5rem;
   }
 
-  .sort-and-topic-bar-reset-button {
-    text-align: center;
+  .sort-and-topic-bar-container button {
+    padding: 0.4rem 0.4rem !important;
+  }
+
+  .sort-and-topic-bar-container select {
+    font-size: 0.75rem !important;
+    font-weight: normal !important;
   }
 }

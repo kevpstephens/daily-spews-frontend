@@ -45,3 +45,18 @@
   font-size: 1.25rem;
   color: #0d0024;
 }
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .comment-list-container {
+    margin-top: 2rem;
+  }
+
+  .comment-list-container h2 {
+    margin-left: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
