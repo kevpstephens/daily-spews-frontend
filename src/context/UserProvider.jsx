@@ -5,6 +5,7 @@ import { getUserByUsername, getCurrentUser, logoutUser } from "../api/api";
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
+  const [hasInitialized, setHasInitialized] = useState(false);
 
   // Check if localStorage is available
   const isLocalStorageAvailable = () => {
@@ -107,6 +108,7 @@ export const UserProvider = ({ children }) => {
         }
       } finally {
         setIsUserLoading(false);
+        setHasInitialized(true); // Mark as initialized
         console.log(
           "✅ User loading complete. Final user state:",
           user?.username || "null"
@@ -118,7 +120,9 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // Always persist username to localStorage (both dev and prod)
+    // Only manage localStorage after initial load is complete
+    if (!hasInitialized) return;
+
     if (isLocalStorageAvailable()) {
       if (user?.username) {
         localStorage.setItem("ds-username", user.username);
@@ -131,7 +135,7 @@ export const UserProvider = ({ children }) => {
         console.log("🗑️ User state cleared - removed from localStorage");
       }
     }
-  }, [user]);
+  }, [user, hasInitialized]);
 
   // Logout function to clear everything properly
   const logout = async () => {
