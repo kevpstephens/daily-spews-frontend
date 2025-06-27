@@ -20,6 +20,9 @@
   /*? Responsive base font size using clamp for fluid scaling */
   --font-size-base: clamp(0.875rem, 1vw + 0.25rem, 1.125rem);
 
+  /*? Font size for form inputs to prevent auto-zoom on mobile */
+  --font-size-form: 16px;
+
   /*? Colors */
   --color-text-heading: #0d0024;
   --color-text-body: #0d0024;
@@ -160,20 +163,90 @@ svg {
 } */
 
 /* !============================================================
-!     Text Selection Styling
+!     Text Selection Styling - iOS Compatible
 !     - Customize highlight color for all devices (including iPhone)
 !============================================================ */
+
+/* Standard selection (most browsers) */
 ::selection {
-  background-color: var(--color-accent);
-  color: white;
+  background-color: var(--color-accent) !important;
+  color: white !important;
 }
 
+/* Firefox */
 ::-moz-selection {
-  background-color: var(--color-accent);
-  color: white;
+  background-color: var(--color-accent) !important;
+  color: white !important;
 }
 
+/* Webkit browsers (Safari, Chrome) - this is the key one for iOS */
 ::-webkit-selection {
-  background-color: var(--color-accent);
-  color: white;
+  background-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+/* Alternative approach - apply to specific elements that need custom selection */
+body ::selection {
+  background-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+body ::-webkit-selection {
+  background-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+body ::-moz-selection {
+  background-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+/* iOS-specific fixes */
+* {
+  -webkit-user-select: text; /* Ensure text is selectable */
+  -webkit-touch-callout: default; /* Allow callout on touch */
+}
+
+/* Make sure specific text elements are selectable on iOS */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div,
+a {
+  -webkit-user-select: text;
+  -webkit-touch-callout: default;
+}
+
+/* Force selection styling on iOS by targeting common text elements */
+p::selection,
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+h6::selection,
+span::selection,
+div::selection,
+a::selection {
+  background-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+p::-webkit-selection,
+h1::-webkit-selection,
+h2::-webkit-selection,
+h3::-webkit-selection,
+h4::-webkit-selection,
+h5::-webkit-selection,
+h6::-webkit-selection,
+span::-webkit-selection,
+div::-webkit-selection,
+a::-webkit-selection {
+  background-color: var(--color-accent) !important;
+  color: white !important;
 }

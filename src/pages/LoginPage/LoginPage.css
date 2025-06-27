@@ -53,11 +53,6 @@
   transition: border-color 0.3s ease;
 }
 
-.login-form input:focus {
-  border-color: #e196ff;
-  outline: none;
-}
-
 .login-form-button {
   font-weight: bold;
   font-size: 1rem;

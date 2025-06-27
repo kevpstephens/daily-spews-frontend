@@ -3,8 +3,8 @@
 !============================================================ */
 .app-content input,
 .app-content textarea {
+  font-size: var(--font-size-form);
   font-family: var(--font-body);
-  font-size: var(--font-size-base);
   padding: 0.5rem;
   margin-top: 0;
   border: 2px solid black;
@@ -36,9 +36,8 @@
 .app-content form input:focus,
 .app-content textarea:focus,
 .app-content select:focus {
-  border-color: var(--color-form-input-focus);
   outline: 0.15rem solid var(--color-form-input-focus);
-  outline-offset: 0.15rem;
+  outline-offset: 0.25rem;
 }
 
 /* !============================================================
@@ -79,7 +78,6 @@
   .app-content textarea,
   .app-content select,
   .app-content button {
-    font-size: calc(var(--font-size-base) * 0.9);
-    padding: 0.5rem;
+    font-size: var(--font-size-form);
   }
 }
