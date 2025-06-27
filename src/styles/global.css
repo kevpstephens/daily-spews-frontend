@@ -163,51 +163,118 @@ svg {
 } */
 
 /* !============================================================
-!     Text Selection Styling - iOS Compatible
-!     - Customize highlight color for all devices (including iPhone)
+!     iOS Text Selection - Alternative Approaches
+!     - iOS Safari has severe limitations with ::selection
 !============================================================ */
 
-/* Standard selection (most browsers) */
+/* Method 1: Direct hex values (no CSS variables) */
 ::selection {
-  background-color: var(--color-accent) !important;
-  color: white !important;
+  background: #b95d28 !important;
+  background-color: #b95d28 !important;
+  color: #ffffff !important;
 }
 
-/* Firefox */
-::-moz-selection {
-  background-color: var(--color-accent) !important;
-  color: white !important;
-}
-
-/* Webkit browsers (Safari, Chrome) - this is the key one for iOS */
 ::-webkit-selection {
-  background-color: var(--color-accent) !important;
+  background: #b95d28 !important;
+  background-color: #b95d28 !important;
+  color: #ffffff !important;
+}
+
+::-moz-selection {
+  background: #b95d28 !important;
+  background-color: #b95d28 !important;
+  color: #ffffff !important;
+}
+
+/* Method 2: Apply to html and body specifically */
+html::selection,
+body::selection {
+  background: #b95d28 !important;
   color: white !important;
 }
 
-/* Alternative approach - apply to specific elements that need custom selection */
-body ::selection {
-  background-color: var(--color-accent) !important;
+html::-webkit-selection,
+body::-webkit-selection {
+  background: #b95d28 !important;
   color: white !important;
 }
 
-body ::-webkit-selection {
-  background-color: var(--color-accent) !important;
-  color: white !important;
-}
-
-body ::-moz-selection {
-  background-color: var(--color-accent) !important;
-  color: white !important;
-}
-
-/* iOS-specific fixes */
+/* Method 3: Enable selection and remove iOS restrictions */
+html,
+body,
 * {
-  -webkit-user-select: text; /* Ensure text is selectable */
-  -webkit-touch-callout: default; /* Allow callout on touch */
+  -webkit-user-select: text !important;
+  -webkit-touch-callout: default !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Make sure specific text elements are selectable on iOS */
+/* Method 4: Target specific content areas where selection is most important */
+main::selection,
+article::selection,
+section::selection,
+.content::selection {
+  background: #b95d28 !important;
+  color: white !important;
+}
+
+main::-webkit-selection,
+article::-webkit-selection,
+section::-webkit-selection,
+.content::-webkit-selection {
+  background: #b95d28 !important;
+  color: white !important;
+}
+
+/* Method 5: JavaScript fallback approach - add this to your JS */
+/*
+// Add this JavaScript as a fallback
+document.addEventListener('DOMContentLoaded', function() {
+  // Create a stylesheet specifically for selection
+  const style = document.createElement('style');
+  style.innerHTML = `
+    ::selection { background: #b95d28 !important; color: white !important; }
+    ::-webkit-selection { background: #b95d28 !important; color: white !important; }
+  `;
+  document.head.appendChild(style);
+  
+  // Force enable text selection on iOS
+  document.body.style.webkitUserSelect = 'text';
+  document.body.style.webkitTouchCallout = 'default';
+});
+*/
+
+/* Method 6: Alternative - use rgba for better compatibility */
+::selection {
+  background: rgba(185, 93, 40, 0.8) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+::-webkit-selection {
+  background: rgba(185, 93, 40, 0.8) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Method 7: iOS-specific media query approach */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific styles */
+  ::selection {
+    background-color: #b95d28 !important;
+    color: #ffffff !important;
+  }
+
+  ::-webkit-selection {
+    background-color: #b95d28 !important;
+    color: #ffffff !important;
+  }
+}
+
+/* Method 8: Ensure no conflicting styles */
+* {
+  /* Remove any styles that might interfere */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* Method 9: Apply to common text elements individually */
 p,
 h1,
 h2,
@@ -216,13 +283,14 @@ h4,
 h5,
 h6,
 span,
-div,
-a {
-  -webkit-user-select: text;
-  -webkit-touch-callout: default;
+a,
+li,
+td,
+th,
+div {
+  -webkit-user-select: text !important;
 }
 
-/* Force selection styling on iOS by targeting common text elements */
 p::selection,
 h1::selection,
 h2::selection,
@@ -231,9 +299,12 @@ h4::selection,
 h5::selection,
 h6::selection,
 span::selection,
-div::selection,
-a::selection {
-  background-color: var(--color-accent) !important;
+a::selection,
+li::selection,
+td::selection,
+th::selection,
+div::selection {
+  background: #b95d28 !important;
   color: white !important;
 }
 
@@ -245,8 +316,11 @@ h4::-webkit-selection,
 h5::-webkit-selection,
 h6::-webkit-selection,
 span::-webkit-selection,
-div::-webkit-selection,
-a::-webkit-selection {
-  background-color: var(--color-accent) !important;
+a::-webkit-selection,
+li::-webkit-selection,
+td::-webkit-selection,
+th::-webkit-selection,
+div::-webkit-selection {
+  background: #b95d28 !important;
   color: white !important;
 }
