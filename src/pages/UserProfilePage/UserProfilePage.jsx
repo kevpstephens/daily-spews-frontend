@@ -177,25 +177,31 @@ export default function UserProfilePage() {
                     { type: "image/jpeg" }
                   );
 
-                  const response = await uploadUserAvatar(
-                    user.username,
-                    croppedFile
-                  );
+                  try {
+                    const response = await uploadUserAvatar(
+                      user.username,
+                      croppedFile
+                    );
 
-                  // Add cache busting to ensure new image loads
-                  const newAvatarUrl = `${response.avatar_url}?t=${Date.now()}`;
+                    // Add cache busting to ensure new image loads
+                    const newAvatarUrl = `${
+                      response.avatar_url
+                    }?t=${Date.now()}`;
 
-                  setAvatarUrl(newAvatarUrl);
-                  setUser((prevUser) => ({
-                    ...prevUser,
-                    avatar_url: newAvatarUrl,
-                  }));
-                } catch (err) {
-                  console.error("Upload failed", err);
-                  setUploadError(
-                    err.response?.data?.message ||
-                      "Failed to upload avatar. Please try again."
-                  );
+                    setAvatarUrl(newAvatarUrl);
+                    setUser((prevUser) => ({
+                      ...prevUser,
+                      avatar_url: newAvatarUrl,
+                    }));
+                  } catch (err) {
+                    console.error("Upload failed", err);
+                    console.error("Response:", err?.response);
+                    console.error("Data:", err?.response?.data);
+                    setUploadError(
+                      err.response?.data?.message ||
+                        "Failed to upload avatar. Please try again."
+                    );
+                  }
                 } finally {
                   setUploading(false);
                   setCropModalOpen(false);
