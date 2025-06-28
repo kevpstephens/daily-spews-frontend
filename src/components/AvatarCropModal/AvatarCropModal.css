@@ -16,10 +16,7 @@
 }
 
 .cropper-container {
-  background: #8a72d7;
-  padding: 1.5rem;
-  border-radius: 30px;
-  width: 90%;
+  background: #8a72d7 !important;
   max-width: 450px;
   display: flex;
   flex-direction: column;
@@ -33,23 +30,20 @@
   position: relative;
 }
 
-.cropper-container button:last-of-type {
+.cropper-container button:first-of-type {
   background-color: #9785d3;
 }
 
 .cropper-container button:last-of-type:hover {
+  background-color: var(--color-accent, #b95d28);
 }
 
 /* !============================================================
 !     Media Queries
 !============================================================ */
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .cropper-container {
     padding: 1rem;
-  }
-
-  .cropper-container .reactEasyCrop_Container {
-    height: 250px;
   }
 }

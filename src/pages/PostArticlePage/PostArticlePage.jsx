@@ -6,6 +6,11 @@ import { UploadIcon } from "lucide-react";
 import { useUser } from "../../context";
 import { postNewArticle, getTopics } from "../../api/api";
 import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
+// Import your crop modal (you might need to create an ArticleImageCropModal)
+import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 
 export default function PostArticlePage() {
   const { user } = useUser();
@@ -19,6 +24,24 @@ export default function PostArticlePage() {
   });
   const [message, setMessage] = useState("");
   const [topics, setTopics] = useState([]);
+
+  // Crop modal states
+  const [cropModalOpen, setCropModalOpen] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  // File validation
+  const validateFile = (file) => {
+    if (!file) return "No file selected";
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      return "Please select a valid image file (JPEG, PNG, GIF, or WebP)";
+    }
+    if (file.size > MAX_FILE_SIZE) {
+      return "File size must be less than 5MB";
+    }
+    return null;
+  };
 
   useEffect(() => {
     const fetchTopics = async () => {
@@ -35,13 +58,12 @@ export default function PostArticlePage() {
   }, []);
 
   useEffect(() => {
-    // Cleanup object URL when component unmounts or image changes
+    // Cleanup object URLs
     return () => {
-      if (form.article_img_url && typeof form.article_img_url === "object") {
-        URL.revokeObjectURL(form.article_img_url);
-      }
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      if (imagePreview) URL.revokeObjectURL(imagePreview);
     };
-  }, [form.article_img_url]);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,21 +73,56 @@ export default function PostArticlePage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Basic validation
-      if (file.size > 5 * 1024 * 1024) {
-        // 5MB limit
-        setMessage("Image must be less than 5MB");
+      const validationError = validateFile(file);
+      if (validationError) {
+        setMessage(validationError);
         return;
       }
 
-      if (!file.type.startsWith("image/")) {
-        setMessage("Please select a valid image file");
-        return;
-      }
-
-      setForm((prev) => ({ ...prev, article_img_url: file }));
-      setMessage(""); // Clear any previous error messages
+      setMessage("");
+      setImagePreview(URL.createObjectURL(file));
+      setSelectedFile(file);
+      setCropModalOpen(true);
     }
+  };
+
+  const handleCropComplete = (croppedBlob) => {
+    try {
+      const croppedFile = new File(
+        [croppedBlob],
+        selectedFile?.name || "article-image.jpg",
+        { type: "image/jpeg" }
+      );
+
+      setForm((prev) => ({ ...prev, article_img_url: croppedFile }));
+
+      // Clean up old preview URL
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+
+      // Create new preview URL
+      setPreviewUrl(URL.createObjectURL(croppedFile));
+      setMessage("");
+    } catch (err) {
+      console.error("Crop processing failed", err);
+      setMessage("Failed to process cropped image. Please try again.");
+    } finally {
+      setCropModalOpen(false);
+      if (imagePreview) URL.revokeObjectURL(imagePreview);
+      setImagePreview(null);
+      setSelectedFile(null);
+    }
+  };
+
+  const handleCropCancel = () => {
+    setCropModalOpen(false);
+    if (imagePreview) URL.revokeObjectURL(imagePreview);
+    setImagePreview(null);
+    setSelectedFile(null);
+    setMessage("");
+
+    // Reset file input
+    const fileInput = document.getElementById("article_img_url");
+    if (fileInput) fileInput.value = "";
   };
 
   const handleSubmit = async (e) => {
@@ -161,15 +218,42 @@ export default function PostArticlePage() {
           style={{ display: "none" }}
         />
 
-        {form.article_img_url && (
+        {previewUrl && (
           <div className="image-preview">
             <p>Image Preview:</p>
             <img
-              src={URL.createObjectURL(form.article_img_url)}
+              src={previewUrl}
               alt="Article preview"
               className="post-article-image-preview"
             />
+            <button
+              type="button"
+              onClick={() => {
+                // Allow re-cropping
+                if (form.article_img_url) {
+                  setImagePreview(URL.createObjectURL(form.article_img_url));
+                  setSelectedFile(form.article_img_url);
+                  setCropModalOpen(true);
+                }
+              }}
+              className="recrop-button"
+            >
+              Re-crop Image
+            </button>
           </div>
+        )}
+
+        {/* Crop Modal */}
+        {cropModalOpen && imagePreview && (
+          <AvatarCropModal
+            imageSrc={imagePreview}
+            onCancel={handleCropCancel}
+            onCropComplete={handleCropComplete}
+            // 🆕 Article-specific props
+            aspectRatio={16 / 9} // Wide format for articles
+            cropShape="rect" // Rectangular crop
+            title="Crop Article Image"
+          />
         )}
 
         <button type="submit">Submit Article</button>

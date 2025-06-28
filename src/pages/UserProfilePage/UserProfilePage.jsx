@@ -65,11 +65,19 @@ export default function UserProfilePage() {
     }
   };
 
+  // Update avatar URL when data changes OR when user context changes
   useEffect(() => {
     if (data?.user?.avatar_url) {
       setAvatarUrl(data.user.avatar_url);
     }
   }, [data]);
+
+  // 🆕 Also update when the global user context changes (for current user)
+  useEffect(() => {
+    if (user?.username === username && user?.avatar_url) {
+      setAvatarUrl(user.avatar_url);
+    }
+  }, [user, username]);
 
   if (isLoading) return <LoadingScreen userProfileLoad={true} />;
   if (error || !profileUser) return <ErrorMessageCard profileError={true} />;
@@ -116,6 +124,7 @@ export default function UserProfilePage() {
               className="user-avatar-image"
               src={avatarUrl}
               alt="user-avatar-image"
+              key={avatarUrl} // 🆕 Force re-render when URL changes
             />
             <>
               <label
@@ -184,14 +193,23 @@ export default function UserProfilePage() {
                     croppedFile
                   );
 
-                  // Add cache busting to ensure new image loads
-                  const newAvatarUrl = `${response.avatar_url}?t=${Date.now()}`;
+                  // Get the clean URL without cache busting first
+                  const cleanAvatarUrl =
+                    response.user?.avatar_url || response.avatar_url;
 
+                  // Add cache busting to ensure new image loads
+                  const newAvatarUrl = `${cleanAvatarUrl}?t=${Date.now()}`;
+
+                  // Update local state immediately
                   setAvatarUrl(newAvatarUrl);
+
+                  // Update global user context
                   setUser((prevUser) => ({
                     ...prevUser,
                     avatar_url: newAvatarUrl,
                   }));
+
+                  console.log("✅ Avatar updated successfully:", newAvatarUrl);
                 } catch (err) {
                   console.error("Upload failed", err);
                   setUploadError(
@@ -210,6 +228,10 @@ export default function UserProfilePage() {
                   resetFileInput();
                 }
               }}
+              // 🆕 Add these props for avatar cropping
+              aspectRatio={1} // Square for avatars
+              cropShape="round" // Circular crop for avatars
+              title="Crop Avatar" // Clear title
             />
           )}
         </>
