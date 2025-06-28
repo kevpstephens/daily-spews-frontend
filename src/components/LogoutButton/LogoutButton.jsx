@@ -3,6 +3,7 @@ import { logoutUser } from "../../api/api";
 import { useUser } from "../../context";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { LogOutIcon } from "lucide-react";
 
 export default function LogoutButton({ redirectTo = "/", id }) {
   const { setUser } = useUser();
@@ -29,7 +30,10 @@ export default function LogoutButton({ redirectTo = "/", id }) {
         }
       }}
     >
-      Log Out
+      <div className="logout-button-content">
+        Log Out
+        <LogOutIcon size={16} />
+      </div>
     </button>
   );
 }

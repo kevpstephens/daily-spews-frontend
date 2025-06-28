@@ -64,14 +64,15 @@ export default function CommentCard({ comment }) {
           />
         )}
 
-        <h2 className="comment-card-header">
+        <h3 className="comment-card-header">
           <Link to={`/users/${comment.author}`}>
             <span className="comment-card-author">@{comment.author}</span>
           </Link>{" "}
           | {formatDate(comment.created_at)}
-        </h2>
+        </h3>
 
-        <p>{comment.body}</p>
+        <p className="comment-card-body">{comment.body}</p>
+
         <div className="comment-actions-container">
           <VoteButton
             className="comment-vote"

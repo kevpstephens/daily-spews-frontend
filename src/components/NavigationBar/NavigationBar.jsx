@@ -2,7 +2,7 @@ import "./NavigationBar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context";
 import LogoutButton from "../LogoutButton/LogoutButton";
-import { Home, User } from "lucide-react";
+import { Home, PencilLine, User } from "lucide-react";
 
 export default function NavigationBar() {
   const { user, isUserLoading } = useUser();
@@ -46,7 +46,15 @@ export default function NavigationBar() {
 
               <div className="nav-avatar-dropdown">
                 <h2 className="nav-avatar-username">@{user.username}</h2>
-                <LogoutButton id="nav-logout-button" redirectTo="/" />
+
+                <div className="nav-avatar-dropdown-buttons-container">
+                  <Link to="/articles/new" className="nav-post-article-link">
+                    <span>Post Article</span>
+                    <PencilLine size={16} />
+                  </Link>
+
+                  <LogoutButton id="nav-logout-button" redirectTo="/" />
+                </div>
               </div>
               <div className="nav-avatar-overlay"></div>
             </div>

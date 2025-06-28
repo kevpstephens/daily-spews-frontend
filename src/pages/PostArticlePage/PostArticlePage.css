@@ -1,0 +1,130 @@
+/* !============================================================
+!     Post Article Page
+!============================================================ */
+
+.post-article-page-container {
+  max-width: 85%;
+  margin: 2.5rem auto;
+  padding: 2rem 2rem 1.5rem 2rem;
+  background-color: #8a72d77e;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px #00000026;
+  animation: fadeSlideInUp 0.5s ease-in-out;
+}
+
+.post-article-page-container h1 {
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+}
+
+.post-article-page-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.post-article-page-container select {
+  width: fit-content;
+  align-self: center;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.post-article-page-container input,
+.post-article-page-container textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.post-article-page-container textarea {
+  resize: vertical;
+  min-height: 10rem;
+  background-color: var(--color-form-input);
+}
+
+.post-article-page-container button {
+  width: fit-content;
+  align-self: center;
+  font-size: 1rem;
+  margin: 1.5rem auto 0rem auto;
+}
+
+.post-article-page-container p {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.post-article-file-upload-label {
+  width: fit-content;
+  align-self: center;
+  text-align: center;
+  font-weight: 600;
+
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white !important;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+  border: 2px solid #000;
+}
+
+.post-article-file-upload-label:hover {
+  background-color: var(--color-accent);
+}
+
+.post-article-file-upload-label:active {
+  background-color: var(--color-accent);
+}
+
+.post-article-file-upload-label-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: 1rem;
+  width: 300px;
+  height: 200px;
+  max-width: 100%;
+}
+
+.image-preview img {
+  border: 2px solid #000;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 200px;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media (max-width: 600px) {
+  .post-article-page-container {
+    max-width: 100%;
+    padding: 2rem 0rem 2rem 0rem;
+  }
+
+  .post-article-page-container form {
+    gap: 1.5rem;
+    text-align: center;
+  }
+}

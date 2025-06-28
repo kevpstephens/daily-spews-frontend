@@ -1,13 +1,29 @@
-//? URL: daily-spews.com/about
-
+import { useRef, useEffect } from "react";
 import "./AboutPage.css";
 export default function AboutPage() {
+  const mascotRef = useRef(null);
+
+  useEffect(() => {
+    const mascot = mascotRef.current;
+    if (!mascot) return;
+
+    const handleAnimationEnd = () => {
+      mascot.classList.add("shake");
+    };
+
+    mascot.addEventListener("animationend", handleAnimationEnd);
+    return () => {
+      mascot.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, []);
+
   return (
     <>
       <div className="about-page-container">
         <h1>A little bit about Daily Spews...</h1>
         <img
-          className="spewing-mascot"
+          ref={mascotRef}
+          className="about-page-spewing-mascot spewing-mascot"
           src="/assets/mascot/mascot-spewing-loading.png"
           alt="Daily Spews Mascot"
         />

@@ -14,6 +14,7 @@ import HomePage from "./HomePage.jsx";
 import AllArticlesPage from "./pages/AllArticlesPage/AllArticlesPage.jsx";
 import SingleArticlePage from "./pages/SingleArticlePage/SingleArticlePage.jsx";
 import TopicArticlesPage from "./pages/TopicArticlesPage/TopicArticlesPage.jsx";
+import PostArticlePage from "./pages/PostArticlePage/PostArticlePage.jsx";
 
 // function ProtectedRoute({ children }) {
 //   const { user } = useUser();
@@ -53,6 +54,7 @@ export default function AppRouter() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="articles" element={<AllArticlesPage />} />
+            <Route path="articles/new" element={<PostArticlePage />} />
             <Route
               path="articles/:article_id"
               element={<SingleArticlePage />}

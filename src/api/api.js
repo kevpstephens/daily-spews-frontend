@@ -168,3 +168,9 @@ export const uploadUserAvatar = async (username, file) => {
 
   return res.data; // { avatar_url: "..." }
 };
+
+//! POST /api/articles
+export const postNewArticle = async (articleData) => {
+  const res = await api.post("/articles", articleData);
+  return res.data.newArticle;
+};

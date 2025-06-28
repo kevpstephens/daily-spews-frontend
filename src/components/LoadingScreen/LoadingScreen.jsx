@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import "./LoadingScreen.css";
 import pluralToSingular from "../../utils/pluralToSingular";
 
@@ -36,11 +37,28 @@ function getLoadingMessage({
 }
 
 export default function LoadingScreen(props) {
+  const mascotRef = useRef(null);
   const message = getLoadingMessage(props);
+
+  useEffect(() => {
+    const mascot = mascotRef.current;
+    if (!mascot) return;
+
+    const handleAnimationEnd = () => {
+      mascot.classList.add("shake");
+    };
+
+    mascot.addEventListener("animationend", handleAnimationEnd);
+
+    return () => {
+      mascot.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, []);
 
   return (
     <>
       <img
+        ref={mascotRef}
         className="spewing-mascot"
         src="/assets/mascot/mascot-spewing-loading.png"
         alt="Daily Spews Mascot Spewing"

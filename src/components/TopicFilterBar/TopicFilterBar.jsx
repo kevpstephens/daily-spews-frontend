@@ -3,10 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { getTopics } from "../../api/api";
 import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
-
-function formatTopicName(slug) {
-  return slug.charAt(0).toUpperCase() + slug.slice(1);
-}
+import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
 
 export default function TopicFilterBar() {
   const { data } = useFetch(getTopics);
@@ -45,7 +42,7 @@ export default function TopicFilterBar() {
         <option value="">{isMobile ? "Topic" : "--Select Topic--"}</option>
 
         {topics.map((topic) => {
-          const formattedName = formatTopicName(topic.slug);
+          const formattedName = capitaliseFirstLetter(topic.slug);
           return (
             <option key={topic.slug} value={topic.slug}>
               {formattedName}

@@ -43,6 +43,48 @@
   border: 1px solid #ccc;
 }
 
+.signup-form input[type="file"] {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+  z-index: -1;
+}
+
+.signup-file-upload-label {
+  width: fit-content;
+  align-self: center;
+  text-align: center;
+  font-weight: 600;
+
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white !important;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+  border: 2px solid #000;
+}
+
+.signup-file-upload-label:hover {
+  background-color: var(--color-accent);
+}
+
+.signup-file-upload-label:active {
+  background-color: var(--color-accent);
+}
+
+.signup-file-upload-label-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .signup-form button[type="submit"] {
   align-self: center;
   margin: 2rem 0rem 1rem 0rem;

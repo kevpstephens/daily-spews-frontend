@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { registerUser } from "../../api/api";
 import { useUser } from "../../context";
 import { useNavigate, Link } from "react-router-dom";
-import { Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeClosed, UploadIcon } from "lucide-react";
 
 export default function SignupPage() {
   const [username, setUsername] = useState("");
@@ -64,15 +64,28 @@ export default function SignupPage() {
     setIsSubmitting(true);
 
     try {
-      const payload = {
-        username,
-        name,
-        email,
-        password,
-        avatar_url: avatar_url.trim() === "" ? null : avatar_url.trim(),
-      };
+      let payload;
+      let headers = {};
 
-      const data = await registerUser(payload);
+      if (avatar_url instanceof File) {
+        payload = new FormData();
+        payload.append("username", username);
+        payload.append("name", name);
+        payload.append("email", email);
+        payload.append("password", password);
+        payload.append("avatar", avatar_url);
+        headers["Content-Type"] = "multipart/form-data";
+      } else {
+        payload = {
+          username,
+          name,
+          email,
+          password,
+          avatar_url: avatar_url?.trim() || null,
+        };
+      }
+
+      const data = await registerUser(payload, headers);
       setUser(data.user);
       navigate(`/users/${data.user.username}`);
     } catch (err) {
@@ -101,7 +114,7 @@ export default function SignupPage() {
       <h2>Create a New Account</h2>
 
       <form onSubmit={handleSignup} className="signup-form" noValidate>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">*Username:</label>
         {usernameError && (
           <p
             className="signup-page-form-error"
@@ -127,7 +140,7 @@ export default function SignupPage() {
           disabled={isSubmitting}
         />
 
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">*Name:</label>
         <input
           id="name"
           name="name"
@@ -140,18 +153,29 @@ export default function SignupPage() {
           disabled={isSubmitting}
         />
 
-        <label htmlFor="avatar_url">Avatar URL (optional):</label>
+        <label htmlFor="avatar_url" className="signup-file-upload-label">
+          <div className="signup-file-upload-label-content">
+            <span>Upload Avatar</span>
+            <UploadIcon />
+          </div>
+        </label>
         <input
           id="avatar_url"
           name="avatar_url"
-          type="url"
-          value={avatar_url}
-          onChange={(event) => setAvatar_url(event.target.value)}
+          type="file"
+          accept="image/*"
+          onChange={(event) => {
+            const file = event.target.files[0];
+            if (file) {
+              setAvatar_url(file);
+            } else {
+              setAvatar_url("");
+            }
+          }}
           disabled={isSubmitting}
-          placeholder="https://example.com/avatar.jpg"
         />
 
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">*Email:</label>
         <input
           id="email"
           name="email"
@@ -163,7 +187,7 @@ export default function SignupPage() {
           disabled={isSubmitting}
         />
 
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">*Password:</label>
         <div className="signup-page-password-input-wrapper">
           <input
             id="signup-page-password-input"
@@ -193,7 +217,7 @@ export default function SignupPage() {
           </button>
         </div>
 
-        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <label htmlFor="confirmPassword">*Confirm Password:</label>
         <div className="signup-page-password-input-wrapper">
           <input
             id="signup-page-confirm-password-input"

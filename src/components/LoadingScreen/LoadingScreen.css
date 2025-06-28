@@ -8,9 +8,9 @@
   height: auto;
   display: block;
   margin: 4rem auto 2rem auto;
-  animation: shake 0.45s ease-in-out infinite;
   position: relative;
   filter: drop-shadow(-10px 0 15px orange);
+  animation: shake 0.45s ease-in-out infinite;
 }
 
 .loading-message {

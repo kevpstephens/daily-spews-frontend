@@ -91,6 +91,21 @@
   }
 }
 
+.mobile-daily-spews-logo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-daily-spews-logo {
+  z-index: 2;
+  width: 5rem;
+  height: 5rem;
+  animation: bounceAndTilt 0.5s ease-in-out forwards;
+  animation-delay: 0.1s;
+}
+
 /* !============================================================
 !     Media Queries - Navigation Bar
 !============================================================ */
@@ -164,8 +179,14 @@
 
   #nav-logout-button {
     height: 2.25rem !important;
+    width: fit-content;
     position: relative;
     top: 0.25rem;
     margin-bottom: 0.25rem;
+  }
+
+  .mobile-header-navigation-container .nav-post-article-link {
+    height: 2.25rem !important;
+    width: fit-content;
   }
 }

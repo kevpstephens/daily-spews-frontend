@@ -10,11 +10,13 @@ export default function MobileHeader() {
       {isHomePage && (
         <div className="mobile-daily-spews-greeting-container">
           <h1 className="mobile-daily-spews-heading">Daily Spews</h1>
+
           <img
             className="mobile-daily-spews-logo"
             src="/assets/logo/daily-spews-logo.png"
             alt="daily-spews-logo-image"
           />
+
           <p>
             your daily dose of news, spews, and <del>highly sought after</del>{" "}
             opinions

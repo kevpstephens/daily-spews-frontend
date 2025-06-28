@@ -2,7 +2,7 @@
 !     Comment Section
 !============================================================ */
 .comment-list-container {
-  width: 100%;
+  width: 90%;
   text-align: left;
   margin: 0.25rem;
   margin-top: 1rem;
@@ -10,9 +10,9 @@
 }
 
 .comment-list-container h2 {
-  margin-top: 1rem;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+  font-size: clamp(1.5rem, 2.25vw, 2rem);
+  margin: 1.5rem 1.5rem 1.5rem 2rem;
+  text-decoration: underline;
 }
 
 /* !============================================================
@@ -53,10 +53,11 @@
 @media (max-width: 600px) {
   .comment-list-container {
     margin-top: 2rem;
+    width: 100%;
   }
 
   .comment-list-container h2 {
-    margin-left: 0.5rem;
-    margin-bottom: 1.5rem;
+    text-align: left;
+    margin: 1rem 1.5rem 1.5rem 0.5rem;
   }
 }

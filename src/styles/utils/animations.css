@@ -27,6 +27,21 @@
 }
 
 /* !============================================================
+!     Fade Scale In Animation
+!============================================================ */
+
+@keyframes fadeScaleIn2 {
+  from {
+    opacity: 1;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* !============================================================
 !     Fade Slide In Up Animation
 !============================================================ */
 
@@ -103,5 +118,41 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* !============================================================
+!     Fade Slide In Left Animation
+!============================================================ */
+@keyframes fadeSlideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(100px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* !============================================================
+!     Bounce and Tilt Animation
+!============================================================ */
+@keyframes bounceAndTilt {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-0.3rem) rotate(-20deg);
+  }
+  100% {
+    transform: translateY(0) rotate(10deg);
   }
 }

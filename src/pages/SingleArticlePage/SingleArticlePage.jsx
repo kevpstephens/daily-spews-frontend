@@ -104,13 +104,13 @@ export default function SingleArticlePage() {
           <article className="article-page">
             <h2>{article.title}</h2>
             <div className="article-header-container">
-              <p>
+              <h3>
                 <strong>Written by:</strong>{" "}
                 <Link to={`/users/${article.author}`}>@{article.author}</Link> |
                 <strong> Topic:</strong>{" "}
                 <Link to={`/topics/${article.topic}`}>#{article.topic}</Link> |{" "}
                 <strong>Posted:</strong> {formatDate(article.created_at)}
-              </p>
+              </h3>
             </div>
 
             <img src={article.article_img_url} alt={`article image`} />

@@ -1,13 +1,30 @@
-/* ============================================================
-   Logout Button
-============================================================ */
+/* !============================================================
+!     Logout Button
+!============================================================ */
+
+.logout-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  align-self: center;
+  gap: 0.25rem;
+}
+
 .logout-button {
-  background-color: #8113d5;
+  background-color: var(--color-primary);
   color: white;
   font-weight: bold;
   align-self: center;
 }
 
 .logout-button:hover {
-  background-color: #b95d28;
+  background-color: var(--color-accent);
+}
+
+/* !============================================================
+!     Mobile Logout Button
+!============================================================ */
+
+@media screen and (max-width: 600px) {
 }

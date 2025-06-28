@@ -12,6 +12,7 @@ import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
 import { UploadIcon } from "lucide-react";
+import PostNewArticleButton from "../../components/PostNewArticleButton/PostNewArticleButton.jsx";
 
 dayjs.extend(advancedFormat);
 
@@ -76,6 +77,7 @@ export default function UserProfilePage() {
   return (
     <div className="user-profile-page-container">
       <h1 className="user-username">@{profileUser.username}</h1>
+      <PostNewArticleButton className="user-profile-page-post-article-button" />
       {user?.username === profileUser.username ? (
         <>
           {/* Show upload error */}

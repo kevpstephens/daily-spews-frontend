@@ -43,6 +43,14 @@
   transition: all 0.2s ease-in-out;
 }
 
+.about-page-spewing-mascot.spewing-mascot {
+  animation: fadeSlideInFromLeft 0.5s ease-in-out;
+}
+
+.about-page-spewing-mascot.shake {
+  animation: shake 0.45s ease-in-out infinite;
+}
+
 /* !============================================================
 !    Media Queries
 !============================================================ */
