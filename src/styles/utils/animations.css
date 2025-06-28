@@ -156,3 +156,144 @@
     transform: translateY(0) rotate(10deg);
   }
 }
+
+/* !============================================================
+!     Scribble Tilt Animation
+!============================================================ */
+@keyframes scribbleTilt {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-0.05rem, 0.02rem) rotate(4deg);
+  }
+  50% {
+    transform: translate(0.01em, 0.1rem) rotate(6deg);
+  }
+  75% {
+    transform: translate(-0.03rem, -0.02rem) rotate(-4deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* !============================================================
+!     Scribble Animation - Quick Back and Forth
+!============================================================ */
+@keyframes scribble {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-2px) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(3px) rotate(8deg);
+  }
+  75% {
+    transform: translateX(-1px) rotate(-3deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+/* !============================================================
+!     Scribble Wiggle - Small Circular Motion
+!============================================================ */
+@keyframes scribbleWiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(1px, -1px) rotate(3deg);
+  }
+  50% {
+    transform: translate(-1px, 1px) rotate(-3deg);
+  }
+  75% {
+    transform: translate(1px, 1px) rotate(2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* !============================================================
+!     Scribble Jitter - Quick Small Movements
+!============================================================ */
+@keyframes scribbleJitter {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1px, 1px);
+  }
+  20% {
+    transform: translate(1px, -1px);
+  }
+  30% {
+    transform: translate(-1px, -1px);
+  }
+  40% {
+    transform: translate(1px, 1px);
+  }
+  50% {
+    transform: translate(0, -1px);
+  }
+  60% {
+    transform: translate(-1px, 0);
+  }
+  70% {
+    transform: translate(1px, 0);
+  }
+  80% {
+    transform: translate(0, 1px);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* !============================================================
+!     Scribble Bounce - Bouncy Writing Motion
+!============================================================ */
+@keyframes scribbleBounce {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-2px) rotate(-8deg);
+  }
+  66% {
+    transform: translateY(1px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* !============================================================
+!     Scribble Wave - Gentle Wave Motion
+!============================================================ */
+@keyframes scribbleWave {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(2px) rotate(5deg);
+  }
+  50% {
+    transform: translateX(0) rotate(0deg);
+  }
+  75% {
+    transform: translateX(-2px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}

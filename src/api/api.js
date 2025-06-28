@@ -122,21 +122,9 @@ export const logoutUser = async () => {
 };
 
 //! POST /api/auth/register
-// Registers a new user with username, name, email, password, and optional avatar_url
-export const registerUser = async ({
-  username,
-  name,
-  email,
-  password,
-  avatar_url,
-}) => {
-  const res = await api.post("/auth/register", {
-    username,
-    name,
-    email,
-    password,
-    avatar_url,
-  });
+// Registers a new user - handles both JSON and FormData
+export const registerUser = async (payload, config = {}) => {
+  const res = await api.post("/auth/register", payload, config);
   return res.data;
 };
 

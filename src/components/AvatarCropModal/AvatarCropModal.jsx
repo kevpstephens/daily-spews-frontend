@@ -7,6 +7,9 @@ export default function AvatarCropModal({
   imageSrc,
   onCancel,
   onCropComplete,
+  aspectRatio = 1,
+  cropShape = "round",
+  title = "Crop Image",
 }) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -24,18 +27,28 @@ export default function AvatarCropModal({
   return (
     <div className="modal-backdrop">
       <div className="cropper-container">
+        {/* 🆕 Add title */}
+        <h3 className="crop-modal-title">{title}</h3>
+
         <Cropper
           image={imageSrc}
           crop={crop}
           zoom={zoom}
-          aspect={1}
+          aspect={aspectRatio} // 🆕 Use prop instead of hardcoded 1
           onCropChange={setCrop}
           onZoomChange={setZoom}
           onCropComplete={onCropCompleteInternal}
-          cropShape="round"
+          cropShape={cropShape} // 🆕 Use prop instead of hardcoded "round"
         />
-        <button onClick={handleDone}>Done</button>
-        <button onClick={onCancel}>Cancel</button>
+
+        <div className="crop-modal-buttons">
+          <button className="crop-cancel-button" onClick={onCancel}>
+            Cancel
+          </button>
+          <button className="crop-done-button" onClick={handleDone}>
+            Done
+          </button>
+        </div>
       </div>
     </div>
   );

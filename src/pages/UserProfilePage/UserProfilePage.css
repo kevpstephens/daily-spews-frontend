@@ -111,6 +111,10 @@
   font-size: 1rem;
 }
 
+.user-profile-page-post-article-button:hover svg {
+  animation: scribbleTilt 0.5s ease-in-out infinite;
+}
+
 /* !============================================================
 !     Avatar Upload Form
 !============================================================ */

@@ -36,6 +36,8 @@
   width: 3rem;
   border-radius: 50%;
   padding: 0;
+  /* 🆕 Add cursor pointer since it's now a div */
+  cursor: pointer;
 }
 
 #home-button {
@@ -44,7 +46,9 @@
   padding: 0;
 }
 
-a.nav-button:hover {
+/* 🆕 Update selector to include div.nav-button */
+a.nav-button:hover,
+div.nav-button:hover {
   background-color: #b95d28;
   color: white;
 }
@@ -59,7 +63,6 @@ a.nav-button:hover {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-
   font-size: 0.5rem;
 }
 
@@ -73,8 +76,6 @@ a.nav-button:hover {
 }
 
 .nav-avatar-dropdown {
-  /* opacity: 1 !important; */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,6 +141,7 @@ a.nav-button:hover {
   margin: 0rem 0.25rem;
 }
 
+/* 🆕 Updated styles for button element */
 .nav-post-article-link {
   display: flex;
   flex-direction: row;
@@ -154,10 +156,77 @@ a.nav-button:hover {
   padding: 0.1rem 0.5rem;
   text-align: center;
   border: 2px solid #0d0024;
+  /* 🆕 Button-specific styles */
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  /* 🆕 Remove default button styles */
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .nav-post-article-link:hover {
   background-color: var(--color-accent);
   text-decoration: none;
   color: white;
+}
+
+/* 🆕 Shake animation for pencil icon */
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.nav-post-article-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: fit-content;
+  height: 2rem !important;
+  font-size: 1rem !important;
+  text-align: center;
+  font-family: var(--font-heading) !important;
+  background-color: var(--color-primary);
+  color: white;
+  border: 2px solid #0d0024;
+  border-radius: 10px;
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: background-color 0.2s ease;
+}
+
+.nav-post-article-button:hover {
+  background-color: var(--color-accent);
+  text-decoration: none;
+  color: white;
+}
+
+.nav-post-article-button:hover svg {
+  animation: scribbleTilt 0.5s ease-in-out infinite;
+}
+
+.nav-post-article-button:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
