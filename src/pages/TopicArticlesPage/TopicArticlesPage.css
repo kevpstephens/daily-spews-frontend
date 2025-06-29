@@ -76,7 +76,7 @@
 @media (max-width: 600px) {
   .topic-articles-page {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1rem;
   }
 
   .topic-articles-page-heading {

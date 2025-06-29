@@ -18,7 +18,7 @@
   --font-body: "Verdana", Geneva, Tahoma, sans-serif;
 
   /*? Responsive base font size using clamp for fluid scaling */
-  --font-size-base: clamp(1rem, 1vw + 0.25rem, 1.125rem);
+  --font-size-base: clamp(0.875rem, 1vw + 0.25rem, 1.125rem);
 
   /*? Font size for form inputs to prevent auto-zoom on mobile */
   --font-size-form: 16px;

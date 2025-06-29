@@ -1,13 +1,6 @@
-/** ============================================================
- * AvatarCropModal.jsx
- *
- * Modal component for cropping user avatar images using react-easy-crop.
- * Accepts an image source, cropping config, and returns a cropped image blob.
- *============================================================ */
-
 import "./AvatarCropModal.css";
-import { useState, useCallback } from "react";
 import Cropper from "react-easy-crop";
+import { useState, useCallback } from "react";
 import getCroppedImg from "../../utils/getCroppedImg";
 
 export default function AvatarCropModal({
@@ -22,12 +15,10 @@ export default function AvatarCropModal({
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
-  // Internal handler to capture pixel dimensions of the cropped area
   const onCropCompleteInternal = useCallback((_, croppedPixels) => {
     setCroppedAreaPixels(croppedPixels);
   }, []);
 
-  // Generate cropped image blob and trigger onCropComplete
   const handleDone = async () => {
     const croppedBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
     onCropComplete(croppedBlob);
@@ -36,18 +27,18 @@ export default function AvatarCropModal({
   return (
     <div className="modal-backdrop">
       <div className="cropper-container">
-        {/* Modal title */}
+        {/* 🆕 Add title */}
         <h3 className="crop-modal-title">{title}</h3>
 
         <Cropper
           image={imageSrc}
           crop={crop}
           zoom={zoom}
-          aspect={aspectRatio} // Customizable crop aspect ratio (default: 1)
+          aspect={aspectRatio} // 🆕 Use prop instead of hardcoded 1
           onCropChange={setCrop}
           onZoomChange={setZoom}
           onCropComplete={onCropCompleteInternal}
-          cropShape={cropShape} // Shape of the crop area ("round" or "rect")
+          cropShape={cropShape} // 🆕 Use prop instead of hardcoded "round"
         />
 
         <div className="crop-modal-buttons">

@@ -1,6 +1,7 @@
 /* !============================================================
 !     Avatar Crop Modal
 !============================================================ */
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -20,29 +21,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-}
-
-.crop-modal-title {
-  font-family: var(--font-body);
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  border-radius: 30px;
-  background-color: #8a72d77e;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 1rem;
-  width: fit-content;
-  align-self: center;
-  margin: 0 !important;
+  gap: 1rem;
 }
 
 .cropper-container .reactEasyCrop_Container {
   width: 100%;
   height: 300px;
   position: relative;
-}
-
-.cropper-container button {
-  margin-top: 0rem !important;
 }
 
 .cropper-container button:first-of-type {
@@ -59,11 +44,6 @@
 
 @media (max-width: 600px) {
   .cropper-container {
-    background: #8a72d7 !important;
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    padding: 1rem;
   }
 }

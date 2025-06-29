@@ -35,16 +35,6 @@
 .post-article-page-container textarea {
   padding: 0.75rem;
   font-size: 1rem;
-  transition: opacity 0.2s ease;
-}
-
-/* 🆕 Disabled form field styling */
-.post-article-page-container input:disabled,
-.post-article-page-container textarea:disabled,
-.post-article-page-container select:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: #f5f5f5;
 }
 
 .post-article-page-container textarea {
@@ -80,7 +70,7 @@
   font-size: 1rem;
   text-align: center;
   margin-top: 0.5rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
   border: 2px solid #000;
 }
 
@@ -92,73 +82,11 @@
   background-color: var(--color-accent);
 }
 
-/* 🆕 Disabled upload label styling */
-.post-article-file-upload-label.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: #999 !important;
-}
-
-.post-article-file-upload-label.disabled:hover {
-  background-color: #999 !important;
-}
-
 .post-article-file-upload-label-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.post-article-select-topic {
-  width: fit-content;
-  font-weight: bold;
-}
-
-/* !============================================================
-!     Submit Button States
-!============================================================ */
-
-.submit-button {
-  width: fit-content !important;
-}
-
-.submit-button:hover:not(:disabled) {
-  background-color: var(--color-accent) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* 🆕 Disabled submit button */
-.submit-button:disabled,
-.submit-button.disabled {
-  background-color: #999 !important;
-  color: #666 !important;
-  cursor: not-allowed;
-  opacity: 0.6;
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-/* 🆕 Submitting state */
-.submit-button.submitting {
-  background-color: #6c757d !important;
-  cursor: wait;
-}
-
-.submit-button.submitting::after {
-  content: " ⏳";
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
 }
 
 /* !============================================================
@@ -216,17 +144,10 @@
   width: auto !important;
 }
 
-.recrop-button:hover:not(:disabled) {
+.recrop-button:hover {
   background-color: #d65e00 !important;
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* 🆕 Disabled re-crop button */
-.recrop-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: #999 !important;
 }
 
 /* Message styling improvements */
@@ -245,13 +166,6 @@
   background-color: #efe;
   color: #363;
   border: 2px solid #cfc;
-}
-
-/* 🆕 Error message styling */
-.form-message.error {
-  background-color: #ffe6e6;
-  color: #d63384;
-  border: 2px solid #f5c6cb;
 }
 
 /* Upload section spacing */
@@ -347,11 +261,6 @@
 
   .post-article-image-preview {
     height: 180px;
-  }
-
-  .submit-button {
-    padding: 1rem 2rem !important;
-    font-size: 1.1rem !important;
   }
 }
 

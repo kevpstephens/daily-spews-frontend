@@ -6,7 +6,6 @@ import { useUser } from "../../context";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeClosed, UploadIcon } from "lucide-react";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
-import defaultImage from "/assets/users/default-user-image-purple.avif";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = [
@@ -237,7 +236,7 @@ export default function SignupPage() {
         <div className="avatar-upload-wrapper">
           <div className="avatar-preview-container">
             <img
-              src={previewUrl || defaultImage}
+              src={previewUrl || "/assets/users/default-user-image.jpg"}
               alt="Avatar Preview"
               className="avatar-preview-image"
             />

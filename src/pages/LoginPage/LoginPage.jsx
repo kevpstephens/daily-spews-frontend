@@ -41,8 +41,9 @@ export default function LoginPage() {
         <h2>Login to Daily Spews</h2>
         <form onSubmit={handleProdLogin} className="login-form">
           <p>
-            New to <strong>Daily Spews</strong>? Don't fret, you've come to the
-            right place! Please create an account for full feature access.
+            New to <strong>Daily Spews</strong>? Don't fret, fren, you've come
+            to the right place! Please create an account to access the full
+            suite of features.
           </p>
           <Link to="/signup" className="sign-up-button">
             Sign-Up

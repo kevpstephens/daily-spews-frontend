@@ -6,6 +6,7 @@ import { UploadIcon } from "lucide-react";
 import { useUser } from "../../context";
 import { postNewArticle, getTopics } from "../../api/api";
 import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
+// Import your crop modal (you might need to create an ArticleImageCropModal)
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -23,20 +24,12 @@ export default function PostArticlePage() {
   });
   const [message, setMessage] = useState("");
   const [topics, setTopics] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false); // 🆕 Track submission state
 
   // Crop modal states
   const [cropModalOpen, setCropModalOpen] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
-
-  // 🆕 Form validation - check if all required fields are filled
-  const isFormValid =
-    form.title.trim().length > 0 && // Title is required and not just whitespace
-    form.body.trim().length > 0 && // Body is required and not just whitespace
-    form.topic.length > 0 && // Topic is selected
-    !isSubmitting; // Not currently submitting
 
   // File validation
   const validateFile = (file) => {
@@ -75,8 +68,6 @@ export default function PostArticlePage() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    // 🆕 Clear any previous error messages when user starts typing
-    if (message) setMessage("");
   };
 
   const handleImageChange = (e) => {
@@ -137,14 +128,21 @@ export default function PostArticlePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 🆕 Double-check validation before submitting
-    if (!isFormValid) {
-      setMessage("Please fill in all required fields");
+    // Basic validation
+    if (!form.title.trim()) {
+      setMessage("Please enter a title");
       return;
     }
 
-    setIsSubmitting(true); // 🆕 Disable button during submission
-    setMessage(""); // Clear any previous messages
+    if (!form.body.trim()) {
+      setMessage("Please write some content");
+      return;
+    }
+
+    if (!form.topic) {
+      setMessage("Please select a topic");
+      return;
+    }
 
     try {
       const formData = new FormData();
@@ -162,7 +160,6 @@ export default function PostArticlePage() {
     } catch (err) {
       console.error("Error posting article:", err);
       setMessage("Failed to post article. Please try again.");
-      setIsSubmitting(false); // 🆕 Re-enable button on error
     }
   };
 
@@ -175,21 +172,18 @@ export default function PostArticlePage() {
           name="title"
           value={form.title}
           onChange={handleInputChange}
-          placeholder="*Article Title"
+          placeholder="Article Title"
           required
           maxLength={200}
-          disabled={isSubmitting} // 🆕 Disable during submission
         />
 
         <select
-          className="post-article-select-topic"
           name="topic"
           value={form.topic}
           onChange={handleInputChange}
           required
-          disabled={isSubmitting}
         >
-          <option value="">*Select Topic</option>
+          <option value="">--Select Topic--</option>
           {topics.map((topic) => (
             <option key={topic.slug} value={topic.slug}>
               {capitaliseFirstLetter(topic.slug)}
@@ -201,17 +195,14 @@ export default function PostArticlePage() {
           name="body"
           value={form.body}
           onChange={handleInputChange}
-          placeholder="*Write your article here..."
+          placeholder="Write your article here..."
           rows={12}
           required
-          disabled={isSubmitting} // 🆕 Disable during submission
         />
 
         <label
           htmlFor="article_img_url"
-          className={`post-article-file-upload-label ${
-            isSubmitting ? "disabled" : ""
-          }`} // 🆕 Add disabled class
+          className="post-article-file-upload-label"
         >
           <div className="post-article-file-upload-label-content">
             <span>Upload Article Image</span>
@@ -225,7 +216,6 @@ export default function PostArticlePage() {
           accept="image/*"
           onChange={handleImageChange}
           style={{ display: "none" }}
-          disabled={isSubmitting} // 🆕 Disable during submission
         />
 
         {previewUrl && (
@@ -247,7 +237,6 @@ export default function PostArticlePage() {
                 }
               }}
               className="recrop-button"
-              disabled={isSubmitting} // 🆕 Disable during submission
             >
               Re-crop Image
             </button>
@@ -260,33 +249,17 @@ export default function PostArticlePage() {
             imageSrc={imagePreview}
             onCancel={handleCropCancel}
             onCropComplete={handleCropComplete}
-            aspectRatio={16 / 9}
-            cropShape="rect"
+            // 🆕 Article-specific props
+            aspectRatio={16 / 9} // Wide format for articles
+            cropShape="rect" // Rectangular crop
             title="Crop Article Image"
           />
         )}
 
-        {/* 🆕 Submit button with validation and loading state */}
-        <button
-          type="submit"
-          disabled={!isFormValid || isSubmitting}
-          className={`submit-button ${!isFormValid ? "disabled" : ""} ${
-            isSubmitting ? "submitting" : ""
-          }`}
-        >
-          {isSubmitting ? "Posting..." : "Submit"}
-        </button>
+        <button type="submit">Submit Article</button>
       </form>
 
-      {message && (
-        <p
-          className={`form-message ${
-            message.includes("Failed") ? "error" : ""
-          }`}
-        >
-          {message}
-        </p>
-      )}
+      {message && <p className="form-message">{message}</p>}
     </div>
   );
 }

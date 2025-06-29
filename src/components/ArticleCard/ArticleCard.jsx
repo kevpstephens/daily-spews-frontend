@@ -1,29 +1,16 @@
-/** ============================================================
- * ArticleCard.jsx
-
- * Displays a summary card for an article, including title, author, topic,
- * image, posted date, comment count, and vote count.
- *============================================================ */
-
 import "./ArticleCard.css";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/formatDate";
 import { MessageSquareMore, Heart } from "lucide-react";
-import defaultImage from "/assets/users/default-user-image-purple.avif";
+import defaultImage from "/assets/users/default-user-image.jpg";
 
 export default function ArticleCard({ article }) {
-  // !============================================================
-  // !     Render Article Card UI
-  // !============================================================
   return (
     <>
       <div className="article-card-container">
         <article className="article-card">
           <div className="article-card-heading-container">
-            {/* Article title */}
             <h2 className="article-card-heading">{article.title}</h2>
-
-            {/* Author and topic links */}
             <h3>
               Written by:{" "}
               <Link
@@ -41,8 +28,6 @@ export default function ArticleCard({ article }) {
               </Link>
             </h3>
           </div>
-
-          {/* Article image and posted date */}
           <div className="article-card-image-posted-date-container">
             <Link to={`/articles/${article.article_id}`}>
               <img
@@ -60,7 +45,6 @@ export default function ArticleCard({ article }) {
         </article>
 
         <div className="article-card-likes-and-comments-container">
-          {/* Link to comments section on article page */}
           <Link
             className="article-card-likes-icon-link"
             to={`/articles/${article.article_id}#comments`}
@@ -70,7 +54,6 @@ export default function ArticleCard({ article }) {
               {article.comment_count}
             </div>
           </Link>
-          {/* Link to likes section on article page */}
           <Link
             className="article-card-likes-icon-link"
             to={`/articles/${article.article_id}#article-likes`}

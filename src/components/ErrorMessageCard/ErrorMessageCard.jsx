@@ -1,13 +1,5 @@
-/** !============================================================
- * ErrorMessageCard.jsx
-
- * Displays a contextual or fallback error message to the user.
- * Supports specific error types (article, topic, profile).
- *============================================================ */
-
 import "./ErrorMessageCard.css";
 
-// Predefined error titles and messages for different error types
 const errorMap = {
   article: {
     title: "404 - Article doesn't exist",
@@ -23,25 +15,21 @@ const errorMap = {
   },
 };
 
-// Reusable error message component with fallback and specific error states
 export default function ErrorMessageCard({
   error,
   articleError,
   topicError,
   profileError,
 }) {
-  // Determine which specific error type to use
   let type = null;
   if (articleError) type = "article";
   else if (topicError) type = "topic";
   else if (profileError) type = "profile";
 
-  // Fallback error title and message if no specific type is matched
   const fallbackTitle = error || "An unexpected error occurred";
   const fallbackMessage =
     "We couldn’t fetch the content you're looking for. Please try again.";
 
-  // Use mapped error if type exists, otherwise use fallback
   const title = type ? errorMap[type].title : fallbackTitle;
   const message = type ? errorMap[type].message : fallbackMessage;
 

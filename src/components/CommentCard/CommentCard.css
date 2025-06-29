@@ -24,11 +24,11 @@
 h3.comment-card-header {
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 2.25vw, 1.5rem);
-  margin: 0 !important;
+  margin: 0rem !important;
   background-color: #9785d375;
   border-radius: 30px;
   width: fit-content;
-  padding: 0 0.5rem;
+  padding: 0rem 0.5rem;
   box-shadow: 0 0 10px #0000001a;
 }
 
@@ -50,6 +50,7 @@ h3.comment-card-header {
 
 .vote-button-container.comment-vote {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 1rem;
 }
@@ -59,7 +60,7 @@ h3.comment-card-header {
 }
 
 .vote-info p {
-  margin: 0;
+  margin: 0rem;
 }
 
 /* !============================================================
@@ -69,6 +70,7 @@ h3.comment-card-header {
 .delete-comment-button {
   height: 3rem;
   width: 3rem;
+
   position: relative;
   right: 1rem;
   background-color: #8113d52b !important;
@@ -129,6 +131,7 @@ h3.comment-card-header {
 }
 
 .cancel-delete-button:hover {
+  background-color: #888 !important;
   background-color: var(--color-primary) !important;
 }
 
@@ -160,7 +163,7 @@ h3.comment-card-header {
 !============================================================ */
 
 .animated-comment {
-  animation: fadeSlideInDown 1s ease-in-out;
+  animation: fadeSlideInDown 0.4s ease-in-out;
 }
 
 /* !============================================================
