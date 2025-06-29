@@ -1,5 +1,5 @@
 /** ============================================================
- * ArticleCard.jsx
+ *! ArticleCard.jsx
 
  * Displays a summary card for an article, including title, author, topic,
  * image, posted date, comment count, and vote count.

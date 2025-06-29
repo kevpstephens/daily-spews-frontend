@@ -1,5 +1,5 @@
 /** ============================================================
- * CommentList.jsx
+ *! CommentList.jsx
 
  * Displays a list of article comments.
  * Handles smooth scrolling into view if URL hash is "#comments".

@@ -1,5 +1,5 @@
 /** ============================================================
- * CommentButton.jsx
+ *! CommentButton.jsx
 
  * A button component for jumping to the comment form on the page.
  * Displays the number of existing comments and scrolls to the article's post-comment-form on click.

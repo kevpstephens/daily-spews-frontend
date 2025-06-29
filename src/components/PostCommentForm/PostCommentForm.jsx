@@ -1,15 +1,22 @@
-import { toast } from "react-toastify";
+/** ============================================================
+ *! PostCommentForm.jsx
+
+ * Form component for submitting new comments on an article.
+ * Automatically grows textarea height and disables input while submitting.
+ * If user is not logged in, displays login/signup overlay.
+ *============================================================ */
+
 import "./PostCommentForm.css";
 import { useState, useRef } from "react";
-import { postComment } from "../../api/api";
-import { Link } from "react-router-dom";
 import { useUser } from "../../context";
+import { Link } from "react-router-dom";
+import { postComment } from "../../api/api";
+import { toast } from "react-toastify";
 
 export default function PostCommentForm({ article_id, setComments }) {
   const { user } = useUser();
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const textareaRef = useRef(null);
 
   const handleInput = () => {
@@ -20,10 +27,10 @@ export default function PostCommentForm({ article_id, setComments }) {
     }
   };
 
+  // Handle comment form submission
   async function handleSubmit(event) {
     event.preventDefault();
     if (!user) return;
-
     setIsSubmitting(true);
     try {
       const newComment = await postComment(article_id, {
@@ -31,6 +38,7 @@ export default function PostCommentForm({ article_id, setComments }) {
         body: comment,
       });
 
+      // Construct a full comment object including fallback for comment ID and timestamp
       const now = new Date().toISOString();
       const completeComment = {
         comment_id: newComment.comment_id || Math.random(),
@@ -41,6 +49,7 @@ export default function PostCommentForm({ article_id, setComments }) {
         justPosted: true, // Used for triggering animation
       };
 
+      // Prepend new comment to the existing comment list in parent component
       setComments((prevComments) => [completeComment, ...prevComments]);
       setComment("");
       toast.success("Comment posted successfully!", {
@@ -62,6 +71,7 @@ export default function PostCommentForm({ article_id, setComments }) {
   return (
     <form className="post-comment-form-wrapper" onSubmit={handleSubmit}>
       <div className="comment-box-wrapper">
+        {/* Textarea for entering a comment (auto-expanding) */}
         <textarea
           id="comment"
           ref={textareaRef}
@@ -73,11 +83,13 @@ export default function PostCommentForm({ article_id, setComments }) {
               ? "Join the conversation..."
               : "Please log in to leave a comment..."
           }
-          rows={1}
+          rows={3}
           required
           disabled={!user || isSubmitting}
           style={{ overflowY: "hidden" }}
         />
+
+        {/* If user is not logged in, overlay login/signup prompt */}
         {!user && (
           <div className="comment-form-overlay">
             <Link to="/login" className="comment-form-overlay-login-button">
@@ -89,6 +101,8 @@ export default function PostCommentForm({ article_id, setComments }) {
           </div>
         )}
       </div>
+
+      {/* Submit button (disabled while submitting or logged out) */}
       <button
         type="submit"
         className="comment-submit-button"

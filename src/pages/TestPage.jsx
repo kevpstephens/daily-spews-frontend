@@ -1,8 +1,6 @@
 // //? URL: daily-spews.com/test
 
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
-import SortAndTopicBar from "../components/SortAndTopicBar";
 import ToastTester from "../components/ToastTester/ToastTester";
 
 export default function TestPage() {

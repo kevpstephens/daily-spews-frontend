@@ -8,14 +8,14 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin: 2.5rem 0rem -0.5rem 0rem;
+  margin: 2.5rem 0 -0.5rem 0;
   align-self: center;
   text-align: center;
 }
 
 .pagination-page-display {
   position: relative;
-  gap: 0rem;
+  gap: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,6 @@
   margin: 0;
 }
 
-/* Icon appearance when button is disabled */
 #previous-page-button:disabled,
 #next-page-button:disabled {
   cursor: not-allowed;
@@ -35,7 +34,6 @@
   background-color: #9382ca;
 }
 
-/* Optional: style icons directly if needed */
 #previous-page-button:disabled .pagination-icon,
 #next-page-button:disabled .pagination-icon {
   stroke: #797979;

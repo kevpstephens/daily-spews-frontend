@@ -1,5 +1,5 @@
 /** ============================================================
- * AvatarCropModal.jsx
+ *! AvatarCropModal.jsx
  *
  * Modal component for cropping user avatar images using react-easy-crop.
  * Accepts an image source, cropping config, and returns a cropped image blob.

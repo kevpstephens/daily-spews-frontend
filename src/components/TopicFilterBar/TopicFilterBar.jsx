@@ -1,8 +1,15 @@
+/** ============================================================
+ *! TopicFilterBar.jsx
+
+ * A dropdown filter component that fetches available topics
+ * and updates the search parameters in the URL when the user selects a topic.
+ * Responsive UI adapts the default dropdown label based on screen width.
+ *============================================================ */
 import "./TopicFilterBar.css";
 import { useSearchParams } from "react-router-dom";
-import { getTopics } from "../../api/api";
-import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import { getTopics } from "../../api/api";
 import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
 
 export default function TopicFilterBar() {
@@ -21,6 +28,7 @@ export default function TopicFilterBar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Update the URL's topic query parameter based on dropdown selection
   function handleTopicChange(event) {
     const value = event.target.value;
     if (value) {
@@ -33,6 +41,7 @@ export default function TopicFilterBar() {
 
   return (
     <>
+      {/* Render a dropdown menu populated with topic options */}
       <select
         className="topic-filter-bar"
         id="topic-dropdown"

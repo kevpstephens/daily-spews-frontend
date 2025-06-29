@@ -1,5 +1,5 @@
-/** !============================================================
- * HorizontalTopics.jsx
+/** ============================================================
+ *! HorizontalTopics.jsx
 
  * Renders a horizontally scrollable list of topic cards with arrow navigation.
  * Handles scroll tracking, dimming animation, and async topic loading.

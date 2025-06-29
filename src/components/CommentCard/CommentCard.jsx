@@ -1,6 +1,6 @@
-/** !============================================================
- * CommentCard.jsx
- 
+/** ============================================================
+ *! CommentCard.jsx
+
  * Displays an individual comment with voting and delete functionality.
  * Allows the comment author or admin to delete the comment with confirmation.
  *============================================================ */

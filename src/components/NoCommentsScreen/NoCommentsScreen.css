@@ -1,25 +1,21 @@
-/* ============================================================
-    No Comments Screen 
-============================================================ */
+/* !============================================================
+!     No Comments Screen
+!============================================================ */
 .no-comments-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: none;
-  margin: 0rem;
+  margin: 0;
 }
 
 #mascot-shrugging-image {
   height: 200px;
   width: auto;
-  margin: 1.5rem;
   filter: drop-shadow(-10px 0 15px rgba(157, 0, 255, 0.59));
-  display: flex;
-  justify-content: center;
   max-width: 300px;
-  margin: 1rem auto;
-  margin-top: 0rem;
+  margin: 1rem auto 0 auto;
   display: block;
 }
 
@@ -39,4 +35,25 @@
   font-weight: 700;
   text-shadow: 0 0 1px #00000055;
   text-decoration: underline;
+}
+
+/* !============================================================
+!     Media Queries
+!============================================================ */
+
+@media screen and (max-width: 600px) {
+  #mascot-shrugging-image {
+    height: 150px;
+    max-width: 250px;
+    margin: 0.5rem auto 0 auto;
+  }
+
+  .no-comments-message {
+    font-size: 20px;
+    padding: 0 1rem;
+  }
+
+  .no-comments-message p {
+    margin-bottom: 0.75rem;
+  }
 }

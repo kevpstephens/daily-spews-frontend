@@ -7,7 +7,7 @@ import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard
 import { useSearchParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import SortAndTopicBar from "../../components/SortAndTopicBar.jsx";
+import SortAndTopicBar from "../../components/SortAndTopciBar/SortAndTopicBar.jsx";
 
 export default function AllArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();

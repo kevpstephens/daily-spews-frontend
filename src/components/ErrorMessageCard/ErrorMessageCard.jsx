@@ -1,5 +1,5 @@
-/** !============================================================
- * ErrorMessageCard.jsx
+/** ============================================================
+ *! ErrorMessageCard.jsx
 
  * Displays a contextual or fallback error message to the user.
  * Supports specific error types (article, topic, profile).

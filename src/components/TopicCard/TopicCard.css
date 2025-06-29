@@ -6,7 +6,6 @@
   width: 100%;
   max-width: 18.75rem;
   height: auto;
-
   background: #8a72d77e;
   box-sizing: border-box;
   display: flex;
@@ -31,7 +30,7 @@
   font-family: "Gaegu", sans-serif;
   font-size: 2rem;
   transition: all 0.4s ease-in-out;
-  margin: 0.3rem 0rem 0.15rem 0rem;
+  margin: 0.3rem 0 0.15rem 0;
 }
 
 .topic-card:hover h3 {

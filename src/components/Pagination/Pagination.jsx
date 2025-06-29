@@ -1,5 +1,12 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+/** ============================================================
+ *! Pagination.jsx
+
+ * Displays pagination controls for navigating paginated article lists.
+ * Shows current page, total page count, and article range.
+ *============================================================ */
+
 import "./Pagination.css";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 export default function Pagination({
   currentPage,
@@ -7,12 +14,13 @@ export default function Pagination({
   totalCount,
   limit,
 }) {
-  const totalPages = Math.ceil(totalCount / limit);
-  const start = (currentPage - 1) * limit + 1;
-  const end = Math.min(currentPage * limit, totalCount);
+  const totalPages = Math.ceil(totalCount / limit); // Calculate the total number of pages based on article count and page limit
+  const start = (currentPage - 1) * limit + 1; // Calculate the index of the first article on the current page
+  const end = Math.min(currentPage * limit, totalCount); // Calculate the index of the last article on the current page
 
   return (
     <div className="pagination-container">
+      {/* Previous page button - disabled if on first page */}
       <button
         id="previous-page-button"
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -21,6 +29,7 @@ export default function Pagination({
         <ChevronLeftIcon className="pagination-icon" />
       </button>
 
+      {/* Display current page and article range */}
       <div className="pagination-page-display">
         <span id="page-number">
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
@@ -31,6 +40,7 @@ export default function Pagination({
         </p>
       </div>
 
+      {/* Next page button - disabled if on last page */}
       <button
         id="next-page-button"
         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}

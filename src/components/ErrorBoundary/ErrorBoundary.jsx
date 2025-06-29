@@ -1,5 +1,5 @@
-/** !============================================================
- * ErrorBoundary.jsx
+/** ============================================================
+ *! ErrorBoundary.jsx
 
  * A React component that catches JavaScript errors in child components.
  * Displays a fallback UI and logs the error for debugging purposes.

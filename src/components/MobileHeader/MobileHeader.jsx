@@ -1,12 +1,20 @@
+/** ============================================================
+ *! MobileHeader.jsx
+
+ * Renders a mobile-optimized header for the homepage and nav.
+ * Displays a welcome message only on the homepage.
+ *============================================================ */
+
 import "./MobileHeader.css";
 import { useLocation } from "react-router-dom";
 import NavigationBar from "../NavigationBar/NavigationBar.jsx";
 
 export default function MobileHeader() {
-  const location = useLocation();
+  const location = useLocation(); // Get current route location
   const isHomePage = location.pathname === "/";
   return (
     <>
+      {/* Display greeting only on homepage */}
       {isHomePage && (
         <div className="mobile-daily-spews-greeting-container">
           <h1 className="mobile-daily-spews-heading">Daily Spews</h1>
@@ -18,12 +26,13 @@ export default function MobileHeader() {
           />
 
           <p>
-            Your daily dose of news, spews, and <del>highly sought after</del>{" "}
-            opinions.
+            Your daily dose of news, views, and{" "}
+            <del>highly regarded opinions</del> spews.
           </p>
         </div>
       )}
 
+      {/* Persistent mobile header containing navigation */}
       <header className="mobile-header-container">
         <div className="mobile-header-navigation-container navigation-bar-container">
           <NavigationBar />

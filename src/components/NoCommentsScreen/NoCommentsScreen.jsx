@@ -1,14 +1,22 @@
+/** ============================================================
+ *! NoCommentsScreen.jsx
+
+ * Displays a playful message and mascot when no comments exist
+ *============================================================ */
+
 import "./NoCommentsScreen.css";
 
-export default function NoCommetsScreen() {
+export default function NoCommentsScreen() {
   return (
     <>
       <section className="no-comments-container">
+        {/* Display shrugging mascot image */}
         <img
           id="mascot-shrugging-image"
           src="/assets/mascot/mascot-shrugging.png"
           alt="mascot-shrugging-image"
         />
+
         <article className="no-comments-message">
           <p>There are no comments...yet.</p>
           <p>

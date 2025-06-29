@@ -1,5 +1,5 @@
-/** !============================================================
- * DevConsole.jsx
+/** ============================================================
+ *! DevConsole.jsx
 
  * A floating debug panel showing user and route info.
  * Only visible in development mode.

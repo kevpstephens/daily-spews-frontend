@@ -1,5 +1,5 @@
-/** !============================================================
- * DevLoginForm.jsx
+/** ============================================================
+ *! DevLoginForm.jsx
 
  * Temporary development login component.
  * Allows selecting a user from the database and simulates a login.

@@ -1,5 +1,5 @@
 /** ============================================================
- * LoadingScreen.jsx
+ *! LoadingScreen.jsx
 
  * Displays an animated mascot with a context-aware loading message.
  * Includes shaking animation triggered after the mascot finishes loading in.

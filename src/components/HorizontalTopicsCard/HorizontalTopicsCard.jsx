@@ -1,5 +1,5 @@
 /** ============================================================
- * HorizontalTopicsCard.jsx
+ *! HorizontalTopicsCard.jsx
 
  * Displays a single topic card with an image and hashtag-styled topic title.
  * Used inside the HorizontalTopics scroll container.

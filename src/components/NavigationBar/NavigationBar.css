@@ -36,7 +36,6 @@
   width: 3rem;
   border-radius: 50%;
   padding: 0;
-  /* 🆕 Add cursor pointer since it's now a div */
   cursor: pointer;
 }
 
@@ -46,7 +45,6 @@
   padding: 0;
 }
 
-/* 🆕 Update selector to include div.nav-button */
 a.nav-button:hover,
 div.nav-button:hover {
   background-color: #b95d28;
@@ -76,6 +74,8 @@ div.nav-button:hover {
 }
 
 .nav-avatar-dropdown {
+  opacity: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,7 +86,6 @@ div.nav-button:hover {
   background-color: #f7790382;
   padding: 0.25rem 0.75rem 0.5rem 0.75rem;
   z-index: 1000;
-  opacity: 0;
   transition: opacity 0.15s ease-in-out;
   font-family: var(--font-heading);
   pointer-events: none;
@@ -103,7 +102,6 @@ div.nav-button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 0.5rem;
 }
 
@@ -139,13 +137,14 @@ div.nav-button:hover {
   color: white;
   font-size: 1rem;
   font-family: var(--font-heading);
-  margin: 0rem 0.25rem;
+  margin: 0 0.25rem;
 }
 
-/* 🆕 Updated styles for button element */
-.nav-post-article-link {
+/* !============================================================
+!     Profile Link Styling
+!============================================================ */
+.nav-profile-link {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
@@ -157,15 +156,50 @@ div.nav-button:hover {
   padding: 0.1rem 0.5rem;
   text-align: center;
   border: 2px solid #0d0024;
-  /* 🆕 Button-specific styles */
   cursor: pointer;
   font-family: inherit;
   text-decoration: none;
-  /* 🆕 Remove default button styles */
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-profile-link:hover {
+  background-color: var(--color-accent);
+  text-decoration: none;
+  color: white;
+}
+
+.nav-profile-link:hover svg {
+  animation: scribbleWave 0.7s ease-in-out infinite;
+}
+
+/* !============================================================
+!     Post Article Link Styling
+!============================================================ */
+.nav-post-article-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: fit-content;
+  color: white;
+  font-size: 1rem;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  padding: 0.1rem 0.5rem;
+  text-align: center;
+  border: 2px solid #0d0024;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: background-color 0.2s ease;
 }
 
 .nav-post-article-link:hover {
@@ -174,9 +208,12 @@ div.nav-button:hover {
   color: white;
 }
 
+.nav-post-article-link:hover svg {
+  animation: scribbleTilt 0.5s ease-in-out infinite;
+}
+
 .nav-post-article-button {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
