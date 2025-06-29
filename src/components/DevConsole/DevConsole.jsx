@@ -1,37 +1,53 @@
+/** !============================================================
+ * DevConsole.jsx
+
+ * A floating debug panel showing user and route info.
+ * Only visible in development mode.
+ * Supports drag and resize, with position and size saved to localStorage.
+ *============================================================ */
+
 import "./DevConsole.css";
 import { useState, useRef, useEffect } from "react";
-import { useUser } from "../../context";
 import { Link, useLocation } from "react-router-dom";
+import { useUser } from "../../context";
 
 export default function DevConsole() {
   const { user } = useUser();
   const location = useLocation();
-
   const consoleRef = useRef(null);
+
+  // Track panel position, persisted in localStorage
   const [position, setPosition] = useState(() => {
     const saved = localStorage.getItem("devConsolePosition");
     return saved ? JSON.parse(saved) : { x: 20, y: 20 };
   });
 
+  // Track panel size, persisted in localStorage
   const [size, setSize] = useState(() => {
     const saved = localStorage.getItem("devConsoleSize");
     return saved ? JSON.parse(saved) : { width: 200, height: 140 };
   });
 
+  // Store initial offset when dragging begins
   const dragOffset = useRef({ x: 0, y: 0 });
+  // Whether the panel is currently being dragged
   const isDragging = useRef(false);
+  // Whether the panel is currently being resized
   const isResizing = useRef(false);
+  // Store initial state when resizing begins
   const resizeStart = useRef({ x: 0, y: 0, width: 0, height: 0 });
 
-  // Save position and size to localStorage whenever they change
+  // Persist position to localStorage on change
   useEffect(() => {
     localStorage.setItem("devConsolePosition", JSON.stringify(position));
   }, [position]);
 
+  // Persist size to localStorage on change
   useEffect(() => {
     localStorage.setItem("devConsoleSize", JSON.stringify(size));
   }, [size]);
 
+  // Start dragging unless user clicked a link or the resize handle
   const handleMouseDown = (e) => {
     // Don't start dragging if clicking on resize handle or links
     if (
@@ -53,6 +69,7 @@ export default function DevConsole() {
     document.addEventListener("mouseup", handleMouseUp);
   };
 
+  // Start resizing, record initial size and pointer position
   const handleResizeStart = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -67,8 +84,7 @@ export default function DevConsole() {
     document.addEventListener("mouseup", handleMouseUp);
   };
 
-  // In your handleMouseMove function, change this section:
-
+  // Update position or size based on pointer movement
   const handleMouseMove = (e) => {
     e.preventDefault();
 
@@ -94,7 +110,7 @@ export default function DevConsole() {
       const deltaX = e.clientX - resizeStart.current.x;
       const deltaY = e.clientY - resizeStart.current.y;
 
-      // Allow much smaller minimum size - change from 175 to something like 50 or 80
+      // Allow much smaller minimum size
       const newWidth = Math.max(50, resizeStart.current.width + deltaX);
       const newHeight = Math.max(50, resizeStart.current.height + deltaY);
 
@@ -109,6 +125,7 @@ export default function DevConsole() {
     }
   };
 
+  // Stop dragging/resizing and remove listeners
   const handleMouseUp = (e) => {
     e.preventDefault();
 
@@ -118,7 +135,7 @@ export default function DevConsole() {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
-  // Cleanup event listeners on unmount
+  // Cleanup listeners on component unmount
   useEffect(() => {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
@@ -126,6 +143,7 @@ export default function DevConsole() {
     };
   }, []);
 
+  // Render floating debug panel with current user, path, and dev links
   return (
     <aside
       ref={consoleRef}

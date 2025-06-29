@@ -1,24 +1,36 @@
+/** !============================================================
+ * ErrorBoundary.jsx
+
+ * A React component that catches JavaScript errors in child components.
+ * Displays a fallback UI and logs the error for debugging purposes.
+ *============================================================ */
+
 import "./ErrorBoundary.css";
 import React from "react";
 
+// Error boundary class component for handling rendering errors
 class ErrorBoundary extends React.Component {
+  // Initialise state to track error occurrence
   constructor(props) {
     super(props);
     this.state = { hasError: false, error: null };
   }
 
+  // Lifecycle method: update state when an error is thrown
   static getDerivedStateFromError(error) {
     // Update state to render fallback UI on next render
     return { hasError: true, error };
   }
 
+  // Lifecycle method: log error details
   componentDidCatch(error, errorInfo) {
-    // You can log the error to an external service here
     console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
+  // Render fallback UI if an error was caught
   render() {
     if (this.state.hasError) {
+      // Display user-friendly error message and raw error for debugging
       return (
         <div className="error-boundary-container">
           <h1 className="error-boundary-title">
@@ -34,6 +46,7 @@ class ErrorBoundary extends React.Component {
       );
     }
 
+    // Otherwise, render child components normally
     return this.props.children;
   }
 }

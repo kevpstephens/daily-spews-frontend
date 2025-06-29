@@ -1,60 +1,13 @@
-/* !============================================================
-  !     Media Queries
-  !============================================================ */
-
 @media screen and (max-width: 600px) {
-  .mobile-header-container {
-    position: sticky;
-    top: 0rem;
-    z-index: 100000000;
-    background-color: #8c75d8;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: 0.15rem solid #0d0024;
-    align-self: center;
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
-    padding: 0.25rem;
-  }
-
-  .mobile-header-daily-spews-logo {
-    width: 3.5rem;
-    height: 3.5rem;
-    border: 0.15rem solid #0d0024;
-    border-radius: 100%;
-    margin: 0rem;
-  }
-
-  .mobile-header-navigation-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    flex: 1;
-    margin: 0rem;
-    padding: 0rem !important;
-  }
-
-  .mobile-header-navigation-container > a {
-    display: flex;
-    align-items: center;
-  }
-
-  .mobile-header-container h1 {
-    display: none;
-  }
-
+  /* !============================================================
+  !     Mobile Daily Spews Greeting Container
+  !============================================================ */
   .mobile-daily-spews-greeting-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 1rem;
+    margin: 1.25rem;
   }
 
   .mobile-daily-spews-heading {
@@ -63,7 +16,7 @@
     text-align: center;
     color: var(--color-heading);
     display: block;
-    margin: 0rem;
+    margin: 0;
     background-color: #8c75d8;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -74,10 +27,10 @@
     font-family: var(--font-heading);
     font-size: 1.25rem;
     text-align: center;
-    margin: 0rem;
+    margin: 0;
     color: #0d0024;
     display: block;
-    padding: 0rem;
+    padding: 0;
   }
 
   .mobile-daily-spews-logo {
@@ -86,34 +39,35 @@
     width: 5rem;
     border: 0.25rem dotted #0d0024;
     border-radius: 2rem;
-    margin: 0.5rem;
     align-self: center;
+    margin: 0.75rem !important;
+    z-index: 2;
+    animation: bounceAndTilt 0.5s ease-in-out forwards;
+    animation-delay: 0.1s;
   }
-}
 
-.mobile-daily-spews-logo-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  /* !============================================================
+  !     Mobile Header Container
+  !============================================================ */
 
-.mobile-daily-spews-logo {
-  z-index: 2;
-  width: 5rem;
-  height: 5rem;
-  animation: bounceAndTilt 0.5s ease-in-out forwards;
-  animation-delay: 0.1s;
-}
+  .mobile-header-container {
+    position: sticky;
+    top: 0;
+    z-index: 100000000;
+    background-color: #8c75d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.15rem solid #0d0024;
+    align-self: center;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 0.25rem;
+  }
 
-/* !============================================================
-!     Media Queries - Navigation Bar
-!============================================================ */
-
-@media screen and (max-width: 600px) {
   .navigation-bar-container {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     gap: 1rem;
@@ -121,9 +75,13 @@
     margin: 0.1rem;
   }
 
+  .mobile-header-daily-spews-logo,
   #mobile-header-daily-spews-logo {
     width: 3.5rem;
     height: 3.5rem;
+    border: 0.15rem solid #0d0024;
+    border-radius: 100%;
+    margin: 0;
   }
 
   #user-profile-button {
@@ -132,7 +90,7 @@
   }
 
   .nav-button {
-    height: 2.5rem;
+    height: 3rem;
   }
 
   #home-button {
@@ -146,6 +104,8 @@
   }
 
   .nav-avatar-dropdown {
+    /* opacity: 1; */
+
     position: absolute;
     top: -10%;
     right: -10%;
@@ -169,7 +129,7 @@
     font-size: 1.35rem;
     margin-top: 0.9rem;
     margin-right: 3.5rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0;
     position: relative;
     max-width: 200px;
     overflow: hidden;
@@ -188,5 +148,17 @@
   .mobile-header-navigation-container .nav-post-article-link {
     height: 2.25rem !important;
     width: fit-content;
+  }
+
+  .mobile-header-navigation-container .nav-post-article-link:hover svg {
+    animation: scribbleTilt 0.5s ease-in-out infinite;
+  }
+
+  .nav-avatar-dropdown-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
   }
 }

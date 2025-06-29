@@ -1,35 +1,13 @@
 import "./NavigationBar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUser } from "../../context";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import { Home, PencilLine, User } from "lucide-react";
 
 export default function NavigationBar() {
   const { user, isUserLoading } = useUser();
-  const navigate = useNavigate();
-
   if (isUserLoading) return null;
   const isMobile = window.innerWidth <= 600;
-
-  // Handle profile navigation with click handling for dropdown
-  const handleProfileClick = (event) => {
-    // If clicking on the dropdown or its children, don't navigate
-    if (event.target.closest(".nav-avatar-dropdown")) {
-      event.preventDefault();
-      return;
-    }
-    // Otherwise, navigate to profile
-    if (user && user.username) {
-      navigate(`/users/${user.username}`);
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const handlePostArticleClick = (event) => {
-    event.stopPropagation(); // Prevent the profile click handler
-    navigate("/articles/new");
-  };
 
   return (
     <>
@@ -53,12 +31,10 @@ export default function NavigationBar() {
         <Link className="nav-button" to="/topics">
           Topics
         </Link>
-
-        {/* Fixed: Use div with click handler instead of nested Links */}
-        <div
+        <Link
           id="user-profile-button"
           className="nav-button user-profile-nav"
-          onClick={handleProfileClick}
+          to={user && user.username ? `/users/${user.username}` : "/login"}
         >
           {user && user.avatar_url ? (
             <div className="nav-avatar-wrapper">
@@ -72,14 +48,10 @@ export default function NavigationBar() {
                 <h2 className="nav-avatar-username">@{user.username}</h2>
 
                 <div className="nav-avatar-dropdown-buttons-container">
-                  <button
-                    className="nav-post-article-button"
-                    onClick={handlePostArticleClick}
-                    type="button"
-                  >
+                  <Link to="/articles/new" className="nav-post-article-link">
                     <span>Post Article</span>
                     <PencilLine size={16} />
-                  </button>
+                  </Link>
 
                   <LogoutButton id="nav-logout-button" redirectTo="/" />
                 </div>
@@ -89,7 +61,7 @@ export default function NavigationBar() {
           ) : (
             <User size={28} color="white" />
           )}
-        </div>
+        </Link>
       </nav>
     </>
   );
