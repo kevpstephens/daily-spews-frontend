@@ -14,8 +14,8 @@
   padding-bottom: 1rem;
   font-size: 0.8rem;
   z-index: 999;
-  min-width: 50px; /* Changed from 150px to 50px */
-  min-height: 50px; /* Changed from 150px to 50px */
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 10px;
   transition: none;
   will-change: transform;
@@ -34,7 +34,7 @@
   margin-bottom: 4px;
 }
 
-/* Labels */
+/*Labels */
 .dev-console-label {
   font-size: 10px;
 }

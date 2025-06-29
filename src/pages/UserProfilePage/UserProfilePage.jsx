@@ -1,21 +1,28 @@
-import { useEffect, useState } from "react";
-import { uploadUserAvatar } from "../../api/api";
+/** !============================================================
+ * UserProfilePage.jsx
+ * https://daily-spews.onrender.com/users/:username
+
+ * Displays a user's profile info, avatar, and tools for managing their own profile.
+ * Allows signed-in users to upload and crop a new avatar image.
+ *============================================================ */
+
 import "./UserProfilePage.css";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getUserByUsername } from "../../api/api";
-import useFetch from "../../hooks/useFetch";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
+import { UploadIcon } from "lucide-react";
+import { uploadUserAvatar, getUserByUsername } from "../../api/api";
+import useFetch from "../../hooks/useFetch";
 import { useUser } from "../../context";
+import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
-import { UploadIcon } from "lucide-react";
 import PostNewArticleButton from "../../components/PostNewArticleButton/PostNewArticleButton.jsx";
-
 dayjs.extend(advancedFormat);
 
+// Constraints for avatar uploads
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = [
   "image/jpeg",
@@ -25,6 +32,9 @@ const ALLOWED_TYPES = [
   "image/jpg",
 ];
 
+// !============================================================
+// !     User Profile Page Component
+// !============================================================
 export default function UserProfilePage() {
   const { username } = useParams();
   const { user, setUser } = useUser();
@@ -53,7 +63,6 @@ export default function UserProfilePage() {
     if (file.size > MAX_FILE_SIZE) {
       return "File size must be less than 5MB";
     }
-
     return null;
   };
 
@@ -65,14 +74,14 @@ export default function UserProfilePage() {
     }
   };
 
-  // Update avatar URL when data changes OR when user context changes
+  // Update avatar preview when the fetched user data changes
   useEffect(() => {
     if (data?.user?.avatar_url) {
       setAvatarUrl(data.user.avatar_url);
     }
   }, [data]);
 
-  // 🆕 Also update when the global user context changes (for current user)
+  // Sync avatar preview with current user context (for own profile)
   useEffect(() => {
     if (user?.username === username && user?.avatar_url) {
       setAvatarUrl(user.avatar_url);
@@ -82,41 +91,27 @@ export default function UserProfilePage() {
   if (isLoading) return <LoadingScreen userProfileLoad={true} />;
   if (error || !profileUser) return <ErrorMessageCard profileError={true} />;
 
+  // !============================================================
+  // !     Render profile UI
+  // !============================================================
   return (
     <div className="user-profile-page-container">
       <h1 className="user-username">@{profileUser.username}</h1>
-      <PostNewArticleButton className="user-profile-page-post-article-button" />
+
+      {user?.username === profileUser.username && (
+        <PostNewArticleButton className="user-profile-page-post-article-button" />
+      )}
+
+      {/* Conditional logic: allow avatar update and posting only if viewing own profile */}
       {user?.username === profileUser.username ? (
         <>
-          {/* Show upload error */}
           {uploadError && (
-            <div
-              style={{
-                color: "red",
-                marginBottom: "10px",
-                padding: "8px",
-                backgroundColor: "#fee",
-                border: "1px solid #fcc",
-                borderRadius: "4px",
-              }}
-            >
-              {uploadError}
-            </div>
+            <div className="upload-error-message">{uploadError}</div>
           )}
 
           {/* Show uploading state */}
           {uploading && (
-            <div
-              style={{
-                marginBottom: "10px",
-                padding: "8px",
-                backgroundColor: "#e6f3ff",
-                border: "1px solid #b3d9ff",
-                borderRadius: "4px",
-              }}
-            >
-              Uploading avatar...
-            </div>
+            <div className="uploading-avatar-message">Uploading avatar...</div>
           )}
 
           <div className="avatar-container">
@@ -124,7 +119,7 @@ export default function UserProfilePage() {
               className="user-avatar-image"
               src={avatarUrl}
               alt="user-avatar-image"
-              key={avatarUrl} // 🆕 Force re-render when URL changes
+              key={avatarUrl} // Force re-render to reflect updated avatar
             />
             <>
               <label
@@ -133,7 +128,7 @@ export default function UserProfilePage() {
               >
                 <div className="avatar-overlay-content">
                   <span>Upload New Avatar</span>
-                  <UploadIcon size={20} />
+                  <UploadIcon size={22.5} />
                 </div>
               </label>
               <input
@@ -143,7 +138,7 @@ export default function UserProfilePage() {
                 onChange={(e) => {
                   const file = e.target.files[0];
                   if (file) {
-                    // Validate file before proceeding
+                    // Validate file type and size before opening crop modal
                     const validationError = validateFile(file);
                     if (validationError) {
                       setUploadError(validationError);
@@ -166,6 +161,7 @@ export default function UserProfilePage() {
           {cropModalOpen && imagePreview && (
             <AvatarCropModal
               imageSrc={imagePreview}
+              // Handle cancellation from cropping modal (cleanup preview, state, etc.)
               onCancel={() => {
                 setCropModalOpen(false);
                 // Clean up the object URL to prevent memory leaks
@@ -177,6 +173,7 @@ export default function UserProfilePage() {
                 setUploadError(null);
                 resetFileInput();
               }}
+              // Handle confirmed avatar crop and upload
               onCropComplete={async (croppedBlob) => {
                 setUploading(true);
                 setUploadError(null);
@@ -228,10 +225,9 @@ export default function UserProfilePage() {
                   resetFileInput();
                 }
               }}
-              // 🆕 Add these props for avatar cropping
-              aspectRatio={1} // Square for avatars
-              cropShape="round" // Circular crop for avatars
-              title="Crop Avatar" // Clear title
+              aspectRatio={1} // Ensure avatar crop is a square
+              cropShape="round" // Display circular crop UI to match profile avatar style
+              title="Crop Avatar"
             />
           )}
         </>
@@ -245,6 +241,7 @@ export default function UserProfilePage() {
         </div>
       )}
 
+      {/* Basic user info section */}
       <ul className="user-info-list">
         <li>
           <strong>Name:</strong> {profileUser.name}
@@ -261,7 +258,7 @@ export default function UserProfilePage() {
         </li>
       </ul>
 
-      {/* Show LogoutButton only if signed-in user is viewing own profile */}
+      {/* Show logout option if the current user is viewing their own profile */}
       {user?.username === profileUser.username && (
         <LogoutButton id="user-profile-logout-button" redirectTo="/login" />
       )}

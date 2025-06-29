@@ -18,8 +18,8 @@ export default function MobileHeader() {
           />
 
           <p>
-            your daily dose of news, spews, and <del>highly sought after</del>{" "}
-            opinions
+            Your daily dose of news, spews, and <del>highly sought after</del>{" "}
+            opinions.
           </p>
         </div>
       )}

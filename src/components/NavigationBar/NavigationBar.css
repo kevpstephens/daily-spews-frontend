@@ -103,6 +103,7 @@ div.nav-button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 0.5rem;
 }
 
@@ -171,25 +172,6 @@ div.nav-button:hover {
   background-color: var(--color-accent);
   text-decoration: none;
   color: white;
-}
-
-/* 🆕 Shake animation for pencil icon */
-@keyframes shake {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(3deg);
-  }
-  50% {
-    transform: rotate(-3deg);
-  }
-  75% {
-    transform: rotate(3deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
 }
 
 .nav-post-article-button {

@@ -1,10 +1,9 @@
 /* !============================================================
 !     Horizontal Topic Cards
 !============================================================ */
-
 .horizontal-topic-card h3 {
   font-family: var(--font-heading);
-  margin-bottom: 0rem;
+  margin-bottom: 0;
   font-size: 1.65rem;
   font-weight: 400;
 }
@@ -23,7 +22,6 @@
 .horizontal-topic-card:hover {
   transform: scale(1.2);
   z-index: 10001;
-  transition: all 0.4s ease-in-out;
 }
 
 .horizontal-topic-card img {
@@ -53,7 +51,6 @@
 /* !============================================================
 !     Topics dimmed effect for hover interaction
 !============================================================ */
-
 /* Does not work on mobile - intentionally restricted to only work on larger screens */
 @media (min-width: 601px) {
   .topics-dimmed .horizontal-topic-card {
@@ -63,7 +60,6 @@
 
   .topics-dimmed .horizontal-topic-card:hover {
     filter: brightness(1);
-    transition: all 0.4s ease-in-out;
   }
 }
 
