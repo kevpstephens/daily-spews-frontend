@@ -26,24 +26,26 @@
 
 .topic-description {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
-
   text-align: center;
 }
 
-.topic-articles-page {
+.topic-articles-page-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin: 0 auto;
   justify-items: center;
   max-width: 1200px;
-  box-shadow: none;
   padding: 0 1rem;
 }
 
 .topic-articles-page .article-card {
   animation: fadeSlideInUp 0.5s ease-in-out both;
 }
+
+/* !============================================================
+!     Loading Topics Articles
+!============================================================ */
 
 .loading-topics-articles-container {
   display: flex;
