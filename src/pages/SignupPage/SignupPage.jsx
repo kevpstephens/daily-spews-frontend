@@ -32,6 +32,7 @@ export default function SignupPage() {
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadError, setUploadError] = useState(null);
+  const [isProcessingAvatar, setIsProcessingAvatar] = useState(false);
 
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -41,6 +42,16 @@ export default function SignupPage() {
 
   const { setUser } = useUser();
   const navigate = useNavigate();
+
+  // Cleanup effect for previewUrl to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      // Cleanup previewUrl on component unmount
+      if (previewUrl && previewUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   // File validation function
   const validateFile = (file) => {
@@ -102,6 +113,11 @@ export default function SignupPage() {
       return;
     }
 
+    if (isProcessingAvatar) {
+      console.log("❌ Avatar is still processing, please wait");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -109,29 +125,37 @@ export default function SignupPage() {
       let config = {};
 
       if (avatar_url instanceof File) {
-        console.log("🔍 Creating FormData with file");
+        // Additional validation for the file before sending
+        if (avatar_url.size === 0) {
+          throw new Error("Avatar file is empty");
+        }
+
+        if (avatar_url.size > MAX_FILE_SIZE) {
+          throw new Error("Avatar file is too large");
+        }
+
+        // Validate all required fields before creating FormData
+        if (
+          !username.trim() ||
+          !name.trim() ||
+          !email.trim() ||
+          !password.trim()
+        ) {
+          throw new Error("All required fields must be filled");
+        }
+
         payload = new FormData();
-        payload.append("username", username);
-        payload.append("name", name);
-        payload.append("email", email);
-        payload.append("password", password);
+        payload.append("username", username.trim());
+        payload.append("name", name.trim());
+        payload.append("email", email.trim());
+        payload.append("password", password.trim());
         payload.append("avatar", avatar_url);
 
         config = {
-          headers: {
-            // Let browser set Content-Type automatically
-          },
+          timeout: 30000, // Add timeout for file uploads
+          withCredentials: true,
         };
-
-        console.log("🔍 FormData entries:");
-        for (let [key, value] of payload.entries()) {
-          console.log(
-            `${key}:`,
-            value instanceof File ? `File: ${value.name}` : value
-          );
-        }
       } else {
-        console.log("🔍 Creating JSON payload");
         payload = {
           username,
           name,
@@ -144,10 +168,10 @@ export default function SignupPage() {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials: true,
         };
       }
 
-      console.log("🔍 Sending registration request...");
       const data = await registerUser(payload, config);
       console.log("✅ Registration successful:", data);
       setUser(data.user);
@@ -155,8 +179,19 @@ export default function SignupPage() {
     } catch (err) {
       console.error("❌ Signup failed:", err);
       console.error("❌ Error details:", err.response?.data);
+
+      // More specific error messages
+      let errorMessage = "Signup failed. Please try again.";
+      if (err.message.includes("Avatar")) {
+        errorMessage = "Avatar upload failed. Please try a different image.";
+      } else if (err.response?.status === 413) {
+        errorMessage = "File too large. Please choose a smaller image.";
+      } else if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
       import("react-toastify").then(({ toast }) =>
-        toast.error("Signup failed. Please try again.", {
+        toast.error(errorMessage, {
           className: "toast-message",
         })
       );
@@ -270,6 +305,7 @@ export default function SignupPage() {
               setUploadError(null);
               setImagePreview(URL.createObjectURL(file));
               setSelectedFile(file);
+              setIsProcessingAvatar(true);
               setCropModalOpen(true);
             }
           }}
@@ -283,6 +319,7 @@ export default function SignupPage() {
             imageSrc={imagePreview}
             onCancel={() => {
               setCropModalOpen(false);
+              setIsProcessingAvatar(false);
               // Clean up the object URL to prevent memory leaks
               if (imagePreview) {
                 URL.revokeObjectURL(imagePreview);
@@ -294,11 +331,21 @@ export default function SignupPage() {
             }}
             onCropComplete={async (croppedBlob) => {
               try {
+                // Validate the cropped blob
+                if (!croppedBlob || croppedBlob.size === 0) {
+                  throw new Error("Invalid cropped image");
+                }
+
                 const croppedFile = new File(
                   [croppedBlob],
                   selectedFile?.name || "avatar.jpg",
                   { type: "image/jpeg" }
                 );
+
+                // Cleanup previous previewUrl before setting new one
+                if (previewUrl && previewUrl.startsWith("blob:")) {
+                  URL.revokeObjectURL(previewUrl);
+                }
 
                 // Set the cropped file as the avatar
                 setAvatar_url(croppedFile);
@@ -307,12 +354,20 @@ export default function SignupPage() {
                 // Clear any previous errors
                 setUploadError(null);
               } catch (err) {
-                console.error("Crop processing failed", err);
+                console.error("❌ Crop processing failed:", err);
                 setUploadError(
                   "Failed to process cropped image. Please try again."
                 );
+
+                // Reset avatar state on error
+                setAvatar_url("");
+                if (previewUrl && previewUrl.startsWith("blob:")) {
+                  URL.revokeObjectURL(previewUrl);
+                }
+                setPreviewUrl(null);
               } finally {
                 setCropModalOpen(false);
+                setIsProcessingAvatar(false); // Mark avatar processing as complete
                 // Clean up the original object URL
                 if (imagePreview) {
                   URL.revokeObjectURL(imagePreview);
@@ -411,8 +466,15 @@ export default function SignupPage() {
           </p>
         )}
 
-        <button type="submit" disabled={isSubmitting || !isFormValid}>
-          {isSubmitting ? "Signing up..." : "Sign Up"}
+        <button
+          type="submit"
+          disabled={isSubmitting || !isFormValid || isProcessingAvatar}
+        >
+          {isSubmitting
+            ? "Signing up..."
+            : isProcessingAvatar
+            ? "Processing avatar..."
+            : "Sign Up"}
         </button>
       </form>
       <p>
