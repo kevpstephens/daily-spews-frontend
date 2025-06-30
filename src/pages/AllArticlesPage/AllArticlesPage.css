@@ -44,8 +44,8 @@
 
   .all-articles-list {
     gap: 2.5rem;
-    grid-template-columns: 1fr;
-    padding: 0rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .all-articles-list > * {
