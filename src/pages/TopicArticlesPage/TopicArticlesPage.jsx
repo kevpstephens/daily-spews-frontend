@@ -81,7 +81,7 @@ export default function TopicArticlesPage() {
         <p className="topic-description">{topicDescription}</p>
       </div>
 
-      <section className="topic-articles-page">
+      <section className="topic-articles-page-list">
         {allArticles.map((article, index) => {
           if (index === allArticles.length - 1) {
             return (

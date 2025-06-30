@@ -147,6 +147,7 @@
 @media (max-width: 600px) {
   .article-card-container {
     max-width: 95vw;
+    align-self: center;
   }
 
   .article-card-heading {
