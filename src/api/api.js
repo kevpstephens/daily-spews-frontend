@@ -124,7 +124,18 @@ export const logoutUser = async () => {
 //! POST /api/auth/register
 // Registers a new user - handles both JSON and FormData
 export const registerUser = async (payload, config = {}) => {
-  const res = await api.post("/auth/register", payload, config);
+  // Ensure withCredentials is always included
+  const mergedConfig = {
+    withCredentials: true,
+    ...config,
+  };
+
+  console.log("🔍 API registerUser called with:", {
+    payloadType: payload instanceof FormData ? "FormData" : "JSON",
+    config: mergedConfig,
+  });
+
+  const res = await api.post("/auth/register", payload, mergedConfig);
   return res.data;
 };
 
