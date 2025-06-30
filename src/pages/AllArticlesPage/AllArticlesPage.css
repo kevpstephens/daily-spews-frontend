@@ -19,21 +19,19 @@
 .all-articles-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+
+  grid-auto-flow: row dense;
   gap: 2rem;
   margin: 0 auto;
-  justify-items: center;
+  justify-content: center;
   max-width: 75rem;
-  box-shadow: none;
   width: 100%;
   padding: 0 1rem;
-  box-sizing: border-box;
   min-height: min-content;
 }
 
-.all-articles-list > * {
-  width: 100%;
-  max-width: 22rem;
-  box-sizing: border-box;
+.all-articles-list > *:last-child:nth-child(3n + 1) {
+  grid-column: 2 / 3;
 }
 
 /* !============================================================
