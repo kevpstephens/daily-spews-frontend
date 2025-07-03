@@ -23,9 +23,9 @@ export default function HorizontalTopics() {
   const [dimOthers, setDimOthers] = useState(false); // Toggle dim effect on hover
   let topics = [];
 
-  // Extract topics from API response if available
+  // Extract topics from API response if available and sort alphabetically
   if (data && data.topics) {
-    topics = data.topics;
+    topics = data.topics.sort((a, b) => a.slug.localeCompare(b.slug));
   }
 
   // Monitor scroll position to enable/disable navigation buttons
