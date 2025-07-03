@@ -1,6 +1,6 @@
-/* !============================================================
-!     Login Page
-!============================================================ */
+/*! ============================================================ */
+/*!     Login Page
+/*! ============================================================ */
 
 .login-page-container {
   display: flex;
@@ -53,16 +53,16 @@
 
 .login-form-button {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   width: 7rem;
   height: 3rem;
   margin-top: 1.5rem;
   gap: 0.25rem;
 }
 
-/* !============================================================
-!     Guest Login Section
-!============================================================ */
+/*! ============================================================ */
+/*!     Guest Login Section
+/*! ============================================================ */
 
 .guest-login-section {
   display: flex;
@@ -77,7 +77,7 @@
 }
 
 .guest-login-text {
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   color: #ffffff;
   margin: 0;
   font-style: italic;
@@ -107,9 +107,9 @@
   height: 1.75rem;
 }
 
-/* !============================================================
-!     Login Divider
-!============================================================ */
+/*! ============================================================ */
+/*!     Login Divider
+/*! ============================================================ */
 
 .login-divider {
   position: relative;
@@ -132,13 +132,13 @@
   background-color: #8a72d77e;
   padding: 0 1rem;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   font-weight: bold;
 }
 
-/* !============================================================
-!     Sign-Up Link/Button
-!============================================================ */
+/*! ============================================================ */
+/*!     Sign-Up Link/Button
+/*! ============================================================ */
 
 .sign-up-button {
   display: flex;
@@ -151,7 +151,7 @@
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   width: fit-content;
   padding: 0.5rem 1rem;
   margin: 0.5rem auto;
@@ -164,9 +164,9 @@
   text-decoration: none;
 }
 
-/* !============================================================
-!     Password Input + Show Password Toggle
-!============================================================ */
+/*! ============================================================ */
+/*!     Password Input + Show Password Toggle
+/*! ============================================================ */
 
 .login-page-password-input-wrapper {
   position: relative;
@@ -190,7 +190,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
   color: #000;
   padding: 0;
   width: 3rem;
@@ -208,9 +208,9 @@
   animation: leftToRightAndBack 0.5s ease-in-out infinite;
 }
 
-/* !============================================================
-!     Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
   .login-page-container {
@@ -220,7 +220,6 @@
   }
 
   .login-form button[type="submit"] {
-    font-size: 1rem;
     margin: 1rem 0rem 1rem 0rem;
   }
 
@@ -230,7 +229,6 @@
   }
 
   .guest-login-button {
-    font-size: 0.85rem;
     padding: 0.6rem 1.2rem;
   }
 }

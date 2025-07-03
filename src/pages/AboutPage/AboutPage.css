@@ -20,7 +20,7 @@
 }
 
 .about-page-container h1 {
-  font-size: clamp(2rem, 5vw, 2rem);
+  font-size: var(--font-size-3xl);
   margin-top: 2rem;
   margin-bottom: 0rem;
 }
@@ -55,7 +55,7 @@
   font-weight: bold;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 .sign-off-container .kevin-stephenson-link {
@@ -99,9 +99,9 @@
   background-color: var(--color-accent);
 }
 
-/* !============================================================
-!    Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
   .about-page-container {
@@ -112,9 +112,5 @@
   .about-page-container img {
     width: 110px;
     margin-top: 2rem;
-  }
-
-  .about-page-container p {
-    font-size: 1rem;
   }
 }

@@ -1,10 +1,10 @@
-/* !============================================================
-!     Horizontal Topic Cards
-!============================================================ */
+/*! ============================================================ */
+/*!     Horizontal Topic Cards
+/*! ============================================================ */
 .horizontal-topic-card h3 {
   font-family: var(--font-heading);
   margin-bottom: 0;
-  font-size: 1.65rem;
+  font-size: var(--font-size-2xl);
   font-weight: 400;
 }
 
@@ -48,9 +48,9 @@
   transition: all 0.4s ease-in-out;
 }
 
-/* !============================================================
-!     Topics dimmed effect for hover interaction
-!============================================================ */
+/*! ============================================================ */
+/*!     Topics dimmed effect for hover interaction
+/*! ============================================================ */
 /* Does not work on mobile - intentionally restricted to only work on larger screens */
 @media (min-width: 601px) {
   .topics-dimmed .horizontal-topic-card {
@@ -63,9 +63,9 @@
   }
 }
 
-/* !============================================================
-!     MEDIA QUERIES: MOBILE OPTIMIZATION
-!============================================================ */
+/*! ============================================================ */
+/*!     MEDIA QUERIES: MOBILE OPTIMIZATION
+/*! ============================================================ */
 @media (max-width: 600px) {
   .topics-page-container {
     gap: 2rem;

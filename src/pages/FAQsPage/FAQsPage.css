@@ -1,14 +1,10 @@
-/** ============================================================
- *! FAQsPage.css
- * 
- * Styling for the FAQs page with animated mascot and FAQ layout.
- * Follows the same design patterns as AboutPage for consistency.
- *============================================================ */
+/*! ============================================================ */
+/*!     FAQs Page
+/*! ============================================================ */
 
 .faqs-page-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   min-height: 80vh;
   display: flex;
@@ -18,45 +14,16 @@
 }
 
 .faqs-page-container h1 {
-  font-size: 2.5rem;
-  color: var(--color-text-heading);
+  margin: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: bold;
+  font-size: var(--font-size-4xl);
+  text-decoration: underline;
+  width: 100%;
 }
 
-.faqs-page-spewing-mascot {
-  width: 120px;
-  height: 120px;
-  margin: 1rem 0;
-  animation: spew 2s ease-in-out infinite;
-}
-
-.faqs-page-spewing-mascot.shake {
-  animation: spew 2s ease-in-out infinite, shake 0.5s ease-in-out 3;
-}
-
-@keyframes spew {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-10px) scale(1.05);
-  }
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-}
+/*! ============================================================ */
+/*!     FAQ Content
+/*! ============================================================ */
 
 .faqs-content {
   width: 100%;
@@ -69,10 +36,9 @@
 
 .faq-item {
   background: #9785d34f;
-  border-radius: 12px;
+  border-radius: 30px;
   padding: 1.5rem;
-  border-left: 4px solid var(--color-primary);
-  box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
+  box-shadow: 0px 3px 0px 3px rgba(86, 61, 154, 0.448);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -84,10 +50,8 @@
 .faq-item h3 {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--color-text-heading);
-  font-size: 1.2rem;
-  font-weight: 600;
+  gap: 0.75rem;
+  font-size: var(--font-size-lg);
   margin-bottom: 0.75rem;
   margin-top: 0;
 }
@@ -101,27 +65,25 @@
   color: var(--color-text-body);
   line-height: 1.6;
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
+
+@media (max-width: 600px) {
   .faqs-page-container {
     padding: 1rem;
     gap: 1.5rem;
   }
 
   .faqs-page-container h1 {
-    font-size: 2rem;
-  }
-
-  .faqs-page-spewing-mascot {
-    width: 100px;
-    height: 100px;
+    margin: 1.5rem auto;
   }
 
   .faqs-content {
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 
   .faq-item {
@@ -129,24 +91,6 @@
   }
 
   .faq-item h3 {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .faqs-page-container h1 {
-    font-size: 1.75rem;
-  }
-
-  .faq-item {
-    padding: 1rem;
-  }
-
-  .faq-item h3 {
-    font-size: 1rem;
-  }
-
-  .faq-item p {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 }

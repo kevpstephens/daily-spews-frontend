@@ -1,6 +1,6 @@
-/* !============================================================
-!     PostCommentForm Overlay
-!============================================================ */
+/*! ============================================================ */
+/*!     PostCommentForm Overlay
+/*! ============================================================ */
 .comment-form-overlay {
   /* opacity: 1 !important; */
 
@@ -48,9 +48,9 @@
   transform: scale(1.05);
 }
 
-/* !============================================================
-!     PostCommentForm
-!============================================================ */
+/*! ============================================================ */
+/*!     PostCommentForm
+/*! ============================================================ */
 .post-comment-form-wrapper {
   position: relative;
   width: 100%;
@@ -61,10 +61,10 @@
 
 #comment {
   text-align: left;
-  width: 100%;
   padding: 1.25rem;
+  width: 92.5%;
   background-color: #1f0054;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   border: 2px solid #000;
   resize: vertical;
   box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
@@ -88,17 +88,19 @@
   color: white;
   border: 2px solid #0d0024;
   height: 3.25rem;
+  margin-top: 0.5rem;
+  font-size: var(--font-size-base) !important;
 }
 
-.comment-submit-button:hover {
-  background-color: #b95d28;
-}
-
-/* !============================================================
-!     Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
+  #comment {
+    width: 100%;
+  }
+
   .post-comment-form-wrapper {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -115,9 +117,5 @@
     color: black;
     cursor: not-allowed;
     border: 2px solid #000000;
-  }
-
-  #comment {
-    font-size: 1.05rem;
   }
 }

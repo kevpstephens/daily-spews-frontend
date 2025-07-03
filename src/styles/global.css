@@ -8,10 +8,10 @@
 •	This specifically styles the React mounting point, i.e., the wrapper for everything your React app renders.
 •	You often use this to set max-width, centering, or layout rules for your entire app. */
 
-/* !============================================================
-!     Global CSS Variables and Defaults
-!     - Define global fonts, theme colors, base styling, and responsive font sizes.
-!============================================================ */
+/*! ============================================================ */
+/*!     Global CSS Variables and Defaults
+/**    Define global fonts, theme colors, base styling, and responsive font sizes.
+/*! ============================================================ */
 :root {
   /*? Font families */
   --font-heading: "Gaegu", sans-serif;
@@ -22,6 +22,17 @@
 
   /*? Font size for form inputs to prevent auto-zoom on mobile */
   --font-size-form: 16px;
+
+  /*? Responsive Typography Scale - Fluid font sizes using clamp */
+  --font-size-xs: clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.75vw + 0.5rem, 1rem);
+  --font-size-base: clamp(1rem, 1vw + 0.25rem, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1.25vw + 0.5rem, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 2vw + 0.5rem, 2rem);
+  --font-size-3xl: clamp(2rem, 3vw + 0.5rem, 2.5rem);
+  --font-size-4xl: clamp(2.5rem, 4vw + 0.5rem, 3rem);
+  --font-size-5xl: clamp(3rem, 5vw + 0.5rem, 3.5rem);
 
   /*? Colors */
   --color-text-heading: #0d0024;
@@ -35,10 +46,10 @@
   --color-form-input-focus: #e196ff;
 }
 
-/* !============================================================
-!     Font smoothing and rendering for better legibility
-!     - Apply to html element for consistent global effect
-!============================================================ */
+/*! ============================================================ */
+/*!     Font smoothing and rendering for better legibility
+/**     Apply to html element for consistent global effect
+/*! ============================================================ */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -46,10 +57,10 @@ html {
   font-synthesis: none;
 }
 
-/* !============================================================
-!     Box Sizing Reset
-!     - Ensure consistent box sizing across all elements.
-!============================================================ */
+/*! ============================================================ */
+/*!     Box Sizing Reset
+/**     Ensure consistent box sizing across all elements.
+/*! ============================================================ */
 *,
 *::before,
 *::after {
@@ -58,10 +69,10 @@ html {
   padding: 0;
 }
 
-/* !============================================================
-!     Body Base Styling
-!     - Apply main body font, default text color, and responsive font size.
-!============================================================ */
+/*! ============================================================ */
+/*!     Body Base Styling
+/**     Apply main body font, default text color, and responsive font size.
+/*! ============================================================ */
 body {
   font-family: var(--font-body);
   font-weight: 400;
@@ -71,10 +82,10 @@ body {
   background-color: var(--color-background);
 }
 
-/* !============================================================
-!     Image and Media Elements
-!     - Make images and media responsive and prevent overflow.
-!============================================================ */
+/*! ============================================================ */
+/*!     Image and Media Elements
+/**     Make images and media responsive and prevent overflow.
+/*! ============================================================ */
 img,
 picture,
 video,
@@ -83,10 +94,10 @@ svg {
   display: block;
 }
 
-/* !============================================================
-!     Layout Wrapper
-!     - Provides full-height flex container for header, main, footer.
-!============================================================ */
+/*! ============================================================ */
+/*!     Layout Wrapper
+/**     Provides full-height flex container for header, main, footer.
+/*! ============================================================ */
 .layout-wrapper {
   display: flex;
   flex-direction: column;
@@ -94,18 +105,18 @@ svg {
   padding: 0rem !important;
 }
 
-/* !============================================================
-!     Layout Main Content
-!     - Allows main content area to expand and push footer to bottom.
-!============================================================ */
+/*! ============================================================ */
+/*!     Layout Main Content
+/**     Allows main content area to expand and push footer to bottom.
+/*! ============================================================ */
 .layout-main {
   flex-grow: 1;
 }
 
-/* !============================================================
-!     Accessibility Helpers
-!     - Screen reader only text, focus outlines, etc.
-!============================================================ */
+/*! ============================================================ */
+/*!     Accessibility Helpers
+/**     Screen reader only text, focus outlines, etc.
+/*! ============================================================ */
 .sr-only {
   position: absolute !important;
   width: 1px !important;
@@ -119,17 +130,17 @@ svg {
   border: 0 !important;
 }
 
-/* !============================================================
-!     Utility Classes (optional)
-!============================================================ */
+/*! ============================================================ */
+/*!     Utility Classes (optional)
+/*! ============================================================ */
 .hidden {
   display: none !important;
 }
 
-/* !============================================================
-!     Responsive Typography Example
-!     - Use media queries for fine control on smaller screens.
-!============================================================ */
+/*! ============================================================ */
+/*!     Responsive Typography Example
+/**     Use media queries for fine control on smaller screens.
+/*! ============================================================ */
 @media (max-width: 600px) {
   :root {
     --font-size-base: clamp(0.75rem, 3vw + 0.1rem, 0.95rem);
@@ -139,33 +150,25 @@ svg {
     padding: 0;
     margin: 0;
   }
-
-  h1 {
-    font-size: 1.5rem;
-  }
 }
 
 @media (max-width: 360px) {
   :root {
     --font-size-base: clamp(0.7rem, 3.5vw + 0.1rem, 0.9rem);
   }
-
-  h1 {
-    font-size: 1.2rem;
-  }
 }
 
-/* !============================================================
-!     Transition for smooth animations
-!============================================================ */
+/*! ============================================================ */
+/*!     Transition for smooth animations
+/*! ============================================================ */
 /* * {
   transition: all 0.25s ease-in-out;
 } */
 
-/* !============================================================
-!     iOS Text Selection - Alternative Approaches
-!     - iOS Safari has severe limitations with ::selection
-!============================================================ */
+/*! ============================================================ */
+/*!     iOS Text Selection - Alternative Approaches
+/**     iOS Safari has severe limitations with ::selection
+/*! ============================================================ */
 
 /* Method 1: Direct hex values (no CSS variables) */
 ::selection {

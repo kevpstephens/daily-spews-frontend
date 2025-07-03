@@ -1,6 +1,6 @@
-/* !============================================================
-!     Article Page
-!============================================================ */
+/*! ============================================================ */
+/*!     Article Page
+/*! ============================================================ */
 .article-page {
   width: 75%;
   margin: 2rem auto !important;
@@ -16,12 +16,14 @@
 }
 
 .article-page h2 {
-  font-size: clamp(2rem, 3vw, 2.25rem);
+  font-size: var(--font-size-xl);
   text-align: center;
   margin: 0 0 1.5rem 0;
   max-width: 40ch;
   width: 95%;
   text-decoration: underline;
+  color: var(--color-text-heading);
+  font-weight: 600;
 }
 
 .article-header-container {
@@ -34,7 +36,7 @@
 
 .article-header-container h3 {
   font-family: var(--font-heading);
-  font-size: clamp(1rem, 2.25vw, 1.5rem);
+  font-size: var(--font-size-lg);
 }
 
 .article-page img {
@@ -54,12 +56,21 @@
   text-align: left;
   text-indent: 1.5rem;
   margin: 1.5rem 0rem 1.5rem 0rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  color: var(--color-text-body);
 }
 
-/* !============================================================
-!     Likes and Comments - SingleArticlePage
-!============================================================ */
+.article-body h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-heading);
+  margin: 1.5rem 0 0.5rem 0;
+  font-weight: 600;
+}
+
+/*! ============================================================ */
+/*!     Likes and Comments - SingleArticlePage
+/*! ============================================================ */
 .article-page .likes-and-comments {
   margin: 0.5rem;
   padding-bottom: 1rem !important;
@@ -73,9 +84,9 @@
   gap: 0.5rem;
 }
 
-/* !============================================================
-!     Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
   .article-page {
@@ -85,7 +96,6 @@
   }
 
   .article-page h2 {
-    font-size: 1.75rem !important;
     margin-bottom: 1.5rem;
   }
 
@@ -97,16 +107,10 @@
   .article-body {
     text-indent: 1rem;
     margin: 0.5rem;
-    font-size: 0.95rem;
     width: 90%;
   }
 
-  .article-header-container h3 {
-    font-size: 1rem;
-  }
-
   .article-page h2 {
-    font-size: 1.5rem;
     padding: 0 0.5rem;
   }
 

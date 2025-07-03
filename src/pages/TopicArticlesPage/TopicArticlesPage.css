@@ -1,6 +1,6 @@
-/* !============================================================
-!     TopicArticlesPage
-!============================================================ */
+/*! ============================================================ */
+/*!     TopicArticlesPage
+/*! ============================================================ */
 
 .topic-articles-page-heading-container {
   display: flex;
@@ -20,12 +20,12 @@
 }
 
 .topic-articles-page-heading {
-  font-size: clamp(3rem, 5vw, 3rem);
+  font-size: var(--font-size-5xl);
   text-decoration: underline;
 }
 
 .topic-description {
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: var(--font-size-base);
   text-align: center;
 }
 
@@ -43,9 +43,9 @@
   animation: fadeSlideInUp 0.5s ease-in-out both;
 }
 
-/* !============================================================
-!     Loading Topics Articles
-!============================================================ */
+/*! ============================================================ */
+/*!     Loading Topics Articles
+/*! ============================================================ */
 
 .loading-topics-articles-container {
   display: flex;
@@ -65,15 +65,15 @@
 
 .loading-topics-articles-text {
   font-family: var(--font-heading);
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: var(--font-size-lg);
   color: #0d0024;
   text-align: center;
   padding: 0 1rem;
 }
 
-/* !============================================================
-!     Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
   .topic-articles-page {
@@ -86,7 +86,7 @@
   }
 
   .topic-description {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
     padding: 0 1rem;
     text-align: center;
   }

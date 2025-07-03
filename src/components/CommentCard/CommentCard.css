@@ -1,6 +1,6 @@
-/* !============================================================
-!     CommentCard
-!============================================================ */
+/*! ============================================================ */
+/*!     CommentCard
+/*! ============================================================ */
 .comment-card {
   background: #9785d34f;
   padding: clamp(1.75rem, 3vw) !important;
@@ -23,7 +23,7 @@
 
 h3.comment-card-header {
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+  font-size: var(--font-size-xl);
   margin: 0 !important;
   background-color: #9785d375;
   border-radius: 30px;
@@ -33,7 +33,7 @@ h3.comment-card-header {
 }
 
 .comment-card-body {
-  font-size: clamp(1rem, 1.5vw, 1rem);
+  font-size: var(--font-size-base);
   margin: 1rem 1rem 1rem 1.5rem;
 }
 
@@ -44,9 +44,9 @@ h3.comment-card-header {
   width: 100%;
 }
 
-/* !============================================================
-!     VoteButton - Comment Card
-!============================================================ */
+/*! ============================================================ */
+/*!     VoteButton - Comment Card
+/*! ============================================================ */
 
 .vote-button-container.comment-vote {
   display: flex;
@@ -54,17 +54,14 @@ h3.comment-card-header {
   gap: 1rem;
 }
 
-.vote-button-container.comment-vote .vote-info {
-  font-size: 1rem;
-}
-
 .vote-info p {
   margin: 0;
+  font-size: var(--font-size-base);
 }
 
-/* !============================================================
-!     Delete Comment Button
-!============================================================ */
+/*! ============================================================ */
+/*!     Delete Comment Button
+/*! ============================================================ */
 
 .delete-comment-button {
   height: 3rem;
@@ -104,7 +101,7 @@ h3.comment-card-header {
 }
 
 .confirm-delete-message {
-  font-size: 0.8rem;
+  font-size: var(--font-size-xs);
   color: #000000;
 }
 
@@ -155,17 +152,17 @@ h3.comment-card-header {
   z-index: 100;
 }
 
-/* !============================================================
-!     Animation for new comments
-!============================================================ */
+/*! ============================================================ */
+/*!     Animation for new comments
+/*! ============================================================ */
 
 .animated-comment {
   animation: fadeSlideInDown 1s ease-in-out;
 }
 
-/* !============================================================
-!     Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
   .comment-card {
@@ -177,7 +174,6 @@ h3.comment-card-header {
   }
 
   .comment-card-body {
-    font-size: 1rem;
     margin: 0.75rem 0.5rem 1rem 0.75rem;
   }
 
