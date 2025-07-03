@@ -1,21 +1,28 @@
-//? URL: daily-spews.com/articles/:article_id
+/** ============================================================
+ *! SingleArticlePage.jsx
+ *? URL: daily-spews.onrender.com/articles/:article_id
+
+ * Individual article display page with infinite scroll comments.
+ * Features article content, voting system, and paginated comment loading.
+ * Includes smooth scrolling to likes section and intersection observer.
+ *============================================================ */
 
 import "./SingleArticlePage.css";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import useFetch from "../../hooks/useFetch";
 import {
   getArticleById,
   patchArticleVotes,
   getCommentByArticleId,
 } from "../../api/api";
-import { useState, useEffect, useRef } from "react";
 import { formatDate } from "../../utils/formatDate";
+import CommentButton from "../../components/CommentButton/CommentButton.jsx";
 import CommentList from "../../components/CommentList/CommentList.jsx";
-import useFetch from "../../hooks/useFetch";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
 import PostCommentForm from "../../components/PostCommentForm/PostCommentForm.jsx";
 import VoteButton from "../../components/VoteButton/VoteButton.jsx";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import CommentButton from "../../components/CommentButton/CommentButton.jsx";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();
@@ -25,13 +32,15 @@ export default function SingleArticlePage() {
     [article_id]
   );
 
+  // Comment pagination and infinite scroll states
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [limit] = useState(10);
   const [isFetching, setIsFetching] = useState(false);
-  const loaderRef = useRef(null);
+  const loaderRef = useRef(null); // Ref for intersection observer target
 
+  // Fetch comments with pagination - triggered by page changes
   useEffect(() => {
     let ignore = false;
     const fetchInitialComments = async () => {
@@ -47,7 +56,7 @@ export default function SingleArticlePage() {
           setTotalCount(data.total_count);
         }
       } catch (err) {
-        console.error("Failed to fetch comments", err);
+        console.error("❌ Failed to fetch comments", err);
       } finally {
         setIsFetching(false);
       }
@@ -59,6 +68,7 @@ export default function SingleArticlePage() {
     };
   }, [article_id, limit, currentPage]);
 
+  // Infinite scroll implementation using Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -67,7 +77,7 @@ export default function SingleArticlePage() {
           setCurrentPage((prev) => prev + 1);
         }
       },
-      { threshold: 1.0 }
+      { threshold: 1.0 } // Trigger when 100% of the element is visible
     );
 
     const currentLoader = loaderRef.current;
@@ -78,11 +88,13 @@ export default function SingleArticlePage() {
     };
   }, [comments, totalCount]);
 
+  // Extract article data from useFetch response
   let article = {};
   if (data && data.article) {
     article = data.article;
   }
 
+  // Handle smooth scroll to likes section when URL contains hash
   useEffect(() => {
     if (!isLoading && location.hash === "#article-likes") {
       const el = document.getElementById("article-likes");
@@ -101,6 +113,7 @@ export default function SingleArticlePage() {
 
       {!isLoading && !error && (
         <>
+          {/* Main article content */}
           <article className="article-page">
             <h2>{article.title}</h2>
             <div className="article-header-container">
@@ -117,6 +130,7 @@ export default function SingleArticlePage() {
 
             <p className="article-body">{article.body}</p>
 
+            {/* Article interaction section - votes and comments */}
             <section id="article-likes" className="likes-and-comments">
               <CommentButton
                 commentCount={article.comment_count}
@@ -131,18 +145,23 @@ export default function SingleArticlePage() {
             </section>
           </article>
 
+          {/* Comment posting form */}
           <div id="post-comment-form">
             <PostCommentForm
               article_id={article_id}
               setComments={setComments}
             />
           </div>
+
+          {/* Comments list with infinite scroll */}
           <CommentList
             article_id={article_id}
             comments={comments}
             setComments={setComments}
             isFetching={isFetching}
           />
+
+          {/* Intersection observer target for infinite scroll */}
           <div ref={loaderRef} className="comment-scroll-loader"></div>
         </>
       )}

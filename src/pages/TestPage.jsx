@@ -1,5 +1,11 @@
-// //? URL: daily-spews.com/test
+/** ============================================================
+ *! TestPage.jsx
+ *? URL: daily-spews.com/test
 
+ * Test page for development purposes. 
+ *============================================================ */
+
+// import ErrorMessageCard from "../components/ErrorMessageCard/ErrorMessageCard.";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import ToastTester from "../components/ToastTester/ToastTester";
 

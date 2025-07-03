@@ -43,7 +43,7 @@
     margin: 0.75rem !important;
     z-index: 2;
     animation: bounceAndTilt 0.5s ease-in-out forwards;
-    animation-delay: 0.1s;
+    animation-delay: 5.5s;
   }
 
   /* !============================================================
@@ -64,6 +64,8 @@
     max-width: 100vw;
     box-sizing: border-box;
     padding: 0.25rem;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
   }
 
   .navigation-bar-container {
@@ -108,7 +110,6 @@
   !============================================================ */
   .nav-avatar-dropdown {
     opacity: 0;
-
     position: absolute;
     top: -10%;
     right: -10%;
@@ -163,4 +164,202 @@
     margin-top: 0.5rem;
     gap: 0.5rem;
   }
+}
+
+/* !============================================================
+!     Three-Line Typing Animation - Mobile Friendly
+!============================================================ */
+
+.animated-tagline {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  text-align: center;
+  color: #0d0024;
+  margin: 0.5rem auto 0;
+  max-width: 95vw;
+  padding: 0 0.5rem;
+  line-height: 1.4;
+}
+
+/* !============================================================
+!     First line typing animation
+!============================================================ */
+.line-one {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #0d0024;
+  animation: typeLine1 1.5s steps(30, end) forwards, blinkCaret 0.4s step-end 1; /* Only blink 2 times, then stop */
+  animation-delay: 0s, 0s;
+  width: 0;
+}
+
+/* First line keyframes - types "Your daily dose of news, views, and" */
+@keyframes typeLine1 {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+    border-right: 2px solid transparent;
+  }
+}
+
+@keyframes blinkCaret {
+  0%,
+  50% {
+    border-color: #0d0024;
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+/* !============================================================
+!     Second line typing animation - just the strike-through text
+!============================================================ */
+.line-two {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  animation: typeLine2 1.5s steps(20, end) forwards, blinkCaret2 0.4s step-end 1; /* Blink during pause, then stop */
+  animation-delay: 1.55s, 1.55s;
+  width: 0;
+  margin-top: 0.2rem;
+}
+
+/* Second line keyframes - types "highly esteemed expert cues" */
+@keyframes typeLine2 {
+  0% {
+    width: 0;
+    border-right: 2px solid #0d0024;
+  }
+  95% {
+    border-right: 2px solid #0d0024;
+  }
+  100% {
+    width: 100%;
+    border-right: 2px solid transparent; /* Hide cursor after pause */
+  }
+}
+
+/* Caret blinking for second line */
+@keyframes blinkCaret2 {
+  0%,
+  50% {
+    border-color: #0d0024;
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+/* !============================================================
+!     Third line - just "spews." with dramatic pause
+!============================================================ */
+.line-three {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+  animation: typeLine3 1.5s steps(6, end) forwards,
+    blinkCaret3 0.8s step-end infinite; /* Blink briefly after "spews", then stop */
+  animation-delay: 4s, 4.5s; /* Start blinking after typing finishes */
+  width: 0;
+}
+
+/* Third line keyframes - types " spews." */
+@keyframes typeLine3 {
+  0% {
+    width: 0;
+    border-right: 2px solid #0d0024;
+  }
+  95% {
+    border-right: 2px solid #0d0024;
+  }
+  100% {
+    width: 20%;
+    border-right: 2px solid transparent; /* Final state */
+  }
+}
+
+@keyframes blinkCaret3 {
+  0%,
+  50% {
+    border-color: #0d0024;
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+/* !============================================================
+!     Strike-through container
+!============================================================ */
+
+.strike-container {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Refined strike-through animation */
+.strike-text {
+  position: relative;
+  display: inline-block;
+}
+
+.strike-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 0.125rem;
+  background-color: #0d0024;
+  transform: scaleX(0);
+  transform-origin: right center;
+  animation: strikeThrough 0.4s ease-out forwards;
+  animation-delay: 3.2s; /* Strike-through happens during the pause */
+  border-radius: 1px;
+}
+
+@keyframes strikeThrough {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* !============================================================
+!     Skip animation class - shows final state immediately
+!============================================================ */
+
+.animated-tagline.skip-animation .line-one,
+.animated-tagline.skip-animation .line-two,
+.animated-tagline.skip-animation .line-three {
+  animation: none;
+  width: 100%;
+  border-right: none;
+}
+
+.mobile-daily-spews-logo.skip-animation {
+  animation: none;
+}
+
+.animated-tagline.skip-animation .strike-text::after {
+  animation: none;
+  transform: scaleX(1);
+  opacity: 1;
 }

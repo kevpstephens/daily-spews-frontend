@@ -1,10 +1,19 @@
+/** ============================================================
+ *! LoginPage.jsx
+ *? URL: daily-spews.onrender.com/login
+
+ * User authentication page with email/password login form.
+ * Features password visibility toggle and admin-only dev login tools.
+ * Redirects to user profile upon successful authentication.
+ *============================================================ */
+
 import "./LoginPage.css";
 import { useState } from "react";
 import { loginUser } from "../../api/api";
 import { useUser } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
 import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
-import { Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeClosed, LogInIcon } from "lucide-react";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
@@ -14,17 +23,14 @@ export default function LoginPage() {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
-  const handleProdLogin = async (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     try {
       const data = await loginUser({ email, password });
-      // Save authenticated user to context after login
       setUser(data.user);
       toast.success(`Login successful! Greetings, @${data.user.username}!`, {
         className: "toast-message",
       });
-      // Optionally: Re-fetch user from cookie session if needed
-      // setUser will already populate the user context if response is valid
       navigate(`/users/${data.user.username}`);
     } catch (err) {
       console.error("Login failed:", err);
@@ -36,10 +42,14 @@ export default function LoginPage() {
 
   return (
     <>
+      {/* Admin-only development login shortcuts */}
       {user && user.username === "admin" && <DevLoginForm />}
+
+      {/* Login form */}
       <div className="login-page-container">
         <h2>Login to Daily Spews</h2>
-        <form onSubmit={handleProdLogin} className="login-form">
+
+        <form onSubmit={handleLogin} className="login-form">
           <p>
             New to <strong>Daily Spews</strong>? Don't fret, you've come to the
             right place! Please create an account for full feature access.
@@ -50,6 +60,8 @@ export default function LoginPage() {
           <p>
             Wait...you already have an account?! What are you waiting for?!!?!?
           </p>
+
+          {/* Email input */}
           <label htmlFor="email">
             <strong>Email:</strong>
           </label>
@@ -73,6 +85,8 @@ export default function LoginPage() {
               onChange={(event) => setPassword(event.target.value)}
               required
             />
+
+            {/* Toggle password visibility */}
             <button
               id="login-page-show-password-toggle"
               type="button"
@@ -86,8 +100,10 @@ export default function LoginPage() {
               )}
             </button>
           </div>
+
           <button className="login-form-button" type="submit">
             Login
+            <LogInIcon className="login-form-button-icon" />
           </button>
         </form>
       </div>

@@ -1,3 +1,10 @@
+/** ============================================================
+ *! TopicsPage.jsx
+
+ * Displays all available topics in a grid layout.
+ * Simple page that fetches and renders topic cards with loading/error states.
+ *============================================================ */
+
 //? URL: daily-spews.com/topics
 
 import "./TopicsPage.css";
@@ -9,23 +16,26 @@ import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard
 
 export default function TopicsPage() {
   const { data, isLoading, error } = useFetch(getTopics);
-  const topics = data?.topics || [];
+
+  // Early returns for loading and error states
+  if (isLoading) return <LoadingScreen item={"topics"} />;
+  if (error) return <ErrorMessageCard error={error} />;
+
+  // Extract topics array with fallback and sort alphabetically by slug
+  const topics = (data?.topics || []).sort((a, b) =>
+    a.slug.localeCompare(b.slug)
+  );
 
   return (
-    <>
-      {isLoading && <LoadingScreen item={"topics"} />}
-      {error && <ErrorMessageCard error={error} />}
+    <main>
+      <h1 className="topics-articles-page-heading">All Topics</h1>
 
-      {!isLoading && !error && (
-        <main>
-          <h1 className="topics-articles-page-heading">All Topics</h1>
-          <section className="topics-page-container">
-            {topics.map((topic) => (
-              <TopicCard key={topic.slug} topic={topic} type={"normal-"} />
-            ))}
-          </section>
-        </main>
-      )}
-    </>
+      {/* Topics grid container */}
+      <section className="topics-page-container">
+        {topics.map((topic) => (
+          <TopicCard key={topic.slug} topic={topic} type={"normal-"} />
+        ))}
+      </section>
+    </main>
   );
 }

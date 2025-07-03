@@ -1,6 +1,6 @@
 /** !============================================================
- * PostNewArticleButton.jsx
-
+ *! PostNewArticleButton.jsx
+ 
  * Button component that allows signed-in users to navigate to the
  * "Post New Article" form.
  * Hidden if user is not authenticated.
