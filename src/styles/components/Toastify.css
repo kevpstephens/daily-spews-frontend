@@ -88,20 +88,20 @@
     bottom: 0 !important;
     top: auto !important;
     padding: 0 !important;
-    min-width: 95vw !important;
-    max-width: 95vw !important;
+    min-width: 90vw !important;
+    max-width: 90vw !important;
 
     position: fixed !important;
     z-index: 99999 !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: stretch !important;
+    align-items: center !important;
   }
 
   .Toastify__toast {
     width: 100vw !important;
-    min-width: 95vw !important;
-    max-width: 95vw !important;
+    min-width: 90vw !important;
+    max-width: 90vw !important;
     border-radius: 0 !important;
     margin: 0 !important;
     left: 0 !important;
