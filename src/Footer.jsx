@@ -24,6 +24,10 @@ export default function Footer() {
           About
         </Link>
         |
+        <Link className="footer-link" to="/faqs">
+          FAQs
+        </Link>
+        |
         <a
           className="footer-link"
           href="https://www.kevin-stephenson.com"
