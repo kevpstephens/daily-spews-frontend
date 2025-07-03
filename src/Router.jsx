@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 import ErrorPageNotFound from "./pages/ErrorPageNotFound/ErrorPageNotFound.jsx";
+import FAQsPage from "./pages/FAQsPage/FAQsPage.jsx";
 import Layout from "./Layout";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
@@ -85,6 +86,7 @@ export default function AppRouter() {
             {/* Utility pages */}
             <Route path="test" element={<TestPage />} />
             <Route path="about" element={<AboutPage />} />
+            <Route path="faqs" element={<FAQsPage />} />
 
             {/* Authentication pages */}
             <Route path="login" element={<LoginPage />} />

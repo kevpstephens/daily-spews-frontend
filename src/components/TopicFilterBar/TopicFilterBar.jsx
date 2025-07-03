@@ -19,7 +19,7 @@ export default function TopicFilterBar() {
 
   let topics = [];
   if (data && data.topics) {
-    topics = data.topics;
+    topics = data.topics.sort((a, b) => a.slug.localeCompare(b.slug));
   }
 
   useEffect(() => {
