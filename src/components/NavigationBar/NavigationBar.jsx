@@ -38,15 +38,10 @@ export default function NavigationBar() {
         <Link className="nav-button" to="/topics">
           Topics
         </Link>
-        <Link
-          id="user-profile-button"
-          className="nav-button user-profile-nav"
-          // Show profile dropdown if logged in, else fallback to login
-          to={user && user.username ? `/users/${user.username}` : "/login"}
-        >
-          {/* Display avatar + dropdown menu if user has avatar
-               Otherwise, display generic user icon */}
-          {user && user.avatar_url ? (
+
+        {/* User profile section - conditional rendering */}
+        {user && user.avatar_url ? (
+          <div id="user-profile-button" className="nav-button user-profile-nav">
             <div className="nav-avatar-wrapper">
               <img
                 className="nav-avatar-icon"
@@ -58,7 +53,6 @@ export default function NavigationBar() {
                 <h2 className="nav-avatar-username">@{user.username}</h2>
 
                 <div className="nav-avatar-dropdown-buttons-container">
-                  {/* Navigation link to user profile */}
                   <Link
                     to={`/users/${user.username}`}
                     className="nav-profile-link"
@@ -67,22 +61,26 @@ export default function NavigationBar() {
                     <UserCircle size={20} />
                   </Link>
 
-                  {/* Navigation link to post new article */}
                   <Link to="/articles/new" className="nav-post-article-link">
                     <span>Post Article</span>
                     <PencilLine size={16} />
                   </Link>
 
-                  {/* Logout button inside user dropdown */}
                   <LogoutButton id="nav-logout-button" redirectTo="/" />
                 </div>
               </div>
               <div className="nav-avatar-overlay"></div>
             </div>
-          ) : (
+          </div>
+        ) : (
+          <Link
+            id="user-profile-button"
+            className="nav-button user-profile-nav"
+            to="/login"
+          >
             <User size={28} color="white" />
-          )}
-        </Link>
+          </Link>
+        )}
       </nav>
     </>
   );
