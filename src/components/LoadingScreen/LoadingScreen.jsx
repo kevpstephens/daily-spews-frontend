@@ -2,7 +2,7 @@
  *! LoadingScreen.jsx
 
  * Displays an animated mascot with a context-aware loading message.
- * Includes shaking animation triggered after the mascot finishes loading in.
+ * Includes shaking animation to simulate mascot "spewing".
  *============================================================ */
 
 import "./LoadingScreen.css";

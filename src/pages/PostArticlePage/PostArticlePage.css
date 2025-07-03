@@ -92,7 +92,6 @@
   background-color: var(--color-accent);
 }
 
-/* 🆕 Disabled upload label styling */
 .post-article-file-upload-label.disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -108,11 +107,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
 }
 
 .post-article-select-topic {
   width: fit-content;
   font-weight: bold;
+}
+
+.post-article-file-upload-label:hover .post-article-file-upload-label-icon {
+  animation: upDown 0.5s ease-in-out infinite;
 }
 
 /* !============================================================
@@ -182,6 +186,14 @@
   font-weight: bold;
   color: #333;
   font-size: 1.1rem;
+  font-family: var(--font-body);
+  border-radius: 30px;
+  background-color: #8a72d77e !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  align-self: center;
+  margin: 0 !important;
 }
 
 /* Fixed preview image sizing */

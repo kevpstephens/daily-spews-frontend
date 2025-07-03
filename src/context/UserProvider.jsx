@@ -1,3 +1,12 @@
+/** ============================================================
+ *! UserProvider.jsx
+
+ * Manages user authentication state and localStorage persistence.
+ * Implements a two-phase loading strategy for optimal mobile performance:
+ * Phase 1: Quick localStorage restore for immediate UI responsiveness
+ * Phase 2: Background session validation for security
+ *============================================================ */
+
 import { useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import { getUserByUsername, getCurrentUser, logoutUser } from "../api/api";
@@ -5,9 +14,9 @@ import { getUserByUsername, getCurrentUser, logoutUser } from "../api/api";
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
-  const [hasInitialized, setHasInitialized] = useState(false);
+  const [hasInitialised, setHasInitialised] = useState(false); // Tracks if initial authentication flow has completed
 
-  // Check if localStorage is available
+  // Check if localStorage is available (handles environments where it might not be)
   const isLocalStorageAvailable = () => {
     try {
       const test = "__localStorage_test__";
@@ -20,19 +29,15 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  // Fetch user with retry logic for mobile connections (reduced retries and delays)
+  // Fetch user with retry logic for unreliable mobile connections
   const fetchUserWithRetry = async (retries = 1) => {
     for (let i = 0; i <= retries; i++) {
       try {
-        console.log(
-          `📡 Attempt ${i + 1}: Trying to restore user from session...`
-        );
         const data = await getCurrentUser();
         return data;
       } catch (err) {
-        console.log(`❌ Attempt ${i + 1} failed:`, err.response?.status);
         if (i === retries) throw err;
-        console.log(`🔄 Retrying in 200ms...`);
+        // Short retry delay for mobile optimization
         await new Promise((resolve) => setTimeout(resolve, 200));
       }
     }
@@ -40,136 +45,91 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      console.log("🔍 UserProvider: Starting user fetch...");
-      console.log("📱 User Agent:", navigator.userAgent);
-      console.log("💾 localStorage available:", isLocalStorageAvailable());
-
-      // Small delay on mobile to ensure everything is ready (reduced)
+      // Mobile optimization: small delay to ensure environment is ready
       if (/Mobi|Android/i.test(navigator.userAgent)) {
-        console.log("📱 Mobile detected, adding small delay...");
         await new Promise((resolve) => setTimeout(resolve, 50));
       }
 
       const savedUsername = isLocalStorageAvailable()
         ? localStorage.getItem("ds-username")
         : null;
-      console.log("💾 Current localStorage username:", savedUsername);
 
-      // PHASE 1: Quick localStorage restore (makes nav responsive immediately)
+      // PHASE 1: Quick localStorage restore for immediate UI responsiveness
       if (savedUsername) {
         try {
-          console.log("⚡ Quick restore from localStorage:", savedUsername);
           const { user: quickUser } = await getUserByUsername(savedUsername);
           setUser(quickUser);
-          setIsUserLoading(false); // ← Stop loading immediately for nav responsiveness
-          console.log(
-            "⚡ User quickly restored, nav should be responsive now:",
-            quickUser.username
-          );
+          setIsUserLoading(false); // Stop loading immediately for nav responsiveness
         } catch (quickErr) {
-          console.log(
-            "⚡ Quick restore failed, will try session restore",
-            quickErr
-          );
+          console.error(quickErr);
           setIsUserLoading(false); // Still stop loading even if localStorage fails
         }
       } else {
         setIsUserLoading(false); // Stop loading if no localStorage
       }
 
-      // PHASE 2: Session validation (happens in background)
+      // PHASE 2: Background session validation for security
       try {
-        console.log("🔄 Background session validation...");
         const data = await fetchUserWithRetry();
         setUser(data.user);
-        console.log("✅ User validated from session:", data.user?.username);
 
-        // If successful, also save to localStorage for persistence
+        // Save validated user to localStorage for future quick restores
         if (data.user?.username && isLocalStorageAvailable()) {
           localStorage.setItem("ds-username", data.user.username);
-          console.log("💾 Username saved to localStorage");
         }
       } catch (err) {
-        console.log("❌ Session validation failed:", {
-          status: err.response?.status,
-          message: err.message,
-          timestamp: new Date().toISOString(),
-        });
-
+        console.error(err);
         // If we don't have a user from Phase 1, try localStorage as fallback
         if (!user && savedUsername && isLocalStorageAvailable()) {
           try {
-            console.log("🔄 Trying localStorage fallback for:", savedUsername);
             const { user: fallbackUser } = await getUserByUsername(
               savedUsername
             );
             setUser(fallbackUser);
-            console.log(
-              "✅ User restored from localStorage:",
-              fallbackUser.username
-            );
           } catch (fallbackErr) {
-            console.error("❌ localStorage fallback failed:", {
-              status: fallbackErr.response?.status,
-              message: fallbackErr.message,
-              username: savedUsername,
-            });
-
             // If user doesn't exist anymore, clear localStorage
             if (
               fallbackErr.response?.status === 404 &&
               isLocalStorageAvailable()
             ) {
               localStorage.removeItem("ds-username");
-              console.log("🗑️ Cleared invalid username from localStorage");
             }
             setUser(null);
           }
         }
         // If we already have user from Phase 1, keep them even if session failed
       } finally {
-        setHasInitialized(true); // Mark as initialized
-        console.log(
-          "✅ Background validation complete. Final user state:",
-          user?.username || "null"
-        );
+        setHasInitialised(true); // Mark initialisation as complete
       }
     };
 
     fetchUser();
   }, []);
 
+  // Sync user state to localStorage after initialisation
   useEffect(() => {
     // Only manage localStorage after initial load is complete
-    if (!hasInitialized) return;
+    if (!hasInitialised) return;
 
     if (isLocalStorageAvailable()) {
       if (user?.username) {
         localStorage.setItem("ds-username", user.username);
-        console.log(
-          "💾 User state changed - saved to localStorage:",
-          user.username
-        );
       } else {
         localStorage.removeItem("ds-username");
-        console.log("🗑️ User state cleared - removed from localStorage");
       }
     }
-  }, [user, hasInitialized]);
+  }, [user, hasInitialised]);
 
-  // Logout function to clear everything properly
+  // Logout function to clear both server session and local storage
   const logout = async () => {
-    console.log("🚪 Logging out user...");
     try {
       await logoutUser();
-      console.log("✅ Server logout successful");
     } catch (err) {
       console.error("❌ Server logout failed:", err);
     } finally {
       setUser(null);
       if (isLocalStorageAvailable()) {
         localStorage.removeItem("ds-username");
-        console.log("🗑️ Cleared localStorage on logout");
       }
     }
   };

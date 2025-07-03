@@ -1,17 +1,26 @@
+/** ============================================================
+ *! Layout.jsx
+
+ * Root layout component providing consistent structure across all pages.
+ * Features responsive header/footer, React Router outlet for page content,
+ * and conditional dev console for desktop development.
+ *============================================================ */
+
+import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
 import DevConsole from "./components/DevConsole/DevConsole.jsx";
-import { useEffect, useState } from "react";
 
-const isDev = import.meta.env.DEV;
+const isDev = import.meta.env.DEV; // Check if running in development mode
 
+// Custom hook for responsive mobile detection with resize listener
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const check = () =>
       setIsMobile(window.matchMedia("(max-width: 600px)").matches);
-    check();
+    check(); // Initial check
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
@@ -23,11 +32,18 @@ export default function Layout() {
 
   return (
     <div className="layout-wrapper">
+      {/* Site header with navigation */}
       <Header />
+
+      {/* Main content area - React Router renders page components here */}
       <main className="layout-main">
         <Outlet />
       </main>
+
+      {/* Site footer */}
       <Footer />
+
+      {/* Development console - only shows in dev mode on desktop */}
       {isDev && !isMobile && <DevConsole />}
     </div>
   );

@@ -1,12 +1,22 @@
+/** ============================================================
+ *! SignupPage.jsx
+ *? URL: daily-spews.onrender.com/signup
+
+ * User registration form with avatar upload and cropping functionality.
+ * Features real-time form validation, password strength checking, and
+ * image processing with crop modal. Handles both FormData and JSON payloads.
+ * Redirects to user profile upon successful registration.
+ *============================================================ */
+
 import "./SignupPage.css";
-import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../api/api";
 import { useUser } from "../../context";
-import { useNavigate, Link } from "react-router-dom";
-import { Eye, EyeClosed, UploadIcon } from "lucide-react";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
+import { Eye, EyeClosed, UploadIcon } from "lucide-react";
 import defaultImage from "/assets/users/default-user-image-purple.avif";
+import "react-toastify/dist/ReactToastify.css";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = [
@@ -18,6 +28,7 @@ const ALLOWED_TYPES = [
 ];
 
 export default function SignupPage() {
+  // Form field states
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,13 +38,14 @@ export default function SignupPage() {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Cropping modal states
+  // Avatar cropping modal states
   const [cropModalOpen, setCropModalOpen] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadError, setUploadError] = useState(null);
   const [isProcessingAvatar, setIsProcessingAvatar] = useState(false);
 
+  // Form validation states
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);
@@ -53,7 +65,7 @@ export default function SignupPage() {
     };
   }, [previewUrl]);
 
-  // File validation function
+  // File validation helper
   const validateFile = (file) => {
     if (!file) return "No file selected";
 
@@ -64,11 +76,10 @@ export default function SignupPage() {
     if (file.size > MAX_FILE_SIZE) {
       return "File size must be less than 5MB";
     }
-
     return null;
   };
 
-  // Reset file input
+  // Reset file input helper
   const resetFileInput = () => {
     const fileInput = document.getElementById("avatar_url");
     if (fileInput) {
@@ -124,6 +135,7 @@ export default function SignupPage() {
       let payload;
       let config = {};
 
+      // Handle file upload vs regular form data
       if (avatar_url instanceof File) {
         // Additional validation for the file before sending
         if (avatar_url.size === 0) {
@@ -156,6 +168,7 @@ export default function SignupPage() {
           withCredentials: true,
         };
       } else {
+        // JSON payload for registration without file upload
         payload = {
           username,
           name,
@@ -180,7 +193,7 @@ export default function SignupPage() {
       console.error("❌ Signup failed:", err);
       console.error("❌ Error details:", err.response?.data);
 
-      // More specific error messages
+      // More specific error messages based on error type
       let errorMessage = "Signup failed. Please try again.";
       if (err.message.includes("Avatar")) {
         errorMessage = "Avatar upload failed. Please try a different image.";
@@ -200,6 +213,7 @@ export default function SignupPage() {
     }
   };
 
+  // Form validation check - all fields must be valid to enable submit
   const isFormValid =
     username.length >= 3 &&
     name.length >= 2 &&
@@ -213,6 +227,7 @@ export default function SignupPage() {
     <div className="signup-page-container">
       <h2>Create a New Account</h2>
 
+      {/* Signup form */}
       <form onSubmit={handleSignup} className="signup-form" noValidate>
         <label htmlFor="username">*Username:</label>
         {usernameError && (
@@ -224,6 +239,8 @@ export default function SignupPage() {
             *{usernameError}
           </p>
         )}
+
+        {/* Username input */}
         <input
           id="username"
           name="username"
@@ -240,6 +257,7 @@ export default function SignupPage() {
           disabled={isSubmitting}
         />
 
+        {/* Name input */}
         <label htmlFor="name">*Name:</label>
         <input
           id="name"
@@ -255,20 +273,10 @@ export default function SignupPage() {
 
         {/* Show upload error */}
         {uploadError && (
-          <div
-            style={{
-              color: "red",
-              marginBottom: "10px",
-              padding: "8px",
-              backgroundColor: "#fee",
-              border: "1px solid #fcc",
-              borderRadius: "4px",
-            }}
-          >
-            {uploadError}
-          </div>
+          <div className="signup-page-avatar-upload-error">{uploadError}</div>
         )}
 
+        {/* Avatar upload section */}
         <div className="avatar-upload-wrapper">
           <div className="avatar-preview-container">
             <img
@@ -380,6 +388,7 @@ export default function SignupPage() {
           />
         )}
 
+        {/* Email input */}
         <label htmlFor="email">*Email:</label>
         <input
           id="email"
@@ -392,6 +401,7 @@ export default function SignupPage() {
           disabled={isSubmitting}
         />
 
+        {/* Password input with visibility toggle */}
         <label htmlFor="password">*Password:</label>
         <div className="signup-page-password-input-wrapper">
           <input
@@ -422,6 +432,7 @@ export default function SignupPage() {
           </button>
         </div>
 
+        {/* Confirm password input with visibility toggle */}
         <label htmlFor="confirmPassword">*Confirm Password:</label>
         <div className="signup-page-password-input-wrapper">
           <input
@@ -477,6 +488,8 @@ export default function SignupPage() {
             : "Sign Up"}
         </button>
       </form>
+
+      {/* Login link */}
       <p>
         Already have an account? <Link to="/login">Log in here.</Link>
       </p>

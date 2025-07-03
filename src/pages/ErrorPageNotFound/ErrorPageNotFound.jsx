@@ -1,4 +1,10 @@
-//? URL: daily-spews.com/*error*
+/** ============================================================
+ *! ErrorPageNotFound.jsx
+ *? URL: daily-spews.onrender.com/*error*
+ 
+ * 404 error page displayed when users navigate to non-existent routes.
+ * Simple static component with user-friendly error messaging.
+ *============================================================ */
 
 import "./ErrorPageNotFound.css";
 

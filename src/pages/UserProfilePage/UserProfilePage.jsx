@@ -1,9 +1,10 @@
-/** !============================================================
- * UserProfilePage.jsx
- * https://daily-spews.onrender.com/users/:username
+/** ============================================================
+ *! UserProfilePage.jsx
+ *? URL: daily-spews.onrender.com/users/:username
 
  * Displays a user's profile info, avatar, and tools for managing their own profile.
  * Allows signed-in users to upload and crop a new avatar image.
+ * Features conditional UI based on whether user is viewing their own profile.
  *============================================================ */
 
 import "./UserProfilePage.css";
@@ -11,14 +12,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import { UploadIcon } from "lucide-react";
 import { uploadUserAvatar, getUserByUsername } from "../../api/api";
 import useFetch from "../../hooks/useFetch";
 import { useUser } from "../../context";
-import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
+import { UploadIcon } from "lucide-react";
+import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
+import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
 import PostNewArticleButton from "../../components/PostNewArticleButton/PostNewArticleButton.jsx";
 dayjs.extend(advancedFormat);
 
@@ -32,9 +33,6 @@ const ALLOWED_TYPES = [
   "image/jpg",
 ];
 
-// !============================================================
-// !     User Profile Page Component
-// !============================================================
 export default function UserProfilePage() {
   const { username } = useParams();
   const { user, setUser } = useUser();
@@ -45,6 +43,7 @@ export default function UserProfilePage() {
 
   const profileUser = data?.user;
 
+  // Avatar upload and cropping states
   const [uploading, setUploading] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [cropModalOpen, setCropModalOpen] = useState(false);
@@ -52,7 +51,7 @@ export default function UserProfilePage() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadError, setUploadError] = useState(null);
 
-  // File validation function
+  // File validation helper
   const validateFile = (file) => {
     if (!file) return "No file selected";
 
@@ -66,7 +65,7 @@ export default function UserProfilePage() {
     return null;
   };
 
-  // Reset file input
+  // Reset file input helper
   const resetFileInput = () => {
     const fileInput = document.getElementById("avatar-upload");
     if (fileInput) {
@@ -91,18 +90,16 @@ export default function UserProfilePage() {
   if (isLoading) return <LoadingScreen userProfileLoad={true} />;
   if (error || !profileUser) return <ErrorMessageCard profileError={true} />;
 
-  // !============================================================
-  // !     Render profile UI
-  // !============================================================
   return (
     <div className="user-profile-page-container">
       <h1 className="user-username">@{profileUser.username}</h1>
 
+      {/* Show post article button only on own profile */}
       {user?.username === profileUser.username && (
         <PostNewArticleButton className="user-profile-page-post-article-button" />
       )}
 
-      {/* Conditional logic: allow avatar update and posting only if viewing own profile */}
+      {/* Conditional avatar section - editable for own profile, read-only for others */}
       {user?.username === profileUser.username ? (
         <>
           {uploadError && (
@@ -114,6 +111,7 @@ export default function UserProfilePage() {
             <div className="uploading-avatar-message">Uploading avatar...</div>
           )}
 
+          {/* Editable avatar with upload overlay */}
           <div className="avatar-container">
             <img
               className="user-avatar-image"
@@ -158,6 +156,7 @@ export default function UserProfilePage() {
             </>
           </div>
 
+          {/* Avatar cropping modal */}
           {cropModalOpen && imagePreview && (
             <AvatarCropModal
               imageSrc={imagePreview}
@@ -232,6 +231,7 @@ export default function UserProfilePage() {
           )}
         </>
       ) : (
+        // Read-only avatar for other users' profiles
         <div className="avatar-container">
           <img
             className="user-avatar-image"

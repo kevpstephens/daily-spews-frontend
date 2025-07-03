@@ -1,6 +1,6 @@
-/* !============================================================
-!     About Page
-!============================================================ */
+/*! ============================================================ */
+/*!     About Page
+/*! ============================================================ */
 
 .about-page-container {
   display: flex;
@@ -37,10 +37,29 @@
   margin: 0rem 0.5rem 0.5rem 0.5rem;
 }
 
+/*! ============================================================ */
+/*!     Sign Off Container
+/*! ============================================================ */
+.sign-off-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-off-container p {
+  margin: 0rem;
+}
+
 .kevin-stephenson-link {
   font-weight: bold;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+}
+
+.sign-off-container .kevin-stephenson-link {
+  margin-bottom: 1.5rem;
 }
 
 .about-page-spewing-mascot.spewing-mascot {
@@ -49,6 +68,35 @@
 
 .about-page-spewing-mascot.shake {
   animation: shake 0.45s ease-in-out infinite;
+}
+
+/*! ============================================================ */
+/*!     External Links Container
+/*! ============================================================ */
+.external-links-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.external-links-container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.external-links-container a:hover {
+  transform: scale(1.1);
+  color: white;
+  background-color: var(--color-accent);
 }
 
 /* !============================================================

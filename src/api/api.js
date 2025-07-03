@@ -1,3 +1,11 @@
+/** ============================================================
+ *! api.js
+
+ * Central API client for Daily Spews application.
+ * Handles all HTTP requests to the backend server with authentication
+ * support via cookies. Uses Axios with a configured base instance.
+ *============================================================ */
+
 import axios from "axios";
 
 // Create an Axios instance with the base URL set to the environment variable
@@ -49,6 +57,7 @@ export const getCommentByArticleId = async (article_id, limit, p) => {
     const res = await api.get(`/articles/${article_id}/comments`, { params });
     return res.data;
   } catch (err) {
+    // Return empty array if article has no comments (404)
     if (err.response && err.response.status === 404) {
       return { comments: [], total_count: 0 };
     }
@@ -130,11 +139,6 @@ export const registerUser = async (payload, config = {}) => {
     ...config,
   };
 
-  console.log("🔍 API registerUser called with:", {
-    payloadType: payload instanceof FormData ? "FormData" : "JSON",
-    config: mergedConfig,
-  });
-
   const res = await api.post("/auth/register", payload, mergedConfig);
   return res.data;
 };
@@ -169,6 +173,7 @@ export const uploadUserAvatar = async (username, file) => {
 };
 
 //! POST /api/articles
+// Create a new article with the provided article data
 export const postNewArticle = async (articleData) => {
   const res = await api.post("/articles", articleData);
   return res.data.newArticle;
