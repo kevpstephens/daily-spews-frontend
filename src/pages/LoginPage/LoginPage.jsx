@@ -13,7 +13,7 @@ import { loginUser } from "../../api/api";
 import { useUser } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
 import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
-import { Eye, EyeClosed, LogInIcon } from "lucide-react";
+import { Eye, EyeClosed, LogInIcon, User } from "lucide-react";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
@@ -40,6 +40,27 @@ export default function LoginPage() {
     }
   };
 
+  const handleGuestLogin = async () => {
+    try {
+      const data = await loginUser({
+        email: import.meta.env.VITE_GUEST_USER_EMAIL,
+        password: import.meta.env.VITE_GUEST_USER_PASSWORD,
+      });
+      setUser(data.user);
+      toast.success(
+        "Welcome! You're now signed in as a guest user. Enjoy exploring Daily Spews!",
+        {
+          className: "toast-message",
+        }
+      );
+      navigate(`/users/${data.user.username}`);
+    } catch {
+      toast.error("Guest login failed. Please try again later.", {
+        className: "toast-message",
+      });
+    }
+  };
+
   return (
     <>
       {/* Admin-only development login shortcuts */}
@@ -60,6 +81,26 @@ export default function LoginPage() {
           <p>
             Wait...you already have an account?! What are you waiting for?!!?!?
           </p>
+
+          {/* Test User Login Button */}
+          <div className="guest-login-section">
+            <p className="guest-login-text">
+              Want to explore the full experience without having to sign-up
+              right now? Sign-in as a guest user!
+            </p>
+            <button
+              type="button"
+              onClick={handleGuestLogin}
+              className="guest-login-button"
+            >
+              <User className="guest-login-button-icon" />
+              Try as Guest User
+            </button>
+          </div>
+
+          <div className="login-divider">
+            <span>or</span>
+          </div>
 
           {/* Email input */}
           <label htmlFor="email">

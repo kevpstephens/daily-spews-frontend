@@ -43,6 +43,14 @@ A modern, responsive React frontend for Daily Spews - a satirical news applicati
 
 ## <br><br>
 
+## 🚀 Guest Login (Test User)
+
+To make it easy for anyone to explore the full functionality of Daily Spews, you can log in instantly as a test user by clicking the **"Try as Test User"** button on the login page. No sign-up required!
+
+> _Note: This feature requires environment variables for credentials—see setup instructions below._
+
+## <br><br>
+
 # Index:
 
 - [Features](#features)
@@ -156,9 +164,11 @@ npm install
 # .env
 
 VITE_API_URL=http://localhost:3000/api
+VITE_GUEST_USER_EMAIL=guest_user@example.com
+VITE_GUEST_USER_PASSWORD=guest_user123
 ```
 
-> 💡 **Note:** For production, this should point to your deployed API URL.
+> 💡 **Note:** For production, set these variables in your deployment platform's dashboard (e.g., Vercel, Netlify, Render). Never commit your `.env` files to version control.
 
 <br>
 
@@ -455,9 +465,3 @@ All API calls are handled through the centralized `api.js` file using Axios with
 - [ ] Enhance accessibility features
 - [ ] Add offline support with service workers
 - [ ] Implement progressive web app features
-
-<br>
-<br>
-<br>
-
-> This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
