@@ -16,9 +16,9 @@
 
 </div>
 
->- **Daily Spews** is a full-stack, Reddit-style satirical news platform built using **React**, **Vite**, and a custom **Node.js / PostgreSQL** backend.  
->- Users can browse, post, vote, and comment on articles in real time, with full authentication, avatar uploads, responsive design, and mobile-first performance.  
->- Built as part of the **Northcoders Software Engineering Bootcamp**, the project showcases a professional-grade frontend architecture, clean UI/UX, and full API integration.
+> - **Daily Spews** is a full-stack, Reddit-style satirical news platform built using **React**, **Vite**, and a custom **Node.js / PostgreSQL** backend.
+> - Users can browse, post, vote, and comment on articles in real time, with full authentication, avatar uploads, responsive design, and mobile-first performance.
+> - Built as part of the **Northcoders Software Engineering Bootcamp**, the project showcases a professional-grade frontend architecture, clean UI/UX, and full API integration.
 
 <br>
 <p align="center">
@@ -223,79 +223,88 @@ npm run preview
 
 ```
 daily-spews-frontend/
-├── public/                 # Static assets
-│   ├── assets/            # Images, logos, icons, mascots
-│   │   ├── icons/         # React and Vite icons
-│   │   ├── logo/          # Daily Spews logos
-│   │   ├── mascot/        # Animated mascot images
-│   │   └── users/         # Default user avatars
-│   └── vite.svg           # Vite logo
+├── public/                          # Static assets
+│   ├── assets/                      # Images, logos, icons, mascots
+│   │   ├── icons/                   # React and Vite icons
+│   │   ├── logo/                    # Daily Spews logos
+│   │   ├── mascot/                  # Animated mascot images
+│   │   └── users/                   # Default user avatars
+│   └── vite.svg                     # Vite logo
+
 ├── src/
-│   ├── api/               # API client and endpoints
-│   │   └── api.js         # Centralized API functions
-│   ├── components/        # Reusable UI components
-│   │   ├── ArticleCard/   # Article preview cards
-│   │   ├── AvatarCropModal/ # Image cropping modal
-│   │   ├── CommentButton/ # Comment count display
-│   │   ├── CommentCard/   # Individual comment display
-│   │   ├── CommentList/   # Comments list with infinite scroll
-│   │   ├── DevConsole/    # Development tools
-│   │   ├── DevLoginForm/  # Development login shortcuts
-│   │   ├── ErrorBoundary/ # Error handling component
-│   │   ├── ErrorMessageCard/ # Error display cards
-│   │   ├── HorizontalTopics/ # Horizontal topic navigation
-│   │   ├── LoadingScreen/ # Loading states with mascot
-│   │   ├── LogoutButton/  # Logout functionality
-│   │   ├── MobileHeader/  # Mobile-specific header
-│   │   ├── NavigationBar/ # Main navigation
-│   │   ├── Pagination/    # Pagination controls
-│   │   ├── PostCommentForm/ # Comment posting form
-│   │   ├── PostNewArticleButton/ # New article button
-│   │   ├── SortAndTopicBar/ # Sorting and filtering
-│   │   ├── ToastTester/   # Toast notification testing
-│   │   ├── TopicCard/     # Topic display cards
-│   │   ├── TopicFilterBar/ # Topic filtering
-│   │   └── VoteButton/    # Voting functionality
-│   ├── context/           # React context providers
-│   │   ├── UserContext.js # User context definition
-│   │   ├── UserProvider.jsx # User authentication provider
-│   │   └── useUser.js     # User context hook
-│   ├── hooks/             # Custom React hooks
-│   │   ├── useError.js    # Error handling hook
-│   │   ├── useFetch.js    # Data fetching hook
-│   │   └── useLoading.js  # Loading state hook
-│   ├── pages/             # Page components
-│   │   ├── AboutPage/     # About page
-│   │   ├── AllArticlesPage/ # Articles listing page
-│   │   ├── ErrorPageNotFound/ # 404 error page
-│   │   ├── LoginPage/     # User login page
-│   │   ├── PostArticlePage/ # Article creation page
-│   │   ├── SignupPage/    # User registration page
-│   │   ├── SingleArticlePage/ # Individual article page
-│   │   ├── TopicArticlesPage/ # Topic-specific articles
-│   │   ├── TopicsPage/    # Topics listing page
-│   │   ├── UserProfilePage/ # User profile page
-│   │   └── TestPage.jsx   # Testing page
-│   ├── styles/            # Global styles and CSS
-│   │   ├── App.css        # Main app styles
-│   │   ├── global.css     # Global CSS variables and reset
-│   │   ├── base/          # Base styles (containers, fonts, forms)
-│   │   ├── components/    # Component-specific styles
-│   │   └── utils/         # Utility styles (animations)
-│   ├── utils/             # Utility functions
+│   ├── api/                         # API client and endpoints
+│   │   └── api.js                   # Centralized API functions
+
+│   ├── components/                  # Reusable UI components
+│   │   ├── ArticleCard/            # Article preview cards
+│   │   ├── AvatarCropModal/        # Image cropping modal
+│   │   ├── CommentButton/          # Comment count display
+│   │   ├── CommentCard/            # Individual comment display
+│   │   ├── CommentList/            # Comments list with infinite scroll
+│   │   ├── DevConsole/             # Development tools
+│   │   ├── DevLoginForm/           # Development login shortcuts
+│   │   ├── ErrorBoundary/          # Error handling component
+│   │   ├── ErrorMessageCard/       # Error display cards
+│   │   ├── HorizontalTopics/       # Horizontal topic navigation
+│   │   ├── LoadingScreen/          # Loading states with mascot
+│   │   ├── LogoutButton/           # Logout functionality
+│   │   ├── MobileHeader/           # Mobile-specific header
+│   │   ├── NavigationBar/          # Main navigation
+│   │   ├── Pagination/             # Pagination controls
+│   │   ├── PostCommentForm/        # Comment posting form
+│   │   ├── PostNewArticleButton/   # New article button
+│   │   ├── SortAndTopicBar/        # Sorting and filtering
+│   │   ├── ToastTester/            # Toast notification testing
+│   │   ├── TopicCard/              # Topic display cards
+│   │   ├── TopicFilterBar/         # Topic filtering
+│   │   └── VoteButton/             # Voting functionality
+
+│   ├── context/                    # React context providers
+│   │   ├── UserContext.js          # User context definition
+│   │   ├── UserProvider.jsx        # User authentication provider
+│   │   └── useUser.js              # User context hook
+
+│   ├── hooks/                      # Custom React hooks
+│   │   ├── useError.js             # Error handling hook
+│   │   ├── useFetch.js             # Data fetching hook
+│   │   └── useLoading.js           # Loading state hook
+
+│   ├── pages/                      # Page components
+│   │   ├── AboutPage/              # About page
+│   │   ├── AllArticlesPage/        # Articles listing page
+│   │   ├── ErrorPageNotFound/      # 404 error page
+│   │   ├── LoginPage/              # User login page
+│   │   ├── PostArticlePage/        # Article creation page
+│   │   ├── SignupPage/             # User registration page
+│   │   ├── SingleArticlePage/      # Individual article page
+│   │   ├── TopicArticlesPage/      # Topic-specific articles
+│   │   ├── TopicsPage/             # Topics listing page
+│   │   ├── UserProfilePage/        # User profile page
+│   │   └── TestPage.jsx            # Testing page
+
+│   ├── styles/                     # Global styles and CSS
+│   │   ├── App.css                 # Main app styles
+│   │   ├── global.css              # Global CSS variables and reset
+│   │   ├── base/                   # Base styles (containers, fonts, forms)
+│   │   ├── components/             # Component-specific styles
+│   │   └── utils/                  # Utility styles (animations)
+
+│   ├── utils/                      # Utility functions
 │   │   ├── capitaliseFirstLetter.js # Text formatting
-│   │   ├── formatDate.js  # Date formatting
-│   │   ├── getCroppedImg.js # Image cropping utility
-│   │   └── pluralToSingular.js # Text transformation
-│   ├── Footer.jsx         # Site footer
-│   ├── Header.jsx         # Site header
-│   ├── HomePage.jsx       # Homepage component
-│   ├── Layout.jsx         # Main layout wrapper
-│   ├── Router.jsx         # Application routing
-│   └── main.jsx           # Application entry point
-├── package.json           # Dependencies and scripts
-├── vite.config.js         # Vite configuration
-└── eslint.config.js       # ESLint configuration
+│   │   ├── formatDate.js           # Date formatting
+│   │   ├── getCroppedImg.js        # Image cropping utility
+│   │   └── pluralToSingular.js     # Text transformation
+
+│   ├── Footer.jsx                  # Site footer
+│   ├── Header.jsx                  # Site header
+│   ├── HomePage.jsx                # Homepage component
+│   ├── Layout.jsx                  # Main layout wrapper
+│   ├── Router.jsx                  # Application routing
+│   └── main.jsx                    # Application entry point
+
+├── package.json                    # Dependencies and scripts
+├── vite.config.js                  # Vite configuration
+└── eslint.config.js                # ESLint configuration
 ```
 
 ## <br><br>
@@ -446,5 +455,9 @@ All API calls are handled through the centralized `api.js` file using Axios with
 - [ ] Enhance accessibility features
 - [ ] Add offline support with service workers
 - [ ] Implement progressive web app features
+
+<br>
+<br>
+<br>
 
 > This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
