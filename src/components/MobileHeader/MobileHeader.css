@@ -103,6 +103,12 @@
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 100%;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .nav-avatar-icon:hover {
+    transform: none !important;
   }
 
   /* !============================================================
@@ -131,7 +137,7 @@
 
   .nav-avatar-dropdown h2 {
     font-size: 1.35rem;
-    margin-top: 0.9rem;
+    margin-top: 0.1rem;
     margin-right: 3.5rem;
     margin-bottom: 0;
     position: relative;
@@ -139,17 +145,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    background-color: #f77903c8 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
   }
 
   #nav-logout-button {
-    height: 2.25rem !important;
     width: fit-content;
     position: relative;
     margin-bottom: 0.25rem;
   }
 
   .mobile-header-navigation-container .nav-post-article-link {
-    height: 2.25rem !important;
     width: fit-content;
   }
 

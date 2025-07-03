@@ -61,6 +61,82 @@
 }
 
 /* !============================================================
+!     Guest Login Section
+!============================================================ */
+
+.guest-login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #ffffff1a;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.guest-login-text {
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin: 0;
+  font-style: italic;
+}
+
+.guest-login-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #28a745 !important;
+  color: white;
+  border: 2px solid #0d0024;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out !important;
+  font-weight: bold;
+  margin: 0;
+}
+
+.guest-login-button:hover {
+  background-color: #218838 !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.guest-login-button-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* !============================================================
+!     Login Divider
+!============================================================ */
+
+.login-divider {
+  position: relative;
+  text-align: center;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.login-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-divider span {
+  background-color: #8a72d77e;
+  padding: 0 1rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* !============================================================
 !     Sign-Up Link/Button
 !============================================================ */
 
@@ -151,5 +227,10 @@
   .login-page-eye-icon {
     width: 1.25rem;
     height: 1.25rem;
+  }
+
+  .guest-login-button {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
   }
 }

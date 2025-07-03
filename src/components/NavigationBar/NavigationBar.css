@@ -1,7 +1,6 @@
 /* !============================================================
 !     Navigation Bar Buttons
 !============================================================ */
-
 .navigation-bar-container {
   display: flex;
   justify-content: center;
@@ -54,7 +53,6 @@ div.nav-button:hover {
 /* !============================================================
 !     Navigation Bar Avatar
 !============================================================ */
-
 .nav-avatar-wrapper {
   position: relative;
   display: flex;
@@ -71,6 +69,17 @@ div.nav-button:hover {
   object-fit: cover;
   z-index: 1001;
   border: 2.5px solid #0d0024;
+  transition: transform 0.3s ease-in-out;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.nav-avatar-wrapper:hover .nav-avatar-icon {
+  transform: scale(1.6);
+  transition: transform 0.3s;
 }
 
 .nav-avatar-dropdown {
@@ -80,11 +89,11 @@ div.nav-button:hover {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: -62.5%;
-  gap: 3.25rem;
+  top: -170%;
+  gap: 6rem;
   transform: none;
   background-color: #f7790382;
-  padding: 0.25rem 0.75rem 0.5rem 0.75rem;
+  padding: 0.75rem 1rem 0.75rem 1rem;
   z-index: 1000;
   transition: opacity 0.15s ease-in-out;
   font-family: var(--font-heading);
@@ -107,9 +116,13 @@ div.nav-button:hover {
 
 .nav-avatar-dropdown h2 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: bolder !important;
   margin-bottom: 0.25rem;
+  background-color: #f7790321;
+  padding: 0.25rem 0.5rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-avatar-wrapper:hover .nav-avatar-dropdown {
@@ -132,12 +145,13 @@ div.nav-button:hover {
 }
 
 #nav-logout-button {
-  width: 5.5rem;
-  height: 2rem !important;
+  width: fit-content;
+  height: 2.5rem !important;
   color: white;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-family: var(--font-heading);
   margin: 0 0.25rem;
+  padding: 0.5rem 0.5rem;
 }
 
 /* !============================================================
@@ -150,10 +164,9 @@ div.nav-button:hover {
   gap: 0.25rem;
   width: fit-content;
   color: white;
-  font-size: 1rem;
+  font-size: 1.25rem;
   background-color: var(--color-primary);
   border-radius: 10px;
-  padding: 0.1rem 0.5rem;
   text-align: center;
   border: 2px solid #0d0024;
   cursor: pointer;
@@ -164,6 +177,9 @@ div.nav-button:hover {
   -moz-appearance: none;
   appearance: none;
   transition: background-color 0.3s ease;
+  width: 7rem;
+  height: 2.5rem !important;
+  padding: 0.5rem 0.5rem;
 }
 
 .nav-profile-link:hover {
@@ -186,10 +202,10 @@ div.nav-button:hover {
   gap: 0.25rem;
   width: fit-content;
   color: white;
-  font-size: 1rem;
+  font-size: 1.25rem;
   background-color: var(--color-primary);
   border-radius: 10px;
-  padding: 0.1rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   text-align: center;
   border: 2px solid #0d0024;
   cursor: pointer;
@@ -200,6 +216,8 @@ div.nav-button:hover {
   -moz-appearance: none;
   appearance: none;
   transition: background-color 0.2s ease;
+  width: fit-content;
+  height: 2.5rem !important;
 }
 
 .nav-post-article-link:hover {
@@ -210,42 +228,4 @@ div.nav-button:hover {
 
 .nav-post-article-link:hover svg {
   animation: scribbleTilt 0.5s ease-in-out infinite;
-}
-
-.nav-post-article-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  width: fit-content;
-  height: 2rem !important;
-  font-size: 1rem !important;
-  text-align: center;
-  font-family: var(--font-heading) !important;
-  background-color: var(--color-primary);
-  color: white;
-  border: 2px solid #0d0024;
-  border-radius: 10px;
-  padding: 0.1rem 0.5rem;
-  cursor: pointer;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  transition: background-color 0.2s ease;
-}
-
-.nav-post-article-button:hover {
-  background-color: var(--color-accent);
-  text-decoration: none;
-  color: white;
-}
-
-.nav-post-article-button:hover svg {
-  animation: scribbleTilt 0.5s ease-in-out infinite;
-}
-
-.nav-post-article-button:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
 }

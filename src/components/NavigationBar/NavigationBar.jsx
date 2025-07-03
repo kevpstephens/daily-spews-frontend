@@ -5,6 +5,7 @@
  * Displays logo, navigation links, and a user avatar dropdown.
  *============================================================ */
 
+import { useState } from "react";
 import "./NavigationBar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context";
@@ -13,8 +14,23 @@ import { Home, PencilLine, User, UserCircle } from "lucide-react";
 
 export default function NavigationBar() {
   const { user, isUserLoading } = useUser();
-  if (isUserLoading) return null;
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const isMobile = window.innerWidth <= 600;
+  if (isUserLoading) return null;
+
+  // Handlers for desktop (hover) and mobile (click)
+  const handleAvatarEnter = () => {
+    if (!isMobile) setDropdownOpen(true);
+  };
+  const handleAvatarLeave = () => {
+    if (!isMobile) setDropdownOpen(false);
+  };
+  const handleAvatarClick = () => {
+    if (isMobile) setDropdownOpen((open) => !open);
+  };
+  const handleDropdownLinkClick = () => {
+    setDropdownOpen(false);
+  };
 
   return (
     <>
@@ -42,33 +58,47 @@ export default function NavigationBar() {
         {/* User profile section - conditional rendering */}
         {user && user.avatar_url ? (
           <div id="user-profile-button" className="nav-button user-profile-nav">
-            <div className="nav-avatar-wrapper">
+            <div
+              className={`nav-avatar-wrapper${
+                dropdownOpen && !isMobile ? " open" : ""
+              }`}
+              onMouseEnter={handleAvatarEnter}
+              onMouseLeave={handleAvatarLeave}
+              onClick={handleAvatarClick}
+            >
               <img
                 className="nav-avatar-icon"
                 src={user.avatar_url}
                 alt="user-avatar"
               />
 
-              <div className="nav-avatar-dropdown">
-                <h2 className="nav-avatar-username">@{user.username}</h2>
+              {dropdownOpen && (
+                <div className="nav-avatar-dropdown">
+                  <h2 className="nav-avatar-username">@{user.username}</h2>
 
-                <div className="nav-avatar-dropdown-buttons-container">
-                  <Link
-                    to={`/users/${user.username}`}
-                    className="nav-profile-link"
-                  >
-                    <span>Profile</span>
-                    <UserCircle size={20} />
-                  </Link>
+                  <div className="nav-avatar-dropdown-buttons-container">
+                    <Link
+                      to={`/users/${user.username}`}
+                      className="nav-profile-link"
+                      onClick={handleDropdownLinkClick}
+                    >
+                      <span>Profile</span>
+                      <UserCircle size={20} />
+                    </Link>
 
-                  <Link to="/articles/new" className="nav-post-article-link">
-                    <span>Post Article</span>
-                    <PencilLine size={16} />
-                  </Link>
+                    <Link
+                      to="/articles/new"
+                      className="nav-post-article-link"
+                      onClick={handleDropdownLinkClick}
+                    >
+                      <span>Post Article</span>
+                      <PencilLine size={16} />
+                    </Link>
 
-                  <LogoutButton id="nav-logout-button" redirectTo="/" />
+                    <LogoutButton id="nav-logout-button" redirectTo="/" />
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="nav-avatar-overlay"></div>
             </div>
           </div>
