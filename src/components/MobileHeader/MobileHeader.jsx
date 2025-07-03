@@ -21,7 +21,7 @@ export default function MobileHeader() {
     // Check if user has seen the animation before
     const hasSeenAnimation = localStorage.getItem("dailySpewsAnimationSeen");
 
-    if (hasSeenAnimation) {
+    if (!hasSeenAnimation) {
       setIsFirstVisit(false);
       // If not first visit and on homepage, scroll past the greeting
       if (isHomePage) {
@@ -84,6 +84,7 @@ export default function MobileHeader() {
                 <span className="strike-text">highly esteemed expert cues</span>
               </span>
             </span>
+            <br />
             <span className="line-three"> spews.</span>
           </p>
         </div>
