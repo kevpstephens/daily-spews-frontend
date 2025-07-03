@@ -1,6 +1,6 @@
-/* !============================================================
-!     Article-Vote - VoteButton
-!============================================================ */
+/*! ============================================================ */
+/*!     Article-Vote - VoteButton
+/*! ============================================================ */
 .vote-button-container.article-vote {
   display: flex;
   align-items: center;
@@ -13,14 +13,14 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: var(--font-size-lg);
   gap: 0.25rem;
 }
 
 .vote-button-container.article-vote button,
 .vote-button-container.comment-vote button {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
@@ -35,9 +35,9 @@
   cursor: not-allowed;
 }
 
-/* !============================================================
-!     Article-Vote - Vote Button - upvote/downvote - hover states
-!============================================================ */
+/*! ============================================================ */
+/*!     Article-Vote - Vote Button - upvote/downvote - hover states
+/*! ============================================================ */
 
 .vote-button-container.article-vote button {
   padding: 0.5rem 1.5rem;
@@ -55,9 +55,9 @@
   fill: #8113d5;
 }
 
-/* !============================================================
-!     Comment-Vote - Vote Button - upvote/downvote - hover states
-!============================================================ */
+/*! ============================================================ */
+/*!     Comment-Vote - Vote Button - upvote/downvote - hover states
+/*! ============================================================ */
 
 .upvote-button.comment-vote,
 .downvote-button.comment-vote {
@@ -80,9 +80,9 @@
   height: 2rem;
 }
 
-/* !============================================================
-!     Pressed (Last Clicked) Button Styles
-!============================================================ */
+/*! ============================================================ */
+/*!     Pressed (Last Clicked) Button Styles
+/*! ============================================================ */
 
 /* Article votes */
 .upvote-button.article-vote.pressed {
@@ -102,9 +102,9 @@
   background-color: #a9180f !important;
 }
 
-/* !============================================================
-!     Heart Animation
-!============================================================ */
+/*! ============================================================ */
+/*!     Heart Animation
+/*! ============================================================ */
 
 .heart.animate-pulse {
   animation: heartPulse 0.4s ease-in-out;
@@ -119,10 +119,6 @@
     padding: 0.3rem 1rem;
   }
 
-  .vote-info {
-    font-size: 1rem;
-  }
-
   .upvote-button.comment-vote,
   .downvote-button.comment-vote {
     height: 2.5rem;
@@ -132,9 +128,5 @@
   .heart.comment-vote {
     width: 1.25rem;
     height: 1.25rem;
-  }
-
-  .vote-button-container.comment-vote p {
-    font-size: 0.8rem;
   }
 }

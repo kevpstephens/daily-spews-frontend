@@ -1,6 +1,6 @@
-/* ============================================================
-    ErrorPageNotFound
-============================================================ */
+/*! ============================================================ */
+/*!     ErrorPageNotFound
+/*! ============================================================ */
 .error-page-not-found-message-card {
   font-weight: bold;
   background-color: #d054158e;
@@ -13,7 +13,7 @@
 
 .error-page-not-found-error-message {
   font-family: var(--font-heading);
-  font-size: 27.5px;
+  font-size: var(--font-size-3xl);
   margin-bottom: 1rem;
   color: rgb(130, 0, 0);
 }

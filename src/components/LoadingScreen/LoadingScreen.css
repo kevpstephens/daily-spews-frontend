@@ -1,6 +1,6 @@
-/* !============================================================
-!     LoadingScreen - Daily Spews Mascot Spewing
-!============================================================ */
+/*! ============================================================ */
+/*!     LoadingScreen - Daily Spews Mascot Spewing
+/*! ============================================================ */
 
 .spewing-mascot {
   width: 100px;
@@ -15,15 +15,15 @@
 
 .loading-message {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   text-align: center;
   padding: 0 1rem;
   line-height: 1.6;
 }
 
-/* !============================================================
-!     Media Queries
-!============================================================ */
+/*! ============================================================ */
+/*!     Media Queries
+/*! ============================================================ */
 
 @media (max-width: 600px) {
   .spewing-mascot {
@@ -31,7 +31,7 @@
   }
 
   .loading-message {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 }
 

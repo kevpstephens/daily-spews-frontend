@@ -1,7 +1,7 @@
-/* !============================================================
-!     LAYOUT CONTAINERS
-!     - These styles are used to style the containers of the project.
-!============================================================ */
+/*! ============================================================ */
+/*!     LAYOUT CONTAINERS
+/**     These styles are used to style the containers of the project.
+/*! ============================================================ */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -10,10 +10,10 @@
   text-align: center;
 }
 
-/* !============================================================
-!     APP STRUCTURE WRAPPERS
-!     - These styles are used to style the structural elements of the project.
-!============================================================ */
+/*! ============================================================ */
+/*!     APP STRUCTURE WRAPPERS
+/**     These styles are used to style the structural elements of the project.
+/*! ============================================================ */
 .app-content .content-block,
 .app-content section,
 .app-content article,
