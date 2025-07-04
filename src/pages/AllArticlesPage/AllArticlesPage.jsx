@@ -12,11 +12,11 @@ import { useRef, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getArticles } from "../../api/api.js";
 import useFetch from "../../hooks/useFetch.js";
-import ArticleCard from "../../components/ArticleCard/ArticleCard.jsx";
-import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import Pagination from "../../components/Pagination/Pagination.jsx";
-import SortAndTopicBar from "../../components/SortAndTopicBar/SortAndTopicBar.jsx";
+import ArticleCard from "../../components/ArticleCard/ArticleCard";
+import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import Pagination from "../../components/Pagination/Pagination";
+import SortAndTopicBar from "../../components/SortAndTopicBar/SortAndTopicBar";
 
 export default function AllArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();

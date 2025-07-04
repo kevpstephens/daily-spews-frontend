@@ -47,7 +47,6 @@
 }
 
 #user-profile-logout-button {
-  width: 7.5rem;
   margin-top: 0.5rem;
   font-weight: bold;
   font-size: var(--font-size-base);

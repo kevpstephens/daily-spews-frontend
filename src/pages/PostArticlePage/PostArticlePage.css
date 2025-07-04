@@ -113,6 +113,7 @@
 .post-article-select-topic {
   width: fit-content;
   font-weight: bold;
+  font-size: var(--font-size-sm) !important;
 }
 
 .post-article-file-upload-label:hover .post-article-file-upload-label-icon {
@@ -364,9 +365,7 @@
   .submit-button {
     padding: 1rem 2rem !important;
   }
-}
 
-@media (max-width: 600px) {
   .cropper-container {
     width: 95vw;
     height: 80vh;
@@ -382,5 +381,10 @@
   .crop-cancel-button {
     width: 100%;
     padding: 0.75rem;
+  }
+
+  .post-article-select-topic {
+    width: fit-content;
+    height: 3rem;
   }
 }

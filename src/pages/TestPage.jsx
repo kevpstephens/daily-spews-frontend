@@ -5,7 +5,7 @@
  * Test page for development purposes. 
  *============================================================ */
 
-// import ErrorMessageCard from "../components/ErrorMessageCard/ErrorMessageCard.";
+// import ErrorMessageCard from "../components/ErrorMessageCard/ErrorMessageCard.jsx";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import ToastTester from "../components/ToastTester/ToastTester";
 

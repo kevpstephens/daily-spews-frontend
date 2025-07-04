@@ -17,12 +17,12 @@ import {
   getCommentByArticleId,
 } from "../../api/api";
 import { formatDate } from "../../utils/formatDate";
-import CommentButton from "../../components/CommentButton/CommentButton.jsx";
-import CommentList from "../../components/CommentList/CommentList.jsx";
-import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import PostCommentForm from "../../components/PostCommentForm/PostCommentForm.jsx";
-import VoteButton from "../../components/VoteButton/VoteButton.jsx";
+import CommentButton from "../../components/CommentButton/CommentButton";
+import CommentList from "../../components/CommentList/CommentList";
+import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import PostCommentForm from "../../components/PostCommentForm/PostCommentForm";
+import VoteButton from "../../components/VoteButton/VoteButton";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();

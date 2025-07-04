@@ -67,7 +67,7 @@ div.nav-button:hover {
   height: 3rem;
   border-radius: 100%;
   object-fit: cover;
-  z-index: 1001;
+  z-index: 1002;
   border: 2.5px solid #0d0024;
   transition: transform 0.3s ease-in-out;
   image-rendering: auto;
@@ -92,9 +92,9 @@ div.nav-button:hover {
   top: -170%;
   gap: 6rem;
   transform: none;
-  background-color: #f7790382;
+  background-color: var(--color-accent);
   padding: 0.75rem 1rem 0.75rem 1rem;
-  z-index: 1000;
+  z-index: 1001;
   transition: opacity 0.15s ease-in-out;
   font-family: var(--font-heading);
   pointer-events: none;
@@ -105,6 +105,13 @@ div.nav-button:hover {
   border-radius: 30px;
   word-break: break-word;
   border: 0.2rem dotted #0d0024;
+}
+
+.nav-avatar-wrapper:hover .nav-avatar-dropdown {
+  animation: fadeSlideInUp 0.2s ease-in-out;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.15s ease-in-out;
 }
 
 .nav-avatar-dropdown-buttons-container {
@@ -133,15 +140,16 @@ div.nav-button:hover {
 .nav-avatar-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.346);
-  z-index: 500;
+  background-color: rgba(0, 0, 0, 0.56);
+  z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.nav-avatar-wrapper:hover .nav-avatar-overlay {
+.nav-avatar-overlay.visible {
   opacity: 1;
+  pointer-events: auto;
 }
 
 #nav-logout-button {
