@@ -200,11 +200,13 @@ export default function PostArticlePage() {
             disabled={isSubmitting}
           >
             <option value="">*Select Topic</option>
-            {topicsData?.topics?.map((topic) => (
-              <option key={topic.slug} value={topic.slug}>
-                {capitaliseFirstLetter(topic.slug)}
-              </option>
-            ))}
+            {topicsData?.topics
+              ?.sort((a, b) => a.slug.localeCompare(b.slug))
+              ?.map((topic) => (
+                <option key={topic.slug} value={topic.slug}>
+                  {capitaliseFirstLetter(topic.slug)}
+                </option>
+              ))}
           </select>
 
           {/* Article body */}
@@ -226,7 +228,7 @@ export default function PostArticlePage() {
             }`}
           >
             <div className="post-article-file-upload-label-content">
-              <span>Upload Article Image</span>
+              <span>Upload Image</span>
               <UploadIcon
                 className="post-article-file-upload-label-icon"
                 size={20}

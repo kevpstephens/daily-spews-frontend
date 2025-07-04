@@ -5,7 +5,8 @@
  * Displays logo, navigation links, and a user avatar dropdown.
  *============================================================ */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./NavigationBar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context";
@@ -16,6 +17,18 @@ export default function NavigationBar() {
   const { user, isUserLoading } = useUser();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const isMobile = window.innerWidth <= 600;
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  useEffect(() => {
+    if (dropdownOpen) {
+      setShowOverlay(true);
+    } else if (showOverlay) {
+      // Wait for fade-out before unmounting
+      const timeout = setTimeout(() => setShowOverlay(false), 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [dropdownOpen]);
+
   if (isUserLoading) return null;
 
   // Handlers for desktop (hover) and mobile (click)
@@ -99,8 +112,18 @@ export default function NavigationBar() {
                   </div>
                 </div>
               )}
-              <div className="nav-avatar-overlay"></div>
             </div>
+            {/* Overlay rendered via portal */}
+            {showOverlay &&
+              createPortal(
+                <div
+                  className={`nav-avatar-overlay${
+                    dropdownOpen ? " visible" : ""
+                  }`}
+                  onClick={() => setDropdownOpen(false)}
+                />,
+                document.body
+              )}
           </div>
         ) : (
           <Link

@@ -16,11 +16,11 @@ import { uploadUserAvatar, getUserByUsername } from "../../api/api";
 import useFetch from "../../hooks/useFetch";
 import { useUser } from "../../context";
 import { UploadIcon } from "lucide-react";
-import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
-import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import LogoutButton from "../../components/LogoutButton/LogoutButton.jsx";
-import PostNewArticleButton from "../../components/PostNewArticleButton/PostNewArticleButton.jsx";
+import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal";
+import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import LogoutButton from "../../components/LogoutButton/LogoutButton";
+import PostNewArticleButton from "../../components/PostNewArticleButton/PostNewArticleButton";
 dayjs.extend(advancedFormat);
 
 // Constraints for avatar uploads
