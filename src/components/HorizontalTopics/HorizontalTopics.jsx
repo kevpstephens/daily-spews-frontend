@@ -76,9 +76,6 @@ export default function HorizontalTopics() {
 
   return (
     <>
-      {isLoading && <LoadingScreen item="topics" />}
-      {error && <ErrorMessageCard error={error} />}
-
       <section className="horizontal-topics-wrapper">
         <div className="horizontal-topics-heading-container">
           {/* Scroll left button */}
@@ -93,6 +90,9 @@ export default function HorizontalTopics() {
             <ArrowRight id="horizontal-topics-arrow-right" />
           </button>
         </div>
+
+        {isLoading && <LoadingScreen item="topics" />}
+        {error && <ErrorMessageCard error={error} />}
 
         <div
           className={`horizontal-scroll-container${

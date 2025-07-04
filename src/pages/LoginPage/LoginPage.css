@@ -24,6 +24,7 @@
   box-shadow: 0 6px 15px rgba(86, 61, 154, 0.2);
   padding: 1rem;
   border-radius: 30px;
+  font-size: var(--font-size-2xl);
 }
 
 .login-page-container p {
