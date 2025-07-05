@@ -14,7 +14,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../api/api";
 import { useUser } from "../../context";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
-import { Eye, EyeClosed, UploadIcon } from "lucide-react";
+import { Eye, EyeClosed, UploadIcon, UserPlus } from "lucide-react";
 import defaultImage from "/assets/users/default-user-image-purple.avif";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -486,6 +486,7 @@ export default function SignupPage() {
             : isProcessingAvatar
             ? "Processing avatar..."
             : "Sign Up"}
+          <UserPlus className="sign-up-button-icon" />
         </button>
       </form>
 

@@ -95,7 +95,8 @@
   font-size: var(--font-size-lg);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 7rem;
+  width: fit-content;
+  gap: 0.5rem;
 }
 
 .signup-form button[type="submit"]:hover:not(:disabled) {
@@ -106,6 +107,10 @@
   background-color: #c1a7d1;
   color: rgb(211, 211, 211);
   cursor: not-allowed;
+}
+
+.signup-form button[type="submit"]:hover:not(:disabled) .sign-up-button-icon {
+  animation: scribbleWave 0.5s ease-in-out infinite;
 }
 
 .signup-page-container p {

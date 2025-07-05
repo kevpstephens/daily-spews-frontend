@@ -13,7 +13,7 @@ import { loginUser } from "../../api/api";
 import { useUser } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
 import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
-import { Eye, EyeClosed, LogInIcon, User } from "lucide-react";
+import { Eye, EyeClosed, LogInIcon, User, UserPlus } from "lucide-react";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
@@ -76,7 +76,8 @@ export default function LoginPage() {
             right place! Please create an account for full feature access.
           </p>
           <Link to="/signup" className="sign-up-button">
-            Sign-Up
+            Sign Up
+            <UserPlus className="sign-up-button-icon" />
           </Link>
           <p>
             Wait...you already have an account?! What are you waiting for?!!?!?
