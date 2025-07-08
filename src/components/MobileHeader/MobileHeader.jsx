@@ -67,7 +67,7 @@ export default function MobileHeader() {
               !isFirstVisit ? "skip-animation" : ""
             }`}
             src="/assets/logo/daily-spews-logo.png"
-            alt="daily-spews-logo-image"
+            alt="Daily Spews logo"
           />
 
           <p

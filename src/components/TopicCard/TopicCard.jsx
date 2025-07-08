@@ -9,6 +9,7 @@
 import "./TopicCard.css";
 import { Link } from "react-router-dom";
 import defaultImage from "/assets/users/default-user-image-purple.avif";
+import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
 
 export default function TopicCard({ topic }) {
   return (
@@ -21,7 +22,7 @@ export default function TopicCard({ topic }) {
           {/* Show topic image, or fallback to default image if none provided */}
           <img
             src={topic.img_url || defaultImage}
-            alt={`Image for topic ${topic.slug}`}
+            alt={`${capitaliseFirstLetter(topic.slug)} topic illustration`}
           />
         </article>
       </Link>

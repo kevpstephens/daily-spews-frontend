@@ -79,6 +79,7 @@ export default function SortBar() {
           className="sort-bar"
           onChange={handleSortChange}
           value={getSelectedSortValue()}
+          aria-label="Sort articles by"
         >
           <option value="">{isMobile ? "Sort by" : "--Sort by--"}</option>
           {SORT_OPTIONS.map((option) => (
@@ -92,6 +93,7 @@ export default function SortBar() {
           className="sort-bar"
           onChange={handleOrderChange}
           value={order || ""}
+          aria-label="Sort order"
         >
           <option value="">{isMobile ? "Order" : "--Order--"}</option>
           {ORDER_OPTIONS.map((option) => (

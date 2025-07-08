@@ -28,7 +28,7 @@ export default function Header() {
         <img
           className="daily-spews-logo navigation-bar-container"
           src="/assets/logo/daily-spews-logo.png"
-          alt="daily-spews-logo-image"
+          alt="Daily Spews logo"
         />
       </Link>
       <NavigationBar />

@@ -25,6 +25,7 @@ export default function Pagination({
         id="previous-page-button"
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
         disabled={currentPage === 1}
+        aria-label={`Go to page ${Math.max(currentPage - 1, 1)}`}
       >
         <ChevronLeftIcon className="pagination-icon" />
       </button>
@@ -45,6 +46,7 @@ export default function Pagination({
         id="next-page-button"
         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
         disabled={currentPage === totalPages}
+        aria-label={`Go to page ${Math.min(currentPage + 1, totalPages)}`}
       >
         <ChevronRightIcon className="pagination-icon" />
       </button>

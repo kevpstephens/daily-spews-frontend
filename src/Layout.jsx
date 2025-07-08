@@ -31,12 +31,17 @@ export default function Layout() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="layout-wrapper">
+    <div className="layout-container">
+      {/* Skip navigation for keyboard users */}
+      <a href="#main-content" className="skip-navigation">
+        Skip to main content
+      </a>
+
       {/* Site header with navigation */}
       <Header />
 
       {/* Main content area - React Router renders page components here */}
-      <main className="layout-main">
+      <main id="main-content" className="layout-main">
         <Outlet />
       </main>
 

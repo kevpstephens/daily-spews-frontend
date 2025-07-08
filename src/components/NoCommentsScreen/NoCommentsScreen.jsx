@@ -14,7 +14,7 @@ export default function NoCommentsScreen() {
         <img
           id="mascot-shrugging-image"
           src="/assets/mascot/mascot-shrugging.png"
-          alt="mascot-shrugging-image"
+          alt="Daily Spews mascot shrugging"
         />
 
         <article className="no-comments-message">

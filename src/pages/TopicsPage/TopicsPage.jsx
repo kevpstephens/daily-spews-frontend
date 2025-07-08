@@ -18,7 +18,7 @@ export default function TopicsPage() {
   const { data, isLoading, error } = useFetch(getTopics);
 
   // Early returns for loading and error states
-  if (isLoading) return <LoadingScreen item={"topics"} />;
+  if (isLoading) return <LoadingScreen item={"Topics"} />;
   if (error) return <ErrorMessageCard error={error} />;
 
   // Extract topics array with fallback and sort alphabetically by slug

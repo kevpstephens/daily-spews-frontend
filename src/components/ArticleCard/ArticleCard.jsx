@@ -47,7 +47,7 @@ export default function ArticleCard({ article }) {
             <Link to={`/articles/${article.article_id}`}>
               <img
                 src={article.article_img_url || defaultImage}
-                alt={`${article.title} image`}
+                alt={`Illustration for article: ${article.title}`}
               />
             </Link>
             <p className="article-card-posted-date">

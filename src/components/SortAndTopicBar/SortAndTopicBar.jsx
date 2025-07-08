@@ -25,6 +25,7 @@ export default function SortAndTopicBar({ handleReset }) {
         <button
           className="sort-and-topic-bar-reset-button"
           onClick={handleReset}
+          aria-label="Reset all filters and sorting"
         >
           <ListRestart className="reset-button-icon" />
         </button>

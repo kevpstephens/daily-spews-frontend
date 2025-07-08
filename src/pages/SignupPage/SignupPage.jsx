@@ -70,7 +70,7 @@ export default function SignupPage() {
     if (!file) return "No file selected";
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return "Please select a valid image file (JPEG, PNG, GIF, or WebP)";
+      return "Please select a valid image file (JPEG, PNG, GIF, or WebP).";
     }
 
     if (file.size > MAX_FILE_SIZE) {
@@ -194,11 +194,11 @@ export default function SignupPage() {
       console.error("❌ Error details:", err.response?.data);
 
       // More specific error messages based on error type
-      let errorMessage = "Signup failed. Please try again.";
+      let errorMessage = "Signup failed! Please try again.";
       if (err.message.includes("Avatar")) {
-        errorMessage = "Avatar upload failed. Please try a different image.";
+        errorMessage = "Avatar upload failed! Please try a different image.";
       } else if (err.response?.status === 413) {
-        errorMessage = "File too large. Please choose a smaller image.";
+        errorMessage = "File too large! Please choose a smaller image.";
       } else if (err.response?.data?.message) {
         errorMessage = err.response.data.message;
       }
@@ -281,7 +281,7 @@ export default function SignupPage() {
           <div className="avatar-preview-container">
             <img
               src={previewUrl || defaultImage}
-              alt="Avatar Preview"
+              alt="Profile picture preview"
               className="avatar-preview-image"
             />
             <div

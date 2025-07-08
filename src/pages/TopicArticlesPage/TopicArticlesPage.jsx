@@ -136,7 +136,7 @@ export default function TopicArticlesPage() {
           <img
             className="loading-topics-articles-spinner"
             src="/assets/mascot/mascot-spewing-loading.png"
-            alt="Loading more comments..."
+            alt="Loading spinner"
           />
           <p className="loading-topics-articles-text">
             Please wait while we spew out some of your lovely little articles...

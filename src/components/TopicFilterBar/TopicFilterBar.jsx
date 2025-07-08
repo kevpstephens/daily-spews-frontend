@@ -47,6 +47,7 @@ export default function TopicFilterBar() {
         id="topic-dropdown"
         value={searchParams.get("topic") || ""}
         onChange={handleTopicChange}
+        aria-label="Filter articles by topic"
       >
         <option value="">{isMobile ? "Topic" : "--Select Topic--"}</option>
 

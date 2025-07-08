@@ -86,9 +86,15 @@
   position: relative;
 }
 
-.article-card img:hover {
+.article-card a img:hover {
   transform: scale(1.05);
   border: 5px dotted #000000;
+}
+
+.article-card a:focus img {
+  transform: scale(1.05);
+  border: 5px dotted #000000;
+  outline: none !important;
 }
 
 .article-card-posted-date {

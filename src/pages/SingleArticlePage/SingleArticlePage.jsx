@@ -126,7 +126,7 @@ export default function SingleArticlePage() {
               </h3>
             </div>
 
-            <img src={article.article_img_url} alt={`article image`} />
+            <img src={article.article_img_url} alt={`Illustration for article: ${article.title}`} />
 
             <p className="article-body">{article.body}</p>
 
