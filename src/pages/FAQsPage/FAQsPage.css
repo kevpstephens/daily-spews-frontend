@@ -82,6 +82,10 @@
     margin: 1.5rem auto;
   }
 
+  .faq-item h3 {
+    font-size: var(--font-size-form);
+  }
+
   .faqs-content {
     gap: 1.75rem;
   }
