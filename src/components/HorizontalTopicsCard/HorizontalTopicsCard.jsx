@@ -8,6 +8,7 @@
 import "./HorizontalTopicsCard.css";
 import { Link } from "react-router-dom";
 import defaultImage from "/assets/users/default-user-image-purple.avif";
+import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
 
 export default function HorizontalTopicsCard({ topic }) {
   return (
@@ -19,7 +20,7 @@ export default function HorizontalTopicsCard({ topic }) {
           {/* Display topic image or fallback if missing */}
           <img
             src={topic.img_url || defaultImage}
-            alt={`Image for topic ${topic.slug}`}
+            alt={`${capitaliseFirstLetter(topic.slug)} topic illustration`}
           />
         </article>
       </Link>

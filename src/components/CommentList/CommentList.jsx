@@ -53,7 +53,7 @@ export default function CommentList({ comments, isFetching }) {
             <img
               className="loading-comments-spinner"
               src="/src/assets/logo/daily-spews-alt-logo-cropped.png"
-              alt="Loading more comments..."
+              alt="Loading spinner"
             />
             <p className="loading-comments-text">
               Please wait while we spew out some of your lovely comments...

@@ -54,7 +54,7 @@ export default function NavigationBar() {
             <img
               className="mobile-header-daily-spews-logo"
               src="/assets/logo/daily-spews-logo.png"
-              alt="daily-spews-logo-image"
+              alt="Daily Spews logo"
             />
           </Link>
         )}
@@ -80,13 +80,25 @@ export default function NavigationBar() {
               onClick={handleAvatarClick}
             >
               <img
+                id="user-avatar"
                 className="nav-avatar-icon"
                 src={user.avatar_url}
-                alt="user-avatar"
+                alt={`${user.username}'s profile picture`}
+                role="button"
+                aria-expanded={dropdownOpen}
+                aria-haspopup="menu"
+                aria-label={`${user.username}'s account menu`}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleAvatarClick();
+                  }
+                }}
               />
 
               {dropdownOpen && (
-                <div className="nav-avatar-dropdown">
+                <div className="nav-avatar-dropdown" role="menu" aria-labelledby="user-avatar">
                   <h2 className="nav-avatar-username">@{user.username}</h2>
 
                   <div className="nav-avatar-dropdown-buttons-container">
@@ -94,6 +106,7 @@ export default function NavigationBar() {
                       to={`/users/${user.username}`}
                       className="nav-profile-link"
                       onClick={handleDropdownLinkClick}
+                      role="menuitem"
                     >
                       <span>Profile</span>
                       <UserCircle size={20} />
@@ -103,6 +116,7 @@ export default function NavigationBar() {
                       to="/articles/new"
                       className="nav-post-article-link"
                       onClick={handleDropdownLinkClick}
+                      role="menuitem"
                     >
                       <span>Post Article</span>
                       <PencilLine size={16} />

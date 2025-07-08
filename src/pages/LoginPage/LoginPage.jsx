@@ -113,9 +113,10 @@ export default function LoginPage() {
             name="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            autoComplete="email"
             required
           />
-          <label htmlFor="password">
+          <label htmlFor="login-page-password-input">
             <strong>Password:</strong>
           </label>
           <div className="login-page-password-input-wrapper">
@@ -125,6 +126,7 @@ export default function LoginPage() {
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
+              autoComplete="current-password"
               required
             />
 

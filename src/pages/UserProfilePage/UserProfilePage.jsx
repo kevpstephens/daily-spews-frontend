@@ -56,7 +56,7 @@ export default function UserProfilePage() {
     if (!file) return "No file selected";
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return "Please select a valid image file (JPEG, PNG, GIF, or WebP)";
+      return "Please select a valid image file (JPEG, PNG, GIF, or WebP).";
     }
 
     if (file.size > MAX_FILE_SIZE) {
@@ -116,7 +116,7 @@ export default function UserProfilePage() {
             <img
               className="user-avatar-image"
               src={avatarUrl}
-              alt="user-avatar-image"
+              alt={`${profileUser.username}'s profile picture`}
               key={avatarUrl} // Force re-render to reflect updated avatar
             />
             <>
@@ -236,7 +236,7 @@ export default function UserProfilePage() {
           <img
             className="user-avatar-image"
             src={avatarUrl}
-            alt="user-avatar-image"
+            alt={`${profileUser.username}'s profile picture`}
           />
         </div>
       )}

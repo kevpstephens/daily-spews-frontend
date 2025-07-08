@@ -53,7 +53,7 @@ export default function PostArticlePage() {
   const validateFile = (file) => {
     if (!file) return "No file selected";
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return "Please select a valid image file (JPEG, PNG, GIF, or WebP)";
+      return "Please select a valid image file (JPEG, PNG, GIF, or WebP).";
     }
     if (file.size > MAX_FILE_SIZE) {
       return "File size must be less than 5MB";
@@ -141,7 +141,7 @@ export default function PostArticlePage() {
     e.preventDefault();
 
     if (!isFormValid) {
-      setMessage("Please fill in all required fields");
+      setMessage("Please fill in all required fields.");
       return;
     }
 
@@ -163,7 +163,7 @@ export default function PostArticlePage() {
       navigate(`/articles/${res.article_id}`);
     } catch (err) {
       console.error("Error posting article:", err);
-      setMessage("Failed to post article. Please try again.");
+      setMessage("Failed to post article! Please try again.");
       setIsSubmitting(false);
     }
   };
@@ -252,7 +252,7 @@ export default function PostArticlePage() {
               <p>Image Preview:</p>
               <img
                 src={previewUrl}
-                alt="Article preview"
+                alt="Preview of selected article image"
                 className="post-article-image-preview"
               />
 

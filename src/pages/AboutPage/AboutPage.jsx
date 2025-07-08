@@ -37,7 +37,7 @@ export default function AboutPage() {
           ref={mascotRef}
           className="about-page-spewing-mascot spewing-mascot"
           src="/assets/mascot/mascot-spewing-loading.png"
-          alt="Daily Spews Mascot"
+          alt="Daily Spews mascot spewing content"
         />
         <p>
           Daily Spews is a satirical news site built as part of the Northcoders

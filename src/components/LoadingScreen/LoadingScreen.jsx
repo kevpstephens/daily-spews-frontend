@@ -71,17 +71,23 @@ export default function LoadingScreen(props) {
   }, []);
 
   return (
-    <>
+    <div role="status" aria-live="polite" aria-label="Loading content">
       {/* Animated spewing mascot image */}
       <img
         ref={mascotRef}
         className="spewing-mascot"
         src="/assets/mascot/mascot-spewing-loading.png"
-        alt="Daily Spews Mascot Spewing"
+        alt="Daily Spews mascot spewing content"
+        aria-hidden="true"
       />
 
       {/* Display dynamic loading message */}
-      <p className="loading-message">{message}</p>
-    </>
+      <p className="loading-message" aria-label={`Loading: ${message}`}>
+        {message}
+      </p>
+
+      {/* Screen reader only text */}
+      <span className="sr-only">Loading content, please wait...</span>
+    </div>
   );
 }

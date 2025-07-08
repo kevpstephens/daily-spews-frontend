@@ -79,14 +79,22 @@ export default function HorizontalTopics() {
       <section className="horizontal-topics-wrapper">
         <div className="horizontal-topics-heading-container">
           {/* Scroll left button */}
-          <button onClick={scrollLeft} disabled={atStart}>
+          <button
+            onClick={scrollLeft}
+            disabled={atStart}
+            aria-label="Scroll topics left"
+          >
             <ArrowLeft id="horizontal-topics-arrow-left" />
           </button>
 
           <h1 className="horizontal-topics-heading">Topics</h1>
 
           {/* Scroll right button */}
-          <button onClick={scrollRight} disabled={atEnd}>
+          <button
+            onClick={scrollRight}
+            disabled={atEnd}
+            aria-label="Scroll topics right"
+          >
             <ArrowRight id="horizontal-topics-arrow-right" />
           </button>
         </div>
