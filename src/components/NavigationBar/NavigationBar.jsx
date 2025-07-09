@@ -140,7 +140,8 @@ export default function NavigationBar() {
                       onClick={handleDropdownLinkClick}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          // Let the Link handle navigation naturally
+                          // Trigger the Link's click to navigate
+                          e.target.click();
                           handleDropdownLinkClick();
                         } else if (e.key === "Escape") {
                           setDropdownOpen(false);
@@ -163,7 +164,8 @@ export default function NavigationBar() {
                       onClick={handleDropdownLinkClick}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          // Let the Link handle navigation naturally
+                          // Trigger the Link's click to navigate
+                          e.target.click();
                           handleDropdownLinkClick();
                         } else if (e.key === "Escape") {
                           setDropdownOpen(false);
