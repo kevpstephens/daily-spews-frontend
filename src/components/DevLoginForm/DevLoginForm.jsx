@@ -8,8 +8,9 @@
 import "./DevLoginForm.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../context";
+
 import { getUsers } from "../../api/api";
+import { useUser } from "../../context";
 
 export default function DevLoginForm() {
   const [users, setUsers] = useState([]);
@@ -37,7 +38,7 @@ export default function DevLoginForm() {
   };
 
   return (
-    <form onSubmit={handleDevLogin} className="dev-login-form">
+    <form className="dev-login-form" onSubmit={handleDevLogin}>
       {/* Development-only notice */}
       <label htmlFor="user-select">
         <strong>Note:</strong> This is a temporary development feature. Real
@@ -59,7 +60,7 @@ export default function DevLoginForm() {
       </select>
 
       {/* Submit button for login */}
-      <button type="submit" disabled={!selectedUsername}>
+      <button disabled={!selectedUsername} type="submit">
         Dev Login
       </button>
     </form>

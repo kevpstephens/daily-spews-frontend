@@ -9,10 +9,10 @@
 
 import "./TopicsPage.css";
 import { getTopics } from "../../api/api";
+import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
 import TopicCard from "../../components/TopicCard/TopicCard.jsx";
 import useFetch from "../../hooks/useFetch";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
-import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
 
 export default function TopicsPage() {
   const { data, isLoading, error } = useFetch(getTopics);

@@ -5,12 +5,13 @@
  * and updates the search parameters in the URL when the user selects a topic.
  * Responsive UI adapts the default dropdown label based on screen width.
  *============================================================ */
-import "./TopicFilterBar.css";
-import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useFetch from "../../hooks/useFetch";
+import { useSearchParams } from "react-router-dom";
+
 import { getTopics } from "../../api/api";
-import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
+import useFetch from "../../hooks/useFetch";
+import capitaliseFirstLetter from "../../utils/capitaliseFirstLetter";
+import "./TopicFilterBar.css";
 
 export default function TopicFilterBar() {
   const { data } = useFetch(getTopics);
@@ -43,11 +44,11 @@ export default function TopicFilterBar() {
     <>
       {/* Render a dropdown menu populated with topic options */}
       <select
+        aria-label="Filter articles by topic"
         className="topic-filter-bar"
         id="topic-dropdown"
         value={searchParams.get("topic") || ""}
         onChange={handleTopicChange}
-        aria-label="Filter articles by topic"
       >
         <option value="">{isMobile ? "Topic" : "--Select Topic--"}</option>
 

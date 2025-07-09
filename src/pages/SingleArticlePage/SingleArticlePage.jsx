@@ -6,23 +6,24 @@
  * Features article content, voting system, and paginated comment loading.
  * Includes smooth scrolling to likes section and intersection observer.
  *============================================================ */
-
-import "./SingleArticlePage.css";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import useFetch from "../../hooks/useFetch";
+
 import {
   getArticleById,
-  patchArticleVotes,
   getCommentByArticleId,
+  patchArticleVotes,
 } from "../../api/api";
-import { formatDate } from "../../utils/formatDate";
 import CommentButton from "../../components/CommentButton/CommentButton";
 import CommentList from "../../components/CommentList/CommentList";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import PostCommentForm from "../../components/PostCommentForm/PostCommentForm";
 import VoteButton from "../../components/VoteButton/VoteButton";
+import useFetch from "../../hooks/useFetch";
+import formatDate from "../../utils/formatDate";
+import logger from "../../utils/logger";
+import "./SingleArticlePage.css";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();
@@ -56,7 +57,7 @@ export default function SingleArticlePage() {
           setTotalCount(data.total_count);
         }
       } catch (err) {
-        console.error("❌ Failed to fetch comments", err);
+        logger.error("Failed to fetch comments", err);
       } finally {
         setIsFetching(false);
       }
@@ -126,20 +127,23 @@ export default function SingleArticlePage() {
               </h3>
             </div>
 
-            <img src={article.article_img_url} alt={`Illustration for article: ${article.title}`} />
+            <img
+              alt={`Illustration for article: ${article.title}`}
+              src={article.article_img_url}
+            />
 
             <p className="article-body">{article.body}</p>
 
             {/* Article interaction section - votes and comments */}
-            <section id="article-likes" className="likes-and-comments">
+            <section className="likes-and-comments" id="article-likes">
               <CommentButton
                 commentCount={article.comment_count}
                 scrollTargetId="post-comment-form"
               />
               <VoteButton
                 className="article-vote"
-                item_id={article_id}
                 initialVotes={article.votes}
+                item_id={article_id}
                 voteFunction={patchArticleVotes}
               />
             </section>
@@ -157,12 +161,12 @@ export default function SingleArticlePage() {
           <CommentList
             article_id={article_id}
             comments={comments}
-            setComments={setComments}
             isFetching={isFetching}
+            setComments={setComments}
           />
 
           {/* Intersection observer target for infinite scroll */}
-          <div ref={loaderRef} className="comment-scroll-loader"></div>
+          <div ref={loaderRef} className="comment-scroll-loader" />
         </>
       )}
     </>

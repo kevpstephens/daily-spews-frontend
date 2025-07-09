@@ -31,6 +31,13 @@
   background-color: #f77703;
 }
 
+/* Focus styles for keyboard navigation */
+.nav-button:focus {
+  background-color: #f77703;
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
+}
+
 #user-profile-button {
   width: 3rem;
   border-radius: 50%;
@@ -80,6 +87,49 @@ div.nav-button:hover {
 .nav-avatar-wrapper:hover .nav-avatar-icon {
   transform: scale(1.6);
   transition: transform 0.3s;
+}
+
+/* Focus styles for avatar wrapper */
+.nav-avatar-wrapper:focus {
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.nav-avatar-wrapper:focus .nav-avatar-icon {
+  transform: scale(1.6);
+  transition: transform 0.3s;
+}
+
+/* Show dropdown on focus */
+.nav-avatar-wrapper:focus .nav-avatar-dropdown {
+  animation: fadeSlideInUp 0.2s ease-in-out;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Show dropdown when open class is present (keyboard navigation) */
+.nav-avatar-wrapper.open .nav-avatar-dropdown {
+  animation: fadeSlideInUp 0.2s ease-in-out;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Mobile-specific dropdown positioning when opened via keyboard */
+@media (max-width: 600px) {
+  .nav-avatar-wrapper.open .nav-avatar-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    max-width: 90vw;
+    animation: fadeSlideInUp 0.2s ease-in-out;
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .nav-avatar-dropdown {
@@ -162,6 +212,13 @@ div.nav-button:hover {
   padding: 0.5rem 0.5rem;
 }
 
+/* Focus styles for logout button in navigation */
+#nav-logout-button:focus {
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
+  background-color: var(--color-accent);
+}
+
 /*! ============================================================ */
 /*!     Profile Link Styling
 /*! ============================================================ */
@@ -200,6 +257,19 @@ div.nav-button:hover {
   animation: scribbleWave 0.7s ease-in-out infinite;
 }
 
+/* Focus styles for profile link */
+.nav-profile-link:focus {
+  background-color: var(--color-accent);
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-profile-link:focus svg {
+  animation: scribbleWave 0.7s ease-in-out infinite;
+}
+
 /*! ============================================================ */
 /*!     Post Article Link Styling
 /*! ============================================================ */
@@ -235,5 +305,18 @@ div.nav-button:hover {
 }
 
 .nav-post-article-link:hover svg {
+  animation: scribbleTilt 0.5s ease-in-out infinite;
+}
+
+/* Focus styles for post article link */
+.nav-post-article-link:focus {
+  background-color: var(--color-accent);
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-post-article-link:focus svg {
   animation: scribbleTilt 0.5s ease-in-out infinite;
 }

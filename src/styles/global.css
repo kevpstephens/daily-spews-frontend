@@ -170,7 +170,9 @@ select:focus-visible,
 [tabindex]:focus-visible {
   outline: 3px solid var(--color-accent) !important;
   outline-offset: 2px !important;
-  box-shadow: 0 0 0 1px #ffffff, 0 0 8px rgba(185, 93, 40, 0.5) !important;
+  box-shadow:
+    0 0 0 1px #ffffff,
+    0 0 8px rgba(185, 93, 40, 0.5) !important;
 }
 
 /* Remove default focus styling when we're providing custom */

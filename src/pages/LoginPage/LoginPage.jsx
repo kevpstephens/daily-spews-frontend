@@ -8,13 +8,15 @@
  *============================================================ */
 
 import "./LoginPage.css";
-import { useState } from "react";
-import { loginUser } from "../../api/api";
-import { useUser } from "../../context";
-import { Link, useNavigate } from "react-router-dom";
-import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
 import { Eye, EyeClosed, LogInIcon, User, UserPlus } from "lucide-react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+import { loginUser } from "../../api/api";
+import DevLoginForm from "../../components/DevLoginForm/DevLoginForm";
+import { useUser } from "../../context";
+import logger from "../../utils/logger";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -33,7 +35,7 @@ export default function LoginPage() {
       });
       navigate(`/users/${data.user.username}`);
     } catch (err) {
-      console.error("Login failed:", err);
+      logger.error("Login failed:", err);
       toast.error("Login failed. Please check your credentials.", {
         className: "toast-message",
       });
@@ -70,12 +72,12 @@ export default function LoginPage() {
       <div className="login-page-container">
         <h2>Login to Daily Spews</h2>
 
-        <form onSubmit={handleLogin} className="login-form">
+        <form className="login-form" onSubmit={handleLogin}>
           <p>
             New to <strong>Daily Spews</strong>? Don't fret, you've come to the
             right place! Please create an account for full feature access.
           </p>
-          <Link to="/signup" className="sign-up-button">
+          <Link className="sign-up-button" to="/signup">
             Sign Up
             <UserPlus className="sign-up-button-icon" />
           </Link>
@@ -90,9 +92,9 @@ export default function LoginPage() {
               right now? Sign-in as a guest user!
             </p>
             <button
+              className="guest-login-button"
               type="button"
               onClick={handleGuestLogin}
-              className="guest-login-button"
             >
               <User className="guest-login-button-icon" />
               Try as Guest User
@@ -108,34 +110,34 @@ export default function LoginPage() {
             <strong>Email:</strong>
           </label>
           <input
-            type="email"
+            autoComplete="email"
             id="email"
             name="email"
+            type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            autoComplete="email"
             required
+            onChange={(event) => setEmail(event.target.value)}
           />
           <label htmlFor="login-page-password-input">
             <strong>Password:</strong>
           </label>
           <div className="login-page-password-input-wrapper">
             <input
+              autoComplete="current-password"
               id="login-page-password-input"
               name="password"
               type={showPassword ? "text" : "password"}
               value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete="current-password"
               required
+              onChange={(event) => setPassword(event.target.value)}
             />
 
             {/* Toggle password visibility */}
             <button
+              aria-label={showPassword ? "Hide password" : "Show password"}
               id="login-page-show-password-toggle"
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? (
                 <Eye className="login-page-eye-icon" />

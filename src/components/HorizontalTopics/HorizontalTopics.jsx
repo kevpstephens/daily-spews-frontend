@@ -4,15 +4,15 @@
  * Renders a horizontally scrollable list of topic cards with arrow navigation.
  * Handles scroll tracking, dimming animation, and async topic loading.
  *============================================================ */
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import "./HorizontalTopics.css";
-import { useRef, useState, useEffect, useCallback } from "react";
 import { getTopics } from "../../api/api";
 import useFetch from "../../hooks/useFetch";
+import ErrorMessageCard from "../ErrorMessageCard/ErrorMessageCard.jsx";
 import HorizontalTopicsCard from "../HorizontalTopicsCard/HorizontalTopicsCard.jsx";
 import LoadingScreen from "../LoadingScreen/LoadingScreen.jsx";
-import ErrorMessageCard from "../ErrorMessageCard/ErrorMessageCard.jsx";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import "./HorizontalTopics.css";
 
 export default function HorizontalTopics() {
   const { data, isLoading, error } = useFetch(getTopics); // Fetch topics from API using custom hook
@@ -80,9 +80,10 @@ export default function HorizontalTopics() {
         <div className="horizontal-topics-heading-container">
           {/* Scroll left button */}
           <button
-            onClick={scrollLeft}
-            disabled={atStart}
             aria-label="Scroll topics left"
+            disabled={atStart}
+            type="button"
+            onClick={scrollLeft}
           >
             <ArrowLeft id="horizontal-topics-arrow-left" />
           </button>
@@ -91,9 +92,10 @@ export default function HorizontalTopics() {
 
           {/* Scroll right button */}
           <button
-            onClick={scrollRight}
-            disabled={atEnd}
             aria-label="Scroll topics right"
+            disabled={atEnd}
+            type="button"
+            onClick={scrollRight}
           >
             <ArrowRight id="horizontal-topics-arrow-right" />
           </button>
@@ -102,11 +104,12 @@ export default function HorizontalTopics() {
         {isLoading && <LoadingScreen item="topics" />}
         {error && <ErrorMessageCard error={error} />}
 
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
+          ref={scrollRef}
           className={`horizontal-scroll-container${
             dimOthers ? " topics-dimmed" : ""
           }`}
-          ref={scrollRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

@@ -7,6 +7,7 @@
 
 import "./LoadingScreen.css";
 import { useEffect, useRef } from "react";
+
 import pluralToSingular from "../../utils/pluralToSingular";
 
 // Returns a context-specific loading message based on props
@@ -71,18 +72,18 @@ export default function LoadingScreen(props) {
   }, []);
 
   return (
-    <div role="status" aria-live="polite" aria-label="Loading content">
+    <div aria-label="Loading content" aria-live="polite" role="status">
       {/* Animated spewing mascot image */}
       <img
         ref={mascotRef}
-        className="spewing-mascot"
-        src="/assets/mascot/mascot-spewing-loading.png"
         alt="Daily Spews mascot spewing content"
         aria-hidden="true"
+        className="spewing-mascot"
+        src="/assets/mascot/mascot-spewing-loading.png"
       />
 
       {/* Display dynamic loading message */}
-      <p className="loading-message" aria-label={`Loading: ${message}`}>
+      <p aria-label={`Loading: ${message}`} className="loading-message">
         {message}
       </p>
 

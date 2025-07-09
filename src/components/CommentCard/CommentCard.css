@@ -11,7 +11,9 @@
   align-items: flex-start;
   box-shadow: 5px 3px 1px 1px rgba(86, 61, 154, 0.448);
   gap: 0.5rem;
-  transition: opacity 0.5s ease, filter 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease;
   word-break: break-word;
 }
 

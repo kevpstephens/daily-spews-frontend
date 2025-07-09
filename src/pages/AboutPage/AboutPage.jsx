@@ -7,9 +7,9 @@
  * Includes mascot animation that triggers a shake effect on completion.
  *============================================================ */
 
+import { ExternalLink, Github, Linkedin } from "lucide-react";
 import { useRef, useEffect } from "react";
 import "./AboutPage.css";
-import { ExternalLink, Github, Linkedin } from "lucide-react";
 
 export default function AboutPage() {
   const mascotRef = useRef(null);
@@ -35,9 +35,9 @@ export default function AboutPage() {
         <h1>A little bit about Daily Spews...</h1>
         <img
           ref={mascotRef}
+          alt="Daily Spews mascot spewing content"
           className="about-page-spewing-mascot spewing-mascot"
           src="/assets/mascot/mascot-spewing-loading.png"
-          alt="Daily Spews mascot spewing content"
         />
         <p>
           Daily Spews is a satirical news site built as part of the Northcoders
@@ -52,8 +52,8 @@ export default function AboutPage() {
           <a
             className="kevin-stephenson-link"
             href="https://www.kevin-stephenson.com"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             Kevin Stephenson
           </a>
@@ -62,24 +62,24 @@ export default function AboutPage() {
             <a
               className="github-link"
               href="https://github.com/kevpstephens"
-              target="_blank"
               rel="noopener noreferrer"
+              target="_blank"
             >
               <Github className="github-icon" />
             </a>
             <a
               className="linkedin-link"
               href="https://www.linkedin.com/in/kevin-p-stephenson/"
-              target="_blank"
               rel="noopener noreferrer"
+              target="_blank"
             >
               <Linkedin className="linkedin-icon" />
             </a>
             <a
               className="personal-website-link"
               href="https://www.kevin-stephenson.com"
-              target="_blank"
               rel="noopener noreferrer"
+              target="_blank"
             >
               <ExternalLink className="external-link-icon" />
             </a>

@@ -5,19 +5,21 @@
  * Displays logo, navigation links, and a user avatar dropdown.
  *============================================================ */
 
+import { Home, PencilLine, User, UserCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import "./NavigationBar.css";
 import { Link } from "react-router-dom";
+import "./NavigationBar.css";
+
 import { useUser } from "../../context";
 import LogoutButton from "../LogoutButton/LogoutButton";
-import { Home, PencilLine, User, UserCircle } from "lucide-react";
 
 export default function NavigationBar() {
   const { user, isUserLoading } = useUser();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const isMobile = window.innerWidth <= 600;
   const [showOverlay, setShowOverlay] = useState(false);
+  const [keyboardNavigation, setKeyboardNavigation] = useState(false);
 
   useEffect(() => {
     if (dropdownOpen) {
@@ -27,7 +29,7 @@ export default function NavigationBar() {
       const timeout = setTimeout(() => setShowOverlay(false), 300);
       return () => clearTimeout(timeout);
     }
-  }, [dropdownOpen]);
+  }, [dropdownOpen, showOverlay]);
 
   if (isUserLoading) return null;
 
@@ -36,13 +38,42 @@ export default function NavigationBar() {
     if (!isMobile) setDropdownOpen(true);
   };
   const handleAvatarLeave = () => {
-    if (!isMobile) setDropdownOpen(false);
+    if (!isMobile && !keyboardNavigation) setDropdownOpen(false);
   };
   const handleAvatarClick = () => {
     if (isMobile) setDropdownOpen((open) => !open);
   };
   const handleDropdownLinkClick = () => {
     setDropdownOpen(false);
+    setKeyboardNavigation(false);
+  };
+
+  // Enhanced keyboard handler for avatar
+  const handleAvatarKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setKeyboardNavigation(true);
+      setDropdownOpen(true);
+      // Focus first menu item after dropdown opens - increased timeout for reliability
+      setTimeout(() => {
+        const firstMenuItem = document.querySelector(".nav-profile-link");
+        if (firstMenuItem) firstMenuItem.focus();
+      }, 100);
+    } else if (e.key === "Escape") {
+      setDropdownOpen(false);
+      setKeyboardNavigation(false);
+    }
+  };
+
+  // Enhanced overlay keyboard handler
+  const handleOverlayKeyDown = (e) => {
+    if (e.key === "Escape") {
+      setDropdownOpen(false);
+      setKeyboardNavigation(false);
+      // Return focus to avatar button
+      const avatarWrapper = document.querySelector(".nav-avatar-wrapper");
+      if (avatarWrapper) avatarWrapper.focus();
+    }
   };
 
   return (
@@ -50,16 +81,16 @@ export default function NavigationBar() {
       <nav className="navigation-bar-container">
         {/* Show mobile logo if on homepage and mobile device */}
         {isMobile && (
-          <Link to="/" title="Daily Spews Home">
+          <Link title="Daily Spews Home" to="/">
             <img
+              alt="Daily Spews"
               className="mobile-header-daily-spews-logo"
               src="/assets/logo/daily-spews-logo.png"
-              alt="Daily Spews logo"
             />
           </Link>
         )}
-        <Link id="home-button" className="nav-button" to="/">
-          <Home size={28} color="white" />
+        <Link className="nav-button" id="home-button" to="/">
+          <Home color="white" size={28} />
         </Link>
         <Link className="nav-button" to="/articles">
           Articles
@@ -70,59 +101,99 @@ export default function NavigationBar() {
 
         {/* User profile section - conditional rendering */}
         {user && user.avatar_url ? (
-          <div id="user-profile-button" className="nav-button user-profile-nav">
+          <div className="nav-button user-profile-nav" id="user-profile-button">
             <div
+              aria-expanded={dropdownOpen}
+              aria-haspopup="menu"
+              aria-label={`${user.username}'s account menu`}
+              role="button"
+              tabIndex={0}
               className={`nav-avatar-wrapper${
-                dropdownOpen && !isMobile ? " open" : ""
+                dropdownOpen && (!isMobile || keyboardNavigation) ? " open" : ""
               }`}
+              onClick={handleAvatarClick}
+              onKeyDown={handleAvatarKeyDown}
               onMouseEnter={handleAvatarEnter}
               onMouseLeave={handleAvatarLeave}
-              onClick={handleAvatarClick}
             >
               <img
-                id="user-avatar"
+                alt={`${user.username}'s profile`}
                 className="nav-avatar-icon"
+                id="user-avatar"
                 src={user.avatar_url}
-                alt={`${user.username}'s profile picture`}
-                role="button"
-                aria-expanded={dropdownOpen}
-                aria-haspopup="menu"
-                aria-label={`${user.username}'s account menu`}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleAvatarClick();
-                  }
-                }}
               />
 
               {dropdownOpen && (
-                <div className="nav-avatar-dropdown" role="menu" aria-labelledby="user-avatar">
+                <div
+                  aria-labelledby="user-avatar"
+                  className="nav-avatar-dropdown"
+                  role="menu"
+                >
                   <h2 className="nav-avatar-username">@{user.username}</h2>
 
                   <div className="nav-avatar-dropdown-buttons-container">
                     <Link
-                      to={`/users/${user.username}`}
                       className="nav-profile-link"
-                      onClick={handleDropdownLinkClick}
                       role="menuitem"
+                      tabIndex={0}
+                      to={`/users/${user.username}`}
+                      onClick={handleDropdownLinkClick}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          // Let the Link handle navigation naturally
+                          handleDropdownLinkClick();
+                        } else if (e.key === "Escape") {
+                          setDropdownOpen(false);
+                          setKeyboardNavigation(false);
+                          document
+                            .querySelector(".nav-avatar-wrapper")
+                            ?.focus();
+                        }
+                      }}
                     >
                       <span>Profile</span>
                       <UserCircle size={20} />
                     </Link>
 
                     <Link
-                      to="/articles/new"
                       className="nav-post-article-link"
-                      onClick={handleDropdownLinkClick}
                       role="menuitem"
+                      tabIndex={0}
+                      to="/articles/new"
+                      onClick={handleDropdownLinkClick}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          // Let the Link handle navigation naturally
+                          handleDropdownLinkClick();
+                        } else if (e.key === "Escape") {
+                          setDropdownOpen(false);
+                          setKeyboardNavigation(false);
+                          document
+                            .querySelector(".nav-avatar-wrapper")
+                            ?.focus();
+                        }
+                      }}
                     >
                       <span>Post Article</span>
                       <PencilLine size={16} />
                     </Link>
 
-                    <LogoutButton id="nav-logout-button" redirectTo="/" />
+                    <LogoutButton
+                      id="nav-logout-button"
+                      redirectTo="/"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          // Trigger the button click for logout
+                          e.target.click();
+                        } else if (e.key === "Escape") {
+                          setDropdownOpen(false);
+                          setKeyboardNavigation(false);
+                          document
+                            .querySelector(".nav-avatar-wrapper")
+                            ?.focus();
+                        }
+                      }}
+                    />
                   </div>
                 </div>
               )}
@@ -131,21 +202,27 @@ export default function NavigationBar() {
             {showOverlay &&
               createPortal(
                 <div
+                  role="button"
+                  tabIndex={-1}
                   className={`nav-avatar-overlay${
                     dropdownOpen ? " visible" : ""
                   }`}
-                  onClick={() => setDropdownOpen(false)}
+                  onKeyDown={handleOverlayKeyDown}
+                  onClick={() => {
+                    setDropdownOpen(false);
+                    setKeyboardNavigation(false);
+                  }}
                 />,
                 document.body
               )}
           </div>
         ) : (
           <Link
-            id="user-profile-button"
             className="nav-button user-profile-nav"
+            id="user-profile-button"
             to="/login"
           >
-            <User size={28} color="white" />
+            <User color="white" size={28} />
           </Link>
         )}
       </nav>

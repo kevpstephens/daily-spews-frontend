@@ -6,12 +6,15 @@
  * If user is not logged in, displays login/signup overlay.
  *============================================================ */
 
-import "./PostCommentForm.css";
+import PropTypes from "prop-types";
 import { useState, useRef } from "react";
-import { useUser } from "../../context";
 import { Link } from "react-router-dom";
-import { postComment } from "../../api/api";
 import { toast } from "react-toastify";
+import "./PostCommentForm.css";
+
+import { postComment } from "../../api/api";
+import { useUser } from "../../context";
+import logger from "../../utils/logger";
 
 export default function PostCommentForm({ article_id, setComments }) {
   const { user } = useUser();
@@ -56,7 +59,7 @@ export default function PostCommentForm({ article_id, setComments }) {
         className: "toast-message",
       });
     } catch (err) {
-      console.error("Failed to post comment", err);
+      logger.error("Failed to post comment", err);
       toast.error(
         "Failed to post comment! Please refresh the page and try again.",
         {
@@ -73,29 +76,29 @@ export default function PostCommentForm({ article_id, setComments }) {
       <div className="comment-box-wrapper">
         {/* Textarea for entering a comment (auto-expanding) */}
         <textarea
-          id="comment"
           ref={textareaRef}
-          onInput={handleInput}
+          disabled={!user || isSubmitting}
+          id="comment"
+          rows={3}
+          style={{ overflowY: "hidden" }}
           value={comment}
-          onChange={(event) => setComment(event.target.value)}
           placeholder={
             user
               ? "Join the conversation..."
               : "Please log in to leave a comment..."
           }
-          rows={3}
           required
-          disabled={!user || isSubmitting}
-          style={{ overflowY: "hidden" }}
+          onChange={(event) => setComment(event.target.value)}
+          onInput={handleInput}
         />
 
         {/* If user is not logged in, overlay login/signup prompt */}
         {!user && (
           <div className="comment-form-overlay">
-            <Link to="/login" className="comment-form-overlay-login-button">
+            <Link className="comment-form-overlay-login-button" to="/login">
               Login
             </Link>
-            <Link to="/signup" className="comment-form-overlay-signup-button">
+            <Link className="comment-form-overlay-signup-button" to="/signup">
               Sign-Up
             </Link>
           </div>
@@ -104,12 +107,20 @@ export default function PostCommentForm({ article_id, setComments }) {
 
       {/* Submit button (disabled while submitting or logged out) */}
       <button
-        type="submit"
         className="comment-submit-button"
         disabled={!user || isSubmitting}
+        type="submit"
       >
         {isSubmitting ? "Posting..." : "Post Comment"}
       </button>
     </form>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+PostCommentForm.propTypes = {
+  article_id: PropTypes.number.isRequired,
+  setComments: PropTypes.func.isRequired,
+};

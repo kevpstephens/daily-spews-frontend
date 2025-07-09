@@ -8,9 +8,12 @@
 
 import "./VoteButton.css";
 import { ThumbsUp, ThumbsDown, Heart } from "lucide-react";
+import PropTypes from "prop-types";
 import { useState } from "react";
-import { useUser } from "../../context";
 import { toast } from "react-toastify";
+
+import { useUser } from "../../context";
+import logger from "../../utils/logger";
 
 export default function VoteButton({
   item_id,
@@ -59,7 +62,7 @@ export default function VoteButton({
     try {
       await voteFunction(item_id, inc_votes);
     } catch (error) {
-      console.error("Vote error:", error);
+      logger.error("Vote error:", error);
       // Roll back state on failure
       setVoteChange(voteChange); // rollback
       toast.error("Vote failed! Please refresh the page and try again.", {
@@ -75,13 +78,14 @@ export default function VoteButton({
     <>
       <div className={`vote-button-container ${className}`}>
         <button
+          disabled={(user?.username !== "admin" && voteChange > 0) || isLoading}
+          type="button"
           className={`upvote-button ${className} ${
             lastVote === "up" ? "pressed" : ""
           }`}
           onClick={() => handleVote(1)}
-          disabled={(user?.username !== "admin" && voteChange > 0) || isLoading}
         >
-          <ThumbsUp size={25} color="white" />
+          <ThumbsUp color="white" size={25} />
         </button>
 
         <div className="vote-info">
@@ -92,15 +96,30 @@ export default function VoteButton({
         </div>
 
         <button
+          disabled={(user?.username !== "admin" && voteChange < 0) || isLoading}
+          type="button"
           className={`downvote-button ${className} ${
             lastVote === "down" ? "pressed" : ""
           }`}
           onClick={() => handleVote(-1)}
-          disabled={(user?.username !== "admin" && voteChange < 0) || isLoading}
         >
-          <ThumbsDown size={25} color="white" />
+          <ThumbsDown color="white" size={25} />
         </button>
       </div>
     </>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+VoteButton.propTypes = {
+  item_id: PropTypes.number.isRequired,
+  initialVotes: PropTypes.number.isRequired,
+  voteFunction: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+VoteButton.defaultProps = {
+  className: "",
+};

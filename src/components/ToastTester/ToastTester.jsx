@@ -15,6 +15,7 @@ export default function ToastTester() {
     <>
       <div className="toast-tester">
         <button
+          type="button"
           onClick={() =>
             // Trigger a warning toast
             toast.warning("This is a warning toast! ⚠️", {
@@ -28,6 +29,7 @@ export default function ToastTester() {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             // Trigger a success toast
             toast.success("This is a success toast! ✅", {
@@ -41,6 +43,7 @@ export default function ToastTester() {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             // Trigger an error toast
             toast.error("This is an error toast! ❌", {
@@ -54,6 +57,7 @@ export default function ToastTester() {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             // Trigger an info toast
             toast.info("This is an info toast! ℹ️", {
@@ -67,6 +71,7 @@ export default function ToastTester() {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             // Trigger a default toast
             toast("This is a default toast! 💬", {
@@ -80,6 +85,7 @@ export default function ToastTester() {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             // Trigger a generic custom JSX toast
             toast(
@@ -99,6 +105,7 @@ export default function ToastTester() {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             // Trigger a custom JSX toast with a login failure message
             toast(

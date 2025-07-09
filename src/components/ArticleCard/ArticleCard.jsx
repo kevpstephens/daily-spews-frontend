@@ -5,16 +5,14 @@
  * image, posted date, comment count, and vote count.
  *============================================================ */
 
-import "./ArticleCard.css";
+import { Heart, MessageSquareMore } from "lucide-react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { formatDate } from "../../utils/formatDate";
-import { MessageSquareMore, Heart } from "lucide-react";
-import defaultImage from "/assets/users/default-user-image-purple.avif";
+
+import formatDate from "../../utils/formatDate";
+import "./ArticleCard.css";
 
 export default function ArticleCard({ article }) {
-  // !============================================================
-  // !     Render Article Card UI
-  // !============================================================
   return (
     <>
       <div className="article-card-container">
@@ -46,8 +44,11 @@ export default function ArticleCard({ article }) {
           <div className="article-card-image-posted-date-container">
             <Link to={`/articles/${article.article_id}`}>
               <img
-                src={article.article_img_url || defaultImage}
                 alt={`Illustration for article: ${article.title}`}
+                src={
+                  article.article_img_url ||
+                  "/assets/users/default-user-image-purple.avif"
+                }
               />
             </Link>
             <p className="article-card-posted-date">
@@ -84,3 +85,16 @@ export default function ArticleCard({ article }) {
     </>
   );
 }
+
+ArticleCard.propTypes = {
+  article: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    topic: PropTypes.string.isRequired,
+    article_id: PropTypes.number.isRequired,
+    article_img_url: PropTypes.string,
+    created_at: PropTypes.string.isRequired,
+    comment_count: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
+  }).isRequired,
+};

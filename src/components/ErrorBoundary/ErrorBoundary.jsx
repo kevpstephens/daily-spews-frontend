@@ -5,8 +5,11 @@
  * Displays a fallback UI and logs the error for debugging purposes.
  *============================================================ */
 
-import "./ErrorBoundary.css";
+import PropTypes from "prop-types";
 import React from "react";
+
+import logger from "../../utils/logger";
+import "./ErrorBoundary.css";
 
 // Error boundary class component for handling rendering errors
 class ErrorBoundary extends React.Component {
@@ -24,7 +27,7 @@ class ErrorBoundary extends React.Component {
 
   // Lifecycle method: log error details
   componentDidCatch(error, errorInfo) {
-    console.error("ErrorBoundary caught an error:", error, errorInfo);
+    logger.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
   // Render fallback UI if an error was caught
@@ -50,5 +53,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ErrorBoundary;

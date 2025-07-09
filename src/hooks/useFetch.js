@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import useLoading from "./useLoading";
+
 import useError from "./useError";
+import useLoading from "./useLoading";
 
 export default function useFetch(fetchFunction, dependencies = []) {
   const [data, setData] = useState(null);
@@ -20,6 +21,8 @@ export default function useFetch(fetchFunction, dependencies = []) {
         setError(err);
         stopLoading();
       });
+    // Dependencies are passed as parameter - internal functions are stable utilities
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
   return { data, isLoading, error };

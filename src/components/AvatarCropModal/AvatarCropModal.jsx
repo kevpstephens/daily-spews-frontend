@@ -6,8 +6,10 @@
  *============================================================ */
 
 import "./AvatarCropModal.css";
+import PropTypes from "prop-types";
 import { useState, useCallback } from "react";
 import Cropper from "react-easy-crop";
+
 import getCroppedImg from "../../utils/getCroppedImg";
 
 export default function AvatarCropModal({
@@ -40,21 +42,29 @@ export default function AvatarCropModal({
         <h3 className="crop-modal-title">{title}</h3>
 
         <Cropper
-          image={imageSrc}
+          aspect={aspectRatio} // Customisable crop aspect ratio (default: 1)
           crop={crop}
-          zoom={zoom}
-          aspect={aspectRatio} // Customizable crop aspect ratio (default: 1)
-          onCropChange={setCrop}
-          onZoomChange={setZoom}
-          onCropComplete={onCropCompleteInternal}
           cropShape={cropShape} // Shape of the crop area ("round" or "rect")
+          image={imageSrc}
+          zoom={zoom}
+          onCropChange={setCrop}
+          onCropComplete={onCropCompleteInternal}
+          onZoomChange={setZoom}
         />
 
         <div className="crop-modal-buttons">
-          <button className="crop-cancel-button" onClick={onCancel}>
+          <button
+            className="crop-cancel-button"
+            type="button"
+            onClick={onCancel}
+          >
             Cancel
           </button>
-          <button className="crop-done-button" onClick={handleDone}>
+          <button
+            className="crop-done-button"
+            type="button"
+            onClick={handleDone}
+          >
             Done
           </button>
         </div>
@@ -62,3 +72,21 @@ export default function AvatarCropModal({
     </div>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+AvatarCropModal.propTypes = {
+  imageSrc: PropTypes.string.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onCropComplete: PropTypes.func.isRequired,
+  aspectRatio: PropTypes.number,
+  cropShape: PropTypes.oneOf(["round", "rect"]),
+  title: PropTypes.string,
+};
+
+AvatarCropModal.defaultProps = {
+  aspectRatio: 1,
+  cropShape: "round",
+  title: "Crop Image",
+};

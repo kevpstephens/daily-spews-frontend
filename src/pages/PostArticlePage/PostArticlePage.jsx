@@ -6,16 +6,17 @@
  * Features form validation, file validation, and submission state management.
  * Includes image cropping modal for article thumbnails with 16:9 aspect ratio.
  *============================================================ */
-
-import "./PostArticlePage.css";
+import { UploadIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../../hooks/useFetch.js";
-import { useUser } from "../../context";
-import { postNewArticle, getTopics } from "../../api/api";
-import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
+
+import { getTopics, postNewArticle } from "../../api/api";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
-import { UploadIcon } from "lucide-react";
+import { useUser } from "../../context";
+import useFetch from "../../hooks/useFetch.js";
+import capitaliseFirstLetter from "../../utils/capitaliseFirstLetter";
+import "./PostArticlePage.css";
+import logger from "../../utils/logger.js";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
@@ -64,7 +65,7 @@ export default function PostArticlePage() {
   // Handle topics errors from useFetch
   useEffect(() => {
     if (topicsError) {
-      console.error("Failed to fetch topics", topicsError);
+      logger.error("Failed to fetch topics", topicsError);
       setMessage("Failed to load topics. Please refresh the page.");
     }
   }, [topicsError]);
@@ -75,7 +76,7 @@ export default function PostArticlePage() {
       if (previewUrl) URL.revokeObjectURL(previewUrl);
       if (imagePreview) URL.revokeObjectURL(imagePreview);
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -115,7 +116,7 @@ export default function PostArticlePage() {
       setPreviewUrl(URL.createObjectURL(croppedFile));
       setMessage("");
     } catch (err) {
-      console.error("Crop processing failed", err);
+      logger.error("Crop processing failed", err);
       setMessage("Failed to process cropped image. Please try again.");
     } finally {
       setCropModalOpen(false);
@@ -162,7 +163,7 @@ export default function PostArticlePage() {
       const res = await postNewArticle(formData);
       navigate(`/articles/${res.article_id}`);
     } catch (err) {
-      console.error("Error posting article:", err);
+      logger.error("Error posting article:", err);
       setMessage("Failed to post article! Please try again.");
       setIsSubmitting(false);
     }
@@ -181,23 +182,23 @@ export default function PostArticlePage() {
 
         <form onSubmit={handleSubmit}>
           <input
-            name="title"
-            value={form.title}
-            onChange={handleInputChange}
-            placeholder="*Article Title"
-            required
-            maxLength={200}
             disabled={isSubmitting}
+            maxLength={200}
+            name="title"
+            placeholder="*Article Title"
+            value={form.title}
+            required
+            onChange={handleInputChange}
           />
 
           {/* Topic select */}
           <select
             className="post-article-select-topic"
+            disabled={isSubmitting}
             name="topic"
             value={form.topic}
-            onChange={handleInputChange}
             required
-            disabled={isSubmitting}
+            onChange={handleInputChange}
           >
             <option value="">*Select Topic</option>
             {topicsData?.topics
@@ -211,13 +212,13 @@ export default function PostArticlePage() {
 
           {/* Article body */}
           <textarea
+            disabled={isSubmitting}
             name="body"
-            value={form.body}
-            onChange={handleInputChange}
             placeholder="*Write your article here..."
             rows={12}
+            value={form.body}
             required
-            disabled={isSubmitting}
+            onChange={handleInputChange}
           />
 
           {/* Article image upload */}
@@ -238,12 +239,12 @@ export default function PostArticlePage() {
 
           {/* Article image input */}
           <input
-            id="article_img_url"
-            type="file"
             accept="image/*"
-            onChange={handleImageChange}
-            style={{ display: "none" }}
             disabled={isSubmitting}
+            id="article_img_url"
+            style={{ display: "none" }}
+            type="file"
+            onChange={handleImageChange}
           />
 
           {/* Article image preview */}
@@ -251,13 +252,15 @@ export default function PostArticlePage() {
             <div className="image-preview">
               <p>Image Preview:</p>
               <img
-                src={previewUrl}
-                alt="Preview of selected article image"
+                alt="Preview of selected article"
                 className="post-article-image-preview"
+                src={previewUrl}
               />
 
               {/* Re-crop image button */}
               <button
+                className="recrop-button"
+                disabled={isSubmitting}
                 type="button"
                 onClick={() => {
                   // Allow re-cropping of current image
@@ -267,8 +270,6 @@ export default function PostArticlePage() {
                     setCropModalOpen(true);
                   }
                 }}
-                className="recrop-button"
-                disabled={isSubmitting}
               >
                 Re-crop Image
               </button>
@@ -278,18 +279,18 @@ export default function PostArticlePage() {
           {/* Image cropping modal */}
           {cropModalOpen && imagePreview && (
             <AvatarCropModal
-              imageSrc={imagePreview}
-              onCancel={handleCropCancel}
-              onCropComplete={handleCropComplete}
               aspectRatio={16 / 9}
               cropShape="rect"
+              imageSrc={imagePreview}
               title="Crop Article Image"
+              onCancel={handleCropCancel}
+              onCropComplete={handleCropComplete}
             />
           )}
 
           <button
-            type="submit"
             disabled={!isFormValid || isSubmitting}
+            type="submit"
             className={`submit-button ${!isFormValid ? "disabled" : ""} ${
               isSubmitting ? "submitting" : ""
             }`}

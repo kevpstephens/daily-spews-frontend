@@ -4,11 +4,9 @@
  * Site footer with copyright and navigation links.
  * Simple component with copyright year auto-update and developer link.
  *============================================================ */
+import { Link } from "react-router-dom";
 
 import "./styles/components/Footer.css";
-import { Link } from "react-router-dom";
-// Add GitHub/LinkedIn icons next to "The Dev" link
-import { Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -31,8 +29,8 @@ export default function Footer() {
         <a
           className="footer-link"
           href="https://www.kevin-stephenson.com"
-          target="_blank"
           rel="noopener noreferrer"
+          target="_blank"
         >
           The Dev
         </a>

@@ -4,16 +4,18 @@
  * Displays an individual comment with voting and delete functionality.
  * Allows the comment author or admin to delete the comment with confirmation.
  *============================================================ */
-
-import "./CommentCard.css";
+import { Trash2 } from "lucide-react";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Trash2 } from "lucide-react";
-import { useUser } from "../../context";
+
 import { deleteCommentById, patchCommentVotes } from "../../api/api";
-import { formatDate } from "../../utils/formatDate";
+import { useUser } from "../../context";
+import formatDate from "../../utils/formatDate";
+import logger from "../../utils/logger";
 import VoteButton from "../VoteButton/VoteButton";
+import "./CommentCard.css";
 
 export default function CommentCard({ comment }) {
   const [isDeleting, setIsDeleting] = useState(false); // Track comment deletion status
@@ -49,7 +51,7 @@ export default function CommentCard({ comment }) {
         className: "toast-message",
       });
     } catch (error) {
-      console.error("Failed to delete comment:", error);
+      logger.error("Failed to delete comment:", error);
       toast.error(
         "Failed to delete comment! Please refresh the page and try again.",
         {
@@ -72,7 +74,14 @@ export default function CommentCard({ comment }) {
         {showConfirm && (
           <div
             className="overlay-backdrop"
+            role="button"
+            tabIndex={0}
             onClick={() => setShowConfirm(false)} // Close confirm if user clicks outside dialog
+            onKeyDown={(e) => {
+              if (e.key === "Escape" || e.key === "Enter") {
+                setShowConfirm(false);
+              }
+            }}
           />
         )}
 
@@ -91,8 +100,8 @@ export default function CommentCard({ comment }) {
         <div className="comment-actions-container">
           <VoteButton
             className="comment-vote"
-            item_id={comment.comment_id}
             initialVotes={comment.votes}
+            item_id={comment.comment_id}
             voteFunction={patchCommentVotes}
           />
 
@@ -103,10 +112,11 @@ export default function CommentCard({ comment }) {
           {canDelete && (
             <div className="delete-button-wrapper">
               <button
-                onClick={() => setShowConfirm(true)}
+                aria-label="Delete comment"
                 className="delete-comment-button"
                 disabled={isDeleting}
-                aria-label="Delete comment"
+                type="button"
+                onClick={() => setShowConfirm(true)}
               >
                 <Trash2 className="delete-comment-icon" />
               </button>
@@ -121,18 +131,20 @@ export default function CommentCard({ comment }) {
                   <div className="confirm-delete-buttons-container">
                     {/* Confirm deletion */}
                     <button
-                      onClick={handleDelete}
                       className="confirm-delete-button"
                       disabled={isDeleting}
+                      type="button"
+                      onClick={handleDelete}
                     >
                       Confirm
                     </button>
 
                     {/* Cancel deletion */}
                     <button
-                      onClick={() => setShowConfirm(false)}
                       className="cancel-delete-button"
                       disabled={isDeleting}
+                      type="button"
+                      onClick={() => setShowConfirm(false)}
                     >
                       Cancel
                     </button>
@@ -146,3 +158,17 @@ export default function CommentCard({ comment }) {
     </>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+CommentCard.propTypes = {
+  comment: PropTypes.shape({
+    author: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    comment_id: PropTypes.number.isRequired,
+    created_at: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
+    justPosted: PropTypes.bool,
+  }).isRequired,
+};
