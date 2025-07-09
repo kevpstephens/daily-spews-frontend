@@ -8,19 +8,22 @@
  *============================================================ */
 
 import "./UserProfilePage.css";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import { uploadUserAvatar, getUserByUsername } from "../../api/api";
-import useFetch from "../../hooks/useFetch";
-import { useUser } from "../../context";
 import { UploadIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { uploadUserAvatar, getUserByUsername } from "../../api/api";
 import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import LogoutButton from "../../components/LogoutButton/LogoutButton";
 import PostNewArticleButton from "../../components/PostNewArticleButton/PostNewArticleButton";
+import { useUser } from "../../context";
+import useFetch from "../../hooks/useFetch";
+import logger from "../../utils/logger";
+
 dayjs.extend(advancedFormat);
 
 // Constraints for avatar uploads
@@ -114,10 +117,10 @@ export default function UserProfilePage() {
           {/* Editable avatar with upload overlay */}
           <div className="avatar-container">
             <img
+              key={avatarUrl} // Force re-render to reflect updated avatar
+              alt={`${profileUser.username}'s profile`}
               className="user-avatar-image"
               src={avatarUrl}
-              alt={`${profileUser.username}'s profile picture`}
-              key={avatarUrl} // Force re-render to reflect updated avatar
             />
             <>
               <label
@@ -130,9 +133,11 @@ export default function UserProfilePage() {
                 </div>
               </label>
               <input
-                id="avatar-upload"
-                type="file"
                 accept="image/*"
+                disabled={uploading}
+                id="avatar-upload"
+                style={{ display: "none" }}
+                type="file"
                 onChange={(e) => {
                   const file = e.target.files[0];
                   if (file) {
@@ -150,8 +155,6 @@ export default function UserProfilePage() {
                     setCropModalOpen(true);
                   }
                 }}
-                disabled={uploading}
-                style={{ display: "none" }}
               />
             </>
           </div>
@@ -159,8 +162,10 @@ export default function UserProfilePage() {
           {/* Avatar cropping modal */}
           {cropModalOpen && imagePreview && (
             <AvatarCropModal
+              aspectRatio={1} // Ensure avatar crop is a square
+              cropShape="round" // Display circular crop UI to match profile avatar style
               imageSrc={imagePreview}
-              // Handle cancellation from cropping modal (cleanup preview, state, etc.)
+              title="Crop Avatar"
               onCancel={() => {
                 setCropModalOpen(false);
                 // Clean up the object URL to prevent memory leaks
@@ -172,7 +177,6 @@ export default function UserProfilePage() {
                 setUploadError(null);
                 resetFileInput();
               }}
-              // Handle confirmed avatar crop and upload
               onCropComplete={async (croppedBlob) => {
                 setUploading(true);
                 setUploadError(null);
@@ -205,9 +209,9 @@ export default function UserProfilePage() {
                     avatar_url: newAvatarUrl,
                   }));
 
-                  console.log("✅ Avatar updated successfully:", newAvatarUrl);
+                  logger.info("Avatar updated successfully:", newAvatarUrl);
                 } catch (err) {
-                  console.error("Upload failed", err);
+                  logger.error("Upload failed", err);
                   setUploadError(
                     err.response?.data?.message ||
                       "Failed to upload avatar. Please try again."
@@ -224,9 +228,6 @@ export default function UserProfilePage() {
                   resetFileInput();
                 }
               }}
-              aspectRatio={1} // Ensure avatar crop is a square
-              cropShape="round" // Display circular crop UI to match profile avatar style
-              title="Crop Avatar"
             />
           )}
         </>
@@ -234,9 +235,9 @@ export default function UserProfilePage() {
         // Read-only avatar for other users' profiles
         <div className="avatar-container">
           <img
+            alt={`${profileUser.username}'s profile`}
             className="user-avatar-image"
             src={avatarUrl}
-            alt={`${profileUser.username}'s profile picture`}
           />
         </div>
       )}

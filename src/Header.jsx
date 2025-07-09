@@ -8,8 +8,9 @@
 
 import "./styles/components/Header.css";
 import { Link } from "react-router-dom";
-import NavigationBar from "./components/NavigationBar/NavigationBar";
+
 import MobileHeader from "./components/MobileHeader/MobileHeader";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 
 export default function Header() {
   // Simple responsive breakpoint detection
@@ -24,11 +25,11 @@ export default function Header() {
   return (
     <header className="header-container">
       <h1>Daily Spews</h1>
-      <Link to="/" title="Daily Spews Home">
+      <Link title="Daily Spews Home" to="/">
         <img
-          className="daily-spews-logo navigation-bar-container"
-          src="/assets/logo/daily-spews-logo.png"
           alt="Daily Spews logo"
+          className="daily-spews-logo"
+          src="/assets/logo/daily-spews-logo.png"
         />
       </Link>
       <NavigationBar />

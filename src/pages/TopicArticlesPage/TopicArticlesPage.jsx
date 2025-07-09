@@ -7,9 +7,10 @@
  *============================================================ */
 
 import "./TopicArticlesPage.css";
-import { useParams } from "react-router-dom";
-import { getArticlesByTopic, getTopics } from "../../api/api";
 import { useEffect, useRef, useCallback, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { getArticlesByTopic, getTopics } from "../../api/api";
 import ArticleCard from "../../components/ArticleCard/ArticleCard.jsx";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard.jsx";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
@@ -95,7 +96,7 @@ export default function TopicArticlesPage() {
   }
 
   if (isLoading && allArticles.length === 0) {
-    return <LoadingScreen topicItem={topic_slug} topicArticleLoad={true} />;
+    return <LoadingScreen topicArticleLoad={true} topicItem={topic_slug} />;
   }
 
   return (
@@ -112,7 +113,7 @@ export default function TopicArticlesPage() {
           // Attach observer to last article for infinite scroll trigger
           if (index === allArticles.length - 1) {
             return (
-              <div ref={lastArticleRef} key={article.article_id}>
+              <div key={article.article_id} ref={lastArticleRef}>
                 <ArticleCard article={article} />
               </div>
             );
@@ -124,7 +125,7 @@ export default function TopicArticlesPage() {
 
       {/* Loading and error states for infinite scroll */}
       {isLoading && allArticles.length > 0 && (
-        <LoadingScreen topicItem={topic_slug} topicArticleLoad={true} />
+        <LoadingScreen topicArticleLoad={true} topicItem={topic_slug} />
       )}
       {error && allArticles.length > 0 && (
         <ErrorMessageCard topicError={error} />
@@ -134,9 +135,9 @@ export default function TopicArticlesPage() {
       {hasMore && !error && (
         <div className="loading-topics-articles-container">
           <img
+            alt="Loading spinner"
             className="loading-topics-articles-spinner"
             src="/assets/mascot/mascot-spewing-loading.png"
-            alt="Loading spinner"
           />
           <p className="loading-topics-articles-text">
             Please wait while we spew out some of your lovely little articles...

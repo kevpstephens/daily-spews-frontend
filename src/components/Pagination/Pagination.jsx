@@ -5,8 +5,9 @@
  * Shows current page, total page count, and article range.
  *============================================================ */
 
-import "./Pagination.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import PropTypes from "prop-types";
+import "./Pagination.css";
 
 export default function Pagination({
   currentPage,
@@ -22,10 +23,11 @@ export default function Pagination({
     <div className="pagination-container">
       {/* Previous page button - disabled if on first page */}
       <button
-        id="previous-page-button"
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-        disabled={currentPage === 1}
         aria-label={`Go to page ${Math.max(currentPage - 1, 1)}`}
+        disabled={currentPage === 1}
+        id="previous-page-button"
+        type="button"
+        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
       >
         <ChevronLeftIcon className="pagination-icon" />
       </button>
@@ -43,13 +45,24 @@ export default function Pagination({
 
       {/* Next page button - disabled if on last page */}
       <button
-        id="next-page-button"
-        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-        disabled={currentPage === totalPages}
         aria-label={`Go to page ${Math.min(currentPage + 1, totalPages)}`}
+        disabled={currentPage === totalPages}
+        id="next-page-button"
+        type="button"
+        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
       >
         <ChevronRightIcon className="pagination-icon" />
       </button>
     </div>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+};

@@ -10,20 +10,20 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import HomePage from "./HomePage.jsx";
+import Layout from "./Layout";
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
+import AllArticlesPage from "./pages/AllArticlesPage/AllArticlesPage.jsx";
 import ErrorPageNotFound from "./pages/ErrorPageNotFound/ErrorPageNotFound.jsx";
 import FAQsPage from "./pages/FAQsPage/FAQsPage.jsx";
-import Layout from "./Layout";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import PostArticlePage from "./pages/PostArticlePage/PostArticlePage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
+import SingleArticlePage from "./pages/SingleArticlePage/SingleArticlePage.jsx";
 import TestPage from "./pages/TestPage";
+import TopicArticlesPage from "./pages/TopicArticlesPage/TopicArticlesPage.jsx";
 import TopicsPage from "./pages/TopicsPage/TopicsPage.jsx";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage.jsx";
-import HomePage from "./HomePage.jsx";
-import AllArticlesPage from "./pages/AllArticlesPage/AllArticlesPage.jsx";
-import SingleArticlePage from "./pages/SingleArticlePage/SingleArticlePage.jsx";
-import TopicArticlesPage from "./pages/TopicArticlesPage/TopicArticlesPage.jsx";
-import PostArticlePage from "./pages/PostArticlePage/PostArticlePage.jsx";
 
 // Protected route component for authenticated-only pages
 // function ProtectedRoute({ children }) {
@@ -42,18 +42,18 @@ export default function AppRouter() {
       {/* Global toast notification container */}
       <div className="toast-wrapper">
         <ToastContainer
-          position="top-right"
           autoClose={3000}
-          icon={true}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          toastClassName="daily-spews-toast"
           bodyClassName="daily-spews-toast-body"
+          hideProgressBar={false}
+          icon={true}
+          position="top-right"
+          rtl={false}
+          toastClassName="daily-spews-toast"
+          closeOnClick
+          draggable
+          newestOnTop
+          pauseOnFocusLoss
+          pauseOnHover
         />
       </div>
 
@@ -61,36 +61,36 @@ export default function AppRouter() {
       <div className="app-content">
         <Routes>
           {/* 404 Error page - outside layout to show custom error design */}
-          <Route path="*" element={<ErrorPageNotFound />} />
+          <Route element={<ErrorPageNotFound />} path="*" />
 
           {/* All main pages use shared Layout (header/footer/nav) */}
-          <Route path="/" element={<Layout />}>
+          <Route element={<Layout />} path="/">
             {/* Homepage */}
-            <Route index element={<HomePage />} />
+            <Route element={<HomePage />} index />
 
             {/* Article routes */}
-            <Route path="articles" element={<AllArticlesPage />} />
-            <Route path="articles/new" element={<PostArticlePage />} />
+            <Route element={<AllArticlesPage />} path="articles" />
+            <Route element={<PostArticlePage />} path="articles/new" />
             <Route
-              path="articles/:article_id"
               element={<SingleArticlePage />}
+              path="articles/:article_id"
             />
 
             {/* Topic routes */}
-            <Route path="topics" element={<TopicsPage />} />
-            <Route path="topics/:topic_slug" element={<TopicArticlesPage />} />
+            <Route element={<TopicsPage />} path="topics" />
+            <Route element={<TopicArticlesPage />} path="topics/:topic_slug" />
 
             {/* User routes */}
-            <Route path="users/:username" element={<UserProfilePage />} />
+            <Route element={<UserProfilePage />} path="users/:username" />
 
             {/* Utility pages */}
-            <Route path="test" element={<TestPage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="faqs" element={<FAQsPage />} />
+            <Route element={<TestPage />} path="test" />
+            <Route element={<AboutPage />} path="about" />
+            <Route element={<FAQsPage />} path="faqs" />
 
             {/* Authentication pages */}
-            <Route path="login" element={<LoginPage />} />
-            <Route path="signup" element={<SignupPage />} />
+            <Route element={<LoginPage />} path="login" />
+            <Route element={<SignupPage />} path="signup" />
           </Route>
         </Routes>
       </div>

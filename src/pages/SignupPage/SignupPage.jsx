@@ -7,16 +7,16 @@
  * image processing with crop modal. Handles both FormData and JSON payloads.
  * Redirects to user profile upon successful registration.
  *============================================================ */
-
-import "./SignupPage.css";
-import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { registerUser } from "../../api/api";
-import { useUser } from "../../context";
-import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
 import { Eye, EyeClosed, UploadIcon, UserPlus } from "lucide-react";
-import defaultImage from "/assets/users/default-user-image-purple.avif";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+
+import { registerUser } from "../../api/api";
+import AvatarCropModal from "../../components/AvatarCropModal/AvatarCropModal.jsx";
+import { useUser } from "../../context";
+import logger from "../../utils/logger";
+import "./SignupPage.css";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = [
@@ -115,7 +115,7 @@ export default function SignupPage() {
     if (passwordTouched) {
       validatePasswords();
     }
-  }, [password, confirmPassword, passwordTouched]);
+  }, [password, confirmPassword, passwordTouched]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSignup = async (event) => {
     event.preventDefault();
@@ -125,7 +125,7 @@ export default function SignupPage() {
     }
 
     if (isProcessingAvatar) {
-      console.log("❌ Avatar is still processing, please wait");
+      logger.warn("Avatar is still processing, please wait");
       return;
     }
 
@@ -186,12 +186,12 @@ export default function SignupPage() {
       }
 
       const data = await registerUser(payload, config);
-      console.log("✅ Registration successful:", data);
+      logger.info("Registration successful:", data);
       setUser(data.user);
       navigate(`/users/${data.user.username}`);
     } catch (err) {
-      console.error("❌ Signup failed:", err);
-      console.error("❌ Error details:", err.response?.data);
+      logger.error("Signup failed:", err);
+      logger.error("Error details:", err.response?.data);
 
       // More specific error messages based on error type
       let errorMessage = "Signup failed! Please try again.";
@@ -228,13 +228,13 @@ export default function SignupPage() {
       <h2>Create a New Account</h2>
 
       {/* Signup form */}
-      <form onSubmit={handleSignup} className="signup-form" noValidate>
+      <form className="signup-form" noValidate onSubmit={handleSignup}>
         <label htmlFor="username">*Username:</label>
         {usernameError && (
           <p
+            aria-live="assertive"
             className="signup-page-form-error"
             role="alert"
-            aria-live="assertive"
           >
             *{usernameError}
           </p>
@@ -242,33 +242,33 @@ export default function SignupPage() {
 
         {/* Username input */}
         <input
+          autoComplete="username"
+          disabled={isSubmitting}
           id="username"
+          maxLength={20}
+          minLength={3}
           name="username"
           value={username}
+          required
+          onBlur={validateUsername}
           onChange={(event) => {
             setUsername(event.target.value);
             validateUsername();
           }}
-          onBlur={validateUsername}
-          required
-          minLength={3}
-          maxLength={20}
-          autoComplete="username"
-          disabled={isSubmitting}
         />
 
         {/* Name input */}
         <label htmlFor="name">*Name:</label>
         <input
-          id="name"
-          name="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          required
-          minLength={2}
-          maxLength={50}
           autoComplete="name"
           disabled={isSubmitting}
+          id="name"
+          maxLength={50}
+          minLength={2}
+          name="name"
+          value={name}
+          required
+          onChange={(event) => setName(event.target.value)}
         />
 
         {/* Show upload error */}
@@ -280,13 +280,21 @@ export default function SignupPage() {
         <div className="avatar-upload-wrapper">
           <div className="avatar-preview-container">
             <img
-              src={previewUrl || defaultImage}
-              alt="Profile picture preview"
+              alt="Profile preview"
               className="avatar-preview-image"
+              src={previewUrl || "/assets/users/default-user-image-purple.avif"}
             />
             <div
               className="avatar-upload-overlay"
+              role="button"
+              tabIndex={0}
               onClick={() => document.getElementById("avatar_url").click()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  document.getElementById("avatar_url").click();
+                }
+              }}
             >
               <span>Choose Avatar</span>
               <UploadIcon size={16} />
@@ -295,10 +303,12 @@ export default function SignupPage() {
         </div>
 
         <input
+          accept="image/*"
+          disabled={isSubmitting}
           id="avatar_url"
           name="avatar_url"
+          style={{ display: "none" }}
           type="file"
-          accept="image/*"
           onChange={(event) => {
             const file = event.target.files[0];
             if (file) {
@@ -317,8 +327,6 @@ export default function SignupPage() {
               setCropModalOpen(true);
             }
           }}
-          style={{ display: "none" }}
-          disabled={isSubmitting}
         />
 
         {/* Avatar Crop Modal */}
@@ -362,7 +370,7 @@ export default function SignupPage() {
                 // Clear any previous errors
                 setUploadError(null);
               } catch (err) {
-                console.error("❌ Crop processing failed:", err);
+                logger.error("Crop processing failed:", err);
                 setUploadError(
                   "Failed to process cropped image. Please try again."
                 );
@@ -391,38 +399,38 @@ export default function SignupPage() {
         {/* Email input */}
         <label htmlFor="email">*Email:</label>
         <input
+          autoComplete="email"
+          disabled={isSubmitting}
           id="email"
           name="email"
           type="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
           required
-          autoComplete="email"
-          disabled={isSubmitting}
+          onChange={(event) => setEmail(event.target.value)}
         />
 
         {/* Password input with visibility toggle */}
         <label htmlFor="password">*Password:</label>
         <div className="signup-page-password-input-wrapper">
           <input
+            autoComplete="new-password"
+            disabled={isSubmitting}
             id="signup-page-password-input"
+            minLength={6}
             name="password"
             type={showPassword ? "text" : "password"}
             value={password}
+            required
+            onBlur={() => setPasswordTouched(true)}
             onChange={(event) => {
               setPassword(event.target.value);
             }}
-            onBlur={() => setPasswordTouched(true)}
-            required
-            minLength={6}
-            autoComplete="new-password"
-            disabled={isSubmitting}
           />
           <button
+            aria-label={showPassword ? "Hide password" : "Show password"}
             id="signup-page-show-password-toggle"
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
-            aria-label={showPassword ? "Hide password" : "Show password"}
           >
             {showPassword ? (
               <Eye className="signup-page-eye-icon" />
@@ -436,28 +444,28 @@ export default function SignupPage() {
         <label htmlFor="confirmPassword">*Confirm Password:</label>
         <div className="signup-page-password-input-wrapper">
           <input
+            autoComplete="new-password"
+            disabled={isSubmitting}
             id="signup-page-confirm-password-input"
+            minLength={6}
             name="password"
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
+            required
+            onBlur={() => setPasswordTouched(true)}
             onChange={(event) => {
               setConfirmPassword(event.target.value);
             }}
-            onBlur={() => setPasswordTouched(true)}
-            required
-            minLength={6}
-            autoComplete="new-password"
-            disabled={isSubmitting}
           />
           <button
             id="signup-page-show-confirm-password-toggle"
             type="button"
-            onClick={() => setShowConfirmPassword((prev) => !prev)}
             aria-label={
               showConfirmPassword
                 ? "Hide confirm password"
                 : "Show confirm password"
             }
+            onClick={() => setShowConfirmPassword((prev) => !prev)}
           >
             {showConfirmPassword ? (
               <Eye className="signup-page-eye-icon" />
@@ -469,23 +477,23 @@ export default function SignupPage() {
 
         {passwordError && passwordTouched && (
           <p
+            aria-live="assertive"
             className="signup-page-form-error"
             role="alert"
-            aria-live="assertive"
           >
             *{passwordError}
           </p>
         )}
 
         <button
-          type="submit"
           disabled={isSubmitting || !isFormValid || isProcessingAvatar}
+          type="submit"
         >
           {isSubmitting
             ? "Signing up..."
             : isProcessingAvatar
-            ? "Processing avatar..."
-            : "Sign Up"}
+              ? "Processing avatar..."
+              : "Sign Up"}
           <UserPlus className="sign-up-button-icon" />
         </button>
       </form>

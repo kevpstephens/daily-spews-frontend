@@ -7,11 +7,15 @@
  * Phase 2: Background session validation for security
  *============================================================ */
 
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
-import { getUserByUsername, getCurrentUser, logoutUser } from "../api/api";
 
-export const UserProvider = ({ children }) => {
+import { getUserByUsername, getCurrentUser, logoutUser } from "../api/api";
+import logger from "../utils/logger";
+
+import UserContext from "./UserContext";
+
+export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
   const [hasInitialised, setHasInitialised] = useState(false); // Tracks if initial authentication flow has completed
@@ -24,7 +28,7 @@ export const UserProvider = ({ children }) => {
       localStorage.removeItem(test);
       return true;
     } catch (e) {
-      console.error("❌ localStorage not available:", e);
+      logger.error("localStorage not available:", e);
       return false;
     }
   };
@@ -61,7 +65,7 @@ export const UserProvider = ({ children }) => {
           setUser(quickUser);
           setIsUserLoading(false); // Stop loading immediately for nav responsiveness
         } catch (quickErr) {
-          console.error(quickErr);
+          logger.error(quickErr);
           setIsUserLoading(false); // Still stop loading even if localStorage fails
         }
       } else {
@@ -78,13 +82,12 @@ export const UserProvider = ({ children }) => {
           localStorage.setItem("ds-username", data.user.username);
         }
       } catch (err) {
-        console.error(err);
+        logger.error(err);
         // If we don't have a user from Phase 1, try localStorage as fallback
         if (!user && savedUsername && isLocalStorageAvailable()) {
           try {
-            const { user: fallbackUser } = await getUserByUsername(
-              savedUsername
-            );
+            const { user: fallbackUser } =
+              await getUserByUsername(savedUsername);
             setUser(fallbackUser);
           } catch (fallbackErr) {
             // If user doesn't exist anymore, clear localStorage
@@ -104,7 +107,8 @@ export const UserProvider = ({ children }) => {
     };
 
     fetchUser();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty dependency array is intentional - this should only run once on mount
 
   // Sync user state to localStorage after initialisation
   useEffect(() => {
@@ -125,7 +129,7 @@ export const UserProvider = ({ children }) => {
     try {
       await logoutUser();
     } catch (err) {
-      console.error("❌ Server logout failed:", err);
+      logger.error("Server logout failed:", err);
     } finally {
       setUser(null);
       if (isLocalStorageAvailable()) {
@@ -139,4 +143,11 @@ export const UserProvider = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
+}
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+UserProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

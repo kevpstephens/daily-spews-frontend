@@ -6,20 +6,25 @@
  *============================================================ */
 
 import "./LogoutButton.css";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../../context";
-import { toast } from "react-toastify";
 import { LogOutIcon } from "lucide-react";
-import { logoutUser } from "../../api/api";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-export default function LogoutButton({ redirectTo = "/", id }) {
+import { logoutUser } from "../../api/api";
+import { useUser } from "../../context";
+import logger from "../../utils/logger";
+
+export default function LogoutButton({ redirectTo = "/", id, onKeyDown }) {
   const { setUser } = useUser();
   const navigate = useNavigate();
 
   return (
     <button
-      id={id}
       className="logout-button"
+      id={id}
+      type="button"
+      onKeyDown={onKeyDown}
       onClick={async () => {
         try {
           await logoutUser();
@@ -33,7 +38,7 @@ export default function LogoutButton({ redirectTo = "/", id }) {
           toast.error("Logout failed! Please refresh the page and try again.", {
             className: "toast-message",
           });
-          console.error(err);
+          logger.error("Logout failed:", err);
         }
       }}
     >
@@ -44,3 +49,18 @@ export default function LogoutButton({ redirectTo = "/", id }) {
     </button>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+LogoutButton.propTypes = {
+  redirectTo: PropTypes.string,
+  id: PropTypes.string,
+  onKeyDown: PropTypes.func,
+};
+
+LogoutButton.defaultProps = {
+  redirectTo: "/",
+  id: undefined,
+  onKeyDown: undefined,
+};

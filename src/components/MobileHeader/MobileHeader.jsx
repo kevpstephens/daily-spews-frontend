@@ -7,8 +7,9 @@
  *============================================================ */
 
 import "./MobileHeader.css";
-import { useLocation } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
+
 import NavigationBar from "../NavigationBar/NavigationBar.jsx";
 
 export default function MobileHeader() {
@@ -63,11 +64,11 @@ export default function MobileHeader() {
           <h1 className="mobile-daily-spews-heading">Daily Spews</h1>
 
           <img
+            alt="Daily Spews logo"
+            src="/assets/logo/daily-spews-logo.png"
             className={`mobile-daily-spews-logo ${
               !isFirstVisit ? "skip-animation" : ""
             }`}
-            src="/assets/logo/daily-spews-logo.png"
-            alt="Daily Spews logo"
           />
 
           <p

@@ -10,13 +10,14 @@
 import "./AllArticlesPage.css";
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+
 import { getArticles } from "../../api/api.js";
-import useFetch from "../../hooks/useFetch.js";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import ErrorMessageCard from "../../components/ErrorMessageCard/ErrorMessageCard";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import Pagination from "../../components/Pagination/Pagination";
 import SortAndTopicBar from "../../components/SortAndTopicBar/SortAndTopicBar";
+import useFetch from "../../hooks/useFetch.js";
 
 export default function AllArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -89,9 +90,9 @@ export default function AllArticlesPage() {
 
         <Pagination
           currentPage={currentPage}
+          limit={limit}
           setCurrentPage={handlePageChange}
           totalCount={totalCount}
-          limit={limit}
         />
       </main>
     </>

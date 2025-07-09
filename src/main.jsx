@@ -8,12 +8,13 @@
 
 import "normalize.css";
 import "./styles/global.css";
-import AppRouter from "./Router.jsx";
-import { BrowserRouter } from "react-router-dom";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
-import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { UserProvider } from "./context";
+import AppRouter from "./Router.jsx";
 
 const isDev = import.meta.env.DEV; // Development environment check
 

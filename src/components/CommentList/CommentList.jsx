@@ -7,8 +7,10 @@
  *============================================================ */
 
 import "./CommentList.css";
+import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 import CommentCard from "../CommentCard/CommentCard";
 import NoCommentsScreen from "../NoCommentsScreen/NoCommentsScreen";
 
@@ -31,7 +33,7 @@ export default function CommentList({ comments, isFetching }) {
   return (
     <>
       {/* Comments section */}
-      <section id="comments" className="comment-list-container">
+      <section className="comment-list-container" id="comments">
         <h2>Comments:</h2>
 
         {/* Show placeholder when no comments are available */}
@@ -51,9 +53,9 @@ export default function CommentList({ comments, isFetching }) {
         {isFetching && (
           <div className="loading-comments-container">
             <img
+              alt="Loading spinner"
               className="loading-comments-spinner"
               src="/src/assets/logo/daily-spews-alt-logo-cropped.png"
-              alt="Loading spinner"
             />
             <p className="loading-comments-text">
               Please wait while we spew out some of your lovely comments...
@@ -64,3 +66,21 @@ export default function CommentList({ comments, isFetching }) {
     </>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+CommentList.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      comment_id: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      created_at: PropTypes.string.isRequired,
+      votes: PropTypes.number.isRequired,
+      username: PropTypes.string,
+      justPosted: PropTypes.bool,
+    })
+  ).isRequired,
+  isFetching: PropTypes.bool.isRequired,
+};

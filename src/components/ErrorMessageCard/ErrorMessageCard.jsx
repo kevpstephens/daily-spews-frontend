@@ -5,6 +5,7 @@
  * Supports specific error types (article, topic, profile).
  *============================================================ */
 
+import PropTypes from "prop-types";
 import "./ErrorMessageCard.css";
 
 // Predefined error titles and messages for different error types
@@ -55,3 +56,20 @@ export default function ErrorMessageCard({
     </>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+ErrorMessageCard.propTypes = {
+  error: PropTypes.string,
+  articleError: PropTypes.bool,
+  topicError: PropTypes.bool,
+  profileError: PropTypes.bool,
+};
+
+ErrorMessageCard.defaultProps = {
+  error: null,
+  articleError: false,
+  topicError: false,
+  profileError: false,
+};

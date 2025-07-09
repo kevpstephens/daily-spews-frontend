@@ -6,11 +6,12 @@
  * and conditional dev console for desktop development.
  *============================================================ */
 
-import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
+
 import DevConsole from "./components/DevConsole/DevConsole.jsx";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const isDev = import.meta.env.DEV; // Check if running in development mode
 
@@ -33,7 +34,7 @@ export default function Layout() {
   return (
     <div className="layout-container">
       {/* Skip navigation for keyboard users */}
-      <a href="#main-content" className="skip-navigation">
+      <a className="skip-navigation" href="#main-content">
         Skip to main content
       </a>
 
@@ -41,7 +42,7 @@ export default function Layout() {
       <Header />
 
       {/* Main content area - React Router renders page components here */}
-      <main id="main-content" className="layout-main">
+      <main className="layout-main" id="main-content">
         <Outlet />
       </main>
 

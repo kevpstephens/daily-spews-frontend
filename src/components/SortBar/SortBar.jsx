@@ -76,10 +76,10 @@ export default function SortBar() {
     <>
       <div className="sort-bar-container">
         <select
-          className="sort-bar"
-          onChange={handleSortChange}
-          value={getSelectedSortValue()}
           aria-label="Sort articles by"
+          className="sort-bar"
+          value={getSelectedSortValue()}
+          onChange={handleSortChange}
         >
           <option value="">{isMobile ? "Sort by" : "--Sort by--"}</option>
           {SORT_OPTIONS.map((option) => (
@@ -90,10 +90,10 @@ export default function SortBar() {
         </select>
 
         <select
-          className="sort-bar"
-          onChange={handleOrderChange}
-          value={order || ""}
           aria-label="Sort order"
+          className="sort-bar"
+          value={order || ""}
+          onChange={handleOrderChange}
         >
           <option value="">{isMobile ? "Order" : "--Order--"}</option>
           {ORDER_OPTIONS.map((option) => (

@@ -212,7 +212,9 @@
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid #0d0024;
-  animation: typeLine1 1.5s steps(30, end) forwards, blinkCaret 0.4s step-end 1; /* Only blink 2 times, then stop */
+  animation:
+    typeLine1 1.5s steps(30, end) forwards,
+    blinkCaret 0.4s step-end 1; /* Only blink 2 times, then stop */
   animation-delay: 0s, 0s;
   width: 0;
 }
@@ -247,7 +249,9 @@
   overflow: hidden;
   white-space: nowrap;
 
-  animation: typeLine2 1.5s steps(20, end) forwards, blinkCaret2 0.4s step-end 1; /* Blink during pause, then stop */
+  animation:
+    typeLine2 1.5s steps(20, end) forwards,
+    blinkCaret2 0.4s step-end 1; /* Blink during pause, then stop */
   animation-delay: 1.55s, 1.55s;
   width: 0;
   margin-top: 0.2rem;
@@ -288,7 +292,8 @@
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid transparent;
-  animation: typeLine3 1.5s steps(6, end) forwards,
+  animation:
+    typeLine3 1.5s steps(6, end) forwards,
     blinkCaret3 0.8s step-end infinite; /* Blink briefly after "spews", then stop */
   animation-delay: 4s, 4.5s; /* Start blinking after typing finishes */
   width: 0;

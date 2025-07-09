@@ -5,10 +5,12 @@
  * and includes a reset button to clear filters and sort order.
  *============================================================ */
 
+import { ListRestart } from "lucide-react";
+import PropTypes from "prop-types";
 import "./SortAndTopicBar.css";
+
 import SortBar from "../SortBar/SortBar";
 import TopicFilterBar from "../TopicFilterBar/TopicFilterBar";
-import { ListRestart } from "lucide-react";
 
 export default function SortAndTopicBar({ handleReset }) {
   return (
@@ -23,9 +25,10 @@ export default function SortAndTopicBar({ handleReset }) {
 
         {/* Button to reset sorting and filtering */}
         <button
-          className="sort-and-topic-bar-reset-button"
-          onClick={handleReset}
           aria-label="Reset all filters and sorting"
+          className="sort-and-topic-bar-reset-button"
+          type="button"
+          onClick={handleReset}
         >
           <ListRestart className="reset-button-icon" />
         </button>
@@ -33,3 +36,10 @@ export default function SortAndTopicBar({ handleReset }) {
     </>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+SortAndTopicBar.propTypes = {
+  handleReset: PropTypes.func.isRequired,
+};

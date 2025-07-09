@@ -5,8 +5,9 @@
  * Displays the number of existing comments and scrolls to the article's post-comment-form on click.
  *============================================================ */
 
-import "./CommentButton.css";
 import { MessageSquareMore } from "lucide-react";
+import PropTypes from "prop-types";
+import "./CommentButton.css";
 
 export default function CommentButton({
   commentCount,
@@ -22,7 +23,7 @@ export default function CommentButton({
 
   // Render button with icon and comment count
   return (
-    <button id="comment-button" onClick={handleClick}>
+    <button id="comment-button" type="button" onClick={handleClick}>
       {/* Comment icon */}
       <MessageSquareMore className="comment-button-icon" size={25} />
 
@@ -31,3 +32,15 @@ export default function CommentButton({
     </button>
   );
 }
+
+//! ===================================================== */
+//! Prop types
+//! ===================================================== */
+CommentButton.propTypes = {
+  commentCount: PropTypes.number.isRequired,
+  scrollTargetId: PropTypes.string,
+};
+
+CommentButton.defaultProps = {
+  scrollTargetId: "post-comment-form",
+};
