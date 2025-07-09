@@ -351,9 +351,8 @@ div.nav-button:hover {
 .nav-post-article-link:focus svg {
   animation: scribbleTilt 0.5s ease-in-out infinite;
 }
-
 /*! ============================================================ */
-/*!     Responsive Design Improvements
+/*!     Media Queries
 /*! ============================================================ */
 
 /* Better responsive navigation for small screens */
@@ -386,39 +385,5 @@ div.nav-button:hover {
     width: 100%;
     min-width: 8rem;
     font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .navigation-bar-container {
-    gap: 1rem;
-  }
-
-  .nav-button {
-    padding: 0.4rem 0.9rem;
-    font-size: 0.85rem;
-  }
-
-  .nav-avatar-dropdown {
-    gap: 0.25rem;
-    padding: 0.5rem;
-  }
-
-  .nav-profile-link,
-  .nav-post-article-link {
-    font-size: 1rem;
-    padding: 0.4rem;
-    height: 2.25rem !important;
-  }
-}
-
-/* Improved desktop hover effects */
-@media (min-width: 601px) {
-  .nav-avatar-dropdown {
-    /* Desktop positioning: above the avatar */
-    top: -190%;
-    left: auto;
-    right: auto;
-    transform: none;
   }
 }

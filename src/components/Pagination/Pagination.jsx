@@ -38,7 +38,7 @@ export default function Pagination({
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
         </span>
         <p className="pagination-info">
-          Showing articles <strong>{start}</strong>–<strong>{end}</strong> of{" "}
+          Articles <strong>{start}</strong>–<strong>{end}</strong> of{" "}
           <strong>{totalCount}</strong>
         </p>
       </div>
