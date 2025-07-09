@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>
-      Daily Spews - Satirical News Platform | React Portfolio Project
-    </title>
-    <meta
-      name="title"
-      content="Daily Spews - Satirical News Platform | React Portfolio Project"
-    />
+    <title>Daily Spews - Satirical News Platform</title>
+    <meta name="title" content="Daily Spews - Satirical News Platform" />
     <meta
       name="description"
-      content="Modern React 19 satirical news platform with Reddit-style functionality. Features optimistic UI, infinite scroll, image cropping, and JWT auth. Portfolio project showcasing contemporary web development."
+      content="Daily Spews brings you satirical news stories, community discussions, and voting on headlines - no matter how absurd. Dive into topics that matter, laugh at what doesn't, and most importantly, connect with your fellow spewers from around the world."
     />
     <meta
       name="keywords"
-      content="React 19, Vite, satirical news, portfolio, web development, JavaScript, full-stack"
+      content="satirical news, fake news parody, comedy news, news satire, community discussion, voting platform, social news"
     />
-    <meta name="author" content="Your Name" />
+    <meta name="author" content="Kevin Stephenson" />
+
+    <!-- Author Links -->
+    <link rel="author" href="https://github.com/kevpstephens" />
+    <link rel="me" href="https://www.kevin-stephenson.com/" />
+
+    <!-- Creator/Developer Attribution -->
+    <meta name="creator" content="Kevin Stephenson" />
+    <meta name="developer" content="Kevin Stephenson" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -32,7 +35,7 @@
     />
     <meta
       property="og:image"
-      content="https://daily-spews.onrender.com/assets/logo/daily-spews-logo.png"
+      content="https://daily-spews.onrender.com/assets/logo/og-daily-spews-logo.png"
     />
 
     <!-- Twitter -->
@@ -48,7 +51,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://daily-spews.onrender.com/assets/logo/daily-spews-logo.png"
+      content="https://daily-spews.onrender.com/assets/logo/og-daily-spews-logo.png"
     />
 
     <!-- Favicon -->
@@ -65,6 +68,64 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://daily-spews.onrender.com/" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Daily Spews",
+        "description": "Satirical news platform where users share stories, vote on content, and discuss the day's most ridiculous headlines.",
+        "url": "https://daily-spews.onrender.com",
+        "author": {
+          "@type": "Person",
+          "name": "Kevin Stephenson",
+          "url": "https://www.kevin-stephenson.com/",
+          "sameAs": [
+            "https://github.com/kevpstephens",
+            "https://www.kevin-stephenson.com",
+            "https://www.linkedin.com/in/kevin-p-stephenson"
+          ]
+        },
+        "potentialAction": [
+          {
+            "@type": "ReadAction",
+            "target": "https://daily-spews.onrender.com/articles",
+            "object": "Article"
+          },
+          {
+            "@type": "ViewAction",
+            "target": "https://daily-spews.onrender.com/topics",
+            "object": "WebPage"
+          },
+          {
+            "@type": "CommentAction",
+            "target": "https://daily-spews.onrender.com/articles/{article_id}",
+            "object": "Article"
+          },
+          {
+            "@type": "LikeAction",
+            "target": "https://daily-spews.onrender.com/articles/{article_id}",
+            "object": "Article"
+          },
+          {
+            "@type": "CreateAction",
+            "target": "https://daily-spews.onrender.com/articles/new",
+            "object": "Article"
+          },
+          {
+            "@type": "ViewAction",
+            "target": "https://daily-spews.onrender.com/users/{username}",
+            "object": "ProfilePage"
+          },
+          {
+            "@type": "RegisterAction",
+            "target": "https://daily-spews.onrender.com/signup",
+            "object": "WebSite"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
