@@ -25,13 +25,19 @@
 &nbsp;
 [![ESLint](https://img.shields.io/badge/ESLint-9.25.0-4B32C3?logo=eslint&logoColor=white)](https://eslint.org/)
 &nbsp;
-[![Last Commit](https://img.shields.io/github/last-commit/kevpstephens/daily-spews-frontend)](https://github.com/kevpstephens/daily-spews-frontend/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/kevpstephens/daily-spews-frontend?color=8B5CF6)](https://github.com/kevpstephens/daily-spews-frontend/commits/main)
+&nbsp;
+[![Deployment Status](https://img.shields.io/badge/Deployment-Live_on_Render-F97316?logo=render&logoColor=white)](https://daily-spews.onrender.com)
+&nbsp;
+[![Accessibility](https://img.shields.io/badge/Accessibility-WCAG_2.1_AA-10B981?logo=accessibility&logoColor=white)](https://www.w3.org/WAI/WCAG21/quickref/)
+&nbsp;
+[![Code Quality](https://img.shields.io/badge/Code_Quality-Airbnb_ESLint-7C3AED?logo=eslint&logoColor=white)](https://github.com/airbnb/javascript)
 
 </div>
 
-> - **Daily Spews** is a full-stack, Reddit-style satirical news platform built using **React**, **Vite**, and a custom **Node.js / PostgreSQL** backend.
-> - Users can browse, post, vote, and comment on articles in real time, with full authentication, avatar uploads, responsive design, and mobile-first performance.
-> - Built as part of the **Northcoders Software Engineering Bootcamp**, the project showcases a professional-grade frontend architecture, clean UI/UX, and full API integration.
+> - **Production-ready React 19 frontend** for Daily Spews - a full-stack satirical news platform showcasing modern web development practices and professional-grade architecture.
+> - **Performance-optimised** with optimistic UI updates, infinite scroll, image processing, and comprehensive accessibility compliance.
+> - **Built as a portfolio showcase** for the Northcoders Software Engineering Bootcamp, demonstrating advanced React patterns, testing strategies, and production deployment practices.
 
 <br>
 <p align="center">
@@ -39,14 +45,16 @@
 </p>
 <br>
 
-A modern, responsive React frontend for Daily Spews - a satirical news application built as part of the Northcoders Software Development Bootcamp. <br>
+A **production-ready**, responsive React frontend for Daily Spews - a satirical news application that demonstrates professional web development practices and modern React architecture. <br>
 
-- Built with **React 19**, **Vite**, and **React Router** for a fast, modern user experience
-- Features a clean, intuitive interface for browsing articles, topics, and user profiles
-- Includes user authentication, article voting, commenting, and avatar management
-- Responsive design that works seamlessly on desktop and mobile devices
-- Real-time toast notifications and comprehensive error handling
-- Connects to the Daily Spews API backend for data management
+✨ **What makes this special:**
+
+- **Latest React 19** features with optimised rendering and modern hooks
+- **Production-grade architecture** with comprehensive error handling and logging
+- **Full accessibility compliance** with keyboard navigation and ARIA support
+- **Mobile-first responsive design** that works flawlessly across all devices
+- **Optimistic UI updates** for seamless user experience
+- **Professional code quality** with ESLint (Airbnb standards), Prettier, and comprehensive testing
 
 <br>
 
@@ -56,11 +64,43 @@ A modern, responsive React frontend for Daily Spews - a satirical news applicati
 
 ## <br><br>
 
-## 🚀 Guest Login (Test User)
+## 🎯 Try It Now - Guest Login
 
-To make it easy for anyone to explore the full functionality of Daily Spews, you can log in instantly as a test user by clicking the **"Try as Test User"** button on the login page. No sign-up required!
+**Want to explore all features without signing up?**
+
+Just visit the [live site](https://daily-spews.onrender.com) and click **"Try as Test User"** on the login page for instant access!
+
+✅ **Full functionality available:**
+
+- Post and vote on articles
+- Leave comments and engage with the community
+- Upload and crop your avatar
+- Browse all topics and articles
+- Experience the complete user journey
 
 ## <br><br>
+
+<!--
+## 📸 Screenshots
+
+<div align="center">
+
+### 🏠 Homepage - Article Discovery
+
+![Homepage](path/to/homepage-screenshot.png)
+_Responsive article browsing with topic navigation and infinite scroll_
+
+### 💬 Comments - Interactive Discussion
+
+![Comments](path/to/comments-screenshot.png)
+_Real-time commenting with voting and threaded discussions_
+
+### 📱 Mobile Experience
+
+![Mobile](path/to/mobile-screenshot.png)
+_Touch-optimised mobile interface with gesture support_
+
+</div> -->
 
 # Index:
 
@@ -111,8 +151,8 @@ To make it easy for anyone to explore the full functionality of Daily Spews, you
 
 | 🛠️ **Technology**   | 🔍 **Purpose**      | 📋 **Key Features**                        |
 | ------------------- | ------------------- | ------------------------------------------ |
-| **React 19**        | Frontend Framework  | Latest React features, optimized rendering |
-| **Vite**            | Build Tool          | Fast HMR, optimized production builds      |
+| **React 19**        | Frontend Framework  | Latest React features, optimised rendering |
+| **Vite**            | Build Tool          | Fast HMR, optimised production builds      |
 | **React Router 7**  | Client-side Routing | Nested layouts, protected routes           |
 | **Axios**           | HTTP Client         | Interceptors, request/response handling    |
 | **React Toastify**  | Notifications       | User feedback, error handling              |
@@ -147,7 +187,7 @@ npm run preview      # Preview production build
 
 ```
 src/
-├── api/                 # Centralized API client with Axios
+├── api/                 # Centralised API client with Axios
 ├── components/          # Reusable UI components
 │   ├── ArticleCard/     # Article preview cards
 │   ├── CommentList/     # Infinite scroll comments
@@ -166,7 +206,7 @@ src/
 - **State Management**: Context API for user authentication, local state for components
 - **Data Fetching**: Custom `useFetch` hook with loading/error states
 - **Authentication**: JWT cookies with localStorage persistence and automatic session validation
-- **Image Handling**: File validation, cropping, and optimized uploads
+- **Image Handling**: File validation, cropping, and optimised uploads
 - **Mobile Optimization**: Intersection Observer for infinite scroll, responsive breakpoints
 - **Error Handling**: Error boundaries with graceful fallbacks and user-friendly messages
 
@@ -186,7 +226,7 @@ src/
 - **🔍 Search Functionality** - Full-text search across articles and comments
 - **📱 Progressive Web App** - Offline functionality and installable experience
 - **🔔 Real-time Notifications** - WebSocket integration for live updates
-- **📊 User Analytics** - Engagement metrics and personalized recommendations
+- **📊 User Analytics** - Engagement metrics and personalised recommendations
 - **🛡️ Content Moderation** - Automated filtering and admin tools
 
 <br>
