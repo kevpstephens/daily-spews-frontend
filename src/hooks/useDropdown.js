@@ -1,10 +1,25 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
-export default function useDropdown() {
+export default function useDropdown(options = {}) {
+  const { showOverlay = false } = options;
   const [isOpen, setIsOpen] = useState(false);
   const [keyboardNavigation, setKeyboardNavigation] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(false);
   const dropdownRef = useRef(null);
   const triggerRef = useRef(null);
+
+  // Manage overlay visibility when showOverlay option is enabled
+  useEffect(() => {
+    if (showOverlay) {
+      if (isOpen) {
+        setOverlayVisible(true);
+      } else if (overlayVisible) {
+        // Wait for fade-out before unmounting
+        const timeout = setTimeout(() => setOverlayVisible(false), 300);
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, [isOpen, overlayVisible, showOverlay]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -62,6 +77,21 @@ export default function useDropdown() {
     setIsOpen(true);
   }, []);
 
+  // Handle overlay click/keyboard interactions
+  const handleOverlayInteraction = useCallback(() => {
+    setIsOpen(false);
+    setKeyboardNavigation(false);
+  }, []);
+
+  const handleOverlayKeyDown = useCallback((e) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      setKeyboardNavigation(false);
+      // Return focus to trigger element
+      triggerRef.current?.focus();
+    }
+  }, []);
+
   return {
     isOpen,
     keyboardNavigation,
@@ -71,5 +101,9 @@ export default function useDropdown() {
     close,
     toggle,
     handleKeyboardOpen,
+    // Overlay-related returns
+    overlayVisible,
+    handleOverlayInteraction,
+    handleOverlayKeyDown,
   };
 }

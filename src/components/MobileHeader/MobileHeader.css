@@ -150,8 +150,7 @@
   }
 
   .nav-avatar-dropdown h2 {
-    font-size: 1.35rem;
-    margin-top: 0.3rem;
+    font-size: var(--font-size-2xl) !important;
     margin-right: 3.5rem;
     margin-bottom: 0;
     position: relative;
@@ -177,32 +176,17 @@
   /* Make all dropdown buttons the same size */
   .nav-avatar-dropdown-buttons-container a,
   .nav-avatar-dropdown-buttons-container button {
-    width: rem !important;
+    width: 9rem !important;
     height: 3rem !important;
-    font-size: var(--font-size-form) !important;
+    font-size: var(--font-size-xl) !important;
+    font-weight: bold !important;
+    min-width: 9rem !important;
+    max-width: 9rem !important;
     box-sizing: border-box !important;
   }
 
   #nav-logout-button {
-    width: 11rem !important;
-    position: relative !important;
     margin-bottom: 0.25rem !important;
-    font-size: var(--font-size-form) !important;
-    height: 3rem !important;
-    min-width: 11rem !important;
-    max-width: 11rem !important;
-  }
-
-  .nav-profile-link {
-    width: 11rem !important;
-    min-width: 11rem !important;
-    max-width: 11rem !important;
-  }
-
-  .nav-post-article-link {
-    width: 11rem !important;
-    min-width: 11rem !important;
-    max-width: 11rem !important;
   }
 
   .mobile-header-navigation-container .nav-post-article-link:hover svg {

@@ -6,6 +6,7 @@
  *============================================================ */
 
 import { Home, PencilLine, User, UserCircle } from "lucide-react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 
@@ -26,7 +27,10 @@ export default function NavigationBar() {
     close,
     toggle,
     handleKeyboardOpen,
-  } = useDropdown();
+    overlayVisible,
+    handleOverlayInteraction,
+    handleOverlayKeyDown,
+  } = useDropdown({ showOverlay: true });
 
   if (isUserLoading) return null;
 
@@ -170,6 +174,19 @@ export default function NavigationBar() {
           </Link>
         )}
       </nav>
+
+      {/* Overlay rendered via portal for mobile */}
+      {overlayVisible &&
+        createPortal(
+          <div
+            role="button"
+            tabIndex={-1}
+            className={`nav-avatar-overlay${dropdownOpen ? " visible" : ""}`}
+            onKeyDown={handleOverlayKeyDown}
+            onClick={handleOverlayInteraction}
+          />,
+          document.body
+        )}
     </>
   );
 }

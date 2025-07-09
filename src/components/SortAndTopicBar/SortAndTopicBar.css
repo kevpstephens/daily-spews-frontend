@@ -68,6 +68,8 @@
 
   .sort-and-topic-bar-container select {
     padding: 0.25rem 0.5rem !important;
+    font-weight: 300 !important;
+    font-size: var(--font-size-xs) !important;
   }
 
   .sort-and-topic-bar-reset-button {
