@@ -35,9 +35,9 @@
 
 </div>
 
-> - **Production-ready React 19 frontend** for Daily Spews - a full-stack satirical news platform showcasing modern web development practices and professional-grade architecture.
-> - **Performance-optimised** with optimistic UI updates, infinite scroll, image processing, and comprehensive accessibility compliance.
-> - **Built as a portfolio showcase** for the Northcoders Software Engineering Bootcamp, demonstrating advanced React patterns, testing strategies, and production deployment practices.
+> - **Modern React 19 frontend** for Daily Spews - a full-stack satirical news platform showcasing contemporary web development practices and clean architecture.
+> - **Performance-focused** with optimistic UI updates, infinite scroll, image processing, and accessibility features.
+> - **Built as a portfolio showcase** for the Northcoders Software Engineering Bootcamp, demonstrating React patterns, modern development best practices, and deployment workflows.
 
 <br>
 <p align="center">
@@ -45,16 +45,16 @@
 </p>
 <br>
 
-A **production-ready**, responsive React frontend for Daily Spews - a satirical news application that demonstrates professional web development practices and modern React architecture. <br>
+A **modern**, responsive React frontend for Daily Spews - a satirical news application that demonstrates professional web development practices and contemporary React architecture. <br>
 
-✨ **What makes this special:**
+✨ **Key Technical Highlights:**
 
-- **Latest React 19** features with optimised rendering and modern hooks
-- **Production-grade architecture** with comprehensive error handling and logging
-- **Full accessibility compliance** with keyboard navigation and ARIA support
-- **Mobile-first responsive design** that works flawlessly across all devices
+- **Modern React architecture** with custom hooks and optimised rendering
+- **Robust error handling** with comprehensive logging and error boundaries
+- **Accessibility features** with keyboard navigation and ARIA support
+- **Mobile-first responsive design** that adapts seamlessly across devices
 - **Optimistic UI updates** for seamless user experience
-- **Professional code quality** with ESLint (Airbnb standards), Prettier, and comprehensive testing
+- **Clean code practices** with ESLint (Airbnb standards), Prettier, and error boundary handling
 
 <br>
 
@@ -228,6 +228,7 @@ src/
 - **🔔 Real-time Notifications** - WebSocket integration for live updates
 - **📊 User Analytics** - Engagement metrics and personalised recommendations
 - **🛡️ Content Moderation** - Automated filtering and admin tools
+- **🧪 Testing Suite** - Jest unit tests, React Testing Library, and E2E testing with Cypress
 
 <br>
 <br>
