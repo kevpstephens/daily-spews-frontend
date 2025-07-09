@@ -38,11 +38,58 @@
   outline-offset: 2px;
 }
 
+/* User profile nav for logged-out state only */
+.user-profile-nav {
+  background-color: #8113d5;
+  color: white;
+  border: 2.5px solid #0d0024;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+}
+
+.user-profile-nav:hover {
+  background-color: #f77703;
+}
+
+.user-profile-nav:focus {
+  background-color: #f77703;
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
+}
+
 #user-profile-button {
   width: 3rem;
   border-radius: 50%;
   padding: 0;
   cursor: pointer;
+}
+
+/* When logged in, the nav-avatar-wrapper is the user profile button */
+#user-profile-button.nav-avatar-wrapper {
+  background-color: #8113d5;
+  border: 2.5px solid #0d0024;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+}
+
+#user-profile-button.nav-avatar-wrapper:hover {
+  background-color: #f77703;
+}
+
+#user-profile-button.nav-avatar-wrapper:focus {
+  background-color: #f77703;
+  outline: 3px solid #ffb366;
+  outline-offset: 2px;
 }
 
 #home-button {
@@ -117,21 +164,6 @@ div.nav-button:hover {
   transition: opacity 0.15s ease-in-out;
 }
 
-/* Mobile-specific dropdown positioning when opened via keyboard */
-@media (max-width: 600px) {
-  .nav-avatar-wrapper.open .nav-avatar-dropdown {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    max-width: 90vw;
-    animation: fadeSlideInUp 0.2s ease-in-out;
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
 .nav-avatar-dropdown {
   opacity: 0;
 
@@ -139,7 +171,7 @@ div.nav-button:hover {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: -170%;
+  top: -190%;
   gap: 6rem;
   transform: none;
   background-color: var(--color-accent);

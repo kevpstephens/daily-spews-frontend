@@ -101,105 +101,97 @@ export default function NavigationBar() {
 
         {/* User profile section - conditional rendering */}
         {user && user.avatar_url ? (
-          <div className="nav-button user-profile-nav" id="user-profile-button">
-            <div
-              aria-expanded={dropdownOpen}
-              aria-haspopup="menu"
-              aria-label={`${user.username}'s account menu`}
-              role="button"
-              tabIndex={0}
-              className={`nav-avatar-wrapper${
-                dropdownOpen && (!isMobile || keyboardNavigation) ? " open" : ""
-              }`}
-              onClick={handleAvatarClick}
-              onKeyDown={handleAvatarKeyDown}
-              onMouseEnter={handleAvatarEnter}
-              onMouseLeave={handleAvatarLeave}
-            >
-              <img
-                alt={`${user.username}'s profile`}
-                className="nav-avatar-icon"
-                id="user-avatar"
-                src={user.avatar_url}
-              />
+          <div
+            aria-expanded={dropdownOpen}
+            aria-haspopup="menu"
+            aria-label={`${user.username}'s account menu`}
+            className={`nav-avatar-wrapper${dropdownOpen ? " open" : ""}`}
+            id="user-profile-button"
+            role="button"
+            tabIndex={0}
+            onClick={handleAvatarClick}
+            onKeyDown={handleAvatarKeyDown}
+            onMouseEnter={handleAvatarEnter}
+            onMouseLeave={handleAvatarLeave}
+          >
+            <img
+              alt={`${user.username}'s profile`}
+              className="nav-avatar-icon"
+              id="user-avatar"
+              src={user.avatar_url}
+            />
 
-              {dropdownOpen && (
-                <div
-                  aria-labelledby="user-avatar"
-                  className="nav-avatar-dropdown"
-                  role="menu"
-                >
-                  <h2 className="nav-avatar-username">@{user.username}</h2>
+            {dropdownOpen && (
+              <div
+                aria-labelledby="user-avatar"
+                className="nav-avatar-dropdown"
+                role="menu"
+              >
+                <h2 className="nav-avatar-username">@{user.username}</h2>
 
-                  <div className="nav-avatar-dropdown-buttons-container">
-                    <Link
-                      className="nav-profile-link"
-                      role="menuitem"
-                      tabIndex={0}
-                      to={`/users/${user.username}`}
-                      onClick={handleDropdownLinkClick}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          // Trigger the Link's click to navigate
-                          e.target.click();
-                          handleDropdownLinkClick();
-                        } else if (e.key === "Escape") {
-                          setDropdownOpen(false);
-                          setKeyboardNavigation(false);
-                          document
-                            .querySelector(".nav-avatar-wrapper")
-                            ?.focus();
-                        }
-                      }}
-                    >
-                      <span>Profile</span>
-                      <UserCircle size={20} />
-                    </Link>
+                <div className="nav-avatar-dropdown-buttons-container">
+                  <Link
+                    className="nav-profile-link"
+                    role="menuitem"
+                    tabIndex={0}
+                    to={`/users/${user.username}`}
+                    onClick={handleDropdownLinkClick}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        // Trigger the Link's click to navigate
+                        e.target.click();
+                        handleDropdownLinkClick();
+                      } else if (e.key === "Escape") {
+                        setDropdownOpen(false);
+                        setKeyboardNavigation(false);
+                        document.querySelector(".nav-avatar-wrapper")?.focus();
+                      }
+                    }}
+                  >
+                    <span>Profile</span>
+                    <UserCircle size={20} />
+                  </Link>
 
-                    <Link
-                      className="nav-post-article-link"
-                      role="menuitem"
-                      tabIndex={0}
-                      to="/articles/new"
-                      onClick={handleDropdownLinkClick}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          // Trigger the Link's click to navigate
-                          e.target.click();
-                          handleDropdownLinkClick();
-                        } else if (e.key === "Escape") {
-                          setDropdownOpen(false);
-                          setKeyboardNavigation(false);
-                          document
-                            .querySelector(".nav-avatar-wrapper")
-                            ?.focus();
-                        }
-                      }}
-                    >
-                      <span>Post Article</span>
-                      <PencilLine size={16} />
-                    </Link>
+                  <Link
+                    className="nav-post-article-link"
+                    role="menuitem"
+                    tabIndex={0}
+                    to="/articles/new"
+                    onClick={handleDropdownLinkClick}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        // Trigger the Link's click to navigate
+                        e.target.click();
+                        handleDropdownLinkClick();
+                      } else if (e.key === "Escape") {
+                        setDropdownOpen(false);
+                        setKeyboardNavigation(false);
+                        document.querySelector(".nav-avatar-wrapper")?.focus();
+                      }
+                    }}
+                  >
+                    <span>Post Article</span>
+                    <PencilLine size={16} />
+                  </Link>
 
-                    <LogoutButton
-                      id="nav-logout-button"
-                      redirectTo="/"
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          // Trigger the button click for logout
-                          e.target.click();
-                        } else if (e.key === "Escape") {
-                          setDropdownOpen(false);
-                          setKeyboardNavigation(false);
-                          document
-                            .querySelector(".nav-avatar-wrapper")
-                            ?.focus();
-                        }
-                      }}
-                    />
-                  </div>
+                  <LogoutButton
+                    id="nav-logout-button"
+                    redirectTo="/"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        // Trigger the button click for logout
+                        e.target.click();
+                      } else if (e.key === "Escape") {
+                        setDropdownOpen(false);
+                        setKeyboardNavigation(false);
+                        document.querySelector(".nav-avatar-wrapper")?.focus();
+                      }
+                    }}
+                  />
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+
             {/* Overlay rendered via portal */}
             {showOverlay &&
               createPortal(
@@ -220,7 +212,7 @@ export default function NavigationBar() {
           </div>
         ) : (
           <Link
-            className="nav-button user-profile-nav"
+            className="user-profile-nav"
             id="user-profile-button"
             to="/login"
           >
