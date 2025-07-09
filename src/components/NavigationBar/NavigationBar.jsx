@@ -6,73 +6,54 @@
  *============================================================ */
 
 import { Home, PencilLine, User, UserCircle } from "lucide-react";
-import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 
 import { useUser } from "../../context";
+import useDropdown from "../../hooks/useDropdown";
+import useResponsive from "../../hooks/useResponsive";
 import LogoutButton from "../LogoutButton/LogoutButton";
 
 export default function NavigationBar() {
   const { user, isUserLoading } = useUser();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const isMobile = window.innerWidth <= 600;
-  const [showOverlay, setShowOverlay] = useState(false);
-  const [keyboardNavigation, setKeyboardNavigation] = useState(false);
-
-  useEffect(() => {
-    if (dropdownOpen) {
-      setShowOverlay(true);
-    } else if (showOverlay) {
-      // Wait for fade-out before unmounting
-      const timeout = setTimeout(() => setShowOverlay(false), 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [dropdownOpen, showOverlay]);
+  const { isMobile } = useResponsive();
+  const {
+    isOpen: dropdownOpen,
+    keyboardNavigation,
+    dropdownRef,
+    triggerRef,
+    open,
+    close,
+    toggle,
+    handleKeyboardOpen,
+  } = useDropdown();
 
   if (isUserLoading) return null;
 
   // Handlers for desktop (hover) and mobile (click)
   const handleAvatarEnter = () => {
-    if (!isMobile) setDropdownOpen(true);
+    if (!isMobile) open();
   };
   const handleAvatarLeave = () => {
-    if (!isMobile && !keyboardNavigation) setDropdownOpen(false);
+    if (!isMobile && !keyboardNavigation) close();
   };
   const handleAvatarClick = () => {
-    if (isMobile) setDropdownOpen((open) => !open);
+    if (isMobile) toggle();
   };
   const handleDropdownLinkClick = () => {
-    setDropdownOpen(false);
-    setKeyboardNavigation(false);
+    close();
   };
 
   // Enhanced keyboard handler for avatar
   const handleAvatarKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      setKeyboardNavigation(true);
-      setDropdownOpen(true);
+      handleKeyboardOpen();
       // Focus first menu item after dropdown opens - increased timeout for reliability
       setTimeout(() => {
         const firstMenuItem = document.querySelector(".nav-profile-link");
         if (firstMenuItem) firstMenuItem.focus();
       }, 100);
-    } else if (e.key === "Escape") {
-      setDropdownOpen(false);
-      setKeyboardNavigation(false);
-    }
-  };
-
-  // Enhanced overlay keyboard handler
-  const handleOverlayKeyDown = (e) => {
-    if (e.key === "Escape") {
-      setDropdownOpen(false);
-      setKeyboardNavigation(false);
-      // Return focus to avatar button
-      const avatarWrapper = document.querySelector(".nav-avatar-wrapper");
-      if (avatarWrapper) avatarWrapper.focus();
     }
   };
 
@@ -102,6 +83,7 @@ export default function NavigationBar() {
         {/* User profile section - conditional rendering */}
         {user && user.avatar_url ? (
           <div
+            ref={triggerRef}
             aria-expanded={dropdownOpen}
             aria-haspopup="menu"
             aria-label={`${user.username}'s account menu`}
@@ -123,6 +105,7 @@ export default function NavigationBar() {
 
             {dropdownOpen && (
               <div
+                ref={dropdownRef}
                 aria-labelledby="user-avatar"
                 className="nav-avatar-dropdown"
                 role="menu"
@@ -138,13 +121,8 @@ export default function NavigationBar() {
                     onClick={handleDropdownLinkClick}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
-                        // Trigger the Link's click to navigate
                         e.target.click();
                         handleDropdownLinkClick();
-                      } else if (e.key === "Escape") {
-                        setDropdownOpen(false);
-                        setKeyboardNavigation(false);
-                        document.querySelector(".nav-avatar-wrapper")?.focus();
                       }
                     }}
                   >
@@ -160,13 +138,8 @@ export default function NavigationBar() {
                     onClick={handleDropdownLinkClick}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
-                        // Trigger the Link's click to navigate
                         e.target.click();
                         handleDropdownLinkClick();
-                      } else if (e.key === "Escape") {
-                        setDropdownOpen(false);
-                        setKeyboardNavigation(false);
-                        document.querySelector(".nav-avatar-wrapper")?.focus();
                       }
                     }}
                   >
@@ -179,36 +152,13 @@ export default function NavigationBar() {
                     redirectTo="/"
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
-                        // Trigger the button click for logout
                         e.target.click();
-                      } else if (e.key === "Escape") {
-                        setDropdownOpen(false);
-                        setKeyboardNavigation(false);
-                        document.querySelector(".nav-avatar-wrapper")?.focus();
                       }
                     }}
                   />
                 </div>
               </div>
             )}
-
-            {/* Overlay rendered via portal */}
-            {showOverlay &&
-              createPortal(
-                <div
-                  role="button"
-                  tabIndex={-1}
-                  className={`nav-avatar-overlay${
-                    dropdownOpen ? " visible" : ""
-                  }`}
-                  onKeyDown={handleOverlayKeyDown}
-                  onClick={() => {
-                    setDropdownOpen(false);
-                    setKeyboardNavigation(false);
-                  }}
-                />,
-                document.body
-              )}
           </div>
         ) : (
           <Link
