@@ -19,6 +19,7 @@
   padding: 1rem;
   border-radius: 30px;
   font-size: var(--font-size-2xl);
+  margin-bottom: 1.5rem;
 }
 
 .signup-form {
@@ -282,7 +283,7 @@
 
 @media (max-width: 600px) {
   .signup-page-container {
-    width: 90%;
+    width: 95%;
     margin: 2rem auto;
     padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   }
@@ -331,16 +332,4 @@
   margin: 0.25rem 0 0.75rem 0;
   font-style: italic;
   opacity: 0.8;
-}
-
-/* Ensure fieldsets display properly on mobile */
-@media (max-width: 600px) {
-  .signup-form-fieldset {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .signup-form-legend {
-    font-size: var(--font-size-base);
-  }
 }
