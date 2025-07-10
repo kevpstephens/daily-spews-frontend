@@ -6,7 +6,7 @@
   width: 100%;
   max-width: 18.75rem;
   height: auto;
-  background: #8a72d77e;
+  background: var(--color-background-tertiary);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

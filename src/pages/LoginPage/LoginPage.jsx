@@ -118,6 +118,7 @@ export default function LoginPage() {
             required
             onChange={(event) => setEmail(event.target.value)}
           />
+
           <label htmlFor="login-page-password-input">
             <strong>Password:</strong>
           </label>

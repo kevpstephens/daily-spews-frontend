@@ -36,11 +36,34 @@
   --color-text-body: #0d0024;
 
   --color-background: #999fc9;
+  --color-background-secondary: #9382ca;
+  --color-background-tertiary: #8a72d77e;
   --color-primary: #8113d5;
   --color-accent: #b95d28;
+  --color-accent-bright: #f77703;
+  --color-accent-bright-transparent: #f7790321;
 
+  /*? Form colors */
   --color-form-input: #1f0054;
-  --color-form-input-focus: #e196ff;
+  --color-form-input-focus: #d4a4ff;
+
+  /*? Border enhancement variables for accessibility */
+  --border-contrast-thin: 1px solid #000000;
+  --border-contrast-medium: 2px solid #000000;
+  --border-contrast-thick: 3px solid #000000;
+  --border-contrast-button: 2px solid #0d0024;
+  --border-contrast-form: 2px solid #0d0024;
+
+  /*? Additional accessible color variants  */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+
+  /*? High contrast variants for critical UI elements */
+  --color-button-text: #ffffff;
+  --color-link: #8113d5;
+  --color-link-hover: #5a0d8a;
 }
 
 /*! ============================================================ */
@@ -72,7 +95,7 @@ html {
 /*! ============================================================ */
 body {
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.7;
   color: var(--color-text-body);
   font-size: var(--font-size-base);
@@ -131,20 +154,24 @@ svg {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: var(--color-primary);
+  background: var(--color-form-input);
   color: white;
-  padding: 8px;
+  padding: 10px;
   text-decoration: none;
   border-radius: 4px;
   z-index: 9999;
   font-weight: bold;
-  transition: top 0.2s ease;
+  transition: top 0.3s ease;
 }
 
 .skip-navigation:focus {
   top: 6px;
   outline: 2px solid #ffffff;
   outline-offset: 2px;
+}
+
+.skip-navigation:hover {
+  color: var(--color-accent);
 }
 
 /* Enhanced focus indicators for all interactive elements */

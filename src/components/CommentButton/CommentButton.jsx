@@ -21,9 +21,13 @@ export default function CommentButton({
     }
   };
 
-  // Render button with icon and comment count
   return (
-    <button id="comment-button" type="button" onClick={handleClick}>
+    <button
+      aria-label={`View and add comments. ${commentCount} comment${commentCount !== 1 ? "s" : ""} total`}
+      id="comment-button"
+      type="button"
+      onClick={handleClick}
+    >
       {/* Comment icon */}
       <MessageSquareMore className="comment-button-icon" size={25} />
 

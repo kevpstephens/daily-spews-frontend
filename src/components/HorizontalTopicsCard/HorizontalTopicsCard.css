@@ -45,6 +45,7 @@
 
 .horizontal-topic-card-link:hover {
   color: var(--color-accent) !important;
+  text-decoration-color: var(--color-accent) !important;
   transition: all 0.4s ease-in-out;
 }
 

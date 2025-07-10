@@ -5,11 +5,11 @@
 .signup-page-container {
   max-width: 25rem;
   margin: 3rem auto;
-  background-color: #8a72d77e;
-  border: 2px solid #0d0024;
-  box-shadow: 0 6px 15px rgba(86, 61, 154, 0.2);
+  background-color: var(--color-background-tertiary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   padding: 2rem;
   border-radius: 30px;
+  animation: fadeIn 0.5s ease-in-out both;
 }
 
 .signup-page-container h2 {
@@ -42,6 +42,7 @@
   border-radius: 10px;
   padding: 0.5rem;
   border: 1px solid #ccc;
+  margin-bottom: 0.75rem;
 }
 
 .signup-form input[type="file"] {
@@ -297,5 +298,49 @@
   .signup-page-eye-icon {
     width: 1.25rem;
     height: 1.25rem;
+  }
+}
+
+/*! ============================================================ */
+/*!     Form Accessibility Improvements
+/*! ============================================================ */
+
+.signup-form-fieldset {
+  border: none;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #8a72d7;
+  box-shadow: 0 6px 15px rgba(86, 61, 154, 0.2);
+}
+
+.signup-form-legend {
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-heading);
+  padding: 0 0.5rem;
+  background-color: #8a72d7;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(86, 61, 154, 0.2);
+  border-bottom: 2px solid var(--color-form-input);
+}
+
+.signup-form-help-text {
+  font-size: var(--font-size-xs) !important;
+  color: var(--color-text-body) !important;
+  margin: 0.25rem 0 0.75rem 0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Ensure fieldsets display properly on mobile */
+@media (max-width: 600px) {
+  .signup-form-fieldset {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .signup-form-legend {
+    font-size: var(--font-size-base);
   }
 }

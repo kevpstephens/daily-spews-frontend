@@ -40,11 +40,9 @@
 }
 
 .footer-link:hover {
-  color: #ab3f00;
   text-decoration: underline overline;
   text-underline-offset: 0.25rem;
   text-decoration-thickness: 0.1rem;
-  text-decoration-color: #ab3f00;
 }
 
 /*! ============================================================ */
