@@ -78,6 +78,7 @@ export default function VoteButton({
     <>
       <div className={`vote-button-container ${className}`}>
         <button
+          aria-label={`Upvote this content. Current votes: ${initialVotes + voteChange}`}
           disabled={(user?.username !== "admin" && voteChange > 0) || isLoading}
           type="button"
           className={`upvote-button ${className} ${
@@ -96,6 +97,7 @@ export default function VoteButton({
         </div>
 
         <button
+          aria-label={`Downvote this content. Current votes: ${initialVotes + voteChange}`}
           disabled={(user?.username !== "admin" && voteChange < 0) || isLoading}
           type="button"
           className={`downvote-button ${className} ${

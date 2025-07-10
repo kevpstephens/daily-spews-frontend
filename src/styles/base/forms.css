@@ -7,15 +7,17 @@
   font-family: var(--font-body);
   padding: 0.5rem;
   margin-top: 0;
-  border: 2px solid black;
+  border: var(--border-contrast-form);
   border-radius: 10px;
   width: 100%;
   background-color: var(--color-primary);
   color: white;
   transition:
     background-color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   text-align: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .app-content select {
@@ -23,14 +25,16 @@
   font-size: var(--font-size-base);
   padding: 0.5rem;
   margin-top: 0;
-  border: 2px solid black;
+  border: var(--border-contrast-form);
   border-radius: 10px;
   background-color: var(--color-primary);
   color: white;
   transition:
     background-color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   text-align: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .app-content form input {
@@ -42,6 +46,10 @@
 .app-content select:focus {
   outline: 0.15rem solid var(--color-form-input-focus);
   outline-offset: 0.25rem;
+  border: var(--border-contrast-thick);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 0 8px rgba(212, 164, 255, 0.3);
 }
 
 /*! ============================================================ */
@@ -58,22 +66,32 @@
   background-color: var(--color-primary);
   transition:
     background-color 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
+    box-shadow 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
   color: white;
   cursor: pointer;
   padding: 0.75rem;
-  border: 2px solid black;
+  border: var(--border-contrast-button);
   border-radius: 10px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .app-content button:hover {
   background-color: var(--color-accent);
   outline: none;
+  border-color: #000000;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .app-content button:focus {
-  outline: 0.15rem solid #ab3f00;
+  background-color: var(--color-accent);
+  outline: 0.15rem solid var(--color-accent);
   outline-offset: 0.15rem;
+  border: var(--border-contrast-thick);
 }
 
 /*! ============================================================ */

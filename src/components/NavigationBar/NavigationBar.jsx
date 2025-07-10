@@ -74,12 +74,20 @@ export default function NavigationBar() {
             />
           </Link>
         )}
-        <Link className="nav-button" id="home-button" to="/">
+
+        <Link
+          aria-label="Go to homepage"
+          className="nav-button"
+          id="home-button"
+          to="/"
+        >
           <Home color="white" size={28} />
         </Link>
+
         <Link className="nav-button" to="/articles">
           Articles
         </Link>
+
         <Link className="nav-button" to="/topics">
           Topics
         </Link>
@@ -166,6 +174,7 @@ export default function NavigationBar() {
           </div>
         ) : (
           <Link
+            aria-label="Login to your account"
             className="user-profile-nav"
             id="user-profile-button"
             to="/login"
@@ -179,11 +188,11 @@ export default function NavigationBar() {
       {overlayVisible &&
         createPortal(
           <div
+            className={`nav-avatar-overlay${dropdownOpen ? " visible" : ""}`}
             role="button"
             tabIndex={-1}
-            className={`nav-avatar-overlay${dropdownOpen ? " visible" : ""}`}
-            onKeyDown={handleOverlayKeyDown}
             onClick={handleOverlayInteraction}
+            onKeyDown={handleOverlayKeyDown}
           />,
           document.body
         )}
