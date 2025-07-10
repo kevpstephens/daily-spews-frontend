@@ -231,8 +231,8 @@
 
 #signup-page-show-password-toggle {
   position: absolute;
-  top: 50%;
-  right: 0rem;
+  top: 40%;
+  right: 0.5rem;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -240,7 +240,6 @@
   font-size: var(--font-size-xl);
   color: #000;
   padding: 0;
-  width: 3rem;
 }
 
 #signup-page-show-password-toggle:hover {
@@ -257,8 +256,8 @@
 
 #signup-page-show-confirm-password-toggle {
   position: absolute;
-  top: 50%;
-  right: 0rem;
+  top: 40%;
+  right: 0.5rem;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -266,7 +265,6 @@
   font-size: var(--font-size-xl);
   color: #000;
   padding: 0;
-  width: 3rem;
 }
 
 #signup-page-show-confirm-password-toggle:hover {
@@ -299,6 +297,10 @@
   .signup-page-eye-icon {
     width: 1.25rem;
     height: 1.25rem;
+  }
+
+  .signup-form input {
+    font-size: var(--font-size-form) !important;
   }
 }
 

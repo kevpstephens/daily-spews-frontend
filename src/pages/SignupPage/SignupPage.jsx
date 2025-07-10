@@ -228,10 +228,24 @@ export default function SignupPage() {
       <h2>Create a New Account</h2>
 
       {/* Signup form */}
-      <form className="signup-form" noValidate onSubmit={handleSignup}>
+      <form autoComplete="on" className="signup-form" onSubmit={handleSignup}>
         {/* Basic Information Section */}
         <fieldset className="signup-form-fieldset">
           <legend className="signup-form-legend">Basic Information</legend>
+
+          {/* Name input */}
+          <label htmlFor="name">*Name:</label>
+          <input
+            autoComplete="name"
+            disabled={isSubmitting}
+            id="name"
+            maxLength={50}
+            minLength={2}
+            name="name"
+            value={name}
+            required
+            onChange={(event) => setName(event.target.value)}
+          />
 
           <label htmlFor="username">*Username:</label>
           {usernameError && (
@@ -259,20 +273,6 @@ export default function SignupPage() {
               setUsername(event.target.value);
               validateUsername();
             }}
-          />
-
-          {/* Name input */}
-          <label htmlFor="name">*Name:</label>
-          <input
-            autoComplete="name"
-            disabled={isSubmitting}
-            id="name"
-            maxLength={50}
-            minLength={2}
-            name="name"
-            value={name}
-            required
-            onChange={(event) => setName(event.target.value)}
           />
         </fieldset>
 

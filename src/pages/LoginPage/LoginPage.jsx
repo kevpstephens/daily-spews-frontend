@@ -72,7 +72,7 @@ export default function LoginPage() {
       <div className="login-page-container">
         <h2>Login to Daily Spews</h2>
 
-        <form className="login-form" onSubmit={handleLogin}>
+        <form autoComplete="on" className="login-form" onSubmit={handleLogin}>
           <p>
             New to <strong>Daily Spews</strong>? Don't fret, you've come to the
             right place! Please create an account for full feature access.

@@ -192,7 +192,7 @@
 #login-page-show-password-toggle {
   position: absolute;
   top: 50%;
-  right: 0rem;
+  right: 0.5rem;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -200,7 +200,6 @@
   font-size: var(--font-size-xl);
   color: #000;
   padding: 0;
-  width: 3rem;
 }
 
 #login-page-show-password-toggle:hover {
